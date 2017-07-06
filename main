@@ -184,7 +184,7 @@ echo 'alias show="apt-cache show"' 							>> ${rc_}
 echo 'alias policy="apt-cache policy"' 							>> ${rc_}
 echo 'alias search="apt-cache search"' 							>> ${rc_}
 echo 'alias rmdir="rm -r"' 								>> ${rc_}
-echo 'alias reload=". /root/git/dotfile.sh"'						>> ${rc_}
+echo 'alias reload=". /root/git/dotfile/main"'						>> ${rc_}
 
 (cat /etc/inputrc | grep 'set colored-stats on') || echo 'set colored-stats on'		>> /etc/inputrc
 
