@@ -155,8 +155,10 @@ ${si_} '101,$d' 									${rc_}
 
 ${si_} 's/#alias grep=/alias grep=/' 							${rc_}
 ${si_} 's/alias ls=/#alias ls=/'							${rc_}
-${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'					/root/.bash_history
 ${si_} 's/HISTSIZE=/#HISTSIZE=/'						/root/.bash_history
+${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'					/root/.bash_history
+cat ( /root/.bash_history | grep HISTFILE) 	|| echo 'export HISTSIZE='	>> /root/.bash_history
+cat ( /root/.bash_history | grep HISTFILESIZE) 	|| echo 'export HISTFILESIZE='	>> /root/.bash_history
 
 #${gq_} ".* lsa=.*" 	${rc_} || echo 'alias lsa =""'					>> ${rc_}
 
