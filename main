@@ -171,8 +171,9 @@ echo 'alias ct="cat -A"' 								>> ${rc_}
 echo 'alias iip="ip addr | grep 255"' 							>> ${rc_}
 echo 'alias eip="curl -s http://whatismyip.akamai.com/"'				>> ${rc_}
 echo 'alias tailf="tail -f"' 								>> ${rc_}
-echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 				printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""		>> ${rc_}
 echo 'alias update="apt-get update && apt-get upgrade ;"'				>> ${rc_}
+#echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 				printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""		>> ${rc_}
+echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 			xwd -root >/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; 			timeout 1 xwud -in /tmp/files/b.xwd ;\""						>> ${rc_}
 echo 'alias install="apt-get install"' 							>> ${rc_}
 echo 'alias remove="apt-get remove"' 							>> ${rc_}
 echo 'alias show="apt-cache show"' 							>> ${rc_}
@@ -180,6 +181,8 @@ echo 'alias policy="apt-cache policy"' 							>> ${rc_}
 echo 'alias search="apt-cache search"' 							>> ${rc_}
 echo 'alias rmdir="rm -r"' 								>> ${rc_}
 echo 'alias reload=". /root/git/dotfile.sh"'						>> ${rc_}
+
+(cat /etc/inputrc | grep 'set colored-stats on') || echo 'set colored-stats on'		>> /etc/inputrc
 
 
 # ==================================FUNCTIONS================================
@@ -345,15 +348,15 @@ echo "30 *	* * *	root	updatedb"				>> /etc/crontab
 
 echo 'Want Upgrade ??'
 read r1 ;
-if [ echo "${r1}" | 
-	grep -iq "^y" ] ;
+if echo "${r1}" | 
+	grep -iq "^y" ;
 	
 	then
 		apt-get update && apt-get upgrade ;
 		echo 'Want Distro Upgrade ??'
 		read r101
-		if [ echo "${r101}" | 
-			grep -iq "^y" ] ;
+		if echo "${r101}" | 
+			grep -iq "^y" ;
 			
 			then 
 				apt-get dist-upgrade ;
@@ -362,8 +365,8 @@ fi
 
 echo 'Want Installation ??'
 read r1 ;
-if [ echo "${r1}" | 
-	grep -iq "^y" ] ;
+if echo "${r1}" | 
+	grep -iq "^y" ;
 	
 	then
 		apt-get install \
@@ -398,7 +401,7 @@ if echo "${r1}" |
 	grep -iq "^y" ;
 	
 	then
-		shutdown -r +0 ;
+		init 6 ;
 	else
 		wid_=$(xprop -root | 
 			grep "_NET_ACTIVE_WINDOW(WINDOW)"| 
