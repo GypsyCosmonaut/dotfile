@@ -88,17 +88,20 @@ ${si_} 's/alias ls=/#alias ls=/'							${rc_}
 
 #${gq_} ".* lsa=.*" 	${rc_} || echo 'alias lsa="ls -AlF --color=auto"'		>> ${rc_}
 echo 'alias ls="l"'									>> ${rc_}
+echo 'alias crontab="crontab -l"'							>> ${rc_}
+echo 'alias pgrep="pgrep -f"'								>> ${rc_}
 echo 'alias l="ls -CF --color=auto"'							>> ${rc_}
 echo 'alias lv="ls -FlAshZid * --color=auto"'						>> ${rc_}
 echo 'alias lh="ls -FlAshZid .* --color=auto"'						>> ${rc_}
 echo 'alias la="ls -FlAshZi --color=auto"'						>> ${rc_}
 echo 'alias c="tput reset"' 								>> ${rc_}
+echo 'alias e="exit"'									>> ${rc_}
 echo 'alias allout="kill -9 -1"'							>> ${rc_}
 echo 'alias ct="cat -A"' 								>> ${rc_}
 echo 'alias iip="ip addr | grep 255"' 							>> ${rc_}
 echo 'alias eip="curl -s http://whatismyip.akamai.com/"'				>> ${rc_}
 echo 'alias tailf="tail -f"' 								>> ${rc_}
-echo "alias update=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""								>> ${rc_}
+echo "alias update=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 				printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""		>> ${rc_}
 echo 'alias install="apt-get install"' 							>> ${rc_}
 echo 'alias remove="apt-get remove"' 							>> ${rc_}
 echo 'alias show="apt-cache show"' 							>> ${rc_}
@@ -138,6 +141,7 @@ im() {
 		"testing")
 			cd /root/tmp/ ;
 		;;
+		
 	esac
 }'											>> ${rc_}
 
@@ -220,7 +224,7 @@ slist() {
 }" 											>> ${rc_}
 
 echo '
-whatisi(){
+what(){
 	whatis "${1}" ;
 	echo -e "\n \n" ;
 	update-alternatives --display "${1}" 2>/dev/null ;
@@ -283,10 +287,20 @@ grange() {
 
 #Persistent Enviroment Variables can be used in crontab
 
-${si_} '16,$d' 					/etc/crontab
+${si_} '16,$d'								/etc/crontab
 
-echo "* *	* * *	root	rm ${tmp_}/*" 	>> /etc/crontab
-echo "30 *	* * *	root	updatedb"	>> /etc/crontab
+echo "* *	* * *	root	rm ${tmp_}/*" 				>> /etc/crontab
+echo "30 *	* * *	root	updatedb"				>> /etc/crontab
+
+#echo "7		5	/root/files/mega	/root/files/anacron"	>> /etc/anacrontab
+
+
+
+# ================================= SUDOERS ========================================
+
+echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
+
+
 
 # ================================ GSETTINGS =======================================
 # function to list all gsettings here
@@ -347,6 +361,7 @@ ${gs_} ${og_}.desktop.wm.preferences visual-bell true
 #update 
 
 # ================================== UTILITIES ====================================
+
 # function to list all utilities here
 
 #install \
@@ -399,12 +414,12 @@ fi
 #git config --global user.name GypsyCosmonaut
 #git config --global user.email rahulbansal1913@gmail.com
 ##git config --global branch.autosetuprebase always
-git config --global color.ui true
-git config --global color.status auto
-git config --global color.branch auto
-git config --global core.editor gedit
+#git config --global color.ui true
+#git config --global color.status auto
+#git config --global color.branch auto
+#git config --global core.editor gedit
 ##git config --global merge.tool vimdiff
-git init /root/git/
+#git init /root/git/
 
 
 
