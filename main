@@ -156,15 +156,13 @@ ${si_} '101,$d' 									${rc_}
 ${si_} 's/#alias grep=/alias grep=/' 							${rc_}
 ${si_} 's/alias ls=/#alias ls=/'							${rc_}
 
-#echo 'nohup updatedb & '								>> ${rc_}
 #${gq_} ".* lsa=.*" 	${rc_} || echo 'alias lsa =""'					>> ${rc_}
 
 echo 'alias ls="l"'									>> ${rc_}
 echo 'alias crontab="crontab -l"'							>> ${rc_}
 echo 'alias pgrep="pgrep -f"'								>> ${rc_}
 echo 'alias l="ls -CF --color=auto"'							>> ${rc_}
-echo 'alias lv="ls -FlAshZid * --color=auto"'						>> ${rc_}
-echo 'alias lh="ls -FlAshZid .* --color=auto"'						>> ${rc_}
+echo 'alias lv="ls -FlAshZid --color=auto"'						>> ${rc_}
 echo 'alias la="ls -FlAshZi --color=auto"'						>> ${rc_}
 echo 'alias c="tput reset"' 								>> ${rc_}
 echo 'alias e="exit"'									>> ${rc_}
@@ -173,7 +171,8 @@ echo 'alias ct="cat -A"' 								>> ${rc_}
 echo 'alias iip="ip addr | grep 255"' 							>> ${rc_}
 echo 'alias eip="curl -s http://whatismyip.akamai.com/"'				>> ${rc_}
 echo 'alias tailf="tail -f"' 								>> ${rc_}
-echo "alias update=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 				printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""		>> ${rc_}
+echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 				printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""		>> ${rc_}
+echo 'alias update="apt-get update && apt-get upgrade ;"'				>> ${rc_}
 echo 'alias install="apt-get install"' 							>> ${rc_}
 echo 'alias remove="apt-get remove"' 							>> ${rc_}
 echo 'alias show="apt-cache show"' 							>> ${rc_}
@@ -187,6 +186,17 @@ echo 'alias reload=". /root/git/dotfile.sh"'						>> ${rc_}
 # function to list all functions here
 
 #${gq_} "^replace().*" 	${rc_} || echo 'replace() {} '
+
+
+
+echo '
+lh() {
+	if [ -z "${1}" ] ;
+		then
+			ls -FlAshZid --color=auto .*
+		else
+			ls -FlAshZid --color=auto ${1}/.*
+}'
 
 
 echo '
@@ -340,8 +350,8 @@ if [ echo "${r1}" |
 	
 	then
 		apt-get update && apt-get upgrade ;
-		echo 'Want System Upgrade ??'
-		read ${r101}
+		echo 'Want Distro Upgrade ??'
+		read r101
 		if [ echo "${r101}" | 
 			grep -iq "^y" ] ;
 			
