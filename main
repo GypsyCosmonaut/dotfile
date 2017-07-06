@@ -155,6 +155,8 @@ ${si_} '101,$d' 									${rc_}
 
 ${si_} 's/#alias grep=/alias grep=/' 							${rc_}
 ${si_} 's/alias ls=/#alias ls=/'							${rc_}
+${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'					/root/.bash_history
+${si_} 's/HISTSIZE=/#HISTSIZE=/'						/root/.bash_history
 
 #${gq_} ".* lsa=.*" 	${rc_} || echo 'alias lsa =""'					>> ${rc_}
 
@@ -232,6 +234,7 @@ system() {
 	tty ;
 	echo ${0} ; echo ;
 	w ; echo ;
+	who -a ; echo ;
 	uptime ; echo ;
 	uname -a ; echo ;
 	ls -lshZid /; echo ;
@@ -416,6 +419,9 @@ fi
 #curl -i -X GET http://rest-api.io/items/5069b47aa892630aae059584
 #curl -i -X DELETE http://rest-api.io/items/5069b47aa892630aae059584
 #curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "New item", "year": "2009"}' http://#rest-api.io/items
+
+#curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "New item", "year": "2009"}' http://rest-api.io/items
+
 #curl -i -X PUT -H 'Content-Type: application/json' -d '{"name": "Updated item", "year": "2010"}' #http://rest-api.io/items/5069b47aa892630aae059584
 
 
