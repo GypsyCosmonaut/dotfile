@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #watch fuser fdisk dd power poweroff shutdown test fsck
 
 # ======================================== Rules =========================================
@@ -8,7 +10,7 @@
 # Use "$Var"		when EXPANSION NOT NEEDED
 # Use '$""'		when SUBSTITUTING STDIN			in AWK and SED
 # Use single ticks when 
-#			NO RUN TIME SUBSTITUTION EXIST in Quotess
+#			NO RUN TIME SUBSTITUTION EXIST in Quotes
 #			Quotes DO NOT have other single ticks
 # Use double ticks when 
 #			RUN TIME SUBSTITUTION EXIST in Quotes
@@ -18,36 +20,48 @@
 #			ESCAPE UNWANTED SUBSTITUTION		\${ charVar }, some ${ integerVar }	
 #			ESCAPE unwanted Quote terminations	"\"\""
 # ${ intVar } are
-#			inherited input from USER INPUT
-#			inherited input by sed and awk like ${0}
+#			inherited from USER INPUT
+#			inherited by sed and awk like ${0}
 # ${ charVar_ } are 
 #			ACTIVE runtime substitution variables
 # ${ charVar } are 
 #			inherited substitution from USER INPUT or ANOTHER FUNCTION or LOOP
 #			PASSIVE substitution variables
-
-
-#!/bin/bash
+# Before > or >>
+#			check if configuration exists
+#	-CAUTION- -OR-	check the number of lines in that file and DELETE ALL LINES after last line
 
 echo
-echo earth 1> /etc/hostname
-sed -i '2s/.*/127.0.1.1    earth/' /etc/hosts
+(cat /etc/hostname | grep earth ) ||
+	echo earth 1> /etc/hostname &&
+	sed -i '2s/.*/127.0.1.1    earth/' /etc/hosts 
 
-#echo promt root (press <Enter> to skip)
-#passwd root
+(cat /etc/passwd | grep groot) ||
+	echo 'promt for root' &&
+	passwd root
 
-#useradd --create-home groot
-#sed -i '/groot/s/$/\/bin\/bash/' /etc/passwd
-#echo promt groot
-#passwd groot
+(cat /etc/passwd | grep groot) ||
+	useradd --create-home groot &&
+	sed -i '/groot/s/$/\/bin\/bash/' /etc/passwd &&
+	echo 'promt for groot' &&
+	passwd groot
+# ================================= SUDOERS ========================================
 
-#er=$(echo $?)
+(cat /etc/sudoers | grep groot) ||
+	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
+
+
+# =============================== DIRECTORIES =======================================
 
 #mkdir /git/mine		2>/dev/null ; echo -n $?
 
-ls /root/git/mine	2>/dev/null	|| mkdir /root/git/mine 
-ls /tmp/files		2>/dev/null	|| mkdir /tmp/files 
-ls /root/tmp		2>/dev/null	|| mkdir /root/tmp 
+ls /tmp/files		|| mkdir /tmp/files 
+ls /tmp/files		|| mkdir /tmp/files 
+ls /root/tmp		|| mkdir /root/tmp 
+
+ls /root/git/dotfile	|| git clone https://github.com/GypsyCosmonaut/dotfile.git 	/root/git
+ls /root/git/web	|| git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
+
 
 # ==============================RUNTIME SUBSTITUTIONS=======================
 # function to list runtime substitutions here
@@ -60,19 +74,77 @@ gq_="grep -q"
 gs_="gsettings set"
 og_="org.gnome"
 
+# ================================ CONFIGURATIONS =======================================
+# function to list all gsettings here
 
-#gs_="gsettings set"
-#og_="org.gnome"
-#g_path_=$(echo ${g_schema_} | sed "s|\.|/|g") 
-#schema_path_=${g_schema_}:${g_path_}
+git config --global user.name GypsyCosmonaut
+git config --global user.email rahulbansal1913@gmail.com
+git config --global branch.autosetuprebase always
+git config --global color.ui true
+git config --global color.status auto
+git config --global color.branch auto
+git config --global core.editor gedit
+#git config --global merge.tool vimdiff
 
-${si_} 's/.*AutomaticLoginEnable .*/AutomaticLoginEnable = true/' /etc/gdm3/daemon.conf
-${si_} 's/.*AutomaticLogin .*/AutomaticLogin = root/' /etc/gdm3/daemon.conf
-${si_} 's/LEFT/RIGHT/' /etc/dconf/db/local.d/kali-tweaks
-#${si_} 's/size=32/size=20/' /etc/dconf/db/local.d/kali-tweaks
-#${si_} -i 's/shrink=true/shrink=false/' /etc/dconf/db/local.d/kali-tweaks
-#${si_} -i 's/opacity=0/opacity=100/' /etc/dconf/db/local.d/kali-tweaks
-#${si_} -i 's/.*opacity.*/background-opacity=0' /etc/dconf/db/local.d/kali-tweaks
+
+${si_} 's/.*AutomaticLoginEnable .*/AutomaticLoginEnable = true/' 	/etc/gdm3/daemon.conf
+${si_} 's/.*AutomaticLogin .*/AutomaticLogin = root/' 			/etc/gdm3/daemon.conf
+${si_} 's/LEFT/RIGHT/' 						/etc/dconf/db/local.d/kali-tweaks
+${si_} 's/size=32/size=20/' 					/etc/dconf/db/local.d/kali-tweaks
+${si_} -i 's/shrink=true/shrink=false/' 			/etc/dconf/db/local.d/kali-tweaks
+${si_} -i 's/opacity=0/opacity=100/' 				/etc/dconf/db/local.d/kali-tweaks
+${si_} -i 's/.*opacity.*/background-opacity=0' 			/etc/dconf/db/local.d/kali-tweaks
+
+
+gconvert() {
+	g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
+	schema_path_=${g_schema_}:${g_path_}
+}
+
+g_schema_=${og_}.Terminal.Legacy.Keybindings
+gconvert ;
+
+${gs_} ${schema_path_} new-window '<Control>n'
+${gs_} ${schema_path_} new-tab '<Control>t'
+${gs_} ${schema_path_} close-tab '<Ctrl>w'
+${gs_} ${schema_path_} next-tab '<Primary>Right'
+${gs_} ${schema_path_} prev-tab '<Primary>Left'
+${gs_} ${schema_path_} full-screen '<Ctrl>f'
+
+${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
+${gs_} ${og_}.desktop.lockdown disable-lock-screen true
+${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'TOP'"
+${gs_} ${og_}.shell.extensions.workspaces-to-dock opaque-background false
+${gs_} ${og_}.shell.extensions.workspaces-to-dock require-click-to-show false
+${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-size 0.10
+${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-visible-width 10.0
+${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-height 15.0
+${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-taskbar-icon-size 15.0
+${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-windowcount-image true
+${gs_} ${og_}.shell.extensions.workspaces-to-dock animation-time 0.0
+${gs_} ${og_}.shell.extensions.workspaces-to-dock show-delay 0.0
+${gs_} ${og_}.shell.extensions.workspaces-to-dock hide-delay 0.0
+${gs_} ${og_}.shell.app-switcher current-workspace-only true
+${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-left "['<Control><Shift>Left']"
+${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-right "['<Control><Shift>Right']"
+${gs_} ${og_}.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
+${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
+${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
+${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
+${gs_} ${og_}.desktop.datetime automatic-timezone true
+${gs_} ${og_}.desktop.interface clock-show-date true
+${gs_} ${og_}.desktop.interface clock-show-seconds true
+${gs_} ${og_}.desktop.interface show-battery-percentage true
+${gs_} ${og_}.gedit.preferences.editor display-line-numbers true
+${gs_} ${og_}.gedit.preferences.editor auto-indent true
+${gs_} ${og_}.gedit.preferences.editor display-overview-map true
+${gs_} ${og_}.gedit.preferences.editor highlight-current-line true
+${gs_} ${og_}.gedit.preferences.editor auto-save true
+${gs_} ${og_}.gedit.preferences.editor bracket-matching true
+${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
+${gs_} ${og_}.desktop.wm.preferences audible-bell false
+${gs_} ${og_}.desktop.wm.preferences visual-bell true
 
 
 # ==================================ALIASES=================================
@@ -83,10 +155,10 @@ ${si_} '101,$d' 									${rc_}
 
 ${si_} 's/#alias grep=/alias grep=/' 							${rc_}
 ${si_} 's/alias ls=/#alias ls=/'							${rc_}
-#echo 'nohup updatedb & '								>> ${rc_}
-#clear nohup.out
 
-#${gq_} ".* lsa=.*" 	${rc_} || echo 'alias lsa="ls -AlF --color=auto"'		>> ${rc_}
+#echo 'nohup updatedb & '								>> ${rc_}
+#${gq_} ".* lsa=.*" 	${rc_} || echo 'alias lsa =""'					>> ${rc_}
+
 echo 'alias ls="l"'									>> ${rc_}
 echo 'alias crontab="crontab -l"'							>> ${rc_}
 echo 'alias pgrep="pgrep -f"'								>> ${rc_}
@@ -110,40 +182,12 @@ echo 'alias search="apt-cache search"' 							>> ${rc_}
 echo 'alias rmdir="rm -r"' 								>> ${rc_}
 echo 'alias reload=". /root/git/dotfile.sh"'						>> ${rc_}
 
-#printf '\e[?5h'  # Turn on reverse video
-#printf '\e[?5l'  # Turn on normal video
 
 # ==================================FUNCTIONS================================
 # function to list all functions here
 
 #${gq_} "^replace().*" 	${rc_} || echo 'replace() {} '
 
-echo '
-im() {
-	case $@ in
-		
-		"coding") 
-			cd /root/coding/ ;
-		;;
-		
-		"normal")
-			cd /root/ ;
-		;;
-		
-		"su")
-			cd / ;
-		;;
-		
-		"downloading")
-			cd /root/Downloads/ ;
-		;;			
-		
-		"testing")
-			cd /root/tmp/ ;
-		;;
-		
-	esac
-}'											>> ${rc_}
 
 echo '
 replace() { 
@@ -234,7 +278,6 @@ echo '
 cronjob() {
 	printf "%148.145s\n " "********  Format  ********";
 	printf "%148.100s\n " " delete <USER> <COMMAND>" ; 
-	printf "%148.100s\n " " list <USER>" ;
 	read -p "";
 	case "${1}" in
 		
@@ -242,10 +285,6 @@ cronjob() {
 			sed -i \"/${3}/d\" /var/spool/cron/crontabs/${2}
 			echo
 			cat /var/spool/cron/crontabs/${2}
-		;;
-		
-		"list")
-			cat /var/spool/cron/crontabs/${2} ;
 		;;
 			
 	esac
@@ -294,136 +333,77 @@ echo "30 *	* * *	root	updatedb"				>> /etc/crontab
 
 #echo "7		5	/root/files/mega	/root/files/anacron"	>> /etc/anacrontab
 
+echo 'Want Upgrade ??'
+read r1 ;
+if [ echo "${r1}" | 
+	grep -iq "^y" ] ;
+	
+	then
+		apt-get update && apt-get upgrade ;
+		echo 'Want System Upgrade ??'
+		read ${r101}
+		if [ echo "${r101}" | 
+			grep -iq "^y" ] ;
+			
+			then 
+				apt-get dist-upgrade ;
+		fi
+fi
 
+echo 'Want Installation ??'
+read r1 ;
+if [ echo "${r1}" | 
+	grep -iq "^y" ] ;
+	
+	then
+		apt-get install \
+		tree ccrypt speedtest-cli xdotool wmctrl lshw\ 
+		metagoofil \
+		vega \
+		i3 \
+		squid3 \
+		websploit \
+		routersploit \
+		mitmf \
+		snort \
+		privoxy \
+		owasp-mantra-ff \
+		mutt \
+		iperf \
+		kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools \
+		libimage-exiftool-perl \
+		empathy \
+		tor gnupg2 \
+		texlive-full \
+		strace \
+		f2fs torchat fsck syncthing ssh \ 
+		;
+	
+fi
 
-# ================================= SUDOERS ========================================
-
-echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
-
-
-
-# ================================ GSETTINGS =======================================
-# function to list all gsettings here
-
-
-gconvert() {
-	g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
-	schema_path_=${g_schema_}:${g_path_}
-}
-
-g_schema_=${og_}.Terminal.Legacy.Keybindings
-gconvert ;
-
-${gs_} ${schema_path_} new-window '<Control>n'
-${gs_} ${schema_path_} new-tab '<Control>t'
-${gs_} ${schema_path_} close-tab '<Ctrl>w'
-${gs_} ${schema_path_} next-tab '<Primary>Right'
-${gs_} ${schema_path_} prev-tab '<Primary>Left'
-${gs_} ${schema_path_} full-screen '<Ctrl>f'
-
-${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
-${gs_} ${og_}.desktop.lockdown disable-lock-screen true
-${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'TOP'"
-${gs_} ${og_}.shell.extensions.workspaces-to-dock opaque-background false
-${gs_} ${og_}.shell.extensions.workspaces-to-dock require-click-to-show false
-${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-size 0.10
-${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-visible-width 10.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-height 15.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-taskbar-icon-size 15.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-windowcount-image true
-${gs_} ${og_}.shell.extensions.workspaces-to-dock animation-time 0.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock show-delay 0.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock hide-delay 0.0
-${gs_} ${og_}.shell.app-switcher current-workspace-only true
-${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-left "['<Control><Shift>Left']"
-${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-right "['<Control><Shift>Right']"
-${gs_} ${og_}.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
-${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
-${gs_} ${og_}.desktop.datetime automatic-timezone true
-${gs_} ${og_}.desktop.interface clock-show-date true
-${gs_} ${og_}.desktop.interface clock-show-seconds true
-${gs_} ${og_}.desktop.interface show-battery-percentage true
-${gs_} ${og_}.gedit.preferences.editor display-line-numbers true
-${gs_} ${og_}.gedit.preferences.editor auto-indent true
-${gs_} ${og_}.gedit.preferences.editor display-overview-map true
-${gs_} ${og_}.gedit.preferences.editor highlight-current-line true
-${gs_} ${og_}.gedit.preferences.editor auto-save true
-${gs_} ${og_}.gedit.preferences.editor bracket-matching true
-${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
-${gs_} ${og_}.desktop.wm.preferences audible-bell false
-${gs_} ${og_}.desktop.wm.preferences visual-bell true
-
-#${gs_} ${og_}.gedit.preferences.editor create-backup-copy true
-
-#update 
-
-# ================================== UTILITIES ====================================
-
-# function to list all utilities here
-
-#install \
-#tree ccrypt speedtest-cli xdotool wmctrl lshw\ 
-#metagoofil \
-#vega \
-#i3 \
-#squid3 \
-#websploit \
-#routersploit \
-#mitmf \
-#snort \
-#privoxy \
-#owasp-mantra-ff \
-#mutt \
-#iperf \
-#kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools \
-#libimage-exiftool-perl \
-#empathy \
-#tor gnupg2 \
-#texlive-full \
-# strace \
-#f2fs torchat fsck syncthing ssh 
-#;
-
-echo "To resource dotfile again, type 'reload'" ;
-echo -n "Do you want to restart (y/n)? " ;
-read answer ;
-if echo "$answer" | 
+echo "'reload' is set" ;
+echo -n "Want Restart ?? " ;
+read r1 ;
+if echo "${r1}" | 
 	grep -iq "^y" ;
-then
-	shutdown -r +0 ;
-else
-	wid_=$(xprop -root | 
-		grep "_NET_ACTIVE_WINDOW(WINDOW)"| 
-		awk '{print $5}' ;
-		)
-	xdotool windowfocus $wid_ ;
-	xdotool key ctrl+t ;
-	wmctrl -i -a $wid_ && 
-	exit ;
+	
+	then
+		shutdown -r +0 ;
+	else
+		wid_=$(xprop -root | 
+			grep "_NET_ACTIVE_WINDOW(WINDOW)"| 
+			awk '{print $5}' ;
+			)
+		xdotool windowfocus $wid_ ;
+		xdotool key ctrl+t ;
+		wmctrl -i -a $wid_ && 
+		exit ;
 fi
 #curl -i -X GET http://rest-api.io/items
 #curl -i -X GET http://rest-api.io/items/5069b47aa892630aae059584
 #curl -i -X DELETE http://rest-api.io/items/5069b47aa892630aae059584
 #curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "New item", "year": "2009"}' http://#rest-api.io/items
 #curl -i -X PUT -H 'Content-Type: application/json' -d '{"name": "Updated item", "year": "2010"}' #http://rest-api.io/items/5069b47aa892630aae059584
-
-
-#git config --global user.name GypsyCosmonaut
-#git config --global user.email rahulbansal1913@gmail.com
-##git config --global branch.autosetuprebase always
-#git config --global color.ui true
-#git config --global color.status auto
-#git config --global color.branch auto
-#git config --global core.editor gedit
-##git config --global merge.tool vimdiff
-#git init /root/git/
-
-
-
-
 
 
 # ======================================= EOF ====================================
