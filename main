@@ -31,37 +31,6 @@
 #			check if configuration exists
 #	-CAUTION- -OR-	check the number of lines in that file and DELETE ALL LINES after last line
 
-echo
-(cat /etc/hostname | grep earth ) ||
-	echo earth 1> /etc/hostname &&
-	sed -i '2s/.*/127.0.1.1    earth/' /etc/hosts 
-
-(cat /etc/passwd | grep groot) ||
-	echo 'promt for root' &&
-	passwd root
-
-(cat /etc/passwd | grep groot) ||
-	useradd --create-home groot &&
-	sed -i '/groot/s/$/\/bin\/bash/' /etc/passwd &&
-	echo 'promt for groot' &&
-	passwd groot
-# ================================= SUDOERS ========================================
-
-(cat /etc/sudoers | grep groot) ||
-	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
-
-
-# =============================== DIRECTORIES =======================================
-
-#mkdir /git/mine		2>/dev/null ; echo -n $?
-
-ls /tmp/files		|| mkdir /tmp/files 
-ls /tmp/files		|| mkdir /tmp/files 
-ls /root/tmp		|| mkdir /root/tmp 
-
-ls /root/git/dotfile	|| git clone https://github.com/GypsyCosmonaut/dotfile.git 	/root/git
-ls /root/git/web	|| git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
-
 
 # ==============================RUNTIME SUBSTITUTIONS=======================
 # function to list runtime substitutions here
@@ -73,6 +42,43 @@ se_="sed -e"
 gq_="grep -q"
 gs_="gsettings set"
 og_="org.gnome"
+
+
+echo
+(cat /etc/hostname | ${gq_} earth ) || (
+	echo earth 1> /etc/hostname && 
+	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
+	)
+	
+(cat /etc/passwd | ${gq_} groot) || (
+	echo 'promt for root' && 
+	passwd root
+	)
+	
+(cat /etc/passwd | ${gq_} groot) || (
+	useradd --create-home groot && 
+	${si_} '/groot/s/$/\/bin\/bash/' /etc/passwd && 
+	echo 'promt for groot' && 
+	passwd groot
+	)
+# ================================= SUDOERS ========================================
+
+(cat /etc/sudoers | ${gq_} groot) ||
+	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
+
+
+# =============================== DIRECTORIES =======================================
+
+#mkdir /git/mine		2>/dev/null ; echo -n $?
+
+ls /tmp/files		1> /dev/null 2>&1 || 	mkdir /tmp/files 	
+ls /root/tmp		1> /dev/null 2>&1 || 	mkdir /root/tmp 	
+
+ls /root/git/dotfile	1> /dev/null 2>&1 || 
+	git clone https://github.com/GypsyCosmonaut/dotfile.git 	/root/git
+
+ls /root/git/web	1> /dev/null 2>&1 || 
+	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
 
 # ================================ CONFIGURATIONS =======================================
 # function to list all gsettings here
@@ -93,7 +99,7 @@ ${si_} 's/LEFT/RIGHT/' 						/etc/dconf/db/local.d/kali-tweaks
 ${si_} 's/size=32/size=20/' 					/etc/dconf/db/local.d/kali-tweaks
 ${si_} -i 's/shrink=true/shrink=false/' 			/etc/dconf/db/local.d/kali-tweaks
 ${si_} -i 's/opacity=0/opacity=100/' 				/etc/dconf/db/local.d/kali-tweaks
-${si_} -i 's/.*opacity.*/background-opacity=0' 			/etc/dconf/db/local.d/kali-tweaks
+${si_} -i 's/.*opacity.*/background-opacity=0/'			/etc/dconf/db/local.d/kali-tweaks
 
 
 gconvert() {
@@ -157,8 +163,8 @@ ${si_} 's/#alias grep=/alias grep=/' 							${rc_}
 ${si_} 's/alias ls=/#alias ls=/'							${rc_}
 ${si_} 's/HISTSIZE=/#HISTSIZE=/'						/root/.bash_history
 ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'					/root/.bash_history
-cat ( /root/.bash_history | grep HISTFILE) 	|| echo 'export HISTSIZE='	>> /root/.bash_history
-cat ( /root/.bash_history | grep HISTFILESIZE) 	|| echo 'export HISTFILESIZE='	>> /root/.bash_history
+(cat /root/.bash_history | ${gq_} 'HISTFILE=') 	|| echo 'export HISTSIZE='	>> /root/.bash_history
+(cat /root/.bash_history | ${gq_} 'HISTFILESIZE=')|| echo 'export HISTFILESIZE='>> /root/.bash_history
 
 #${gq_} ".* lsa=.*" 	${rc_} || echo 'alias lsa =""'					>> ${rc_}
 
@@ -186,7 +192,7 @@ echo 'alias search="apt-cache search"' 							>> ${rc_}
 echo 'alias rmdir="rm -r"' 								>> ${rc_}
 echo 'alias reload=". /root/git/dotfile/main"'						>> ${rc_}
 
-(cat /etc/inputrc | grep 'set colored-stats on') || echo 'set colored-stats on'		>> /etc/inputrc
+(cat /etc/inputrc | ${gq_} 'set colored-stats on') || echo 'set colored-stats on'	>> /etc/inputrc
 
 
 # ==================================FUNCTIONS================================
@@ -203,7 +209,8 @@ lh() {
 			ls -FlAshZid --color=auto .*
 		else
 			ls -FlAshZid --color=auto ${1}/.*
-}'
+	fi
+}' 											>> ${rc_}
 
 
 echo '
@@ -394,12 +401,12 @@ if echo "${r1}" |
 		tor gnupg2 \
 		texlive-full \
 		strace \
-		f2fs torchat fsck syncthing ssh \ 
-		;
+		f2fs torchat fsck syncthing ssh ;
 	
 fi
 
 echo "'reload' is set" ;
+echo ;
 echo -n "Want Restart ?? " ;
 read r1 ;
 if echo "${r1}" | 
