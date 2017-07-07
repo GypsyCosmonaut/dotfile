@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#watch fuser fdisk dd power poweroff shutdown test fsck
+#watch fuser fdisk dd fsck
 
 # ======================================== Rules =========================================
 # Use as ${tmp_}/0 as final output file
@@ -36,7 +36,6 @@
 # function to list runtime substitutions here
 
 tmp_=/tmp/files
-rc_=/root/.bashrc
 si_="sed -i"
 se_="sed -e"
 gq_="grep -q"
@@ -45,17 +44,17 @@ og_="org.gnome"
 
 
 echo
-(cat /etc/hostname | ${gq_} earth ) || (
+(${gq_} earth 0< /etc/hostname) || (
 	echo earth 1> /etc/hostname && 
 	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
 	)
 	
-(cat /etc/passwd | ${gq_} groot) || (
+(${gq_} groot 0< /etc/passwd) 	|| (
 	echo 'promt for root' && 
 	passwd root
 	)
 	
-(cat /etc/passwd | ${gq_} groot) || (
+(${gq_} groot 0< /etc/passwd) 	|| (
 	useradd --create-home groot && 
 	${si_} '/groot/s/$/\/bin\/bash/' /etc/passwd && 
 	echo 'promt for groot' && 
@@ -63,7 +62,7 @@ echo
 	)
 # ================================= SUDOERS ========================================
 
-(cat /etc/sudoers | ${gq_} groot) ||
+(${gq_} groot 0< /etc/sudoers) 	||
 	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
 
 
@@ -156,43 +155,22 @@ ${gs_} ${og_}.desktop.wm.preferences visual-bell true
 # ==================================ALIASES=================================
 # function to list all aliases here
 
-${si_} '100i \\n'									${rc_}
-${si_} '101,$d' 									${rc_}
+${si_} '100i \\n'					/root/.bashrc
+${si_} '101,$d' 					/root/.bashrc
 
-${si_} 's/#alias grep=/alias grep=/' 							${rc_}
-${si_} 's/alias ls=/#alias ls=/'							${rc_}
-${si_} 's/HISTSIZE=/#HISTSIZE=/'						/root/.bash_history
-${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'					/root/.bash_history
-(cat /root/.bash_history | ${gq_} 'HISTFILE=') 	|| echo 'export HISTSIZE='	>> /root/.bash_history
-(cat /root/.bash_history | ${gq_} 'HISTFILESIZE=')|| echo 'export HISTFILESIZE='>> /root/.bash_history
+${si_} 's/#alias grep=/alias grep=/' 			/root/.bashrc
+${si_} 's/alias ls=/#alias ls=/'			/root/.bashrc
+${si_} 's/HISTSIZE=/#HISTSIZE=/'			/root/.bash_history
+${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 
-#${gq_} ".* lsa=.*" 	${rc_} || echo 'alias lsa =""'					>> ${rc_}
+{
 
-echo 'alias ls="l"'									>> ${rc_}
-echo 'alias crontab="crontab -l"'							>> ${rc_}
-echo 'alias pgrep="pgrep -f"'								>> ${rc_}
-echo 'alias l="ls -CF --color=auto"'							>> ${rc_}
-echo 'alias lv="ls -FlAshZid --color=auto"'						>> ${rc_}
-echo 'alias la="ls -FlAshZi --color=auto"'						>> ${rc_}
-echo 'alias c="tput reset"' 								>> ${rc_}
-echo 'alias e="exit"'									>> ${rc_}
-echo 'alias allout="kill -9 -1"'							>> ${rc_}
-echo 'alias ct="cat -A"' 								>> ${rc_}
-echo 'alias iip="ip addr | grep 255"' 							>> ${rc_}
-echo 'alias eip="curl -s http://whatismyip.akamai.com/"'				>> ${rc_}
-echo 'alias tailf="tail -f"' 								>> ${rc_}
-echo 'alias update="apt-get update && apt-get upgrade ;"'				>> ${rc_}
-#echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 				printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""		>> ${rc_}
-echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 			xwd -root >/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; 			timeout 1 xwud -in /tmp/files/b.xwd ;\""						>> ${rc_}
-echo 'alias install="apt-get install"' 							>> ${rc_}
-echo 'alias remove="apt-get remove"' 							>> ${rc_}
-echo 'alias show="apt-cache show"' 							>> ${rc_}
-echo 'alias policy="apt-cache policy"' 							>> ${rc_}
-echo 'alias search="apt-cache search"' 							>> ${rc_}
-echo 'alias rmdir="rm -r"' 								>> ${rc_}
-echo 'alias reload=". /root/git/dotfile/main"'						>> ${rc_}
+	(${gq_} 'HISTFILE=' 	0< /root/.bash_history)	|| echo 'export HISTSIZE='
+	(${gq_} 'HISTFILESIZE=' 0< /root/.bash_history)	|| echo 'export HISTFILESIZE='
+	
+} >> /root/.bash_history
 
-(cat /etc/inputrc | ${gq_} 'set colored-stats on') || echo 'set colored-stats on'	>> /etc/inputrc
+(${gq_} 'set colored-stats on' 0< /etc/inputrc) || echo 'set colored-stats on'	>> /etc/inputrc
 
 
 # ==================================FUNCTIONS================================
@@ -201,149 +179,176 @@ echo 'alias reload=". /root/git/dotfile/main"'						>> ${rc_}
 #${gq_} "^replace().*" 	${rc_} || echo 'replace() {} '
 
 
-
-echo '
-lh() {
-	if [ -z "${1}" ] ;
-		then
-			ls -FlAshZid --color=auto .*
-		else
-			ls -FlAshZid --color=auto ${1}/.*
-	fi
-}' 											>> ${rc_}
-
-
-echo '
-replace() { 
-	sed -i "s:${1}:${2}:g" ^${3}$ ; 
-}' 											>> ${rc_}
-
-echo '
-mani() { 
-	man -k "^${1}$" ; 
-}' 											>> ${rc_}
-
-echo '
-weather() { 
-	curl wttr.in/"^${1}$" | 
-	head -n -13 ; 
-}' 											>> ${rc_}
-
-echo '
-network() { 
-	iip ;
-	eip ; 
-	#MAC
-	#apr scan, tcp scan 
-	ping -c 2 google.com ; 
-}' 											>> ${rc_}
-
-echo '
-system() {
-	tty ;
-	echo ${0} ; echo ;
-	w ; echo ;
-	who -a ; echo ;
-	uptime ; echo ;
-	uname -a ; echo ;
-	ls -lshZid /; echo ;
-	la /dev/sd[a..b] ;
-	la /dev/sd[a-b][0-9] ; echo ;
-	fdisk -l ; echo ;
-	#du -h / ;
-	df -ahT ; echo ;
-	printenv ; echo ;
+{
+	#${gq_} ".* lsa=.*" 	/root/.bashrc || echo 'alias lsa =""'
 	
-	
-}' 											>> ${rc_}
+	echo 'alias ls="l"'
+	echo 'alias crontab="crontab -l"'
+	echo 'alias pgrep="pgrep -f"'
+	echo 'alias l="ls -CF --color=auto"'
+	echo 'alias lv="ls -FlAshZid --color=auto"'
+	echo 'alias la="ls -FlAshZi --color=auto"'
+	echo 'alias c="tput reset"'
+	echo 'alias e="exit"'
+	echo 'alias allout="kill -9 -1"'
+	echo 'alias ct="cat -A"'
+	echo 'alias iip="ip addr | grep 255"'
+	echo 'alias eip="curl -s http://whatismyip.akamai.com/"'
+	echo 'alias tailf="tail -f"'
+	echo 'alias update="apt-get update && apt-get upgrade ;"'
+	#echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""
+	echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 			xwd -root >/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; 			timeout 1 xwud -in /tmp/files/b.xwd ;\""
+	echo 'alias install="apt-get install"'
+	echo 'alias remove="apt-get remove"'
+	echo 'alias show="apt-cache show"'
+	echo 'alias policy="apt-cache policy"'
+	echo 'alias search="apt-cache search"'
+	echo 'alias rmdir="rm -r"'
+	echo 'alias reload=". /root/git/dotfile/main"'
 
-echo "
-lsd() {
-	ls -AlF | 
-	sort -k 9,9 > ${tmp_}/1 ; 
-	
-	(
-		file -Nz ${1} .${1} | 
-		sort -k 1,1 | 
-		${se_} '/^.:.*directory$/d' -e '/^..:.*directory$/d' | 
-		awk '{ \$\"1\"=\"\"; print substr(\$\"0\",2) }' | 
-		tac ; 
-		echo ;
-	) | 
-	tac > ${tmp_}/2 ; 
-	
-	(
-		echo; file -Nzi * .* | 
-		sort -k 1,1 | 
-		${se_} '1d' -e '2d' ;
-	) > ${tmp_}/3 ; 
 
-	paste ${tmp_}/1 ${tmp_}/2 ${tmp_}/3 > ${tmp_}/0 ;
-	cat ${tmp_}/0 ;
-}" 											>> ${rc_}
+	echo '
+	lh() {
+		if [ -z "${1}" ] ;
+			then
+				ls -FlAshZid --color=auto .*
+			else
+				ls -FlAshZid --color=auto ${1}/.*
+		fi
+	}'
 
-echo "
-slist() { 
-	apt-cache search \"\${1}\" | 
-	while read -r pkg desc; 
-	do 
-		apt-cache policy \"\${pkg}\" | 
-		awk -v pkg=\"\${pkg}\" -v desc=\"\${desc}\" 'NR==2 {print pkg, desc, \$\"0\"'; 
-	done ; 
-}" 											>> ${rc_}
 
-echo '
-what(){
-	whatis "${1}" ;
-	echo -e "\n \n" ;
-	update-alternatives --display "${1}" 2>/dev/null ;
-}' 											>> ${rc_}
+	echo '
+	replace() { 
+		sed -i "s:${1}:${2}:g" ^${3}$ ; 
+	}'
 
-echo '
-cronjob() {
-	printf "%148.145s\n " "********  Format  ********";
-	printf "%148.100s\n " " delete <USER> <COMMAND>" ; 
-	read -p "";
-	case "${1}" in
+	echo '
+	mani() { 
+		man -k "^${1}$" ; 
+	}'
+
+	echo '
+	weather() { 
+		curl wttr.in/"^${1}$" | 
+		head -n -13 ; 
+	}'
+
+	echo '
+	network() { 
+		iip ;
+		eip ; 
+		#MAC
+		#apr scan, tcp scan 
+		ping -c 2 google.com ; 
+	}'
+
+	echo '
+	system() {
+		tty ;
+		echo ${0} ; echo ;
+		w ; echo ;
+		who -a ; echo ;
+		uptime ; echo ;
+		uname -a ; echo ;
+		ls -lshZid /; echo ;
+		la /dev/sd[a..b] ;
+		la /dev/sd[a-b][0-9] ; echo ;
+		fdisk -l ; echo ;
+		#du -h / ;
+		df -ahT ; echo ;
+		printenv ; echo ;
 		
-		"delete") 
-			sed -i \"/${3}/d\" /var/spool/cron/crontabs/${2}
-			echo
-			cat /var/spool/cron/crontabs/${2}
-		;;
+	}'
+
+	echo "
+	lsd() {
+		ls -AlF | 
+		sort -k 9,9 > ${tmp_}/1 ; 
+	
+		(
+			file -Nz ${1} .${1} | 
+			sort -k 1,1 | 
+			${se_} '/^.:.*directory$/d' -e '/^..:.*directory$/d' | 
+			awk '{ \$\"1\"=\"\"; print substr(\$\"0\",2) }' | 
+			tac ; 
+			echo ;
+		) | 
+		tac > ${tmp_}/2 ; 
+		
+		(
+			echo; file -Nzi * .* | 
+			sort -k 1,1 | 
+			${se_} '1d' -e '2d' ;
+		) > ${tmp_}/3 ; 
+	
+		paste ${tmp_}/1 ${tmp_}/2 ${tmp_}/3 > ${tmp_}/0 ;
+		cat ${tmp_}/0 ;
+	}"	
+	
+	echo "
+	slist() { 
+		apt-cache search \"\${1}\" | 
+		while read -r pkg desc; 
+		do 
+			apt-cache policy \"\${pkg}\" | 
+			awk -v pkg=\"\${pkg}\" -v desc=\"\${desc}\" 'NR==2 {print pkg, desc, \$\"0\"'; 
+		done ; 
+	}"
+
+	echo '
+	what(){
+		whatis "${1}" ;
+		echo -e "\n \n" ;
+		update-alternatives --display "${1}" 2>/dev/null ;
+	}'
+
+	echo '
+	cronjob() {
+		printf "%148.145s\n " "********  Format  ********";
+		printf "%148.100s\n " " delete <USER> <COMMAND>" ; 
+		read -p "";
+		case "${1}" in
 			
-	esac
-}' 											>> ${rc_}
+			"delete") 
+				sed -i \"/${3}/d\" /var/spool/cron/crontabs/${2}
+				echo
+				cat /var/spool/cron/crontabs/${2}
+			;;
+				
+		esac
+	}'	
 
-echo '
-glist() { 
-	gsettings list-recursively | grep -i ${1} ; 
-}' 											>> ${rc_}
+	echo '
+	glist() { 
+		gsettings list-recursively | grep -i ${1} ; 
+	}'	
 
-echo '
-grange() { 
-	echo "*** schema = ${1} ***" ;
-	echo "Type :: Key :: Value" ;
-	echo "--------------------" ;
-	for key in $(
-		gsettings list-keys ${1} | 
-		sort ;
-	)
-	do
-		type="$(
-				gsettings range ${1} ${key} | 
-				tr "\n" " " ;
-			)" ;
-		value="$(
-				gsettings get ${1} ${key} | 
-				tr "\n" " " ;
-			)" ;
-		echo "${type} :: ${key} :: ${value}" ;
-	done
-}' 											>> ${rc_}
+	echo '
+	grange() { 
+		echo "*** schema = ${1} ***" ;
+		echo "Type :: Key :: Value" ;
+		echo "--------------------" ;
+		for key in $(
+			gsettings list-keys ${1} | 
+			sort ;
+		)
+		do
+			type="$(
+					gsettings range ${1} ${key} | 
+					tr "\n" " " ;
+				)" ;
+			value="$(
+					gsettings get ${1} ${key} | 
+					tr "\n" " " ;
+				)" ;
+			echo "${type} :: ${key} :: ${value}" ;
+		done	
+	}'
 
+} >> /root/.bashrc
 
-. ${rc_}
+. /root/.bashrc
 
 
 # ================================= CRON JOBS ======================================
@@ -351,12 +356,18 @@ grange() {
 
 #Persistent Enviroment Variables can be used in crontab
 
-${si_} '16,$d'								/etc/crontab
+${si_} '16,$d'				/etc/crontab
 
-echo "* *	* * *	root	rm ${tmp_}/*" 				>> /etc/crontab
-echo "30 *	* * *	root	updatedb"				>> /etc/crontab
+{
+	echo "* *	* * *	root	rm ${tmp_}/*"
+	echo "30 *	* * *	root	updatedb"
 
-#echo "7		5	/root/files/mega	/root/files/anacron"	>> /etc/anacrontab
+} >> /etc/crontab
+
+#{
+#echo "7		5	/root/files/mega	/root/files/anacron"
+
+#} >> /etc/anacrontab
 
 echo 'Want Upgrade ??'
 read r1 ;
@@ -401,7 +412,7 @@ if echo "${r1}" |
 		tor gnupg2 \
 		texlive-full \
 		strace \
-		f2fs torchat fsck syncthing ssh ;
+		f2fs torchat fsck syncthing ssh pterm;
 	
 fi
 
