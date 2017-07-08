@@ -27,7 +27,7 @@
 # ${ charVar } are 
 #			inherited substitution from USER INPUT or ANOTHER FUNCTION or LOOP
 #			PASSIVE substitution variables
-# Before > or >>
+# Before >| or >>
 #			check if configuration exists
 #	-CAUTION- -OR-	check the number of lines in that file and DELETE ALL LINES after last line
 
@@ -45,7 +45,7 @@ og_="org.gnome"
 
 echo
 (${gq_} earth 0< /etc/hostname) || (
-	echo earth 1> /etc/hostname && 
+	echo earth 1>| /etc/hostname && 
 	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
 	)
 	
@@ -68,15 +68,15 @@ echo
 
 # =============================== DIRECTORIES =======================================
 
-#mkdir /git/mine		2>/dev/null ; echo -n $?
+#mkdir /git/mine		2>| /dev/null ; echo -n $?
 
-ls /tmp/files		1> /dev/null 2>&1 || 	mkdir /tmp/files 	
-ls /root/tmp		1> /dev/null 2>&1 || 	mkdir /root/tmp 	
+ls /tmp/files		1>| /dev/null 2>&1 || 	mkdir /tmp/files 	
+ls /root/tmp		1>| /dev/null 2>&1 || 	mkdir /root/tmp 	
 
-ls /root/git/dotfile	1> /dev/null 2>&1 || 
+ls /root/git/dotfile	1>| /dev/null 2>&1 || 
 	git clone https://github.com/GypsyCosmonaut/dotfile.git 	/root/git
 
-ls /root/git/web	1> /dev/null 2>&1 || 
+ls /root/git/web	1>| /dev/null 2>&1 || 
 	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
 
 # ================================ CONFIGURATIONS =======================================
@@ -180,6 +180,8 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 
 
 {
+	echo "set -o noclobber"
+	
 	#${gq_} ".* lsa=.*" 	/root/.bashrc || echo 'alias lsa =""'
 	
 	echo 'alias ls="l"'
@@ -197,7 +199,7 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 	echo 'alias tailf="tail -f"'
 	echo 'alias update="apt-get update && apt-get upgrade ;"'
 	#echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""
-	echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 			xwd -root >/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; 			timeout 1 xwud -in /tmp/files/b.xwd ;\""
+	echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 			xwd -root >|/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; 			timeout 1 xwud -in /tmp/files/b.xwd ;\""
 	echo 'alias install="apt-get install"'
 	echo 'alias remove="apt-get remove"'
 	echo 'alias show="apt-cache show"'
@@ -258,13 +260,15 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 		#du -h / ;
 		df -ahT ; echo ;
 		printenv ; echo ;
+		cat /proc/cpuinfo ; echo;
+		lscpu ; echo ;
 		
 	}'
 
 	echo "
 	lsd() {
 		ls -AlF | 
-		sort -k 9,9 > ${tmp_}/1 ; 
+		sort -k 9,9 >| ${tmp_}/1 ; 
 	
 		(
 			file -Nz ${1} .${1} | 
@@ -274,15 +278,15 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 			tac ; 
 			echo ;
 		) | 
-		tac > ${tmp_}/2 ; 
+		tac >| ${tmp_}/2 ; 
 		
 		(
 			echo; file -Nzi * .* | 
 			sort -k 1,1 | 
 			${se_} '1d' -e '2d' ;
-		) > ${tmp_}/3 ; 
+		) >| ${tmp_}/3 ; 
 	
-		paste ${tmp_}/1 ${tmp_}/2 ${tmp_}/3 > ${tmp_}/0 ;
+		paste ${tmp_}/1 ${tmp_}/2 ${tmp_}/3 >| ${tmp_}/0 ;
 		cat ${tmp_}/0 ;
 	}"	
 	
@@ -300,7 +304,7 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 	what(){
 		whatis "${1}" ;
 		echo -e "\n \n" ;
-		update-alternatives --display "${1}" 2>/dev/null ;
+		update-alternatives --display "${1}" 2>| /dev/null ;
 	}'
 
 	echo '
@@ -412,7 +416,7 @@ if echo "${r1}" |
 		tor gnupg2 \
 		texlive-full \
 		strace \
-		f2fs torchat fsck syncthing ssh pterm;
+		f2fs torchat fsck syncthing ssh pterm belenios-tool;
 	
 fi
 
