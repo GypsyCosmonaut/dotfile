@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#watch fuser fdisk dd fsck
+#watch fuser fdisk dd fsck r2 parallel
 
 # ======================================== Rules =========================================
 # Use as ${tmp_}/0 as final output file
@@ -31,6 +31,19 @@
 #			check if configuration exists
 #	-CAUTION- -OR-	check the number of lines in that file and DELETE ALL LINES after last line
 
+# =============================== DIRECTORIES =======================================
+
+#mkdir /git/mine		2>| /dev/null ; echo -n $?
+
+ls /tmp/files		1>| /dev/zero 2>&1 || 	mkdir /tmp/files 	
+ls /root/tmp		1>| /dev/zero 2>&1 || 	mkdir /root/tmp 	
+
+ls /root/git/dotfile	1>| /dev/null 2>&1 || 
+	git clone https://github.com/GypsyCosmonaut/main.git		/root/git
+
+ls /root/git/web	1>| /dev/null 2>&1 || 
+	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
+
 
 # ==============================RUNTIME SUBSTITUTIONS=======================
 # function to list runtime substitutions here
@@ -44,7 +57,7 @@ og_="org.gnome"
 
 
 echo
-(${gq_} earth 0< /etc/hostname) || (
+(${gq_} earth /etc/hostname) || (
 	echo earth 1>| /etc/hostname && 
 	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
 	)
@@ -66,19 +79,6 @@ echo
 	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
 
 
-# =============================== DIRECTORIES =======================================
-
-#mkdir /git/mine		2>| /dev/null ; echo -n $?
-
-ls /tmp/files		1>| /dev/null 2>&1 || 	mkdir /tmp/files 	
-ls /root/tmp		1>| /dev/null 2>&1 || 	mkdir /root/tmp 	
-
-ls /root/git/dotfile	1>| /dev/null 2>&1 || 
-	git clone https://github.com/GypsyCosmonaut/dotfile.git 	/root/git
-
-ls /root/git/web	1>| /dev/null 2>&1 || 
-	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
-
 # ================================ CONFIGURATIONS =======================================
 # function to list all gsettings here
 
@@ -91,14 +91,17 @@ git config --global color.branch auto
 git config --global core.editor gedit
 #git config --global merge.tool vimdiff
 
+#"${si_}" 's/\(^#\)\([\t ]\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\([\t ]\+\)\(n\|y\)\([\t ]\+\)\(.*\)/\2\3\4\5\6\7/'		/etc/scalpel/scalpel.conf
 
-${si_} 's/.*AutomaticLoginEnable .*/AutomaticLoginEnable = true/' 	/etc/gdm3/daemon.conf
-${si_} 's/.*AutomaticLogin .*/AutomaticLogin = root/' 			/etc/gdm3/daemon.conf
-${si_} 's/LEFT/RIGHT/' 						/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/size=32/size=20/' 					/etc/dconf/db/local.d/kali-tweaks
-${si_} -i 's/shrink=true/shrink=false/' 			/etc/dconf/db/local.d/kali-tweaks
-${si_} -i 's/opacity=0/opacity=100/' 				/etc/dconf/db/local.d/kali-tweaks
-${si_} -i 's/.*opacity.*/background-opacity=0/'			/etc/dconf/db/local.d/kali-tweaks
+${si_} 's/\(^#\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(n\|y\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(.*\)/\2\3\4\5\6\7/' 							/etc/scalpel/scalpel.conf
+
+${si_} 's/.*\(AutomaticLoginEnable \).*/\1= true/' 	/etc/gdm3/daemon.conf
+${si_} 's/.*\(AutomaticLogin \).*/\1= root/' 		/etc/gdm3/daemon.conf
+${si_} 's/LEFT/RIGHT/'				/etc/dconf/db/local.d/kali-tweaks
+${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
+${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
+${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
+${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
 
 
 gconvert() {
@@ -115,6 +118,8 @@ ${gs_} ${schema_path_} close-tab '<Ctrl>w'
 ${gs_} ${schema_path_} next-tab '<Primary>Right'
 ${gs_} ${schema_path_} prev-tab '<Primary>Left'
 ${gs_} ${schema_path_} full-screen '<Ctrl>f'
+
+#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
 
 ${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
 ${gs_} ${og_}.desktop.lockdown disable-lock-screen true
@@ -151,21 +156,20 @@ ${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
 ${gs_} ${og_}.desktop.wm.preferences audible-bell false
 ${gs_} ${og_}.desktop.wm.preferences visual-bell true
 
+# ==================================ALIASES/FUNCTIONS=================================
+# function to list all aliases/functions here
 
-# ==================================ALIASES=================================
-# function to list all aliases here
+${si_} '100i \\n'				/root/.bashrc
+${si_} '101,$d' 				/root/.bashrc
 
-${si_} '100i \\n'					/root/.bashrc
-${si_} '101,$d' 					/root/.bashrc
-
-${si_} 's/#alias grep=/alias grep=/' 			/root/.bashrc
-${si_} 's/alias ls=/#alias ls=/'			/root/.bashrc
-${si_} 's/HISTSIZE=/#HISTSIZE=/'			/root/.bash_history
-${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
+${si_} 's/#\(alias grep=\)/\1/' 		/root/.bashrc
+${si_} 's/\(alias ls=\)/#\1/'			/root/.bashrc
+${si_} 's/\(HISTSIZE=\)/#\1/'			/root/.bash_history
+${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 {
 
-	(${gq_} 'HISTFILE=' 	0< /root/.bash_history)	|| echo 'export HISTSIZE='
+	(${gq_} 'HISTFILE=' 	0< /root/.bash_history)		|| echo 'export HISTSIZE='
 	(${gq_} 'HISTFILESIZE=' 0< /root/.bash_history)	|| echo 'export HISTFILESIZE='
 	
 } >> /root/.bash_history
@@ -173,23 +177,20 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 (${gq_} 'set colored-stats on' 0< /etc/inputrc) || echo 'set colored-stats on'	>> /etc/inputrc
 
 
-# ==================================FUNCTIONS================================
-# function to list all functions here
-
-#${gq_} "^replace().*" 	${rc_} || echo 'replace() {} '
+#"${gq_}" "^replace().*" 	${rc_} || echo 'replace() {} '
 
 
 {
-	echo "set -o noclobber"
+	#echo "set -o noclobber"
 	
-	#${gq_} ".* lsa=.*" 	/root/.bashrc || echo 'alias lsa =""'
+	#"${gq_}" ".* lsa=.*" 	/root/.bashrc || echo 'alias lsa =""'
 	
 	echo 'alias ls="l"'
-	echo 'alias crontab="crontab -l"'
 	echo 'alias pgrep="pgrep -f"'
 	echo 'alias l="ls -CF --color=auto"'
 	echo 'alias lv="ls -FlAshZid --color=auto"'
 	echo 'alias la="ls -FlAshZi --color=auto"'
+	echo 'alias gedit="nohup gedit"'	
 	echo 'alias c="tput reset"'
 	echo 'alias e="exit"'
 	echo 'alias allout="kill -9 -1"'
@@ -197,17 +198,23 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 	echo 'alias iip="ip addr | grep 255"'
 	echo 'alias eip="curl -s http://whatismyip.akamai.com/"'
 	echo 'alias tailf="tail -f"'
-	echo 'alias update="apt-get update && apt-get upgrade ;"'
+	echo 'alias update="apt-get update -y && apt-get upgrade -y ;"'
 	#echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""
-	echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; 			xwd -root >|/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; 			timeout 1 xwud -in /tmp/files/b.xwd ;\""
+	echo 'alias upgrade="apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y ; 			xwd -root >|/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; 			timeout 1 xwud -in /tmp/files/b.xwd ;"'
 	echo 'alias install="apt-get install"'
 	echo 'alias remove="apt-get remove"'
 	echo 'alias show="apt-cache show"'
 	echo 'alias policy="apt-cache policy"'
 	echo 'alias search="apt-cache search"'
+	echo 'alias lcron="echo ${USER} && echo && cat /var/spool/cron/crontabs/${USER}"'
 	echo 'alias rmdir="rm -r"'
 	echo 'alias reload=". /root/git/dotfile/main"'
+	echo 'alias rm="mv -t /tmp/files/"'
 
+	echo "
+	hex() {
+		cat /dev/stdin  | hexdump -v -e '\"\\\x\" 1/1 \"%02X\"' && echo ;
+	}"
 
 	echo '
 	lh() {
@@ -247,7 +254,8 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 
 	echo '
 	system() {
-		tty ;
+		tty ; echo ;
+		iostat ; echo
 		echo ${0} ; echo ;
 		w ; echo ;
 		who -a ; echo ;
@@ -271,7 +279,7 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 		sort -k 9,9 >| ${tmp_}/1 ; 
 	
 		(
-			file -Nz ${1} .${1} | 
+			file -Nz \"${1}\" .\"${1}\" | 
 			sort -k 1,1 | 
 			${se_} '/^.:.*directory$/d' -e '/^..:.*directory$/d' | 
 			awk '{ \$\"1\"=\"\"; print substr(\$\"0\",2) }' | 
@@ -308,22 +316,6 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 	}'
 
 	echo '
-	cronjob() {
-		printf "%148.145s\n " "********  Format  ********";
-		printf "%148.100s\n " " delete <USER> <COMMAND>" ; 
-		read -p "";
-		case "${1}" in
-			
-			"delete") 
-				sed -i \"/${3}/d\" /var/spool/cron/crontabs/${2}
-				echo
-				cat /var/spool/cron/crontabs/${2}
-			;;
-				
-		esac
-	}'	
-
-	echo '
 	glist() { 
 		gsettings list-recursively | grep -i ${1} ; 
 	}'	
@@ -349,6 +341,7 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 			echo "${type} :: ${key} :: ${value}" ;
 		done	
 	}'
+	
 
 } >> /root/.bashrc
 
@@ -358,46 +351,45 @@ ${si_} 's/HISTFILESIZE=/#HISTFILESIZE=/'		/root/.bash_history
 # ================================= CRON JOBS ======================================
 # function to list all cron jobs here
 
-#Persistent Enviroment Variables can be used in crontab
+(${gq_} updatedb 0< /var/spool/cron/crontabs/${USER}) 	||
+	{ crontab -l; echo "1 1 * * * updatedb"; } 		| crontab -
 
-${si_} '16,$d'				/etc/crontab
+(${gq_} 'rm -rf' 0< /var/spool/cron/crontabs/${USER}) 	||
+	{ crontab -l; echo "1 1	* * * rm -rf ${tmp_}/*"; } 	| crontab -
 
-{
-	echo "* *	* * *	root	rm ${tmp_}/*"
-	echo "30 *	* * *	root	updatedb"
-
-} >> /etc/crontab
+(${gq_} firefox 0< /var/spool/cron/crontabs/${USER}) 	||
+	{ crontab -l; echo "1 1 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }							| crontab -
 
 #{
 #echo "7		5	/root/files/mega	/root/files/anacron"
 
 #} >> /etc/anacrontab
 
-echo 'Want Upgrade ??'
+echo -e "\x0a\x1b[7m\x57\x61\x6e\x74\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x0a"
 read r1 ;
 if echo "${r1}" | 
 	grep -iq "^y" ;
 	
 	then
-		apt-get update && apt-get upgrade ;
-		echo 'Want Distro Upgrade ??'
+		apt-get update -y && apt-get upgrade -y ;
+		printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x0a'
 		read r101
 		if echo "${r101}" | 
 			grep -iq "^y" ;
 			
 			then 
-				apt-get dist-upgrade ;
+				apt-get dist-upgrade -y ;
 		fi
 fi
 
-echo 'Want Installation ??'
+printf '\x0a\x1b[7m\127\141\156\164\040\111\156\163\164\141\154\154\141\164\151\157\156\040\077\077\012\012'
 read r1 ;
 if echo "${r1}" | 
 	grep -iq "^y" ;
 	
 	then
-		apt-get install \
-		tree ccrypt speedtest-cli xdotool wmctrl lshw\ 
+		apt-get install -y\
+		tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw\ 
 		metagoofil \
 		vega \
 		i3 \
@@ -412,17 +404,33 @@ if echo "${r1}" |
 		iperf \
 		kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools \
 		libimage-exiftool-perl \
+		libpam-google-authenticator
 		empathy \
 		tor gnupg2 \
 		texlive-full \
-		strace \
-		f2fs torchat fsck syncthing ssh pterm belenios-tool;
-	
+		strace valgrind \
+		f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys ;
+	#gedit-plugins
 fi
 
-echo "'reload' is set" ;
+echo $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x0A'
+read r1 ;
+if echo "${r1}" | 
+	grep -iq "^y" ;
+	
+	then
+		echo $'\e[33;44;1m\e[H\e[J'
+		echo $'\x0a\033[1m \x1b[7m\x59\x6F\x75\x27\x72\x65\x20\x72\x65\x71\x75\x69\x72\x65\x64\x20\x74\x6F\x20\x73\x74\x61\x79\x21\x0A \033[0m'
+		google-authenticator ;
+		echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/comm-auth
+		#echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/sshd
+		#"${si_}" 's/\(ChallengeResponseAuthentication \)no/\1yes/' /etc/ssh/sshd_config
+		#service ssh restart
+fi
+
+echo $'\x0a\x1b[7m\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x0a'
 echo ;
-echo -n "Want Restart ?? " ;
+echo $'\x0a\x1b[7m\x57\x61\x6e\x74\x20\x52\x65\x73\x74\x61\x72\x74\x20\x3f\x3f\x20\x0a'
 read r1 ;
 if echo "${r1}" | 
 	grep -iq "^y" ;
@@ -434,9 +442,9 @@ if echo "${r1}" |
 			grep "_NET_ACTIVE_WINDOW(WINDOW)"| 
 			awk '{print $5}' ;
 			)
-		xdotool windowfocus $wid_ ;
+		xdotool windowfocus "${wid_}" ;
 		xdotool key ctrl+t ;
-		wmctrl -i -a $wid_ && 
+		wmctrl -i -a "${wid_}" && 
 		exit ;
 fi
 #curl -i -X GET http://rest-api.io/items
