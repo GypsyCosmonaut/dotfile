@@ -200,7 +200,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias tailf="tail -f"'
 	echo 'alias update="apt-get update -y && apt-get upgrade -y ;"'
 	#echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""
-	echo 'alias upgrade="apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y ; 			xwd -root >|/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; 			timeout 1 xwud -in /tmp/files/b.xwd ;"'
+	echo 'alias upgrade="apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y ; xwd -root >|/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; timeout 1 xwud -in /tmp/files/b.xwd ;"'
 	echo 'alias install="apt-get install"'
 	echo 'alias remove="apt-get remove"'
 	echo 'alias show="apt-cache show"'
@@ -211,6 +211,11 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias reload=". /root/git/dotfile/main"'
 	echo 'alias rm="mv -t /tmp/files/"'
 
+	echo '
+	gedit() { 
+		nohup gedit "$@" 1> /tmp/files/nohup.out 2>&1 & 
+	}'
+	
 	echo "
 	hex() {
 		cat /dev/stdin  | hexdump -v -e '\"\\\x\" 1/1 \"%02X\"' && echo ;
@@ -363,6 +368,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 		#echo -e "\x0a\x1b[2m\x67\x69\x74\x20\x6C\x6F\x67\x0A"
 		#git log;
 		git push ;
+		xdotool key w+h+a+t+t
 	}'
 
 } >> /root/.bashrc
@@ -390,64 +396,60 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 echo -e "\x0a\x1b[7m\x57\x61\x6e\x74\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m\x0a"
 read r1 ;
 if echo "${r1}" | 
-	grep -iq "^y" ;
+	grep -iq "^y" ; then
 	
-	then
-		apt-get update -y && apt-get upgrade -y ;
-		printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m\x0a'
-		read r101
-		if echo "${r101}" | 
-			grep -iq "^y" ;
+	apt-get update -y && apt-get upgrade -y ;
+	
+	printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m\x0a'
+	read r101
+	if echo "${r101}" | 
+		grep -iq "^y" ;	then 
+				
+		apt-get dist-upgrade -y ;
+		
+		echo $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m\x0A'
+		read r10101
+		if echo "${r10101}" |
+			grep -iq "^y" ;	then
 			
-			then 
-				apt-get dist-upgrade -y ;
+			echo $'\e[33;44;1m\e[H\e[J'
+			echo $'\x0a\033[1m \x1b[7m\x59\x6F\x75\x27\x72\x65\x20\x72\x65\x71\x75\x69\x72\x65\x64\x20\x74\x6F\x20\x73\x74\x61\x79\x21\x1b[27m\x0a \033[0m'
+			google-authenticator ;
+			echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/comm-auth
+			#echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/sshd
+			#"${si_}" 's/\(ChallengeResponseAuthentication \)no/\1yes/' /etc/ssh/sshd_config
+			#service ssh restart
 		fi
-fi
-
-printf '\x0a\x1b[7m\127\141\156\164\040\111\156\163\164\141\154\154\141\164\151\157\156\040\077\077\x1b[27m\012\012'
-read r1 ;
-if echo "${r1}" | 
-	grep -iq "^y" ;
-	
-	then
-		apt-get install -y\
-		tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw\ 
-		metagoofil \
-		vega \
-		i3 \
-		squid3 \
-		websploit \
-		routersploit \
-		mitmf \
-		snort \
-		privoxy \
-		owasp-mantra-ff \
-		mutt \
-		iperf \
-		kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools \
-		libimage-exiftool-perl \
-		libpam-google-authenticator
-		empathy \
-		tor gnupg2 \
-		texlive-full \
-		strace valgrind \
-		f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys ;
-	#gedit-plugins
-fi
-
-echo $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m\x0A'
-read r1 ;
-if echo "${r1}" | 
-	grep -iq "^y" ;
-	
-	then
-		echo $'\e[33;44;1m\e[H\e[J'
-		echo $'\x0a\033[1m \x1b[7m\x59\x6F\x75\x27\x72\x65\x20\x72\x65\x71\x75\x69\x72\x65\x64\x20\x74\x6F\x20\x73\x74\x61\x79\x21\x1b[27m\x0a \033[0m'
-		google-authenticator ;
-		echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/comm-auth
-		#echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/sshd
-		#"${si_}" 's/\(ChallengeResponseAuthentication \)no/\1yes/' /etc/ssh/sshd_config
-		#service ssh restart
+				
+		printf '\x0a\x1b[7m\127\141\156\164\040\111\156\163\164\141\154\154\141\164\151\157\156\040\077\077\x1b[27m\012\012'
+		read r10101;
+		if echo "${r10101}" | 
+			grep -iq "^y" ;	then
+				
+			apt-get install -y\
+			tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw\ 
+			metagoofil \
+			vega \
+			i3 \
+			squid3 \
+			websploit \
+			routersploit \
+			mitmf \
+			snort \
+			privoxy \
+			owasp-mantra-ff \
+			mutt \
+			iperf \
+			kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools \
+			libimage-exiftool-perl \
+			libpam-google-authenticator
+			empathy \
+			tor gnupg2 \
+			strace valgrind \
+			f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys ;
+			#texlive-full gedit-plugins xautomation xwd
+		fi
+	fi
 fi
 
 echo $'\x0a\x1b[7m\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m\x0a'
