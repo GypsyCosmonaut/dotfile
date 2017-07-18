@@ -354,13 +354,16 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 		echo -e "\x0a\x1b[7m\x57\x61\x6E\x74\x20\x61\x6C\x6C\x20\x63\x6F\x6D\x6D\x69\x74\x73\x20\x75\x6E\x73\x74\x61\x67\x65\x64\x20\x3F\x3F\x1b[27m\x0A"
 		read r1 ;
 		if echo "${r1}" | 
-			grep -iq "^y" ;
-			
-			then
-				git reset ;
+			grep -iq "^y" ;	then
+				
+			git reset ;
 		fi
 		echo -e "\x0a\x1b[7m\x67\x69\x74\x20\x61\x64\x64\x1b[27m\x0A"
-		git add .
+		read r1 ;
+		if echo "${r1}" | 
+			grep -iq "^y" ;	then
+			git add . ;
+		fi
 		git status -s ;
 		echo -e "\x0a\x1b[7m\x43\x6F\x6E\x74\x69\x6E\x75\x65\x20\x3F\x3F\x1b[27m\x0A"
 		read -p "" ;
@@ -368,7 +371,6 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 		#echo -e "\x0a\x1b[2m\x67\x69\x74\x20\x6C\x6F\x67\x0A"
 		#git log;
 		git push ;
-		xdotool key w+h+a+t+t
 	}'
 
 } >> /root/.bashrc
