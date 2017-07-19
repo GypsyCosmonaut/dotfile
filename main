@@ -220,7 +220,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	
 	echo "
 	lproxy () {
-		${all_} \"\lproxy\"
+		${all_} \"lproxy\"
 	}"
 	
 	echo '
