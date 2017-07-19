@@ -159,6 +159,10 @@ ${gs_} ${og_}.desktop.wm.preferences visual-bell true
 
 # ==================================ALIASES/FUNCTIONS=================================
 # function to list all aliases/functions here
+#cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/,/\n/; s/,/\n/2; s/,/\t\t\t\t/1; 0~1 a\\'
+
+#cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/proxy_//gi; s/,/\n/; s/:/: /; s/:/:\t /2; s/:/:\t /4; s/,/\n/2; s/,/\t\t/; s/,/\t\t\t/; 0~1 a\\'
+
 
 ${si_} '100i \\n'				/root/.bashrc
 ${si_} '101,$d' 				/root/.bashrc
@@ -170,7 +174,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 {
 
-	(${gq_} 'HISTFILE=' 	0< /root/.bash_history)		|| echo 'export HISTSIZE='
+	(${gq_} 'HISTFILE=' 	0< /root/.bash_history)	|| echo 'export HISTSIZE='
 	(${gq_} 'HISTFILESIZE=' 0< /root/.bash_history)	|| echo 'export HISTFILESIZE='
 	
 } >> /root/.bash_history
@@ -190,8 +194,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias pgrep="pgrep -f"'
 	echo 'alias l="ls -CF --color=auto"'
 	echo 'alias lv="ls -FlAshZid --color=auto"'
-	echo 'alias la="ls -FlAshZi --color=auto"'
-	echo 'alias gedit="nohup gedit"'	
+	echo 'alias la="ls -FlAshZi --color=auto"'	
 	echo 'alias c="tput reset"'
 	echo 'alias e="exit"'
 	echo 'alias allout="kill -9 -1"'
@@ -211,9 +214,10 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias rmdir="rm -r"'
 	echo 'alias reload=". /root/git/dotfile/main"'
 	echo 'alias rm="mv -t /tmp/files/"'
-
+	echo "alias lproxy=/root/git/dotfile/gatherproxy"
+	
 	echo '
-	gedit() { 
+	ge() { 
 		nohup gedit "$@" 1> /tmp/files/nohup.out 2>&1 & 
 	}'
 	
@@ -431,7 +435,7 @@ if echo "${r1}" |
 			grep -iq "^y" ;	then
 				
 			apt-get install -y\
-			tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw\ 
+			tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw jq\ 
 			metagoofil \
 			vega \
 			i3 \
@@ -448,7 +452,7 @@ if echo "${r1}" |
 			libimage-exiftool-perl \
 			libpam-google-authenticator
 			empathy \
-			tor gnupg2 \
+			tor gnupg2 bittorrent amule\
 			strace valgrind \
 			f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys ;
 			#texlive-full gedit-plugins xautomation xwd
