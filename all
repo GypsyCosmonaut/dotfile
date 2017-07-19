@@ -1,2 +1,13 @@
 #!/bin/bash
-curl www.gatherproxy.com | grep -io '{"proxy_[^}]*}'  | jq -r '. | {COUNTRY:.PROXY_COUNTRY, IP:.PROXY_IP,PORT:.PROXY_PORT,STATUS:.PROXY_STATUS,TYPE:.PROXY_TYPE}' -c  | sed 's/["{}]//g' | awk -F, '{ p=substr($3,6); $3="PORT:" sprintf("%d",strtonum("0x" p)); }1' OFS=','
+echo "$@"
+case "${1}" in
+
+	"lproxy") 
+		curl www.gatherproxy.com | grep -io '{"proxy_[^}]*}'  | jq -r '. | {COUNTRY:.PROXY_COUNTRY, IP:.PROXY_IP,PORT:.PROXY_PORT,STATUS:.PROXY_STATUS,TYPE:.PROXY_TYPE}' -c  | sed 's/["{}]//g' | awk -F, '{ p=substr($3,6); $3="PORT:" sprintf("%d",strtonum("0x" p)); }1' OFS=','
+	;;
+		
+	# "gedit")
+	#	nohup gedit "$@" 1> /tmp/files/nohup.out 2>&1 & 
+	#;;
+esac
+	
