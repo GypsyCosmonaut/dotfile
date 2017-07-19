@@ -375,7 +375,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 				
 			git reset ;
 		fi
-		echo -e "\x0a\x1b[7m\x67\x69\x74\x20\x61\x64\x64\x1b[27m\x0A"
+		echo -e "\x0a\x1b[7m\x67\x69\x74\x20\x61\x64\x64\x20\x3F\x3F\x1b[27m\x0A"
 		read r1 ;
 		if echo "${r1}" | 
 			grep -iq "^y" ;	then
