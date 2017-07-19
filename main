@@ -44,8 +44,11 @@ ls /root/git/dotfile	1>| /dev/null 2>&1 ||
 ls /root/git/web	1>| /dev/null 2>&1 || 
 	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
 
+# =============================== EXECUTABLES =======================================
 
-# ==============================RUNTIME SUBSTITUTIONS=======================
+chmod +x /root/git/dotfile/all
+
+# ==============================RUNTIME SUBSTITUTIONS================================
 # function to list runtime substitutions here
 
 tmp_=/tmp/files
@@ -54,7 +57,7 @@ se_="sed -e"
 gq_="grep -q"
 gs_="gsettings set"
 og_="org.gnome"
-
+all_="/root/git/dotfile/all"
 
 echo
 (${gq_} earth /etc/hostname) || (
@@ -214,10 +217,15 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias rmdir="rm -r"'
 	echo 'alias reload=". /root/git/dotfile/main"'
 	echo 'alias rm="mv -t /tmp/files/"'
-	echo "alias lproxy=/root/git/dotfile/gatherproxy"
+	
+	echo "
+	lproxy () {
+		${all_} \"\lproxy\"
+	}"
 	
 	echo '
-	ge() { 
+	gedit() { 
+		#/root/git/dotfile/all \gedit "$@"
 		nohup gedit "$@" 1> /tmp/files/nohup.out 2>&1 & 
 	}'
 	
@@ -236,10 +244,13 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 		fi
 	}'
 
-
-	echo '
-	replace() { 
-		sed -i "s:${1}:${2}:g" ^${3}$ ; 
+	replace() '{ 
+		if [ $# -eq 0 ] ; then
+			echo ; echo -e "\x1B\x5B\x31\x6D\x72\x65\x70\x6C\x61\x63\x65\x3A\x20\x1B\x5B\x37\x6D\x57\x68\x65\x72\x65\x20\x57\x68\x61\x74\x20\x54\x6F\x57\x68\x61\x74\x20\x50\x61\x74\x68\x1B\x5B\x32\x37\x6D\x0A"; echo ;
+			
+			else
+				sed -i "/${1}/s:${2}:${3}:g" ${PWD}/${4} ; 
+		fi
 	}'
 
 	echo '
