@@ -255,14 +255,24 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	}'
 
 	echo '
-	mani() { 
-		man -k "^${1}$" ; 
+	lman() { 
+		if [ $# -ne 0 ] ; then
+			man -k "^${1}$" ; 
+		
+			else
+				echo -e "\x1b[1mlman \x1b[7mUtility\x1b[27m"
+		fi
 	}'
 
 	echo '
 	weather() { 
-		curl wttr.in/"^${1}$" | 
-		head -n -13 ; 
+		if [ $# -ne 0 ] ; then
+			curl wttr.in/"^${1}$" | 
+			head -n -13 ; 
+			
+			else
+				echo -e "\x1b[1mweather \x1b[7mPlace\x1b[27m"
+		fi
 	}'
 
 	echo '
@@ -282,6 +292,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 		w ; echo ;
 		who -a ; echo ;
 		uptime ; echo ;
+		stty -a ;
 		uname -a ; echo ;
 		ls -lshZid /; echo ;
 		la /dev/sd[a..b] ;
@@ -322,46 +333,73 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	
 	echo "
 	slist() { 
-		apt-cache search \"\${1}\" | 
-		while read -r pkg desc; 
-		do 
-			apt-cache policy \"\${pkg}\" | 
-			awk -v pkg=\"\${pkg}\" -v desc=\"\${desc}\" 'NR==2 {print pkg, desc, \$\"0\"'; 
-		done ; 
+	
+		if [ \$# -ne 0 ] ; then
+			apt-cache search \"\${1}\" | \\
+			while read -r pkg desc; 
+			do 
+				apt-cache policy \"\$pkg\" | \\
+				awk -v pkg=\"\$pkg\" -v desc=\"\$desc\" 'NR==2 {print pkg, desc, \$\"0\"}'; 
+			done | \\
+				perl -lane '
+					push @e, join \$\", splice @F, -2;
+					push @A, join \$\", @F;
+					length(\$A[-1]) > \$maxW and \$maxW = length(\$A[-1])}{
+					print \$_, \$\" x (\$maxW - length), \"\\t\", shift @e for @A;
+				' ;
+			
+			else
+				echo $'\x1B\x5B\x31\x6D\x73\x6C\x69\x73\x74\x20\x1B\x5B\x37\x6D\x55\x74\x69\x6C\x69\x74\x79\x1B\x5B\x32\x37\x6D\x0A'
+		fi
 	}"
 
 	echo '
 	what(){
-		whatis "${1}" ;
-		echo -e "\n \n" ;
-		update-alternatives --display "${1}" 2>| /dev/null ;
+		if [ $# -ne 0 ] ; then
+			whatis "${1}" ;
+			echo -e "\n \n" ;
+			update-alternatives --display "${1}" 2>| /dev/null ;
+		
+			else
+				echo -e "\x1b[1mwhat \x1b[7mUtility\x1b[27m"
+		fi
 	}'
 
 	echo '
 	glist() { 
-		gsettings list-recursively | grep -i ${1} ; 
+		if [ $# -ne 0 ] ; then
+			gsettings list-recursively | grep -i ${1} ; 
+			
+			else
+				echo -e "\x1b[1mglist \x1b[7mKeyword\x1b[27m"
+		fi
 	}'	
 
 	echo '
 	grange() { 
-		echo "*** schema = ${1} ***" ;
-		echo "Type :: Key :: Value" ;
-		echo "--------------------" ;
-		for key in $(
-			gsettings list-keys ${1} | 
-			sort ;
-		)
-		do
-			type="$(
-					gsettings range ${1} ${key} | 
-					tr "\n" " " ;
-				)" ;
-			value="$(
-					gsettings get ${1} ${key} | 
-					tr "\n" " " ;
-				)" ;
-			echo "${type} :: ${key} :: ${value}" ;
-		done	
+		if [ $# -ne 0 ] ; then
+			echo "*** schema = ${1} ***" ;
+			echo "Type :: Key :: Value" ;
+			echo "--------------------" ;
+			for key in $(
+				gsettings list-keys ${1} | 
+				sort ;
+			)
+			do
+				type="$(
+						gsettings range ${1} ${key} | 
+						tr "\n" " " ;
+					)" ;
+				value="$(
+						gsettings get ${1} ${key} | 
+						tr "\n" " " ;
+					)" ;
+				echo "${key} :: ${value} :: ${type}";
+			done	
+			
+			else
+				echo -e "\x1b[1mgrange \x1b[7mSchema\x1b[27m"
+		fi
 	}'
 	
 	echo '
@@ -472,7 +510,7 @@ if echo "${r1}" |
 	fi
 fi
 
-echo $'\x0a\x1b[7m\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m\x0a'
+echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m\x0a'
 echo ;
 echo $'\x0a\x1b[7m\x57\x61\x6e\x74\x20\x52\x65\x73\x74\x61\x72\x74\x20\x3f\x3f\x20\x1b[27m\x0a'
 read r1 ;
