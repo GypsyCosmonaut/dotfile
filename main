@@ -447,7 +447,7 @@ if echo "${r1}" |
 			grep -iq "^y" ;	then
 				
 			apt-get install -y\
-			tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw jq\ 
+			tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed\ 
 			metagoofil \
 			vega \
 			i3 \

@@ -2,7 +2,7 @@
 case "${1}" in
 
 	"lproxy") 
-		curl www.gatherproxy.com 2>| /dev/null | grep -io '{"proxy_[^}]*}'  | jq -r '. | {_:.PROXY_COUNTRY, IP:.PROXY_IP,PORT:.PROXY_PORT}' -c  | sed 's/["{}]//g' | awk -F, '{ p=substr($3,6); $3="PORT:" sprintf("%d",strtonum("0x" p)); }1' OFS=',' | sed 's/ /_/; s/,IP:/\t/; s/,PORT//;' | sed $'s/ *[^\t]*/\x1b[7;1m&\x1b[0m/'
+		curl www.gatherproxy.com 2>| /dev/null | grep -io '{"proxy_[^}]*}'  | jq -r '. | {_:.PROXY_COUNTRY, IP:.PROXY_IP,PORT:.PROXY_PORT}' -c  | sed 's/["{}]//g' | awk -F, '{ p=substr($3,6); $3="PORT:" sprintf("%d",strtonum("0x" p)); }1' OFS=',' | sed 's/,IP:/\t/; s/,PORT//; s/ /_/g; s/^..//' | sed $'s/ *[^\t]*/\x1b[7;1m&\x1b[0m/' | column -t | column -t -s ':'
 	;;
 		
 	# "gedit")
