@@ -219,30 +219,29 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias rm="mv -t /tmp/files/"'
 	
 	echo "
-	lproxy () {
-		${all_} \"lproxy\"
+	lproxy() {
+		${all_} lproxy
 	}"
 	
-	echo '
+	echo "
+	cproxy() {
+		${all_} cproxy \"\$@\"
+	}"
+	
+	echo "
 	gedit() { 
-		#/root/git/dotfile/all \gedit "$@"
-		nohup gedit "$@" 1> /tmp/files/nohup.out 2>&1 & 
-	}'
+		${all_} gedit \"\$@\"
+	}"
 	
 	echo "
 	hex() {
-		cat /dev/stdin  | hexdump -v -e '\"\\\x\" 1/1 \"%02X\"' && echo ;
+		${all_} hex
 	}"
 
-	echo '
+	echo "
 	lh() {
-		if [ -z "${1}" ] ;
-			then
-				ls -FlAshZid --color=auto .*
-			else
-				ls -FlAshZid --color=auto ${1}/.*
-		fi
-	}'
+		${all_} lh \"\$@\"
+	}"
 
 	echo '
 	replace() { 
@@ -275,36 +274,15 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 		fi
 	}'
 
-	echo '
+	echo "
 	network() { 
-		iip ;
-		eip ; 
-		#MAC
-		#apr scan, tcp scan 
-		ping -c 2 google.com ; 
-	}'
+		${all_} network
+	}"
 
-	echo '
+	echo "
 	system() {
-		tty ; echo ;
-		iostat ; echo
-		echo ${0} ; echo ;
-		w ; echo ;
-		who -a ; echo ;
-		uptime ; echo ;
-		stty -a ;
-		uname -a ; echo ;
-		ls -lshZid /; echo ;
-		la /dev/sd[a..b] ;
-		la /dev/sd[a-b][0-9] ; echo ;
-		fdisk -l ; echo ;
-		#du -h / ;
-		df -ahT ; echo ;
-		printenv ; echo ;
-		cat /proc/cpuinfo ; echo;
-		lscpu ; echo ;
-		
-	}'
+		${all_} system
+	}"
 
 	echo "
 	lsd() {
@@ -380,7 +358,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 		if [ $# -ne 0 ] ; then
 			echo "*** schema = ${1} ***" ;
 			echo "Type :: Key :: Value" ;
-			echo "--------------------" ;
+			printf %$COLUMNS"s" | tr " " "-"
 			for key in $(
 				gsettings list-keys ${1} | 
 				sort ;
@@ -395,39 +373,18 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 						tr "\n" " " ;
 					)" ;
 				echo "${key} :: ${value} :: ${type}";
-			done	
+			done | sed "s/ :: /@/1" | column -t -s "@" | sed "s/ :: /@/1" | column -t -s "@"
 			
 			else
 				echo -e "\x1b[1mgrange \x1b[7mSchema\x1b[27m"
 		fi
 	}'
 	
-	echo '
+	echo "
 	gitup() {
-		git remote show origin ;
-		git status -s ;
-		echo -e "\x0a\x1b[7m\x57\x61\x6E\x74\x20\x61\x6C\x6C\x20\x63\x6F\x6D\x6D\x69\x74\x73\x20\x75\x6E\x73\x74\x61\x67\x65\x64\x20\x3F\x3F\x1b[27m\x0A"
-		read r1 ;
-		if echo "${r1}" | 
-			grep -iq "^y" ;	then
-				
-			git reset ;
-		fi
-		echo -e "\x0a\x1b[7m\x67\x69\x74\x20\x61\x64\x64\x20\x3F\x3F\x1b[27m\x0A"
-		read r1 ;
-		if echo "${r1}" | 
-			grep -iq "^y" ;	then
-			git add . ;
-		fi
-		git status -s ;
-		echo -e "\x0a\x1b[7m\x43\x6F\x6E\x74\x69\x6E\x75\x65\x20\x3F\x3F\x1b[27m\x0A"
-		read -p "" ;
-		git commit -m "0";
-		#echo -e "\x0a\x1b[2m\x67\x69\x74\x20\x6C\x6F\x67\x0A"
-		#git log;
-		git push ;
+		${all_} gitup
 		
-	}'
+	}"
 
 } >> /root/.bashrc
 
