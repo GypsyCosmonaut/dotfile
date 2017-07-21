@@ -1,0 +1,149 @@
+#!/bin/bash
+
+${si_} '100i \\n'				/root/.bashrc
+${si_} '101,$d' 				/root/.bashrc
+
+${si_} 's/#\(alias grep=\)/\1/' 		/root/.bashrc
+${si_} 's/\(alias ls=\)/#\1/'			/root/.bashrc
+${si_} 's/\(HISTSIZE=\)/#\1/'			/root/.bash_history
+${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
+
+{
+
+	(${gq_} 'HISTFILE=' 	0< /root/.bash_history)	|| echo 'export HISTSIZE='
+	(${gq_} 'HISTFILESIZE=' 0< /root/.bash_history)	|| echo 'export HISTFILESIZE='
+	
+} >> /root/.bash_history
+
+(${gq_} 'set colored-stats on' 0< /etc/inputrc) || echo 'set colored-stats on'	>> /etc/inputrc
+
+
+#"${gq_}" "^replace().*" 	${rc_} || echo 'replace() {} '
+
+
+{
+	#echo "set -o noclobber"
+	
+	#"${gq_}" ".* lsa=.*" 	/root/.bashrc || echo 'alias lsa =""'
+	echo 'alias f="xdotool key ctrl+f"'
+	echo 'alias ls="l"'
+	echo 'alias pgrep="pgrep -f"'
+	echo 'alias l="ls -F --color=auto"'
+	echo 'alias lv="ls -FlAshZid --color=auto"'
+	echo 'alias la="ls -FlAshZi --color=auto"'	
+	echo 'alias c="tput reset"'
+	echo 'alias e="exit"'
+	echo 'alias allout="kill -9 -1"'
+	echo 'alias ct="cat -A"'
+	echo 'alias iip="ip addr | grep 255"'
+	echo 'alias eip="curl -s http://whatismyip.akamai.com/"'
+	echo 'alias tailf="tail -f"'
+	echo 'alias update="apt-get update -y && apt-get upgrade -y ;"'
+	#echo "alias upgrade=\"apt-get update && apt-get upgrade && apt-get dist-upgrade ; printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;\""
+	echo 'alias upgrade="apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y ; xwd -root >|/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; timeout 1 xwud -in /tmp/files/b.xwd ;"'
+	echo 'alias install="apt-get install"'
+	echo 'alias remove="apt-get remove"'
+	echo 'alias show="apt-cache show"'
+	echo 'alias policy="apt-cache policy"'
+	echo 'alias lcron="echo ${USER} && echo && cat /var/spool/cron/crontabs/${USER}"'
+	echo 'alias rmdir="rm -r"'
+	echo 'alias reload=". /root/git/dotfile/main"'
+	echo 'alias rm="mv -t /tmp/files/"'
+	echo "alias hex=\"${func_} hex\""
+	echo "alias lproxy=\"${func_} lproxy\""
+	echo "alias network=\"${func_} network\""
+	echo "alias system=\"${func_} system\""
+	echo "alias gitup=\"${func_} gitup\""
+
+	echo "
+	cproxy() {
+		${func_} cproxy \"\$@\"
+	}"
+	
+	echo "
+	gedit() { 
+		${func_} gedit \"\$@\"
+	}"
+
+	echo "
+	lh() {
+		${func_} lh \"\$@\"
+	}"
+
+	echo "
+	replace() { 
+		if [ \$# -eq 0 ] ; 
+		then
+			echo $'\x0a\x1B\x5B\x31\x6D\x72\x65\x70\x6C\x61\x63\x65\x3A\x20\x1B\x5B\x37\x6D\x57\x68\x65\x72\x65\x20\x57\x68\x61\x74\x20\x54\x6F\x57\x68\x61\x74\x20\x50\x61\x74\x68\x1B\x5B\x32\x37\x6D\x0A';
+		else
+			${func_} replace \"\$@\"
+		fi
+	}"
+
+	echo "
+	lman() { 
+		if [ \$# -ne 0 ] ; 
+		then
+			${func_} lman \"\$@\"
+		else
+			echo $'\x1b[1mlman \x1b[7mUtility\x1b[27m'
+		fi
+	}"
+
+	echo "
+	weather() {
+		if [ \$# -ne 0 ] ; 
+		then
+			${func_} weather \"\$@\"
+		else
+			echo $'\x1b[1mweather \x1b[7mPlace\x1b[27m'
+		fi
+	}"
+
+	echo "
+	lsd() {
+		${func_} lsd
+	}"	#pending
+	
+	echo "
+	search() { 	
+		if [ \$# -ne 0 ] ; 
+		then
+			${func_} search \"\$@\"
+		else
+			echo $'\x1B\x5B\x31\x6D\x73\x6C\x69\x73\x74\x20\x1B\x5B\x37\x6D\x55\x74\x69\x6C\x69\x74\x79\x1B\x5B\x32\x37\x6D'
+		fi
+	}"
+
+	echo "
+	whatis(){
+		if [ \$# -ne 0 ] ; 
+		then
+			${func_} whatis \"\$@\"		
+		else
+			echo $'\x1b[1mwhat \x1b[7mUtility\x1b[27m'
+		fi
+	}"
+
+	echo "
+	glist() { 
+		if [ \$# -ne 0 ] ; 
+		then
+			${func_} glist \"\$@\"
+		else
+			echo $'\x1b[1mglist \x1b[7mKeyword\x1b[27m'
+		fi
+	}"
+
+	echo "
+	grange() { 
+		if [ $# -ne 0 ] ; 
+		then
+			${func_} grange \"\$@\"
+		else
+			echo $'\x1b[1mgrange \x1b[7mSchema\x1b[27m'
+		fi
+	}"
+
+} >> /root/.bashrc
+
