@@ -356,7 +356,6 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo '
 	grange() { 
 		if [ $# -ne 0 ] ; then
-			echo "*** schema = ${1} ***" ;
 			echo "Type :: Key :: Value" ;
 			printf %$COLUMNS"s" | tr " " "-"
 			for key in $(
@@ -373,7 +372,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 						tr "\n" " " ;
 					)" ;
 				echo "${key} :: ${value} :: ${type}";
-			done | sed "s/ :: /@/1" | column -t -s "@" | sed "s/ :: /@/1" | column -t -s "@"
+			done | sed "s/ :: /@/g" | column -t -s "@" 
 			
 			else
 				echo -e "\x1b[1mgrange \x1b[7mSchema\x1b[27m"
