@@ -48,6 +48,7 @@ ls /root/git/web	1>| /dev/null 2>&1 ||
 # =============================== EXECUTABLES =======================================
 
 chmod +x /root/git/dotfile/functions
+chmod +x /root/git/dotfile/sysconf
 
 # ==============================RUNTIME SUBSTITUTIONS================================
 # function to list runtime substitutions here
@@ -86,80 +87,13 @@ echo
 # ================================ CONFIGURATIONS =======================================
 # function to list all gsettings here
 
-(${gq_} git <(ls)) || (
-	git config --global user.name GypsyCosmonaut
-	git config --global user.email rahulbansal1913@gmail.com
-	git config --global branch.autosetuprebase always
-	git config --global color.ui true
-	git config --global color.status auto
-	git config --global color.branch auto
-	git config --global core.editor gedit
-	git config --global credential.helper store
-	#git config --global merge.tool vimdiff
-	)
-
-(${gq_} groot 0< /etc/passwd) || (
-	${si_} 's/.*\(AutomaticLoginEnable \).*/\1= true/' 	/etc/gdm3/daemon.conf
-	${si_} 's/.*\(AutomaticLogin \).*/\1= root/' 		/etc/gdm3/daemon.conf
-	${si_} 's/LEFT/RIGHT/'					/etc/dconf/db/local.d/kali-tweaks
-	${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
-	${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
-	${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
-	${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
-	
-
-	gconvert() {
-		g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
-		schema_path_=${g_schema_}:${g_path_}
-	}
-
-	g_schema_=${og_}.Terminal.Legacy.Keybindings
-	gconvert ;
-
-	${gs_} ${schema_path_} new-window '<Control>n'
-	${gs_} ${schema_path_} new-tab '<Control>t'
-	${gs_} ${schema_path_} close-tab '<Ctrl>w'
-	${gs_} ${schema_path_} next-tab '<Primary>Right'
-	${gs_} ${schema_path_} prev-tab '<Primary>Left'
-	${gs_} ${schema_path_} full-screen '<Ctrl>f'
-
-	#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
-
-	${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
-	${gs_} ${og_}.desktop.lockdown disable-lock-screen true
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'TOP'"
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock opaque-background false
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock require-click-to-show false
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-size 0.10
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-visible-width 10.0
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-height 15.0
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-taskbar-icon-size 15.0
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-windowcount-image true
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock animation-time 0.0
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock show-delay 0.0
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock hide-delay 0.0
-	${gs_} ${og_}.shell.app-switcher current-workspace-only true
-	${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-left "['<Control><Shift>Left']"
-	${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-right "['<Control><Shift>Right']"
-	${gs_} ${og_}.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
-	${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
-	${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
-	${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
-	${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
-	${gs_} ${og_}.desktop.datetime automatic-timezone true
-	${gs_} ${og_}.desktop.interface clock-show-date true
-	${gs_} ${og_}.desktop.interface clock-show-seconds true
-	${gs_} ${og_}.desktop.interface show-battery-percentage true
-	${gs_} ${og_}.gedit.preferences.editor display-line-numbers true
-	${gs_} ${og_}.gedit.preferences.editor auto-indent true
-	${gs_} ${og_}.gedit.preferences.editor display-overview-map true
-	${gs_} ${og_}.gedit.preferences.editor highlight-current-line true
-	${gs_} ${og_}.gedit.preferences.editor auto-save true
-	${gs_} ${og_}.gedit.preferences.editor bracket-matching true
-	${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
-	${gs_} ${og_}.desktop.wm.preferences audible-bell false
-	${gs_} ${og_}.desktop.wm.preferences visual-bell true
-	)
+echo $'\x1b[1m\x1b[7mWant it Configured ??\x1b[27m'
+read r1
+if echo ${r1} |
+	grep -iq "^y" ;
+then
+	/root/git/dotfile/sysconf
+fi
 
 #"${si_}" 's/\(^#\)\([\t ]\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\([\t ]\+\)\(n\|y\)\([\t ]\+\)\(.*\)/\2\3\4\5\6\7/'		/etc/scalpel/scalpel.conf
 
@@ -244,8 +178,9 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 	echo "
 	replace() { 
-		if [ \$# -eq 0 ] ; then
-			echo $'\x0a\x1B\x5B\x31\x6D\x72\x65\x70\x6C\x61\x63\x65\x3A\x20\x1B\x5B\x37\x6D\x57\x68\x65\x72\x65\x20\x57\x68\x61\x74\x20\x54\x6F\x57\x68\x61\x74\x20\x50\x61\x74\x68\x1B\x5B\x32\x37\x6D\x0A\x0a';
+		if [ \$# -eq 0 ] ; 
+		then
+			echo $'\x0a\x1B\x5B\x31\x6D\x72\x65\x70\x6C\x61\x63\x65\x3A\x20\x1B\x5B\x37\x6D\x57\x68\x65\x72\x65\x20\x57\x68\x61\x74\x20\x54\x6F\x57\x68\x61\x74\x20\x50\x61\x74\x68\x1B\x5B\x32\x37\x6D\x0A';
 		else
 			${func_} replace \"\$@\"
 		fi
@@ -253,7 +188,8 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 	echo "
 	lman() { 
-		if [ \$# -ne 0 ] ; then
+		if [ \$# -ne 0 ] ; 
+		then
 			${func_} lman \"\$@\"
 		else
 			echo $'\x1b[1mlman \x1b[7mUtility\x1b[27m'
@@ -262,7 +198,8 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 	echo "
 	weather() {
-		if [ \$# -ne 0 ] ; then
+		if [ \$# -ne 0 ] ; 
+		then
 			${func_} weather \"\$@\"
 		else
 			echo $'\x1b[1mweather \x1b[7mPlace\x1b[27m'
@@ -276,16 +213,18 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	
 	echo "
 	search() { 	
-		if [ \$# -ne 0 ] ; then
+		if [ \$# -ne 0 ] ; 
+		then
 			${func_} search \"\$@\"
 		else
-			echo $'\x1B\x5B\x31\x6D\x73\x6C\x69\x73\x74\x20\x1B\x5B\x37\x6D\x55\x74\x69\x6C\x69\x74\x79\x1B\x5B\x32\x37\x6D\x0A'
+			echo $'\x1B\x5B\x31\x6D\x73\x6C\x69\x73\x74\x20\x1B\x5B\x37\x6D\x55\x74\x69\x6C\x69\x74\x79\x1B\x5B\x32\x37\x6D'
 		fi
 	}"
 
 	echo "
 	whatis(){
-		if [ \$# -ne 0 ] ; then
+		if [ \$# -ne 0 ] ; 
+		then
 			${func_} whatis \"\$@\"		
 		else
 			echo $'\x1b[1mwhat \x1b[7mUtility\x1b[27m'
@@ -294,7 +233,8 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 	echo "
 	glist() { 
-		if [ \$# -ne 0 ] ; then
+		if [ \$# -ne 0 ] ; 
+		then
 			${func_} glist \"\$@\"
 		else
 			echo $'\x1b[1mglist \x1b[7mKeyword\x1b[27m'
@@ -303,7 +243,8 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 	echo "
 	grange() { 
-		if [ $# -ne 0 ] ; then
+		if [ $# -ne 0 ] ; 
+		then
 			${func_} grange \"\$@\"
 		else
 			echo $'\x1b[1mgrange \x1b[7mSchema\x1b[27m'
@@ -332,27 +273,27 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 #} >> /etc/anacrontab
 
-echo -e "\x0a\x1b[7m\x57\x61\x6e\x74\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m\x0a"
+echo -e "\x0a\x1b[7m\x57\x61\x6e\x74\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m"
 read r1 ;
 if echo "${r1}" | 
-	grep -iq "^y" ; then
-	
+	grep -iq "^y" ; 
+then
 	apt-get update -y && apt-get upgrade -y ;
 	
-	printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m\x0a'
+	printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m'
 	read r101
 	if echo "${r101}" | 
-		grep -iq "^y" ;	then 
-				
+		grep -iq "^y" ;	
+	then 
 		apt-get dist-upgrade -y ;
 		
-		echo $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m\x0A'
+		echo $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m'
 		read r10101
 		if echo "${r10101}" |
-			grep -iq "^y" ;	then
-			
+			grep -iq "^y" ;	
+		then
 			echo $'\e[33;44;1m\e[H\e[J'
-			echo $'\x0a\033[1m \x1b[7m\x59\x6F\x75\x27\x72\x65\x20\x72\x65\x71\x75\x69\x72\x65\x64\x20\x74\x6F\x20\x73\x74\x61\x79\x21\x1b[27m\x0a \033[0m'
+			echo $'\x0a\033[1m \x1b[7m\x59\x6F\x75\x27\x72\x65\x20\x72\x65\x71\x75\x69\x72\x65\x64\x20\x74\x6F\x20\x73\x74\x61\x79\x21\x1b[27m \033[0m'
 			google-authenticator ;
 			echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/comm-auth
 			#echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/sshd
@@ -363,8 +304,8 @@ if echo "${r1}" |
 		printf '\x0a\x1b[7m\127\141\156\164\040\111\156\163\164\141\154\154\141\164\151\157\156\040\077\077\x1b[27m\012\012'
 		read r10101;
 		if echo "${r10101}" | 
-			grep -iq "^y" ;	then
-				
+			grep -iq "^y" ;	
+		then
 			apt-get install -y\
 			tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed\ 
 			metagoofil \
@@ -391,24 +332,23 @@ if echo "${r1}" |
 	fi
 fi
 
-echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m\x0a'
+echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m'
 echo ;
-echo $'\x0a\x1b[7m\x57\x61\x6e\x74\x20\x52\x65\x73\x74\x61\x72\x74\x20\x3f\x3f\x20\x1b[27m\x0a'
+echo $'\x0a\x1b[7m\x57\x61\x6e\x74\x20\x52\x65\x73\x74\x61\x72\x74\x20\x3f\x3f\x20\x1b[27m'
 read r1 ;
 if echo "${r1}" | 
-	grep -iq "^y" ;
-	
-	then
-		init 6 ;
-	else
-		wid_=$(xprop -root | 
-			grep "_NET_ACTIVE_WINDOW(WINDOW)"| 
-			awk '{print $5}' ;
-			)
-		xdotool windowfocus "${wid_}" ;
-		xdotool key ctrl+t ;
-		wmctrl -i -a "${wid_}" && 
-		exit ;
+	grep -iq "^y" ;	
+then
+	init 6 ;
+else
+	wid_=$(xprop -root | 
+		grep "_NET_ACTIVE_WINDOW(WINDOW)"| 
+		awk '{print $5}' ;
+		)
+	xdotool windowfocus "${wid_}" ;
+	xdotool key ctrl+t ;
+	wmctrl -i -a "${wid_}" && 
+	exit ;
 fi
 #curl -i -X GET http://rest-api.io/items
 #curl -i -X GET http://rest-api.io/items/5069b47aa892630aae059584
