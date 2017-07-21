@@ -30,6 +30,7 @@
 # Before >| or >>
 #			check if configuration exists
 #	-CAUTION- -OR-	check the number of lines in that file and DELETE ALL LINES after last line
+# Double Escape \\ before new-line character
 
 # =============================== DIRECTORIES =======================================
 
@@ -192,7 +193,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	#echo "set -o noclobber"
 	
 	#"${gq_}" ".* lsa=.*" 	/root/.bashrc || echo 'alias lsa =""'
-	
+	echo 'alias f="xdotool key ctrl+f"'
 	echo 'alias ls="l"'
 	echo 'alias pgrep="pgrep -f"'
 	echo 'alias l="ls -CF --color=auto"'
@@ -212,7 +213,6 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias remove="apt-get remove"'
 	echo 'alias show="apt-cache show"'
 	echo 'alias policy="apt-cache policy"'
-	echo 'alias search="apt-cache search"'
 	echo 'alias lcron="echo ${USER} && echo && cat /var/spool/cron/crontabs/${USER}"'
 	echo 'alias rmdir="rm -r"'
 	echo 'alias reload=". /root/git/dotfile/main"'
@@ -257,7 +257,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo '
 	lman() { 
 		if [ $# -ne 0 ] ; then
-			man -k "^${1}$" ; 
+			echo "^${1}$" | xargs man -k ; 
 		
 			else
 				echo -e "\x1b[1mlman \x1b[7mUtility\x1b[27m"
@@ -267,8 +267,8 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo '
 	weather() { 
 		if [ $# -ne 0 ] ; then
-			curl wttr.in/"^${1}$" | 
-			head -n -13 ; 
+			curl wttr.in/"^${1}$" 2>| /dev/null | 
+			head -n -3 ; 
 			
 			else
 				echo -e "\x1b[1mweather \x1b[7mPlace\x1b[27m"
@@ -332,7 +332,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	}"	
 	
 	echo "
-	slist() { 
+	search() { 
 	
 		if [ \$# -ne 0 ] ; then
 			apt-cache search \"\${1}\" | \\
@@ -354,9 +354,9 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	}"
 
 	echo '
-	what(){
+	whatis(){
 		if [ $# -ne 0 ] ; then
-			whatis "${1}" ;
+			echo "${1}" | xargs whatis ;
 			echo -e "\n \n" ;
 			update-alternatives --display "${1}" 2>| /dev/null ;
 		
