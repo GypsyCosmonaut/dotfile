@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "$@"
+#echo "$@"
 case "${1}" in
 
 	"lproxy") 
@@ -15,7 +15,7 @@ case "${1}" in
 	;;
 	
 	"hex")
-		cat /dev/stdin  | hexdump -v -e '"\x" 1/1 "%02X"' && echo ;
+		cat /dev/stdin  | hexdump -v -e '"\\x" 1/1 "%02X"' && echo ;
 	;;
 	
 	"lh")
@@ -25,6 +25,60 @@ case "${1}" in
 			else
 				ls -FlAshZid --color=auto ${2}/.*
 		fi
+	;;
+	
+	"replace")
+		sed -i "/${2}/s:${3}:${4}:g" ${PWD}/${5} ; 
+	;;
+	
+	"search")
+		apt-cache search "${2}" | 
+		while read -r pkg desc; 
+		do 
+			apt-cache policy "$pkg" | 
+			awk -v pkg="$pkg" -v desc="$desc" 'NR==2 {print pkg, desc, $"0"}'; 
+		done | 
+			perl -lane '
+				push @e, join $", splice @F, -2;
+				push @A, join $", @F;
+				length($A[-1]) > $maxW and $maxW = length($A[-1])}{
+				print $_, $" x ($maxW - length), "\t", shift @e for @A;
+			' ;
+	;;
+	
+	"lman")
+		echo "^${2}$" | xargs man -k ; 
+	;;
+	
+	"whatis")
+		echo "${2}" | xargs whatis ;
+		echo -e "\n" ;
+		update-alternatives --display "${2}" 2>| /dev/null ;
+	;;
+	
+	"glist")
+		gsettings list-recursively | grep --color=auto -i "${2}" ; 
+	;;
+	
+	"grange")
+		echo "Type :: Key :: Value" ;
+		printf %$COLUMNS"s" | tr " " "-"
+		for key in $(
+				gsettings list-keys ${2} | 
+				sort ;
+			)
+		do
+			type="$(
+					gsettings range ${2} ${key} | 
+					tr "\n" " " ;
+				)" ;
+			value="$(
+					gsettings get ${2} ${key} | 
+					tr "\n" " " ;
+				)" ;
+			echo "${key} :: ${value} :: ${type}";
+		done | 
+		sed "s/ :: /@/g" | column -t -s "@" 
 	;;
 	
 	"network")
@@ -80,5 +134,31 @@ case "${1}" in
 		git push ;
 	;;
 	
+	"weather")
+		curl wttr.in/"^${2}$" 2>| /dev/null | head -n -3 ; 
+	;;
+	
+	"lsd")
+		ls -AlF | 
+		sort -k 9,9 >| ${tmp_}/1 ; 
+	
+		(
+			file -Nz "${2}" ."${2}" | 
+			sort -k 1,1 | 
+			${se_} '/^.:.*directory$/d' -e '/^..:.*directory$/d' | 
+			awk '{ $"1"=""; print substr($"0",2) }' | 
+			tac ; 
+			echo ;
+		) | 
+		tac >| ${tmp_}/2 ; 
+		
+		(
+			echo; file -Nzi * .* | 
+			sort -k 1,1 | 
+			${se_} '1d' -e '2d' ;
+		) >| ${tmp_}/3 ; 
+	
+		paste ${tmp_}/1 ${tmp_}/2 ${tmp_}/3 >| ${tmp_}/0 ;
+		cat ${tmp_}/0 ;
 esac
 	

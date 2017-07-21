@@ -47,18 +47,18 @@ ls /root/git/web	1>| /dev/null 2>&1 ||
 
 # =============================== EXECUTABLES =======================================
 
-chmod +x /root/git/dotfile/all
+chmod +x /root/git/dotfile/functions
 
 # ==============================RUNTIME SUBSTITUTIONS================================
 # function to list runtime substitutions here
 
-tmp_=/tmp/files
-si_="sed -i"
-se_="sed -e"
-gq_="grep -q"
-gs_="gsettings set"
-og_="org.gnome"
-all_="/root/git/dotfile/all"
+export tmp_=/tmp/files
+export si_="sed -i"
+export se_="sed -e"
+export gq_="grep -q"
+export gs_="gsettings set"
+export og_="org.gnome"
+export func_="/root/git/dotfile/functions"
 
 echo
 (${gq_} earth /etc/hostname) || (
@@ -86,80 +86,84 @@ echo
 # ================================ CONFIGURATIONS =======================================
 # function to list all gsettings here
 
-git config --global user.name GypsyCosmonaut
-git config --global user.email rahulbansal1913@gmail.com
-git config --global branch.autosetuprebase always
-git config --global color.ui true
-git config --global color.status auto
-git config --global color.branch auto
-git config --global core.editor gedit
-git config --global credential.helper store
-#git config --global merge.tool vimdiff
+(${gq_} git <(ls)) || (
+	git config --global user.name GypsyCosmonaut
+	git config --global user.email rahulbansal1913@gmail.com
+	git config --global branch.autosetuprebase always
+	git config --global color.ui true
+	git config --global color.status auto
+	git config --global color.branch auto
+	git config --global core.editor gedit
+	git config --global credential.helper store
+	#git config --global merge.tool vimdiff
+	)
+
+(${gq_} groot 0< /etc/passwd) || (
+	${si_} 's/.*\(AutomaticLoginEnable \).*/\1= true/' 	/etc/gdm3/daemon.conf
+	${si_} 's/.*\(AutomaticLogin \).*/\1= root/' 		/etc/gdm3/daemon.conf
+	${si_} 's/LEFT/RIGHT/'					/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
+	
+
+	gconvert() {
+		g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
+		schema_path_=${g_schema_}:${g_path_}
+	}
+
+	g_schema_=${og_}.Terminal.Legacy.Keybindings
+	gconvert ;
+
+	${gs_} ${schema_path_} new-window '<Control>n'
+	${gs_} ${schema_path_} new-tab '<Control>t'
+	${gs_} ${schema_path_} close-tab '<Ctrl>w'
+	${gs_} ${schema_path_} next-tab '<Primary>Right'
+	${gs_} ${schema_path_} prev-tab '<Primary>Left'
+	${gs_} ${schema_path_} full-screen '<Ctrl>f'
+
+	#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
+
+	${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
+	${gs_} ${og_}.desktop.lockdown disable-lock-screen true
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'TOP'"
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock opaque-background false
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock require-click-to-show false
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-size 0.10
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-visible-width 10.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-height 15.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-taskbar-icon-size 15.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-windowcount-image true
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock animation-time 0.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock show-delay 0.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock hide-delay 0.0
+	${gs_} ${og_}.shell.app-switcher current-workspace-only true
+	${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-left "['<Control><Shift>Left']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-right "['<Control><Shift>Right']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
+	${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
+	${gs_} ${og_}.desktop.datetime automatic-timezone true
+	${gs_} ${og_}.desktop.interface clock-show-date true
+	${gs_} ${og_}.desktop.interface clock-show-seconds true
+	${gs_} ${og_}.desktop.interface show-battery-percentage true
+	${gs_} ${og_}.gedit.preferences.editor display-line-numbers true
+	${gs_} ${og_}.gedit.preferences.editor auto-indent true
+	${gs_} ${og_}.gedit.preferences.editor display-overview-map true
+	${gs_} ${og_}.gedit.preferences.editor highlight-current-line true
+	${gs_} ${og_}.gedit.preferences.editor auto-save true
+	${gs_} ${og_}.gedit.preferences.editor bracket-matching true
+	${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
+	${gs_} ${og_}.desktop.wm.preferences audible-bell false
+	${gs_} ${og_}.desktop.wm.preferences visual-bell true
+	)
 
 #"${si_}" 's/\(^#\)\([\t ]\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\([\t ]\+\)\(n\|y\)\([\t ]\+\)\(.*\)/\2\3\4\5\6\7/'		/etc/scalpel/scalpel.conf
 
 ${si_} 's/\(^#\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(n\|y\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(.*\)/\2\3\4\5\6\7/' 							/etc/scalpel/scalpel.conf
-
-${si_} 's/.*\(AutomaticLoginEnable \).*/\1= true/' 	/etc/gdm3/daemon.conf
-${si_} 's/.*\(AutomaticLogin \).*/\1= root/' 		/etc/gdm3/daemon.conf
-${si_} 's/LEFT/RIGHT/'				/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
-
-
-gconvert() {
-	g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
-	schema_path_=${g_schema_}:${g_path_}
-}
-
-g_schema_=${og_}.Terminal.Legacy.Keybindings
-gconvert ;
-
-${gs_} ${schema_path_} new-window '<Control>n'
-${gs_} ${schema_path_} new-tab '<Control>t'
-${gs_} ${schema_path_} close-tab '<Ctrl>w'
-${gs_} ${schema_path_} next-tab '<Primary>Right'
-${gs_} ${schema_path_} prev-tab '<Primary>Left'
-${gs_} ${schema_path_} full-screen '<Ctrl>f'
-
-#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
-
-${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
-${gs_} ${og_}.desktop.lockdown disable-lock-screen true
-${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'TOP'"
-${gs_} ${og_}.shell.extensions.workspaces-to-dock opaque-background false
-${gs_} ${og_}.shell.extensions.workspaces-to-dock require-click-to-show false
-${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-size 0.10
-${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-visible-width 10.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-height 15.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-taskbar-icon-size 15.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-windowcount-image true
-${gs_} ${og_}.shell.extensions.workspaces-to-dock animation-time 0.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock show-delay 0.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock hide-delay 0.0
-${gs_} ${og_}.shell.app-switcher current-workspace-only true
-${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-left "['<Control><Shift>Left']"
-${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-right "['<Control><Shift>Right']"
-${gs_} ${og_}.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
-${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
-${gs_} ${og_}.desktop.datetime automatic-timezone true
-${gs_} ${og_}.desktop.interface clock-show-date true
-${gs_} ${og_}.desktop.interface clock-show-seconds true
-${gs_} ${og_}.desktop.interface show-battery-percentage true
-${gs_} ${og_}.gedit.preferences.editor display-line-numbers true
-${gs_} ${og_}.gedit.preferences.editor auto-indent true
-${gs_} ${og_}.gedit.preferences.editor display-overview-map true
-${gs_} ${og_}.gedit.preferences.editor highlight-current-line true
-${gs_} ${og_}.gedit.preferences.editor auto-save true
-${gs_} ${og_}.gedit.preferences.editor bracket-matching true
-${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
-${gs_} ${og_}.desktop.wm.preferences audible-bell false
-${gs_} ${og_}.desktop.wm.preferences visual-bell true
 
 # ==================================ALIASES/FUNCTIONS=================================
 # function to list all aliases/functions here
@@ -196,7 +200,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias f="xdotool key ctrl+f"'
 	echo 'alias ls="l"'
 	echo 'alias pgrep="pgrep -f"'
-	echo 'alias l="ls -CF --color=auto"'
+	echo 'alias l="ls -F --color=auto"'
 	echo 'alias lv="ls -FlAshZid --color=auto"'
 	echo 'alias la="ls -FlAshZi --color=auto"'	
 	echo 'alias c="tput reset"'
@@ -217,172 +221,93 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias rmdir="rm -r"'
 	echo 'alias reload=". /root/git/dotfile/main"'
 	echo 'alias rm="mv -t /tmp/files/"'
-	
-	echo "
-	lproxy() {
-		${all_} lproxy
-	}"
-	
+	echo "alias hex=\"${func_} hex\""
+	echo "alias lproxy=\"${func_} lproxy\""
+	echo "alias network=\"${func_} network\""
+	echo "alias system=\"${func_} system\""
+	echo "alias gitup=\"${func_} gitup\""
+
 	echo "
 	cproxy() {
-		${all_} cproxy \"\$@\"
+		${func_} cproxy \"\$@\"
 	}"
 	
 	echo "
 	gedit() { 
-		${all_} gedit \"\$@\"
-	}"
-	
-	echo "
-	hex() {
-		${all_} hex
+		${func_} gedit \"\$@\"
 	}"
 
 	echo "
 	lh() {
-		${all_} lh \"\$@\"
+		${func_} lh \"\$@\"
 	}"
 
-	echo '
+	echo "
 	replace() { 
-		if [ $# -eq 0 ] ; then
-			echo ; echo -e "\x1B\x5B\x31\x6D\x72\x65\x70\x6C\x61\x63\x65\x3A\x20\x1B\x5B\x37\x6D\x57\x68\x65\x72\x65\x20\x57\x68\x61\x74\x20\x54\x6F\x57\x68\x61\x74\x20\x50\x61\x74\x68\x1B\x5B\x32\x37\x6D\x0A"; echo ;
-			
-			else
-				sed -i "/${1}/s:${2}:${3}:g" ${PWD}/${4} ; 
+		if [ \$# -eq 0 ] ; then
+			echo $'\x0a\x1B\x5B\x31\x6D\x72\x65\x70\x6C\x61\x63\x65\x3A\x20\x1B\x5B\x37\x6D\x57\x68\x65\x72\x65\x20\x57\x68\x61\x74\x20\x54\x6F\x57\x68\x61\x74\x20\x50\x61\x74\x68\x1B\x5B\x32\x37\x6D\x0A\x0a';
+		else
+			${func_} replace \"\$@\"
 		fi
-	}'
-
-	echo '
-	lman() { 
-		if [ $# -ne 0 ] ; then
-			echo "^${1}$" | xargs man -k ; 
-		
-			else
-				echo -e "\x1b[1mlman \x1b[7mUtility\x1b[27m"
-		fi
-	}'
-
-	echo '
-	weather() { 
-		if [ $# -ne 0 ] ; then
-			curl wttr.in/"^${1}$" 2>| /dev/null | 
-			head -n -3 ; 
-			
-			else
-				echo -e "\x1b[1mweather \x1b[7mPlace\x1b[27m"
-		fi
-	}'
-
-	echo "
-	network() { 
-		${all_} network
 	}"
 
 	echo "
-	system() {
-		${all_} system
+	lman() { 
+		if [ \$# -ne 0 ] ; then
+			${func_} lman \"\$@\"
+		else
+			echo $'\x1b[1mlman \x1b[7mUtility\x1b[27m'
+		fi
+	}"
+
+	echo "
+	weather() {
+		if [ \$# -ne 0 ] ; then
+			${func_} weather \"\$@\"
+		else
+			echo $'\x1b[1mweather \x1b[7mPlace\x1b[27m'
+		fi
 	}"
 
 	echo "
 	lsd() {
-		ls -AlF | 
-		sort -k 9,9 >| ${tmp_}/1 ; 
-	
-		(
-			file -Nz \"${1}\" .\"${1}\" | 
-			sort -k 1,1 | 
-			${se_} '/^.:.*directory$/d' -e '/^..:.*directory$/d' | 
-			awk '{ \$\"1\"=\"\"; print substr(\$\"0\",2) }' | 
-			tac ; 
-			echo ;
-		) | 
-		tac >| ${tmp_}/2 ; 
-		
-		(
-			echo; file -Nzi * .* | 
-			sort -k 1,1 | 
-			${se_} '1d' -e '2d' ;
-		) >| ${tmp_}/3 ; 
-	
-		paste ${tmp_}/1 ${tmp_}/2 ${tmp_}/3 >| ${tmp_}/0 ;
-		cat ${tmp_}/0 ;
-	}"	
+		${func_} lsd
+	}"	#pending
 	
 	echo "
-	search() { 
-	
+	search() { 	
 		if [ \$# -ne 0 ] ; then
-			apt-cache search \"\${1}\" | \\
-			while read -r pkg desc; 
-			do 
-				apt-cache policy \"\$pkg\" | \\
-				awk -v pkg=\"\$pkg\" -v desc=\"\$desc\" 'NR==2 {print pkg, desc, \$\"0\"}'; 
-			done | \\
-				perl -lane '
-					push @e, join \$\", splice @F, -2;
-					push @A, join \$\", @F;
-					length(\$A[-1]) > \$maxW and \$maxW = length(\$A[-1])}{
-					print \$_, \$\" x (\$maxW - length), \"\\t\", shift @e for @A;
-				' ;
-			
-			else
-				echo $'\x1B\x5B\x31\x6D\x73\x6C\x69\x73\x74\x20\x1B\x5B\x37\x6D\x55\x74\x69\x6C\x69\x74\x79\x1B\x5B\x32\x37\x6D\x0A'
+			${func_} search \"\$@\"
+		else
+			echo $'\x1B\x5B\x31\x6D\x73\x6C\x69\x73\x74\x20\x1B\x5B\x37\x6D\x55\x74\x69\x6C\x69\x74\x79\x1B\x5B\x32\x37\x6D\x0A'
 		fi
 	}"
 
-	echo '
+	echo "
 	whatis(){
-		if [ $# -ne 0 ] ; then
-			echo "${1}" | xargs whatis ;
-			echo -e "\n \n" ;
-			update-alternatives --display "${1}" 2>| /dev/null ;
-		
-			else
-				echo -e "\x1b[1mwhat \x1b[7mUtility\x1b[27m"
+		if [ \$# -ne 0 ] ; then
+			${func_} whatis \"\$@\"		
+		else
+			echo $'\x1b[1mwhat \x1b[7mUtility\x1b[27m'
 		fi
-	}'
+	}"
 
-	echo '
+	echo "
 	glist() { 
-		if [ $# -ne 0 ] ; then
-			gsettings list-recursively | grep -i ${1} ; 
-			
-			else
-				echo -e "\x1b[1mglist \x1b[7mKeyword\x1b[27m"
+		if [ \$# -ne 0 ] ; then
+			${func_} glist \"\$@\"
+		else
+			echo $'\x1b[1mglist \x1b[7mKeyword\x1b[27m'
 		fi
-	}'	
+	}"
 
-	echo '
+	echo "
 	grange() { 
 		if [ $# -ne 0 ] ; then
-			echo "Type :: Key :: Value" ;
-			printf %$COLUMNS"s" | tr " " "-"
-			for key in $(
-				gsettings list-keys ${1} | 
-				sort ;
-			)
-			do
-				type="$(
-						gsettings range ${1} ${key} | 
-						tr "\n" " " ;
-					)" ;
-				value="$(
-						gsettings get ${1} ${key} | 
-						tr "\n" " " ;
-					)" ;
-				echo "${key} :: ${value} :: ${type}";
-			done | sed "s/ :: /@/g" | column -t -s "@" 
-			
-			else
-				echo -e "\x1b[1mgrange \x1b[7mSchema\x1b[27m"
+			${func_} grange \"\$@\"
+		else
+			echo $'\x1b[1mgrange \x1b[7mSchema\x1b[27m'
 		fi
-	}'
-	
-	echo "
-	gitup() {
-		${all_} gitup
-		
 	}"
 
 } >> /root/.bashrc
