@@ -69,3 +69,6 @@ ${gs_} ${og_}.gedit.preferences.editor bracket-matching true
 ${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
 ${gs_} ${og_}.desktop.wm.preferences audible-bell false
 ${gs_} ${og_}.desktop.wm.preferences visual-bell true
+${gs_} ${og_}.desktop.background primary-color '#000000'
+${gs_} ${og_}.desktop.background secondary-color '#000000'
+${gs_} ${og_}.desktop.background picture-uri ''

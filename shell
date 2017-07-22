@@ -43,7 +43,6 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	echo 'alias upgrade="apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y ; xwd -root >|/tmp/files/a.xwd ; convert -negate /tmp/files/a.xwd /tmp/files/b.xwd ; timeout 1 xwud -in /tmp/files/b.xwd ;"'
 	echo 'alias install="apt-get install"'
 	echo 'alias remove="apt-get remove"'
-	echo 'alias show="apt-cache show"'
 	echo 'alias policy="apt-cache policy"'
 	echo 'alias lcron="echo ${USER} && echo && cat /var/spool/cron/crontabs/${USER}"'
 	echo 'alias rmdir="rm -r"'
@@ -116,7 +115,7 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	}"
 
 	echo "
-	whatis(){
+	whatis() {
 		if [ \$# -ne 0 ] ; 
 		then
 			${func_} whatis \"\$@\"		
@@ -124,7 +123,17 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 			echo $'\x1b[1mwhat \x1b[7mUtility\x1b[27m'
 		fi
 	}"
-
+	
+	echo "
+	show() {
+		if [ \$# -ne 0 ] ; 
+		then
+			${func_} show \"\$@\"		
+		else
+			echo $'\x1b[1mshow \x1b[7mUtility\x1b[27m'
+		fi
+	}"
+	
 	echo "
 	glist() { 
 		if [ \$# -ne 0 ] ; 

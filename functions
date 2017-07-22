@@ -56,9 +56,22 @@ case "${1}" in
 	;;
 	
 	"whatis")
-		echo "${2}" | xargs whatis ;
-		echo -e "\n" ;
+		type "${2}" 2>| /dev/null ;
+		if [ $? -eq 0 ]; then 
+			#printf "%"$COLUMNS"s" | tr " " "-"
+			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+		fi;
+		echo "${2}" | xargs whatis 2>| /dev/null
+		if [ "$?" -eq 0 -o "$?" -eq 123 ]; 
+		then 
+			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+		fi;
 		update-alternatives --display "${2}" 2>| /dev/null ;
+	;;
+	
+	"show")
+		apt-cache show "${2}"
+		curl https://tracker.debian.org/pkg/"${2}" 2>/dev/null | grep 'span class="news-date"' | cut -d ">" -f 2 | cut -d "<" -f 1 | sed 's/-/@/2' | cut -d '@' -f 1 | uniq | sed ':a;N;$!ba;s/\n/\x1b[7m____\x1b[27m/g'
 	;;
 	
 	"glist")

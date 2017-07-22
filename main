@@ -47,10 +47,10 @@ ls /root/git/web	1>| /dev/null 2>&1 ||
 
 # =============================== EXECUTABLES =======================================
 
-chmod +x /root/git/dotfile/shell
-chmod +x /root/git/dotfile/functions
-chmod +x /root/git/dotfile/sconf
-chmod +x /root/git/dotfile/uconf
+chmod 750 /root/git/dotfile/shell
+chmod 750 /root/git/dotfile/functions
+chmod 750 /root/git/dotfile/sconf
+chmod 750 /root/git/dotfile/uconf
 
 # ==============================RUNTIME SUBSTITUTIONS================================
 
@@ -113,7 +113,7 @@ fi
 	{ crontab -l; echo "1 1 * * * updatedb"; } 		| crontab -
 
 (${gq_} 'rm -rf' 0< /var/spool/cron/crontabs/${USER}) 	||
-	{ crontab -l; echo "1 1	* * * rm -rf ${tmp_}/*"; } 	| crontab -
+	{ crontab -l; echo "1 1	* * * rm -r ${tmp_}/*"; } 	| crontab -
 
 (${gq_} firefox 0< /var/spool/cron/crontabs/${USER}) 	||
 	{ crontab -l; echo "1 1 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }							| crontab -
@@ -129,14 +129,12 @@ if echo "${r1}" |
 	grep -iq "^y" ; 
 then
 	apt-get update -y && apt-get upgrade -y ;
-	
 	printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m'
 	read r101
 	if echo "${r101}" | 
 		grep -iq "^y" ;	
 	then 
-		apt-get dist-upgrade -y ;
-		
+		apt-get dist-upgrade -y ;		
 		echo $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m'
 		read r10101
 		if echo "${r10101}" |
@@ -177,7 +175,7 @@ then
 			tor gnupg2 bittorrent amule\
 			strace valgrind \
 			f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys ;
-			#texlive-full gedit-plugins xautomation xwd
+			#texlive-full gedit-plugins xautomation xwd lynx emacs mktemp
 		fi
 	fi
 fi
