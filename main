@@ -175,7 +175,7 @@ then
 			tor gnupg2 bittorrent amule\
 			strace valgrind \
 			f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys ;
-			#texlive-full gedit-plugins xautomation xwd lynx emacs mktemp
+			#texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
 		fi
 	fi
 fi
@@ -198,6 +198,8 @@ else
 	wmctrl -i -a "${wid_}" && 
 	exit ;
 fi
+#xrandr xdpyinfo gimp inkscape
+
 #curl -i -X GET http://rest-api.io/items
 #curl -i -X GET http://rest-api.io/items/5069b47aa892630aae059584
 #curl -i -X DELETE http://rest-api.io/items/5069b47aa892630aae059584

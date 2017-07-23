@@ -47,7 +47,7 @@ case "${1}" in
 				push @e, join $", splice @F, -2;
 				push @A, join $", @F;
 				length($A[-1]) > $maxW and $maxW = length($A[-1])}{
-				print $_, $" x ($maxW - length), "\t", shift @e for @A;
+				print $_, $" x ($maxW - length), " ", shift @e for @A;
 			' ;
 	;;
 	
@@ -61,7 +61,18 @@ case "${1}" in
 			#printf "%"$COLUMNS"s" | tr " " "-"
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
 		fi;
-		echo "${2}" | xargs whatis 2>| /dev/null
+		apt-cache search "^${2}$" | 
+		while read -r pkg desc; 
+		do 
+			apt-cache policy "$pkg" | 
+			awk -v pkg="$pkg" -v desc="$desc" 'NR==2 {print pkg, desc, $"0"}'; 
+		done | 
+			perl -lane '
+				push @e, join $", splice @F, -2;
+				push @A, join $", @F;
+				length($A[-1]) > $maxW and $maxW = length($A[-1])}{
+				print $_, $" x ($maxW - length), "\t\t", shift @e for @A;
+			' ;
 		if [ "$?" -eq 0 -o "$?" -eq 123 ]; 
 		then 
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
