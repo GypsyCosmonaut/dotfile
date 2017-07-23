@@ -32,12 +32,7 @@ case "${1}" in
 	;;
 	
 	"search")
-		if [ "${2}" == "only" ] 
-		then
-			apt-cache search "^${3}$"
-		else 
-			apt-cache search "${2}"
-		fi | 
+ 		apt-cache search "${2}" | 
 		while read -r pkg desc; 
 		do 
 			apt-cache policy "$pkg" | 
@@ -47,7 +42,7 @@ case "${1}" in
 				push @e, join $", splice @F, -2;
 				push @A, join $", @F;
 				length($A[-1]) > $maxW and $maxW = length($A[-1])}{
-				print $_, $" x ($maxW - length), " ", shift @e for @A;
+				print $_, $" x ($maxW - length), " ---", shift @e for @A;
 			' ;
 	;;
 	
@@ -57,6 +52,11 @@ case "${1}" in
 	
 	"whatis")
 		type "${2}" 2>| /dev/null ;
+		if [ $? -eq 0 ]; then 
+			#printf "%"$COLUMNS"s" | tr " " "-"
+			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+		fi;
+		echo "^${2}$" | xargs man -k 2>| /dev/null
 		if [ $? -eq 0 ]; then 
 			#printf "%"$COLUMNS"s" | tr " " "-"
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
@@ -73,11 +73,31 @@ case "${1}" in
 				length($A[-1]) > $maxW and $maxW = length($A[-1])}{
 				print $_, $" x ($maxW - length), "\t\t", shift @e for @A;
 			' ;
+		if [ $? -eq 0 ]; then 
+			#printf "%"$COLUMNS"s" | tr " " "-"
+			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+		fi;
+		curl https://tracker.debian.org/pkg/"${2}" 2>/dev/null | grep 'span class="news-date"' | cut -d ">" -f 2 | cut -d "<" -f 1 | head -1 ;
 		if [ "$?" -eq 0 -o "$?" -eq 123 ]; 
 		then 
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
 		fi;
 		update-alternatives --display "${2}" 2>| /dev/null ;
+	;;
+	
+	"open")
+		grep -i "pdf\|text" <<<$(file "${2}") && echo;
+		t1=$(grep -i "pdf\|text" <<<$(file "${2}") | sed 's/^.*\(pdf\|text\).*/\1/i')
+		if [ "${2}" == 'browser' ]
+		then
+			(nohup python -m SimpleHTTPServer 8080 1>| /dev/null 2>&1 &) && nohup firefox "localhost:8080" 1>| /dev/null 2>&1 &
+		elif [ "${t1,,}" == "pdf" ] ;
+		then
+			nohup evince "${2}" 	1>| /dev/null 2>&1 &
+		elif [ "${t1,,}" == "text" ] ;
+		then
+			vim "${2}" 
+		fi
 	;;
 	
 	"show")

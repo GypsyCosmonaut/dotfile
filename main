@@ -198,7 +198,7 @@ else
 	wmctrl -i -a "${wid_}" && 
 	exit ;
 fi
-#xrandr xdpyinfo gimp inkscape
+#xrandr xdpyinfo gimp inkscape fbi fim
 
 #curl -i -X GET http://rest-api.io/items
 #curl -i -X GET http://rest-api.io/items/5069b47aa892630aae059584

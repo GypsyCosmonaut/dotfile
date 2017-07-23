@@ -125,6 +125,16 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 	}"
 	
 	echo "
+	open() {
+		if [ \$# -ne 0 ] ; 
+		then
+			${func_} open \"\$@\"		
+		else
+			echo $'\x1b[1mopen \x1b[7mfile\x1b[27m'
+		fi
+	}"
+	
+	echo "
 	show() {
 		if [ \$# -ne 0 ] ; 
 		then
