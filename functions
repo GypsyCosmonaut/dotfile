@@ -78,6 +78,7 @@ case "${1}" in
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
 		fi;
 		curl https://tracker.debian.org/pkg/"${2}" 2>/dev/null | grep 'span class="news-date"' | sed 's/.*>\(.*\)<.*/\1/; 1q';
+		curl -L https://pkg.kali.org/pkg/clang 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; 2q; s/.*- \(.*\)$/\1/';
 		if [ "$?" -eq 0 ]; 
 		then 
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
@@ -105,7 +106,7 @@ case "${1}" in
 	
 	"show")
 		apt-cache show "${2}"
-		curl https://tracker.debian.org/pkg/"${2}" 2>/dev/null | grep 'span class="news-date"' | cut -d ">" -f 2 | cut -d "<" -f 1 | sed 's/-/@/2' | cut -d '@' -f 1 | uniq | sed ':a;N;$!ba;s/\n/\x1b[7m____\x1b[27m/g'
+		curl -L https://pkg.kali.org/pkg/clang 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; s/.*- \(.*\)$/\1/' | sed 's/-/@/2' | cut -d '@' -f 1 | uniq | sed ':@; N; $!b@; s/\n/____/g';
 	;;
 	
 	"glist")

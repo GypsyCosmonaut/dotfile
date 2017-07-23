@@ -40,12 +40,9 @@ export gs_="gsettings set"
 export og_="org.gnome"
 export func_="/root/git/dotfile/functions"
 
-# ==================================ALIASES/FUNCTIONS=================================
-
-/root/git/dotfile/shell
-. /root/.bashrc
-
 # ================================ CONFIGURATIONS =======================================
+
+chmod 750 /root/git/dotfile/sconf
 
 echo $'\x1b[1m\x1b[7mWant it Configured ??\x1b[27m'
 read r1
@@ -53,25 +50,14 @@ if echo ${r1} |
 	grep -iq "^y" ;
 then
 	/root/git/dotfile/sconf
+	/root/git/dotfile/vimrc
+	/root/git/dotfile/uconf
 fi
 
-/root/git/dotfile/uconf
+# ==================================ALIASES/FUNCTIONS=================================
 
-# ================================= CRON JOBS ======================================
-
-(${gq_} updatedb 0< /var/spool/cron/crontabs/${USER}) 	||
-	{ crontab -l; echo "1 1 * * * updatedb"; } 		| crontab -
-
-(${gq_} 'rm -r' 0< /var/spool/cron/crontabs/${USER}) 	||
-	{ crontab -l; echo "1 1	* * * rm -r ${tmp_}/*"; } 	| crontab -
-
-(${gq_} firefox 0< /var/spool/cron/crontabs/${USER}) 	||
-	{ crontab -l; echo "1 1 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }							| crontab -
-
-#{
-#echo "7		5	/root/files/mega	/root/files/anacron"
-
-#} >> /etc/anacrontab
+/root/git/dotfile/bashrc
+. /root/.bashrc
 
 echo -e "\x0a\x1b[7m\x57\x61\x6e\x74\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m"
 read r1 ;

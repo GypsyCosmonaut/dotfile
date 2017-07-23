@@ -1,5 +1,14 @@
 #!/bin/bash
 
+ls /root/.bash_aliases 	1>| /dev/null 2>&1 || ln -s /root/git/dotfile/bashrc /root/.bash_aliases
+
+(${gq_} 'set colored-stats on' 0< /etc/inputrc) || echo 'set colored-stats on'	>> /etc/inputrc
+
+${si_} 's/#\(alias grep=\)/\1/' 		/root/.bashrc
+${si_} 's/\(alias ls=\)/#\1/'			/root/.bashrc
+${si_} 's/\(HISTSIZE=\)/#\1/'			/root/.bash_history
+${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
+
 # ================================== USERS ==========================================
 
 echo
@@ -41,31 +50,47 @@ ls /root/git/web	1>| /dev/null 2>&1 ||
 # ================================= STARTUP ========================================
 
 ls /root/.config/autostart/start.desktop 	1>| /dev/null 2>&1 || 
-	{
-		[Desktop Entry]
-		Type=Application
-		Exec=/root/tmp/here
-		Hidden=false
-		NoDisplay=false
-		X-GNOME-Autostart-enabled=true
-	} >| /root/.config/autostart/start.desktop
+{
+	echo '[Desktop Entry]'
+	echo 'Type=Application'
+	echo 'Exec=/root/files/onlogin'
+	echo 'Hidden=false'
+	echo 'NoDisplay=false '
+	echo 'X-GNOME-Autostart-enabled=true'
+} >| /root/.config/autostart/start.desktop
 
 ls /root/files/onlogin 				1>| /dev/null 2>&1 || 
-	{
-		gnome-terminal --full-screen ;
-	} >| /root/files/onlogin
+{
+	echo 'gnome-terminal --full-screen'
+} >| /root/files/onlogin
 
 # =============================== EXECUTABLES =======================================
 
-chmod 750 /root/git/dotfile/start.desktop
+chmod 750 /root/.config/autostart/start.desktop
 chmod 750 /root/files/onlogin
 
-chmod 750 /root/git/dotfile/shell
+chmod 750 /root/git/dotfile/bashrc
 chmod 750 /root/git/dotfile/functions
-chmod 750 /root/git/dotfile/sconf
+chmod 750 /root/git/dotfile/vimrc.local
 chmod 750 /root/git/dotfile/uconf
 
 chmod 750 /root/git/web/main
+
+# ================================= CRON JOBS ======================================
+
+(${gq_} updatedb 0< /var/spool/cron/crontabs/${USER}) 	||
+	{ crontab -l; echo "1 1 * * * updatedb"; } 		| crontab -
+
+(${gq_} 'rm -r' 0< /var/spool/cron/crontabs/${USER}) 	||
+	{ crontab -l; echo "1 1	* * * rm -r ${tmp_}/*"; } 	| crontab -
+
+(${gq_} firefox 0< /var/spool/cron/crontabs/${USER}) 	||
+	{ crontab -l; echo "1 1 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }							| crontab -
+
+#{
+#echo "7		5	/root/files/mega	/root/files/anacron"
+
+#} >> /etc/anacrontab
 
 # =============================== CONFIGURATIONS ====================================
 
