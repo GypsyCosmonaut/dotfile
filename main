@@ -116,7 +116,7 @@ then
 		fi
 	fi
 fi
-#watch fuser fdisk dd fsck r2 parallel
+#watch fuser fdisk dd fsck r2 parallel strftime(histtimeformat)
 
 echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m'
 echo ;

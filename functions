@@ -77,8 +77,7 @@ case "${1}" in
 			#printf "%"$COLUMNS"s" | tr " " "-"
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
 		fi;
-		curl https://tracker.debian.org/pkg/"${2}" 2>/dev/null | grep 'span class="news-date"' | sed 's/.*>\(.*\)<.*/\1/; 1q';
-		curl -L https://pkg.kali.org/pkg/clang 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; 2q; s/.*- \(.*\)$/\1/';
+		curl -L https://pkg.kali.org/pkg/${2} 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; 2q; s/.*- \(.*\)$/\1/';
 		if [ "$?" -eq 0 ]; 
 		then 
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
