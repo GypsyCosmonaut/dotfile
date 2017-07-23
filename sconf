@@ -1,5 +1,74 @@
 #!/bin/bash
 
+# ================================== USERS ==========================================
+
+echo
+(${gq_} earth /etc/hostname) || (
+	echo earth 1>| /etc/hostname && 
+	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
+	)
+	
+(${gq_} groot 0< /etc/passwd) 	|| (
+	echo 'promt for root' && 
+	passwd root
+	)
+	
+(${gq_} groot 0< /etc/passwd) 	|| (
+	useradd --create-home groot && 
+	${si_} '/groot/s/$/\/bin\/bash/' /etc/passwd && 
+	echo 'promt for groot' && 
+	passwd groot
+	)
+# ================================= SUDOERS ========================================
+
+(${gq_} groot 0< /etc/sudoers) 	||
+	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
+
+# =============================== DIRECTORIES =======================================
+
+#mkdir /git/mine		2>| /dev/null ; echo -n $?
+
+ls /tmp/files		1>| /dev/zero 2>&1 || 	mkdir /tmp/files 	
+ls /root/tmp		1>| /dev/zero 2>&1 || 	mkdir /root/tmp 	
+ls /root/git		1>| /dev/zero 2>&1 || 	mkdir /root/git 	
+
+ls /root/git/dotfile	1>| /dev/null 2>&1 || 
+	git clone https://github.com/GypsyCosmonaut/main.git		/root/git
+
+ls /root/git/web	1>| /dev/null 2>&1 || 
+	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
+
+# ================================= STARTUP ========================================
+
+ls /root/.config/autostart/start.desktop 	1>| /dev/null 2>&1 || 
+	{
+		[Desktop Entry]
+		Type=Application
+		Exec=/root/tmp/here
+		Hidden=false
+		NoDisplay=false
+		X-GNOME-Autostart-enabled=true
+	} >| /root/.config/autostart/start.desktop
+
+ls /root/files/onlogin 				1>| /dev/null 2>&1 || 
+	{
+		gnome-terminal --full-screen ;
+	} >| /root/files/onlogin
+
+# =============================== EXECUTABLES =======================================
+
+chmod 750 /root/git/dotfile/start.desktop
+chmod 750 /root/files/onlogin
+
+chmod 750 /root/git/dotfile/shell
+chmod 750 /root/git/dotfile/functions
+chmod 750 /root/git/dotfile/sconf
+chmod 750 /root/git/dotfile/uconf
+
+chmod 750 /root/git/web/main
+
+# =============================== CONFIGURATIONS ====================================
+
 git config --global user.name GypsyCosmonaut
 git config --global user.email rahulbansal1913@gmail.com
 git config --global branch.autosetuprebase always
@@ -17,6 +86,11 @@ ${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
 ${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
 ${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
 ${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
+
+${si_} 's/^#\(GRUB_GFXMODE=\).*/\1auto/; s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1""/; s/^\(GRUB_BACKGROUND=\)/\1""/' 								/etc/default/grub
+#echo 'GRUB_BACKGROUND='' 				>> /etc/default/grub
+
+# ================================= GSETTINGS ======================================
 
 gconvert() {
 	g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')

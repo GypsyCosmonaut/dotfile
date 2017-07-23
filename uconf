@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/,/\n/; s/,/\n/2; s/,/\t\t\t\t/1; 0~1 a\\'
+
+#cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/proxy_//gi; s/,/\n/; s/:/: /; s/:/:\t /2; s/:/:\t /4; s/,/\n/2; s/,/\t\t/; s/,/\t\t\t/; 0~1 a\\'
+
 #"${si_}" 's/\(^#\)\([\t ]\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\([\t ]\+\)\(n\|y\)\([\t ]\+\)\(.*\)/\2\3\4\5\6\7/'		/etc/scalpel/scalpel.conf
 
 ${si_} 's/\(^#\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(n\|y\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(.*\)/\2\3\4\5\6\7/' 	/etc/scalpel/scalpel.conf

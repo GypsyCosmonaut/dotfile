@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#watch fuser fdisk dd fsck r2 parallel
-
 # ======================================== Rules =========================================
 # Use as ${tmp_}/0 as final output file
 # Use "${}" "$""" "$num"
@@ -32,26 +30,6 @@
 #	-CAUTION- -OR-	check the number of lines in that file and DELETE ALL LINES after last line
 # Double Escape \\ before new-line character
 
-# =============================== DIRECTORIES =======================================
-
-#mkdir /git/mine		2>| /dev/null ; echo -n $?
-
-ls /tmp/files		1>| /dev/zero 2>&1 || 	mkdir /tmp/files 	
-ls /root/tmp		1>| /dev/zero 2>&1 || 	mkdir /root/tmp 	
-
-ls /root/git/dotfile	1>| /dev/null 2>&1 || 
-	git clone https://github.com/GypsyCosmonaut/main.git		/root/git
-
-ls /root/git/web	1>| /dev/null 2>&1 || 
-	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
-
-# =============================== EXECUTABLES =======================================
-
-chmod 750 /root/git/dotfile/shell
-chmod 750 /root/git/dotfile/functions
-chmod 750 /root/git/dotfile/sconf
-chmod 750 /root/git/dotfile/uconf
-
 # ==============================RUNTIME SUBSTITUTIONS================================
 
 export tmp_=/tmp/files
@@ -62,30 +40,11 @@ export gs_="gsettings set"
 export og_="org.gnome"
 export func_="/root/git/dotfile/functions"
 
-# ================================== USERS ==========================================
+# ==================================ALIASES/FUNCTIONS=================================
 
-echo
-(${gq_} earth /etc/hostname) || (
-	echo earth 1>| /etc/hostname && 
-	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
-	)
-	
-(${gq_} groot 0< /etc/passwd) 	|| (
-	echo 'promt for root' && 
-	passwd root
-	)
-	
-(${gq_} groot 0< /etc/passwd) 	|| (
-	useradd --create-home groot && 
-	${si_} '/groot/s/$/\/bin\/bash/' /etc/passwd && 
-	echo 'promt for groot' && 
-	passwd groot
-	)
-# ================================= SUDOERS ========================================
+/root/git/dotfile/shell
+. /root/.bashrc
 
-(${gq_} groot 0< /etc/sudoers) 	||
-	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
-	
 # ================================ CONFIGURATIONS =======================================
 
 echo $'\x1b[1m\x1b[7mWant it Configured ??\x1b[27m'
@@ -98,21 +57,12 @@ fi
 
 /root/git/dotfile/uconf
 
-# ==================================ALIASES/FUNCTIONS=================================
-
-#cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/,/\n/; s/,/\n/2; s/,/\t\t\t\t/1; 0~1 a\\'
-
-#cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/proxy_//gi; s/,/\n/; s/:/: /; s/:/:\t /2; s/:/:\t /4; s/,/\n/2; s/,/\t\t/; s/,/\t\t\t/; 0~1 a\\'
-
-/root/git/dotfile/shell
-. /root/.bashrc
-
 # ================================= CRON JOBS ======================================
 
 (${gq_} updatedb 0< /var/spool/cron/crontabs/${USER}) 	||
 	{ crontab -l; echo "1 1 * * * updatedb"; } 		| crontab -
 
-(${gq_} 'rm -rf' 0< /var/spool/cron/crontabs/${USER}) 	||
+(${gq_} 'rm -r' 0< /var/spool/cron/crontabs/${USER}) 	||
 	{ crontab -l; echo "1 1	* * * rm -r ${tmp_}/*"; } 	| crontab -
 
 (${gq_} firefox 0< /var/spool/cron/crontabs/${USER}) 	||
@@ -176,9 +126,11 @@ then
 			strace valgrind \
 			f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys ;
 			#texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
+			#xrandr xdpyinfo gimp inkscape fbi fim
 		fi
 	fi
 fi
+#watch fuser fdisk dd fsck r2 parallel
 
 echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m'
 echo ;
@@ -198,17 +150,6 @@ else
 	wmctrl -i -a "${wid_}" && 
 	exit ;
 fi
-#xrandr xdpyinfo gimp inkscape fbi fim
-
-#curl -i -X GET http://rest-api.io/items
-#curl -i -X GET http://rest-api.io/items/5069b47aa892630aae059584
-#curl -i -X DELETE http://rest-api.io/items/5069b47aa892630aae059584
-#curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "New item", "year": "2009"}' http://#rest-api.io/items
-
-#curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "New item", "year": "2009"}' http://rest-api.io/items
-
-#curl -i -X PUT -H 'Content-Type: application/json' -d '{"name": "Updated item", "year": "2010"}' #http://rest-api.io/items/5069b47aa892630aae059584
-
 
 # ======================================= EOF ====================================
 
