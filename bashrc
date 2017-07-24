@@ -1,4 +1,3 @@
-#!/bin/bash
 
 export HISTSIZE=
 export HISTFILESIZE=

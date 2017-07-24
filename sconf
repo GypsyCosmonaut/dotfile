@@ -1,4 +1,3 @@
-#!/bin/bash
 
 ls /root/.bash_aliases 		1>| /dev/null 2>&1 || ln -s /root/git/dotfile/bashrc 	/root/.bash_aliases
 ls /etc/vim/vimrc.local 	1>| /dev/null 2>&1 || ln -s /root/git/dotfile/vimrc 	/etc/vim/vimrc.local
