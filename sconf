@@ -1,6 +1,7 @@
 #!/bin/bash
 
-ls /root/.bash_aliases 	1>| /dev/null 2>&1 || ln -s /root/git/dotfile/bashrc /root/.bash_aliases
+ls /root/.bash_aliases 		1>| /dev/null 2>&1 || ln -s /root/git/dotfile/bashrc 	/root/.bash_aliases
+ls /etc/vim/vimrc.local 	1>| /dev/null 2>&1 || ln -s /root/git/dotfile/vimrc 	/etc/vim/vimrc.local
 
 (${gq_} 'set colored-stats on' 0< /etc/inputrc) || echo 'set colored-stats on'	>> /etc/inputrc
 
@@ -71,7 +72,7 @@ chmod 750 /root/files/onlogin
 
 chmod 750 /root/git/dotfile/bashrc
 chmod 750 /root/git/dotfile/functions
-chmod 750 /root/git/dotfile/vimrc.local
+chmod 750 /root/git/dotfile/vimrc
 chmod 750 /root/git/dotfile/uconf
 
 chmod 750 /root/git/web/main

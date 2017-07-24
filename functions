@@ -144,6 +144,8 @@ case "${1}" in
 	"system")
 		tty ; echo ;
 		iostat ; echo
+		#shopt -p ; shopt -op ;
+		#shopt -u; shopt -s; shopt -o; set -o; set +o;
 		echo ${0} ; echo ;
 		w ; echo ;
 		who -a ; echo ;

@@ -50,7 +50,6 @@ if echo ${r1} |
 	grep -iq "^y" ;
 then
 	/root/git/dotfile/sconf
-	/root/git/dotfile/vimrc
 	/root/git/dotfile/uconf
 fi
 
