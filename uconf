@@ -6,3 +6,15 @@
 #"${si_}" 's/\(^#\)\([\t ]\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\([\t ]\+\)\(n\|y\)\([\t ]\+\)\(.*\)/\2\3\4\5\6\7/'		/etc/scalpel/scalpel.conf
 
 ${si_} 's/\(^#\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(n\|y\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(.*\)/\2\3\4\5\6\7/' 	/etc/scalpel/scalpel.conf
+
+echo "Download Utilities ??"
+read -n 1 r1
+if echo "${r1}" | 
+	grep -iq "^y" ; 
+then
+	ls /root/tor-browser* 		1>| /dev/null 2>&1 ||
+		url="https://www.torproject.org"$(curl https://www.torproject.org/projects/torbrowser.html.en 2>| /dev/null | grep "/dist/.*/tor-browser-linux64-.*" | head -1 | sed 's|.*\(/dist/.*\)".*|\1|') 	&&
+		wget -P /root/files "${url}" 						&&
+		tar -xvJf /root/files/$(echo "${url}" | sed 's/.*\(tor-.*\)/\1/') 	
+	
+fi

@@ -79,13 +79,13 @@ chmod 750 /root/git/web/main
 # ================================= CRON JOBS ======================================
 
 (${gq_} updatedb 0< /var/spool/cron/crontabs/${USER}) 	||
-	{ crontab -l; echo "1 1 * * * updatedb"; } 		| crontab -
+	{ crontab -l; echo "01 01 * * * updatedb"; } 		| crontab -
 
-(${gq_} 'rm -r' 0< /var/spool/cron/crontabs/${USER}) 	||
-	{ crontab -l; echo "1 1	* * * rm -r ${tmp_}/*"; } 	| crontab -
+(${gq_} 'rm -rf' 0< /var/spool/cron/crontabs/${USER}) 	||
+	{ crontab -l; echo "01 01 * * * rm -rf ${tmp_}/*"; } 	| crontab -
 
 (${gq_} firefox 0< /var/spool/cron/crontabs/${USER}) 	||
-	{ crontab -l; echo "1 1 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }							| crontab -
+	{ crontab -l; echo "01 01 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }							| crontab -
 
 #{
 #echo "7		5	/root/files/mega	/root/files/anacron"

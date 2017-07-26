@@ -45,7 +45,7 @@ export func_="/root/git/dotfile/functions"
 chmod 750 /root/git/dotfile/sconf
 
 echo $'\x1b[1m\x1b[7mWant it Configured ??\x1b[27m'
-read r1
+read -n 1 r1
 if echo ${r1} |
 	grep -iq "^y" ;
 then
@@ -59,19 +59,19 @@ fi
 . /root/.bashrc
 
 echo -e "\x0a\x1b[7m\x57\x61\x6e\x74\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m"
-read r1 ;
+read -n 1 r1 ;
 if echo "${r1}" | 
 	grep -iq "^y" ; 
 then
 	apt-get update -y && apt-get upgrade -y ;
 	printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m'
-	read r101
+	read -n 1 r101
 	if echo "${r101}" | 
 		grep -iq "^y" ;	
 	then 
 		apt-get dist-upgrade -y ;		
 		echo $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m'
-		read r10101
+		read -n 1 r10101
 		if echo "${r10101}" |
 			grep -iq "^y" ;	
 		then
@@ -85,12 +85,14 @@ then
 		fi
 				
 		printf '\x0a\x1b[7m\127\141\156\164\040\111\156\163\164\141\154\154\141\164\151\157\156\040\077\077\x1b[27m\012\012'
-		read r10101;
+		read -n 1 r10101;
 		if echo "${r10101}" | 
 			grep -iq "^y" ;	
 		then
 			apt-get install -y\
-			tree ccrypt rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed\ 
+			tree ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp\
+			sox ffmpeg lame audacity spek sonic-visualiser praat\
+			scrypt \
 			metagoofil \
 			vega \
 			i3 \
@@ -105,22 +107,27 @@ then
 			iperf \
 			kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools \
 			libimage-exiftool-perl \
-			libpam-google-authenticator
-			empathy \
-			tor gnupg2 bittorrent amule\
+			libpam-google-authenticator \
+			empathy vim-addon-manager vim-youcompleteme \
+			tor gnupg2 seccomp bittorrent amule \
 			strace valgrind \
-			f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys ;
-			#texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
-			#xrandr xdpyinfo gimp inkscape fbi fim
+			f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys \
+			sipsak rfcat \
+			yara ns2 ns3 ntopng numatop stress stress-ng \
+			pdfcrack ;
+			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
+			#xrandr xdpyinfo gimp inkscape fbi fim groff glfer
+			#dbeacon flamethrower uftp udpcast	
+			#xinput evtest
 		fi
 	fi
 fi
-#watch fuser fdisk dd fsck r2 parallel strftime(histtimeformat)
+#watch fuser fdisk dd fsck r2 parallel strftime(histtimeformat) xephyr xpra 
 
 echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m'
 echo ;
 echo $'\x0a\x1b[7m\x57\x61\x6e\x74\x20\x52\x65\x73\x74\x61\x72\x74\x20\x3f\x3f\x20\x1b[27m'
-read r1 ;
+read -n 1 r1 ;
 if echo "${r1}" | 
 	grep -iq "^y" ;	
 then

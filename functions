@@ -42,8 +42,9 @@ case "${1}" in
 				push @e, join $", splice @F, -2;
 				push @A, join $", @F;
 				length($A[-1]) > $maxW and $maxW = length($A[-1])}{
-				print $_, $" x ($maxW - length), " ---", shift @e for @A;
-			' ;
+				print $_, $" x ($maxW - length), "   -", shift @e for @A;
+			' | 
+			sed 's/\(.*\)   -Installed: \(.*\)/\1\2/'
 	;;
 	
 	"lman")
@@ -54,58 +55,62 @@ case "${1}" in
 		type "${2}" 2>| /dev/null ;
 		if [ "$?" -eq 0 ]; then 
 			#printf "%"$COLUMNS"s" | tr " " "-"
-			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -;
+			tvar=$(type "${2}" | sed 's/.*shell builtin/1/') ; 
 		fi;
-		echo "^${2}$" | xargs man -k 2>| /dev/null
-		if [ $? -eq 0 ]; then 
-			#printf "%"$COLUMNS"s" | tr " " "-"
-			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+		if [ "${tvar}" != "1" ] ; 
+		then
+			echo "^${2}$" | xargs man -k 2>| /dev/null
+			if [ $? -eq 0 ]; then 
+				#printf "%"$COLUMNS"s" | tr " " "-"
+				printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+			fi;
+			apt-cache search "^${2}$" | 
+			while read -r pkg desc; 
+			do 
+				apt-cache policy "$pkg" | 
+				awk -v pkg="$pkg" -v desc="$desc" 'NR==2 {print pkg, desc, $"0"}'; 
+			done | 
+				perl -lane '
+					push @e, join $", splice @F, -2;
+					push @A, join $", @F;
+					length($A[-1]) > $maxW and $maxW = length($A[-1])}{
+					print $_, $" x ($maxW - length), "\t\t", shift @e for @A;
+				' ;
+			if [ "$?" -eq 0 ]; then 
+				#printf "%"$COLUMNS"s" | tr " " "-"
+				printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+			fi;
+			curl -L https://pkg.kali.org/pkg/${2} 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; 2q; s/.*- \(.*\)$/\1/';
+			if [ "$?" -eq 0 ]; 
+			then 
+				printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+			fi;
+			update-alternatives --display "${2}" 2>| /dev/null ;
 		fi;
-		apt-cache search "^${2}$" | 
-		while read -r pkg desc; 
-		do 
-			apt-cache policy "$pkg" | 
-			awk -v pkg="$pkg" -v desc="$desc" 'NR==2 {print pkg, desc, $"0"}'; 
-		done | 
-			perl -lane '
-				push @e, join $", splice @F, -2;
-				push @A, join $", @F;
-				length($A[-1]) > $maxW and $maxW = length($A[-1])}{
-				print $_, $" x ($maxW - length), "\t\t", shift @e for @A;
-			' ;
-		if [ "$?" -eq 0 ]; then 
-			#printf "%"$COLUMNS"s" | tr " " "-"
-			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
-		fi;
-		curl -L https://pkg.kali.org/pkg/${2} 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; 2q; s/.*- \(.*\)$/\1/';
-		if [ "$?" -eq 0 ]; 
-		then 
-			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
-		fi;
-		update-alternatives --display "${2}" 2>| /dev/null ;
 	;;
 	
 	"open")
-		file "${2}"
-		t1=$(sed 's/^.*\(pdf\|text\|png\).*/\1/i'<<<$(file "${2}"))
-		if [ "${2}" == 'browser' ]
+		file ${PWD}/"${2}"
+		t1=$(sed 's/^.*\(pdf\|text\|png\).*/\1/i'<<<$(file "${PWD}/${2}"))
+		if [ "${PWD}/${2}" == 'browser' ]
 		then
 			(nohup python -m SimpleHTTPServer 8080 1>| /dev/null 2>&1 &) && nohup firefox "localhost:8080" 1>| /dev/null 2>&1 &
 		elif [ "${t1,,}" == "text" ] ;
 		then
-			vim "${2}" ;
+			vim "${PWD}/${2}" ;
 		elif [ "${t1,,}" == "pdf" ] ;
 		then
-			nohup evince "${2}" 	1>| /dev/null 2>&1 &
+			nohup evince "${PWD}/${2}" 	1>| /dev/null 2>&1 &
 		elif [ "${t1,,}" == "png" ] ;
 		then
-			nohup eog "${2}" 	1>| /dev/null 2>&1 &
+			nohup eog "${PWD}/${2}" 	1>| /dev/null 2>&1 &
 		fi
 	;;
 	
 	"show")
-		apt-cache show "${2}"
-		curl -L https://pkg.kali.org/pkg/clang 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; s/.*- \(.*\)$/\1/' | sed 's/-/@/2' | cut -d '@' -f 1 | uniq | sed ':@; N; $!b@; s/\n/____/g';
+		apt-cache show "${2}" &&
+		curl -L https://pkg.kali.org/pkg/"${2}" 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; s/.*- \(.*\)$/\1/' | sed 's/-/@/2' | cut -d '@' -f 1 | uniq | sed ':@; N; $!b@; s/\n/____/g';
 	;;
 	
 	"glist")
