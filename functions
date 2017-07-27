@@ -91,6 +91,7 @@ case "${1}" in
 	;;
 	
 	"open")
+		
 		file ${PWD}/"${2}"
 		t1=$(sed 's/^.*\(pdf\|text\|png\).*/\1/i'<<<$(file "${PWD}/${2}"))
 		if [ "${PWD}/${2}" == 'browser' ]

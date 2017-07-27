@@ -70,6 +70,7 @@ chmod 750 /root/.config/autostart/start.desktop
 chmod 750 /root/files/onlogin
 
 chmod 750 /root/git/dotfile/bashrc
+chmod 750 /root/git/dotfile/aliases
 chmod 750 /root/git/dotfile/functions
 chmod 750 /root/git/dotfile/vimrc
 chmod 750 /root/git/dotfile/uconf

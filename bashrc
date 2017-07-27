@@ -43,7 +43,7 @@ whatis() {
 	fi }	
 open() {
 	if [ $# -ne 0 ] ; then /root/git/dotfile/functions open "$@"	
-	else echo $'\x1b[1mopen \x1b[7mfile\x1b[27m (relatie path only)'
+	else echo $'\x1b[1mopen \x1b[7mfile\x1b[27m'
 	fi }	
 show() {
 	if [ $# -ne 0 ] ; then /root/git/dotfile/functions show "$@"		

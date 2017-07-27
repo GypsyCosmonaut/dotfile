@@ -30,9 +30,7 @@
 #	-CAUTION- -OR-	check the number of lines in that file and DELETE ALL LINES after last line
 # Double Escape \\ before new-line character
 
-# ==============================RUNTIME SUBSTITUTIONS================================
-
-export tmp_=/tmp/files
+export tmp_="/tmp/files"
 export si_="sed -i"
 export se_="sed -e"
 export gq_="grep -q"
@@ -40,12 +38,9 @@ export gs_="gsettings set"
 export og_="org.gnome"
 export func_="/root/git/dotfile/functions"
 
-# ================================ CONFIGURATIONS =======================================
-
 chmod 750 /root/git/dotfile/sconf
 
-echo $'\x1b[1m\x1b[7mWant it Configured ??\x1b[27m'
-read -n 1 r1
+read -n 1 $'\x1b[1m\x1b[7mWant it Configured ??\x1b[27m' r1
 if echo ${r1} |
 	grep -iq "^y" ;
 then
@@ -53,25 +48,27 @@ then
 	/root/git/dotfile/uconf
 fi
 
-# ==================================ALIASES/FUNCTIONS=================================
-
 /root/git/dotfile/bashrc
 . /root/.bashrc
 
+perl -MPOSIX -e 'tcflush 0,0'
 echo -e "\x0a\x1b[7m\x57\x61\x6e\x74\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m"
 read -n 1 r1 ;
 if echo "${r1}" | 
 	grep -iq "^y" ; 
 then
 	apt-get update -y && apt-get upgrade -y ;
+	perl -MPOSIX -e 'tcflush 0,0'
 	printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m'
 	read -n 1 r101
 	if echo "${r101}" | 
 		grep -iq "^y" ;	
 	then 
-		apt-get dist-upgrade -y ;		
-		echo $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m'
-		read -n 1 r10101
+		trap '' 2
+		apt-get dist-upgrade -y ;
+		trap 2
+		perl -MPOSIX -e 'tcflush 0,0'
+		read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m' r10101
 		if echo "${r10101}" |
 			grep -iq "^y" ;	
 		then
@@ -83,14 +80,15 @@ then
 			#"${si_}" 's/\(ChallengeResponseAuthentication \)no/\1yes/' /etc/ssh/sshd_config
 			#service ssh restart
 		fi
-				
+		
+		perl -MPOSIX -e 'tcflush 0,0'
 		printf '\x0a\x1b[7m\127\141\156\164\040\111\156\163\164\141\154\154\141\164\151\157\156\040\077\077\x1b[27m\012\012'
 		read -n 1 r10101;
 		if echo "${r10101}" | 
 			grep -iq "^y" ;	
 		then
 			apt-get install -y\
-			tree ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp\
+			tree ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem \
 			sox ffmpeg lame audacity spek sonic-visualiser praat\
 			scrypt \
 			metagoofil \
@@ -118,16 +116,15 @@ then
 			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
 			#xrandr xdpyinfo gimp inkscape fbi fim groff glfer
 			#dbeacon flamethrower uftp udpcast	
-			#xinput evtest
+			#xinput evtest tor-dbg stealth
 		fi
 	fi
 fi
 #watch fuser fdisk dd fsck r2 parallel strftime(histtimeformat) xephyr xpra 
 
+perl -MPOSIX -e 'tcflush 0,0'
 echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m'
-echo ;
-echo $'\x0a\x1b[7m\x57\x61\x6e\x74\x20\x52\x65\x73\x74\x61\x72\x74\x20\x3f\x3f\x20\x1b[27m'
-read -n 1 r1 ;
+read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6e\x74\x20\x52\x65\x73\x74\x61\x72\x74\x20\x3f\x3f\x20\x1b[27m' r1 ;
 if echo "${r1}" | 
 	grep -iq "^y" ;	
 then
@@ -142,6 +139,4 @@ else
 	wmctrl -i -a "${wid_}" && 
 	exit ;
 fi
-
-# ======================================= EOF ====================================
 
