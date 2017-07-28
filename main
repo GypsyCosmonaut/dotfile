@@ -1,34 +1,35 @@
 #!/usr/bin/env bash
 
 # ======================================== Rules =========================================
-# Use as ${tmp_}/0 as final output file
-# Use "${}" "$""" "$num"
-# Use single ticks with sed and awk (don't why it understands it)
-# Use "${ Var }" 	when EXPANSION NEEDED			in SHELL
-# Use "$Var"		when EXPANSION NOT NEEDED
-# Use '$""'		when SUBSTITUTING STDIN			in AWK and SED
-# Use single ticks when 
-#			NO RUN TIME SUBSTITUTION EXIST in Quotes
-#			Quotes DO NOT have other single ticks
-# Use double ticks when 
-#			RUN TIME SUBSTITUTION EXIST in Quotes
-#			Quotes HAVE ANY single ticks
-# Inside Double ticks		
-#			LEAVE ACTIVE RUNTIME SUBSTITUTION 	${ charVar_ }
-#			ESCAPE UNWANTED SUBSTITUTION		\${ charVar }, some ${ integerVar }	
-#			ESCAPE unwanted Quote terminations	"\"\""
-# ${ intVar } are
-#			inherited from USER INPUT
-#			inherited by sed and awk like ${0}
-# ${ charVar_ } are 
-#			ACTIVE runtime substitution variables
-# ${ charVar } are 
-#			inherited substitution from USER INPUT or ANOTHER FUNCTION or LOOP
-#			PASSIVE substitution variables
-# Before >| or >>
-#			check if configuration exists
-#	-CAUTION- -OR-	check the number of lines in that file and DELETE ALL LINES after last line
-# Double Escape \\ before new-line character
+: << 'SKIP'
+ Use as ${tmp_}/0 as final output file
+ Use "${}" "$""" "$num"
+ Use single ticks with sed and awk (don't why it understands it)
+ Use "${ Var }" 	when EXPANSION NEEDED			in SHELL
+ Use "$Var"		when EXPANSION NOT NEEDED
+ Use '$""'		when SUBSTITUTING STDIN			in AWK and SED
+ Use single ticks when 
+			NO RUN TIME SUBSTITUTION EXIST in Quotes
+			Quotes DO NOT have other single ticks
+ Use double ticks when 
+			RUN TIME SUBSTITUTION EXIST in Quotes
+			Quotes HAVE ANY single ticks
+ Inside Double ticks		
+			LEAVE ACTIVE RUNTIME SUBSTITUTION 	${ charVar_ }
+			ESCAPE UNWANTED SUBSTITUTION		\${ charVar }, some ${ integerVar }	
+			ESCAPE unwanted Quote terminations	"\"\""
+ ${ intVar } are
+			inherited from USER INPUT
+			inherited by sed and awk like ${0}
+ ${ charVar_ } are 
+			ACTIVE runtime substitution variables
+ ${ charVar } are 
+			inherited substitution from USER INPUT or ANOTHER FUNCTION or LOOP
+			PASSIVE substitution variables
+ Before >| or >>
+			check if configuration exists
+	-CAUTION- -OR-	DELETE the configurations before appending
+SKIP
 
 export tmp_="/tmp/files"
 export si_="sed -i"
@@ -40,7 +41,7 @@ export func_="/root/git/dotfile/functions"
 
 chmod 750 /root/git/dotfile/sconf
 
-read -n 1 $'\x1b[1m\x1b[7mWant it Configured ??\x1b[27m' r1
+read -n 1 -p $'\x1b[1m\x1b[7mWant it Configured ??\x1b[27m' r1
 if echo ${r1} |
 	grep -iq "^y" ;
 then
@@ -48,8 +49,7 @@ then
 	/root/git/dotfile/uconf
 fi
 
-/root/git/dotfile/bashrc
-. /root/.bashrc
+. /root/git/dotfile/bashrc
 
 perl -MPOSIX -e 'tcflush 0,0'
 echo -e "\x0a\x1b[7m\x57\x61\x6e\x74\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m"
@@ -68,60 +68,41 @@ then
 		apt-get dist-upgrade -y ;
 		trap 2
 		perl -MPOSIX -e 'tcflush 0,0'
+		printf '\x0a\x1b[7m\127\141\156\164\040\111\156\163\164\141\154\154\141\164\151\157\156\040\077\077\x1b[27m\012\012'
+		read -n 1 r10101;
+		if echo "${r10101}" | 
+			grep -iq "^y" ;	
+		then
+			while read word
+			do
+				apt-get install ${word} 2>&1 | tee /dev/tty | GREP_COLORS='sl=1;7' grep "Unable to locate package"
+			done 0< /root/git/dotfile/utilities
+			
+			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
+			#xrandr xdpyinfo gimp inkscape fbi fim groff glfer
+			#dbeacon flamethrower uftp udpcast	
+			#xinput evtest tor-dbg ddd stealth cde dialog
+		fi
+		perl -MPOSIX -e 'tcflush 0,0'
 		read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m' r10101
 		if echo "${r10101}" |
 			grep -iq "^y" ;	
 		then
 			echo $'\e[33;44;1m\e[H\e[J'
 			echo $'\x0a\033[1m \x1b[7m\x59\x6F\x75\x27\x72\x65\x20\x72\x65\x71\x75\x69\x72\x65\x64\x20\x74\x6F\x20\x73\x74\x61\x79\x21\x1b[27m \033[0m'
-			google-authenticator ;
-			echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/comm-auth
-			#echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/sshd
+			#google-authenticator ;
+			(${gq_} google 0< /etc/pam.d/comm-auth) || 
+				echo 'auth required pam_google_authenticator.so nullok' >> /etc/pam.d/comm-auth
+			#(${gq_} groot 0< /etc/pam.d/sshd) 	||
+				#echo 'auth required pam_google_authenticator.so nullok' 	>> /etc/pam.d/sshd
 			#"${si_}" 's/\(ChallengeResponseAuthentication \)no/\1yes/' /etc/ssh/sshd_config
 			#service ssh restart
 		fi
-		
-		perl -MPOSIX -e 'tcflush 0,0'
-		printf '\x0a\x1b[7m\127\141\156\164\040\111\156\163\164\141\154\154\141\164\151\157\156\040\077\077\x1b[27m\012\012'
-		read -n 1 r10101;
-		if echo "${r10101}" | 
-			grep -iq "^y" ;	
-		then
-			apt-get install -y\
-			tree ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem \
-			sox ffmpeg lame audacity spek sonic-visualiser praat\
-			scrypt \
-			metagoofil \
-			vega \
-			i3 \
-			squid3 \
-			websploit \
-			routersploit \
-			mitmf \
-			snort \
-			privoxy \
-			owasp-mantra-ff \
-			mutt \
-			iperf \
-			kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools \
-			libimage-exiftool-perl \
-			libpam-google-authenticator \
-			empathy vim-addon-manager vim-youcompleteme \
-			tor gnupg2 seccomp bittorrent amule \
-			strace valgrind \
-			f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys \
-			sipsak rfcat \
-			yara ns2 ns3 ntopng numatop stress stress-ng \
-			pdfcrack ;
-			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
-			#xrandr xdpyinfo gimp inkscape fbi fim groff glfer
-			#dbeacon flamethrower uftp udpcast	
-			#xinput evtest tor-dbg stealth
-		fi
 	fi
 fi
-#watch fuser fdisk dd fsck r2 parallel strftime(histtimeformat) xephyr xpra 
-
+#watch fuser fdisk dd fsck r2 strftime(histtimeformat) xephyr xpra autofs logrotate rsync
+#ldconfig objdump ld as nasm clang gcc g++
+#suricata mimikatz
 perl -MPOSIX -e 'tcflush 0,0'
 echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m'
 read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6e\x74\x20\x52\x65\x73\x74\x61\x72\x74\x20\x3f\x3f\x20\x1b[27m' r1 ;
@@ -139,4 +120,6 @@ else
 	wmctrl -i -a "${wid_}" && 
 	exit ;
 fi
+
+#wid_=$(xprop -root | grep "_NET_ACTIVE_WINDOW(WINDOW)"| awk '{print $5}'); xdotool windowfocus "${wid_}"; xdotool key /+t+r+e+e ;	wmctrl -i -a "${wid_}"
 

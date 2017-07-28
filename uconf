@@ -13,8 +13,12 @@ if echo "${r1}" |
 	grep -iq "^y" ; 
 then
 	ls /root/tor-browser* 		1>| /dev/null 2>&1 ||
-		url="https://www.torproject.org"$(curl https://www.torproject.org/projects/torbrowser.html.en 2>| /dev/null | grep "/dist/.*/tor-browser-linux64-.*" | head -1 | sed 's|.*\(/dist/.*\)".*|\1|') 	&&
+		url="https://www.torproject.org"$(curl https://www.torproject.org/projects/torbrowser.html.en 2>| /dev/null | grep "linux64-.*en" | grep -v "sig\|a[[:digit:]]" | sed 's/.*"..\(.*\)".*/\1/') 	&&
 		wget -P /root/files "${url}" 						&&
 		tar -xvJf /root/files/$(echo "${url}" | sed 's/.*\(tor-.*\)/\1/') 	
+		
+		parallel --gnu "wget {}" <<<$(curl https://www.snort.org/downloads 2>| /dev/null | grep snortplus | grep -v "manual\|md5" | sed 's/.*"\(.*\)".*/\1/' | sed 's/\(.*\)/www.snort.org\1/')
+
+		#cat <<<$(curl https://www.snort.org/downloads 2>| /dev/null | grep snortplus | grep -v "manual\|md5" | sed 's/.*"\(.*\)".*/\1/')
 	
 fi

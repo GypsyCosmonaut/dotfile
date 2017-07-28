@@ -1,7 +1,11 @@
 
 #echo "$@"
 case "${1}" in
-
+	
+	"dict")
+		dict "${2}" | sed -n '/From Moby Thesaurus II/q;p'
+	;;
+	
 	"lproxy") 
 		curl www.gatherproxy.com 2>| /dev/null | grep -io '{"proxy_[^}]*}'  | jq -r '. | {_:.PROXY_COUNTRY, IP:.PROXY_IP,PORT:.PROXY_PORT}' -c  | sed 's/["{}]//g' | awk -F, '{ p=substr($3,6); $3="PORT:" sprintf("%d",strtonum("0x" p)); }1' OFS=',' | sed 's/,IP:/\t/; s/,PORT//; s/ /_/g; s/^..//' | sed $'s/ *[^\t]*/\x1b[7;1m&\x1b[0m/' | column -t | column -t -s ':'
 	;;
@@ -52,11 +56,12 @@ case "${1}" in
 	;;
 	
 	"whatis")
-		type "${2}" 2>| /dev/null ;
+		#typeset -f "${2}"
+		#printf "%"$COLUMNS"s" | tr " " "-"
+		type "${2}" 	2>| /dev/null ;
 		if [ "$?" -eq 0 ]; then 
-			#printf "%"$COLUMNS"s" | tr " " "-"
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -;
-			tvar=$(type "${2}" | sed 's/.*shell builtin/1/') ; 
+			tvar=$(type "${2}" | sed '/shell builtin/s/.*/1/') ; 
 		fi;
 		if [ "${tvar}" != "1" ] ; 
 		then
