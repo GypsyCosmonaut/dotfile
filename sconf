@@ -34,18 +34,11 @@ echo
 	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
 
 # =============================== DIRECTORIES =======================================
+	
+ls /root/tmp/trash		1>| /dev/zero 2>&1 || 	mkdir /root/tmp/trash 	
 
-#mkdir /git/mine		2>| /dev/null ; echo -n $?
-
-ls /tmp/files		1>| /dev/zero 2>&1 || 	mkdir /tmp/files 	
-ls /root/tmp		1>| /dev/zero 2>&1 || 	mkdir /root/tmp 	
-ls /root/git		1>| /dev/zero 2>&1 || 	mkdir /root/git 	
-
-ls /root/git/dotfile	1>| /dev/null 2>&1 || 
-	git clone https://github.com/GypsyCosmonaut/main.git		/root/git
-
-ls /root/git/web	1>| /dev/null 2>&1 || 
-	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git
+ls /root/git/web	1>| /dev/null 2>&1 || (	mkdir /root/git/web 	&&
+	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git/web )
 
 # ================================= STARTUP ========================================
 

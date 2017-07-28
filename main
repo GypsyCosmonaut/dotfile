@@ -31,13 +31,17 @@
 	-CAUTION- -OR-	DELETE the configurations before appending
 SKIP
 
-export tmp_="/tmp/files"
+export tmp_="/root/tmp/trash"
 export si_="sed -i"
 export se_="sed -e"
 export gq_="grep -q"
 export gs_="gsettings set"
 export og_="org.gnome"
 export func_="/root/git/dotfile/functions"
+
+ls /root/git		1>| /dev/zero 2>&1 || 	mkdir /root/git 	
+ls /root/git/dotfile	1>| /dev/null 2>&1 || (	mkdir /root/git/dotfile 	&&
+	git clone https://github.com/GypsyCosmonaut/dotfile.git		/root/git/dotfile )
 
 chmod 750 /root/git/dotfile/sconf
 
