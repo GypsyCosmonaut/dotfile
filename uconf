@@ -1,24 +1,38 @@
 
-#cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/,/\n/; s/,/\n/2; s/,/\t\t\t\t/1; 0~1 a\\'
+: << 'SKIP'
+cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/proxy_//gi; s/,/\n/; s/:/: /; s/:/:\t /2; s/:/:\t /4; s/,/\n/2; s/,/\t\t/; s/,/\t\t\t/; 0~1 a\\'
 
-#cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.insertPrx({\(.*\)});/\1/; s/"//g; s/proxy_city:,//i; s/,proxy_refs:null//i; s/,proxy_uid:null//i; s/,proxy_status:ok//i; s/,proxy_state://i; s/proxy_//gi; s/,/\n/; s/:/: /; s/:/:\t /2; s/:/:\t /4; s/,/\n/2; s/,/\t\t/; s/,/\t\t\t/; 0~1 a\\'
+"${si_}" 's/\(^#\)\([\t ]\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\([\t ]\+\)\(n\|y\)\([\t ]\+\)\(.*\)/\2\3\4\5\6\7/'		/etc/scalpel/scalpel.conf
+SKIP
 
-#"${si_}" 's/\(^#\)\([\t ]\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\([\t ]\+\)\(n\|y\)\([\t ]\+\)\(.*\)/\2\3\4\5\6\7/'		/etc/scalpel/scalpel.conf
+download() {
+	echo "Download Utilities ??"
+	read -n 1 r1
+	if echo "${r1}" | 
+		grep -iq "^y" ; 
+	then
+		/root/git/dotfile/udown	
+		return 0
+	else
+		return 1
+	fi	
+}
+
+ls /root/.megarc	1>| /dev/zero 2>&1 || 	
+{
+	[Login]
+	echo --------- MEGA -----------	
+	echo user = $(read -p "Mail : " var_; echo "${var_}")
+	echo pass = $(read -p "Pass : " var_; echo "${var_}")
+} > /root/.megarc
 
 ${si_} 's/\(^#\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(n\|y\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(.*\)/\2\3\4\5\6\7/' 	/etc/scalpel/scalpel.conf
 
-echo "Download Utilities ??"
-read -n 1 r1
-if echo "${r1}" | 
-	grep -iq "^y" ; 
-then
-	ls /root/tor-browser* 		1>| /dev/null 2>&1 ||
-		url="https://www.torproject.org"$(curl https://www.torproject.org/projects/torbrowser.html.en 2>| /dev/null | grep "linux64-.*en" | grep -v "sig\|a[[:digit:]]" | sed 's/.*"..\(.*\)".*/\1/') 	&&
-		wget -P /root/files "${url}" 						&&
-		tar -xvJf /root/files/$(echo "${url}" | sed 's/.*\(tor-.*\)/\1/') 	
-		
-		parallel --gnu "wget {}" <<<$(curl https://www.snort.org/downloads 2>| /dev/null | grep snortplus | grep -v "manual\|md5" | sed 's/.*"\(.*\)".*/\1/' | sed 's/\(.*\)/www.snort.org\1/')
+#----------------------------------------------------------------------------------------------------------------------
+download
+#----------------------------------------------------------------------------------------------------------------------
 
-		#cat <<<$(curl https://www.snort.org/downloads 2>| /dev/null | grep snortplus | grep -v "manual\|md5" | sed 's/.*"\(.*\)".*/\1/')
-	
+if [ $? -eq 0 ]
+then
+	#configure after download
 fi

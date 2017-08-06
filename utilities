@@ -1,7 +1,8 @@
 rustc 
-dict praat tree 
+jsbeautifier
+dict gtypist praat tree bc dlocate pv
 ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem 
-sox ffmpeg lame audacity spek sonic-visualiser 
+sox ffmpeg lame audacity spek sonic-visualiser tesseract-ocr
 scrypt parallel 
 metagoofil 
 vega 
@@ -15,12 +16,14 @@ owasp-mantra-ff
 mutt 
 iperf 
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
-libimage-exiftool-perl 
+libimage-exiftool-perl exifprobe
 libpam-google-authenticator 
-empathy vim-addon-manager vim-youcompleteme 
+talk empathy vim-addon-manager vim-youcompleteme 
 tor gnupg2 seccomp bittorrent amule 
 strace valgrind 
-f2fs torchat fsck syncthing ssh pterm belenios-tool xbindkeys 
+f2fs torchat fsck belenios-tool xbindkeys 
+megatools syncthing ssh pterm
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numatop stress stress-ng usbip 
 pdfcrack
+encfs ecryptfs-utils

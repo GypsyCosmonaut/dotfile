@@ -67,6 +67,7 @@ chmod 750 /root/git/dotfile/aliases
 chmod 750 /root/git/dotfile/functions
 chmod 750 /root/git/dotfile/vimrc
 chmod 750 /root/git/dotfile/uconf
+chmod 750 /root/git/dotfile/udown
 
 chmod 750 /root/git/web/main
 
@@ -107,8 +108,10 @@ ${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
 ${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
 
 ${si_} 's/^#\(GRUB_GFXMODE=\).*/\1auto/; s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1""/; s/^\(GRUB_BACKGROUND=\)/\1""/' 								/etc/default/grub
-#echo 'GRUB_BACKGROUND='' 				>> /etc/default/grub
-
+{
+	echo 'GRUB_BACKGROUND=""' 
+	echo GRUB_TERMINAL_OUTPUT=console
+} >> /etc/default/grub
 # ================================= GSETTINGS ======================================
 
 gconvert() {

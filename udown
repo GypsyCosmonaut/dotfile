@@ -1,0 +1,22 @@
+
+ls /root/tor-browser* 		1>| /dev/null 2>&1 ||
+	url="https://www.torproject.org"$(curl https://www.torproject.org/projects/torbrowser.html.en 2>| /dev/null | grep "linux64-.*en" | grep -v "sig\|a[[:digit:]]" | sed 's/.*"..\(.*\)".*/\1/') 	&&
+	wget -P /root/files "${url}" 						&&
+	tar -xvJf /root/files/$(echo "${url}" | sed 's/.*\(tor-.*\)/\1/') 			
+
+#----------------------------------------------------------------------------------------------------------------------
+
+parallel --gnu "wget {}" <<<$(curl https://www.snort.org/downloads 2>| /dev/null | grep snortplus | grep -v "manual\|md5" | sed 's/.*"\(.*\)".*/\1/' | sed 's/\(.*\)/www.snort.org\1/')
+
+#----------------------------------------------------------------------------------------------------------------------
+
+gturl_=http://www.squid-cache.org/Versions/
+	
+turl_1=curl "${gturl_}"  2>| /dev/null | sed -n '/Stable Versions/{p; :loop n; p; /rolling/Iq; b loop}' | grep -i rolling | cut -d \" -f 2
+
+turl_2=curl "${gturl_}${turl_1}" 2>| /dev/null | sed -n '/Latest/{p; :loop n; p; /.gz/q; b loop}' | grep .gz | cut -d \" -f 2
+
+wget "${gturl_}${turl_1}${turl_2}"
+
+#----------------------------------------------------------------------------------------------------------------------
+

@@ -4,10 +4,13 @@ export HISTFILESIZE=
 
 complete -d cd rmdir
 
-#echo "set -o noclobber"
+#set -x
+#set -o noclobber
 
 . /root/git/dotfile/aliases
-alias y="echo bansal"
+
+#tput reset
+
 cproxy() {
 	if [ "${#}" -ne 0 ] ; then /root/git/dotfile/functions cproxy "$@"
 	else echo $'\x1b[1mcproxy \x1b[7mCountry\x1b[27m'
@@ -15,6 +18,10 @@ cproxy() {
 dict() {
 	if [ "${#}" -ne 0 ] ; then /root/git/dotfile/functions dict "$@"
 	else echo $'\x1b[1mdict \x1b[7mWord\x1b[27m'
+	fi }
+nohup() {
+	if [ "${#}" -ne 0 ] ; then /root/git/dotfile/functions nohup "$@"
+	else echo $'\x1b[1mnohup \x1b[7mProgram\x1b[27m'
 	fi }
 gedit() { 
 	if [ "${#}" -ne 0 ] ; then /root/git/dotfile/functions gedit "$@"
@@ -64,4 +71,5 @@ grange() {
 lsd() {
 	/root/git/dotfile/functions lsd
 }	#pending
+
 #. /root/git/dotfile/ufunc
