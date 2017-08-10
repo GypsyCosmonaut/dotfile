@@ -51,7 +51,7 @@ then
 
 	{
 		echo 'gnome-terminal --full-screen'
-	} | install -D /dev/stdin /root/files/onlogin /dev/stdin -m 750
+	} | install -D /dev/stdin /root/files/onlogin -m 750
 
 # =============================== EXECUTABLES =======================================
 
