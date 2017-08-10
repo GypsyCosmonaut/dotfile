@@ -1,5 +1,6 @@
+set nocompatible
 syntax on
-
+filetype plugin on
 set background=dark
 set showcmd
 set showmatch
@@ -8,6 +9,11 @@ set number
 set cursorline
 "set cursorcolumn
 set hlsearch
+
+set path+=**
+set wildmenu
+
+command! MakeTags !ctags -R .
 
 "highlight LineNr ctermfg=grey
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE

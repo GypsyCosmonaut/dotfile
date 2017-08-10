@@ -18,21 +18,28 @@ download() {
 	fi	
 }
 
-ls /root/.megarc	1>| /dev/zero 2>&1 || 	
-{
-	[Login]
-	echo --------- MEGA -----------	
-	echo user = $(read -p "Mail : " var_; echo "${var_}")
-	echo pass = $(read -p "Pass : " var_; echo "${var_}")
-} > /root/.megarc
-
-${si_} 's/\(^#\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(n\|y\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(.*\)/\2\3\4\5\6\7/' 	/etc/scalpel/scalpel.conf
-
-#----------------------------------------------------------------------------------------------------------------------
-download
-#----------------------------------------------------------------------------------------------------------------------
-
-if [ $? -eq 0 ]
+if [ ${alien_} -eq 0 ]
 then
-	#configure after download
+	download
+
+	ls /root/.megarc	1>| /dev/zero 2>&1 || 	
+	{
+		echo "[Login]"
+		echo --------- MEGA -----------	
+		echo user = $(read -p "Mail : " var_; echo "${var_}")
+		echo pass = $(read -p "Pass : " var_; echo "${var_}")
+	} > /root/.megarc
+	
+	cp /lib/systemd/system/syncthing@.service /etc/systemd/system &&
+		systemctl enable syncthing@root
+
+	${si_} 's/\(^#\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(n\|y\)\(\t\+\|\s\+\|\s\+\t\+\|\t\+\s\+\)\(.*\)/\2\3\4\5\6\7/' 	/etc/scalpel/scalpel.conf
+
+	${si_} 's/geteuid/getppid/g' /usr/bin/vlc
+
+	${si_} '/.*sensible/s/\(.*\)/#\1/; s/^##/#/' /root/.config/i3/config
+	
+	grep -q "gnome-terminal" /root/.config/i3/config || 
+		echo 'bindsym $mod+Return exec gnome-terminal' >> /root/.config/i3/config	
 fi
+

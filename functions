@@ -18,6 +18,17 @@ case "${1}" in
 		curl www.gatherproxy.com/proxylist/country/?c=${2} 2>| /dev/null | grep -io '{"proxy_[^}]*}'  | jq -r '. | {_:.PROXY_COUNTRY, IP:.PROXY_IP,PORT:.PROXY_PORT}' -c  | sed 's/["{}]//g' | awk -F, '{ p=substr($3,6); $3="PORT:" sprintf("%d",strtonum("0x" p)); }1' OFS=',' | sed 's/,IP:/\t/; s/,PORT//; s/ /_/g; s/^..//' | sed $'s/ *[^\t]*/\x1b[7;1m&\x1b[0m/' | column -t | column -t -s ':'
 	;;
 	
+	"serve")
+		if [ "${2}" == "http" ]
+		then
+			cp "${3}" /var/www/html/files ;
+		fi
+	;;
+	
+	"lsync")
+		mv "${2}" /root/Sync
+	;;
+	
 	"gedit")
 		nohup gedit "${2}" 1>| /dev/null 2>&1 & 
 	;;
@@ -25,18 +36,23 @@ case "${1}" in
 	"hex")
 		cat /dev/stdin  | hexdump -v -e '"\\x" 1/1 "%02X"' && echo ;
 	;;
-	
+
+
+	"null")
+		curl https://null.co.in/chapters/2-delhi 2>/dev/null | grep registration | sed 's|[^-]*-\([^/]*\)/.*|\1|' | cut -d '-' -f 4- | sed 's/-\([[:digit:]].*\)/ \1/; s/\([[:digit:]]\{4\}\)-\(.*\)/\1 \2/' | head -5 | column -t
+	;;
+		
 	"lh")
 		if [ -z "${2}" ] ;
 			then
-				ls -FlAshZid --color=auto .*
+				ls -FlAshZi --color=auto grep " \..*"	
 			else
-				ls -FlAshZid --color=auto ${2}/.*
+				ls -FlAshZi --color=auto ${2} | grep " \..*"
 		fi
 	;;
 	
 	"replace")
-		sed -i "/${2}/s:${3}:${4}:g" ${PWD}/${5} ; 
+		sed -i "/${2}/s:${3}:${4}:g" ${5} ; 
 	;;
 	
 	"search")
@@ -100,21 +116,22 @@ case "${1}" in
 	;;
 	
 	"open")
-		
-		file ${PWD}/"${2}"
-		t1=$(sed 's/^.*\(pdf\|text\|png\).*/\1/i'<<<$(file "${PWD}/${2}"))
-		if [ "${PWD}/${2}" == 'browser' ]
+		t1=$(sed 's/^.*\.\(.*\): .*/\1/i'<<<$(file "${2}"))
+		if [ "${2}" == 'firefox' ]
 		then
 			(nohup python -m SimpleHTTPServer 8080 1>| /dev/null 2>&1 &) && nohup firefox "localhost:8080" 1>| /dev/null 2>&1 &
 		elif [ "${t1,,}" == "text" ] ;
 		then
-			vim "${PWD}/${2}" ;
+			vim "${2}" ;
 		elif [ "${t1,,}" == "pdf" ] ;
 		then
-			nohup evince "${PWD}/${2}" 	1>| /dev/null 2>&1 &
+			nohup evince "${2}" 	1>| /dev/null 2>&1 &
 		elif [ "${t1,,}" == "png" ] ;
 		then
-			nohup eog "${PWD}/${2}" 	1>| /dev/null 2>&1 &
+			nohup eog "${2}" 	1>| /dev/null 2>&1 &
+		elif [ "${t1,,}" == "mp4" ] ;
+		then
+			nohup vlc "${2}" 	1>| /dev/null 2>&1 &
 		fi
 	;;
 	

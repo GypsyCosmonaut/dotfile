@@ -1,12 +1,15 @@
-rustc 
+howdoi rustc ghc
+eclipse
+eclipse-pydev
+exuberant-ctags
 jsbeautifier
-dict gtypist praat tree bc dlocate pv
+dict gtypist praat tree bc dlocate pv ack
 ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem 
-sox ffmpeg lame audacity spek sonic-visualiser tesseract-ocr
+sox ffmpeg lame audacity spek sonic-visualiser tesseract-ocr youtube-dl vlc
 scrypt parallel 
 metagoofil 
 vega 
-i3 
+i3 awesome
 squid3 
 websploit 
 routersploit 
@@ -18,12 +21,14 @@ iperf
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
 libimage-exiftool-perl exifprobe
 libpam-google-authenticator 
-talk empathy vim-addon-manager vim-youcompleteme 
-tor gnupg2 seccomp bittorrent amule 
+talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell wikipedia2text whereami
+tor gnupg2 seccomp bittorrent amule aria2 lftp
 strace valgrind 
 f2fs torchat fsck belenios-tool xbindkeys 
-megatools syncthing ssh pterm
+megatools syncthing pastebinit ssh pterm
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numatop stress stress-ng usbip 
 pdfcrack
 encfs ecryptfs-utils
+nftables
+abs-guide c++-annotations libace-doc ns3-doc

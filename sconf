@@ -2,7 +2,7 @@
 ls /root/.bash_aliases 		1>| /dev/null 2>&1 || ln -s /root/git/dotfile/bashrc 	/root/.bash_aliases
 ls /etc/vim/vimrc.local 	1>| /dev/null 2>&1 || ln -s /root/git/dotfile/vimrc 	/etc/vim/vimrc.local
 
-(${gq_} 'set colored-stats on' 0< /etc/inputrc) || echo 'set colored-stats on'	>> /etc/inputrc
+(grep -q 'set colored-stats on' 0< /etc/inputrc) || echo 'set colored-stats on'	>> /etc/inputrc
 
 ${si_} 's/#\(alias grep=\)/\1/' 		/root/.bashrc
 ${si_} 's/\(alias ls=\)/#\1/'			/root/.bashrc
@@ -11,160 +11,159 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 # ================================== USERS ==========================================
 
-echo
-(${gq_} earth /etc/hostname) || (
+if [ ${alien_} -eq 0 ]
+then
 	echo earth 1>| /etc/hostname && 
 	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
-	)
 	
-(${gq_} groot 0< /etc/passwd) 	|| (
 	echo 'promt for root' && 
 	passwd root
-	)
-	
-(${gq_} groot 0< /etc/passwd) 	|| (
+
 	useradd --create-home groot && 
 	${si_} '/groot/s/$/\/bin\/bash/' /etc/passwd && 
 	echo 'promt for groot' && 
 	passwd groot
-	)
-# ================================= SUDOERS ========================================
 
-(${gq_} groot 0< /etc/sudoers) 	||
 	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
+fi
 
 # =============================== DIRECTORIES =======================================
-	
-ls /root/tmp/trash		1>| /dev/zero 2>&1 || 	mkdir /root/tmp/trash 	
 
-ls /root/git/web	1>| /dev/null 2>&1 || (	mkdir /root/git/web 	&&
-	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git/web )
+	mkdir /root/git/web 	&&
+		git clone https://github.com/GypsyCosmonaut/web.git 		/root/git/web 
+	
+	mkdir /root/tmp/trash 	
+	mkdir /var/www/html/s
 
 # ================================= STARTUP ========================================
 
-ls /root/.config/autostart/start.desktop 	1>| /dev/null 2>&1 || 
-{
-	echo '[Desktop Entry]'
-	echo 'Type=Application'
-	echo 'Exec=/root/files/onlogin'
-	echo 'Hidden=false'
-	echo 'NoDisplay=false '
-	echo 'X-GNOME-Autostart-enabled=true'
-} >| /root/.config/autostart/start.desktop
+if [ ${alien_} -eq 0 ]
+then
+	{
+		echo '[Desktop Entry]'
+		echo 'Type=Application'
+		echo 'Exec=/root/files/onlogin'
+		echo 'Hidden=false'
+		echo 'NoDisplay=false '
+		echo 'X-GNOME-Autostart-enabled=true'
+	} 1>| install -D /root/.config/autostart/start.desktop /dev/stdin -m 750
 
-ls /root/files/onlogin 				1>| /dev/null 2>&1 || 
-{
-	echo 'gnome-terminal --full-screen'
-} >| /root/files/onlogin
+
+	{
+		echo 'gnome-terminal --full-screen'
+	} 1>| install -D /root/files/onlogin /dev/stdin -m 750
 
 # =============================== EXECUTABLES =======================================
 
-chmod 750 /root/.config/autostart/start.desktop
-chmod 750 /root/files/onlogin
+	chmod 750 /root/.config/autostart/start.desktop
+	chmod 750 /root/files/onlogin
 
-chmod 750 /root/git/dotfile/bashrc
-chmod 750 /root/git/dotfile/aliases
-chmod 750 /root/git/dotfile/functions
-chmod 750 /root/git/dotfile/vimrc
-chmod 750 /root/git/dotfile/uconf
-chmod 750 /root/git/dotfile/udown
+	chmod 750 /root/git/dotfile/bashrc
+	chmod 750 /root/git/dotfile/aliases
+	chmod 750 /root/git/dotfile/functions
+	chmod 750 /root/git/dotfile/vimrc
+	chmod 750 /root/git/dotfile/uconf
+	chmod 750 /root/git/dotfile/udown
 
-chmod 750 /root/git/web/main
+	chmod 750 /root/git/web/main
 
 # ================================= CRON JOBS ======================================
 
-(${gq_} updatedb 0< /var/spool/cron/crontabs/${USER}) 	||
 	{ crontab -l; echo "01 01 * * * updatedb"; } 		| crontab -
 
-(${gq_} 'rm -rf' 0< /var/spool/cron/crontabs/${USER}) 	||
+
 	{ crontab -l; echo "01 01 * * * rm -rf ${tmp_}/*"; } 	| crontab -
 
-(${gq_} firefox 0< /var/spool/cron/crontabs/${USER}) 	||
-	{ crontab -l; echo "01 01 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }							| crontab -
 
-#{
-#echo "7		5	/root/files/mega	/root/files/anacron"
+	{ crontab -l; echo "01 01 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }	| crontab -
 
-#} >> /etc/anacrontab
+	#{
+	#echo "7		5	/root/files/mega	/root/files/anacron"
+	#} >> /etc/anacrontab
 
 # =============================== CONFIGURATIONS ====================================
 
-git config --global user.name GypsyCosmonaut
-git config --global user.email rahulbansal1913@gmail.com
-git config --global branch.autosetuprebase always
-git config --global color.ui true
-git config --global color.status auto
-git config --global color.branch auto
-git config --global core.editor gedit
-git config --global credential.helper store
-#git config --global merge.tool vimdiff
+	git config --global user.name GypsyCosmonaut
+	git config --global user.email rahulbansal1913@gmail.com
+	git config --global branch.autosetuprebase always
+	git config --global color.ui true
+	git config --global color.status auto
+	git config --global color.branch auto
+	git config --global core.editor gedit
+	git config --global credential.helper store
+	#git config --global merge.tool vimdiff
 
-${si_} 's/.*\(AutomaticLoginEnable \).*/\1= true/' 	/etc/gdm3/daemon.conf
-${si_} 's/.*\(AutomaticLogin \).*/\1= root/' 		/etc/gdm3/daemon.conf
-${si_} 's/LEFT/RIGHT/'					/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
-${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/.*\(AutomaticLoginEnable \).*/\1= true/' 	/etc/gdm3/daemon.conf
+	${si_} 's/.*\(AutomaticLogin \).*/\1= root/' 		/etc/gdm3/daemon.conf
+	${si_} 's/LEFT/RIGHT/'					/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
+	${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
 
-${si_} 's/^#\(GRUB_GFXMODE=\).*/\1auto/; s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1""/; s/^\(GRUB_BACKGROUND=\)/\1""/' 								/etc/default/grub
-{
-	echo 'GRUB_BACKGROUND=""' 
-	echo GRUB_TERMINAL_OUTPUT=console
-} >> /etc/default/grub
+	${si_} 's/^#\(GRUB_GFXMODE=\).*/\1auto/; s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1""/; s/^\(GRUB_BACKGROUND=\)/\1""/' 								/etc/default/grub
+	{
+		echo 'GRUB_BACKGROUND=""' 
+		echo GRUB_TERMINAL_OUTPUT=console
+	} >> /etc/default/grub
+
+	update-grub 2>| /dev/null
+
 # ================================= GSETTINGS ======================================
 
-gconvert() {
-	g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
-	schema_path_=${g_schema_}:${g_path_}
-}
 
-g_schema_=${og_}.Terminal.Legacy.Keybindings
-gconvert ;
+	gconvert() {
+		g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
+		schema_path_=${g_schema_}:${g_path_}
+	}
 
-${gs_} ${schema_path_} new-window '<Control>n'
-${gs_} ${schema_path_} new-tab '<Control>t'
-${gs_} ${schema_path_} close-tab '<Ctrl>w'
-${gs_} ${schema_path_} next-tab '<Primary>Right'
-${gs_} ${schema_path_} prev-tab '<Primary>Left'
-${gs_} ${schema_path_} full-screen '<Ctrl>f'
+	g_schema_=${og_}.Terminal.Legacy.Keybindings
+	gconvert ;
 
-#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
+	${gs_} ${schema_path_} new-window '<Control>n'
+	${gs_} ${schema_path_} new-tab '<Control>t'
+	${gs_} ${schema_path_} close-tab '<Ctrl>w'
+	${gs_} ${schema_path_} next-tab '<Primary>Right'
+	${gs_} ${schema_path_} prev-tab '<Primary>Left'
+	${gs_} ${schema_path_} full-screen '<Ctrl>f'
 
-${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
-${gs_} ${og_}.desktop.lockdown disable-lock-screen true
-${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'TOP'"
-${gs_} ${og_}.shell.extensions.workspaces-to-dock opaque-background false
-${gs_} ${og_}.shell.extensions.workspaces-to-dock require-click-to-show false
-${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-size 0.10
-${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-visible-width 10.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-height 15.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-taskbar-icon-size 15.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-windowcount-image true
-${gs_} ${og_}.shell.extensions.workspaces-to-dock animation-time 0.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock show-delay 0.0
-${gs_} ${og_}.shell.extensions.workspaces-to-dock hide-delay 0.0
-${gs_} ${og_}.shell.app-switcher current-workspace-only true
-${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-left "['<Control><Shift>Left']"
-${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-right "['<Control><Shift>Right']"
-${gs_} ${og_}.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
-${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
-${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
-${gs_} ${og_}.desktop.datetime automatic-timezone true
-${gs_} ${og_}.desktop.interface clock-show-date true
-${gs_} ${og_}.desktop.interface clock-show-seconds true
-${gs_} ${og_}.desktop.interface show-battery-percentage true
-${gs_} ${og_}.gedit.preferences.editor display-line-numbers true
-${gs_} ${og_}.gedit.preferences.editor auto-indent true
-${gs_} ${og_}.gedit.preferences.editor display-overview-map true
-${gs_} ${og_}.gedit.preferences.editor highlight-current-line true
-${gs_} ${og_}.gedit.preferences.editor auto-save true
-${gs_} ${og_}.gedit.preferences.editor bracket-matching true
-${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
-${gs_} ${og_}.desktop.wm.preferences audible-bell false
-${gs_} ${og_}.desktop.wm.preferences visual-bell true
-${gs_} ${og_}.desktop.background primary-color '#000000'
-${gs_} ${og_}.desktop.background secondary-color '#000000'
-${gs_} ${og_}.desktop.background picture-uri ''
+	#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
+	
+	${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
+	${gs_} ${og_}.desktop.lockdown disable-lock-screen true
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'TOP'"
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock opaque-background false
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock require-click-to-show false
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-size 0.10
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-visible-width 10.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-height 15.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-taskbar-icon-size 15.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock workspace-caption-windowcount-image true
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock animation-time 0.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock show-delay 0.0
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock hide-delay 0.0
+	${gs_} ${og_}.shell.app-switcher current-workspace-only true
+	${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-left "['<Control><Shift>Left']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-to-workspace-right "['<Control><Shift>Right']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
+	${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
+	${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
+	${gs_} ${og_}.desktop.datetime automatic-timezone true
+	${gs_} ${og_}.desktop.interface clock-show-date true
+	${gs_} ${og_}.desktop.interface clock-show-seconds true
+	${gs_} ${og_}.desktop.interface show-battery-percentage true
+	${gs_} ${og_}.gedit.preferences.editor display-line-numbers true
+	${gs_} ${og_}.gedit.preferences.editor auto-indent true
+	${gs_} ${og_}.gedit.preferences.editor display-overview-map true
+	${gs_} ${og_}.gedit.preferences.editor highlight-current-line true
+	${gs_} ${og_}.gedit.preferences.editor auto-save true
+	${gs_} ${og_}.gedit.preferences.editor bracket-matching true
+	${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
+	${gs_} ${og_}.desktop.wm.preferences audible-bell false
+	${gs_} ${og_}.desktop.wm.preferences visual-bell true
+	${gs_} ${og_}.desktop.background primary-color '#000000'
+	${gs_} ${og_}.desktop.background secondary-color '#000000'
+	${gs_} ${og_}.desktop.background picture-uri ''	
+fi

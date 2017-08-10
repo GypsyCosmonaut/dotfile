@@ -19,6 +19,14 @@ dict() {
 	if [ "${#}" -ne 0 ] ; then /root/git/dotfile/functions dict "$@"
 	else echo $'\x1b[1mdict \x1b[7mWord\x1b[27m'
 	fi }
+serve() {
+	if [ "${#}" -ne 0 ] ; then /root/git/dotfile/functions serve "$@"
+	else echo $'\x1b[1mserve \x1b[7mProtocol File\x1b[27m'
+	fi }
+lsync() {
+	if [ "${#}" -ne 0 ] ; then /root/git/dotfile/functions lsync "$@"
+	else echo $'\x1b[1mlsync \x1b[7mFile\x1b[27m'
+	fi }
 nohup() {
 	if [ "${#}" -ne 0 ] ; then /root/git/dotfile/functions nohup "$@"
 	else echo $'\x1b[1mnohup \x1b[7mProgram\x1b[27m'

@@ -34,10 +34,18 @@ SKIP
 export tmp_="/root/tmp/trash"
 export si_="sed -i"
 export se_="sed -e"
-export gq_="grep -q"
 export gs_="gsettings set"
 export og_="org.gnome"
 export func_="/root/git/dotfile/functions"
+
+read -n 1 -p 'Do aliens exist ??' r1
+if echo ${r1} | 
+	grep -iq "^y" ;
+then
+	export alien_=0
+else
+	export alien_=1
+fi
 
 ls /root/git		1>| /dev/zero 2>&1 || 	mkdir /root/git 	
 ls /root/git/dotfile	1>| /dev/null 2>&1 || (	mkdir /root/git/dotfile 	&&
@@ -65,7 +73,7 @@ then
 	perl -MPOSIX -e 'tcflush 0,0'
 	printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m'
 	read -n 1 r101
-	if echo "${r101}" | 
+		if echo "${r101}" | 
 		grep -iq "^y" ;	
 	then 
 		trap '' 2
@@ -81,13 +89,13 @@ then
 			do
 				apt-get install ${word_} 2>&1 | tee /dev/tty | (GREP_COLORS='sl=1;7' grep "Unable to locate package" && read input_ 0< /dev/tty)
 			done 0< /root/git/dotfile/utilities
-			
+			#doc-rfc qrfcview rfcdiff
 			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
-			#xrandr xdpyinfo gimp inkscape fbi fim groff glfer
+			#xrandr xdpyinfo gimp inkscape darktable fbi fim groff glfer
 			#dbeacon flamethrower uftp udpcast	
 			#xinput evtest tor-dbg ddd stealth cde dialog
 			#systemctl journalctl
-			#compress lzma xz tar lrzip 7z zip rar gzip bzip2 lzip lzop
+			#compress lzma xz tar lrzip 7z 7za zip rar gzip bzip2 lzip lzop arj
 		fi
 		perl -MPOSIX -e 'tcflush 0,0'
 		read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m' r10101
@@ -97,9 +105,9 @@ then
 			echo $'\e[33;44;1m\e[H\e[J'
 			echo $'\x0a\033[1m \x1b[7m\x59\x6F\x75\x27\x72\x65\x20\x72\x65\x71\x75\x69\x72\x65\x64\x20\x74\x6F\x20\x73\x74\x61\x79\x21\x1b[27m \033[0m'
 			#google-authenticator ;
-			(${gq_} google 0< /etc/pam.d/comm-auth) || 
+			(grep -q google 0< /etc/pam.d/comm-auth) || 
 				echo 'auth required pam_google_authenticator.so nullok' 	>> /etc/pam.d/comm-auth
-			#(${gq_} groot 0< /etc/pam.d/sshd) 	||
+			#(grep -q groot 0< /etc/pam.d/sshd) 	||
 				#echo 'auth required pam_google_authenticator.so nullok' 	>> /etc/pam.d/sshd
 			#"${si_}" 's/\(ChallengeResponseAuthentication \)no/\1yes/' /etc/ssh/sshd_config
 			#service ssh restart
