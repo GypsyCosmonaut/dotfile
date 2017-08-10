@@ -76,10 +76,16 @@ then
 		if echo "${r10101}" | 
 			grep -iq "^y" ;	
 		then
-			while read word_
+			while read line_
 			do
-				apt-get install ${word_} 2>&1 | tee /dev/tty | (GREP_COLORS='sl=1;7' grep "Unable to locate package" && read input_ 0< /dev/tty)
+				array=(${line_})
+				for i in "${array[@]}"
+				do
+					echo $'\x1b[7m'${i}$'\x1b[27m'
+					apt-get install ${i} -y 2>&1 | tee /dev/tty | (GREP_COLORS='sl=1;7' grep "Unable to locate package" && read input_ 0< /dev/tty)
+				done
 			done 0< /root/git/dotfile/utilities
+			#eclipse eclipse-pydev
 			#doc-rfc qrfcview rfcdiff
 			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
 			#xrandr xdpyinfo gimp inkscape darktable fbi fim groff glfer
