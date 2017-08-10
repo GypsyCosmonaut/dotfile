@@ -1,8 +1,19 @@
 
+# =============================== DIRECTORIES =======================================
+
+ls /root/git/web	1>| /dev/null 2>&1 || (	mkdir /root/git/web 	&&
+	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git/web )
+	
+mkdir -p /root/tmp/trash 	
+mkdir -p /var/www/html/s
+
+# ================================= SYMLINKS ========================================
+
 ls /root/.bash_aliases 		1>| /dev/null 2>&1 || ln -s /root/git/dotfile/bashrc 	/root/.bash_aliases
 ls /etc/vim/vimrc.local 	1>| /dev/null 2>&1 || ln -s /root/git/dotfile/vimrc 	/etc/vim/vimrc.local
 
-(grep -q 'set colored-stats on' 0< /etc/inputrc) || echo 'set colored-stats on'	>> /etc/inputrc
+grep -q 'set colored-stats on' /etc/inputrc || 
+	echo 'set colored-stats on'	>> /etc/inputrc
 
 ${si_} 's/#\(alias grep=\)/\1/' 		/root/.bashrc
 ${si_} 's/\(alias ls=\)/#\1/'			/root/.bashrc
@@ -11,34 +22,39 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 # ================================== USERS ==========================================
 
-if [ ${alien_} -eq 0 ]
-then
+grep -q groot /etc/passwd || 
+{
 	echo earth 1>| /etc/hostname && 
 	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
-	
 	echo 'promt for root' && 
 	passwd root
-
-	useradd --create-home groot && 
+	
+	useradd --create-home groot 	&& 
 	${si_} '/groot/s/$/\/bin\/bash/' /etc/passwd && 
-	echo 'promt for groot' && 
+	echo 'promt for groot' 		&& 
 	passwd groot
 
 	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
-fi
+}
 
-# =============================== DIRECTORIES =======================================
+# ================================= CRON JOBS ======================================
 
-	mkdir /root/git/web 	&&
-		git clone https://github.com/GypsyCosmonaut/web.git 		/root/git/web 
-	
-	mkdir -p /root/tmp/trash 	
-	mkdir -p /var/www/html/s
+grep -q updatedb /var/spool/cron/crontabs/root ||
+{ 
+	{ crontab -l; echo "01 01 * * * updatedb"; } 		| crontab -
+	{ crontab -l; echo "01 01 * * * rm -rf ${tmp_}/*"; } 	| crontab -
+	{ crontab -l; echo "01 01 * * * export DISPLAY=:0 && xhost local:root && /usr/bin/firefox"; }	| crontab -
+}
+
+	#{
+	#echo "7		5	/root/files/mega	/root/files/anacron"
+	#} >> /etc/anacrontab
+
+if [ ${alien_} -eq 0 ]
+then	
 
 # ================================= STARTUP ========================================
 
-if [ ${alien_} -eq 0 ]
-then
 	{
 		echo '[Desktop Entry]'
 		echo 'Type=Application'
@@ -67,20 +83,6 @@ then
 
 	chmod 750 /root/git/web/main
 
-# ================================= CRON JOBS ======================================
-
-	{ crontab -l; echo "01 01 * * * updatedb"; } 		| crontab -
-
-
-	{ crontab -l; echo "01 01 * * * rm -rf ${tmp_}/*"; } 	| crontab -
-
-
-	{ crontab -l; echo "01 01 * * * export DISPLAY=:0 && xhost local:"${USER}" && /usr/bin/firefox"; }	| crontab -
-
-	#{
-	#echo "7		5	/root/files/mega	/root/files/anacron"
-	#} >> /etc/anacrontab
-
 # =============================== CONFIGURATIONS ====================================
 
 	git config --global user.name GypsyCosmonaut
@@ -101,16 +103,20 @@ then
 	${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
 	${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
 
-	${si_} 's/^#\(GRUB_GFXMODE=\).*/\1auto/; s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1""/; s/^\(GRUB_BACKGROUND=\)/\1""/' 								/etc/default/grub
-	{
-		echo 'GRUB_BACKGROUND=""' 
-		echo GRUB_TERMINAL_OUTPUT=console
-	} >> /etc/default/grub
+# ==================================== GRUB =========================================
 
-	update-grub 2>| /dev/null
+	${si_} 's/^#\(GRUB_GFXMODE=\).*/\1auto/; s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1""/; s/^\(GRUB_BACKGROUND=\)/\1""/' 								/etc/default/grub
+	grep -i -q background /etc/default/grub ||
+	{
+		{
+			echo 'GRUB_BACKGROUND=""' 
+			echo GRUB_TERMINAL_OUTPUT=console
+		} >> /etc/default/grub
+
+		update-grub 2>| /dev/null
+	}
 
 # ================================= GSETTINGS ======================================
-
 
 	gconvert() {
 		g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
