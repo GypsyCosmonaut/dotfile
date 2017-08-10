@@ -32,8 +32,8 @@ fi
 	mkdir /root/git/web 	&&
 		git clone https://github.com/GypsyCosmonaut/web.git 		/root/git/web 
 	
-	mkdir /root/tmp/trash 	
-	mkdir /var/www/html/s
+	mkdir -p /root/tmp/trash 	
+	mkdir -p /var/www/html/s
 
 # ================================= STARTUP ========================================
 
@@ -46,12 +46,12 @@ then
 		echo 'Hidden=false'
 		echo 'NoDisplay=false '
 		echo 'X-GNOME-Autostart-enabled=true'
-	} 1>| install -D /root/.config/autostart/start.desktop /dev/stdin -m 750
+	} | install -D /dev/stdin /root/.config/autostart/start.desktop -m 750
 
 
 	{
 		echo 'gnome-terminal --full-screen'
-	} 1>| install -D /root/files/onlogin /dev/stdin -m 750
+	} | install -D /dev/stdin /root/files/onlogin /dev/stdin -m 750
 
 # =============================== EXECUTABLES =======================================
 
