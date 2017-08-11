@@ -31,7 +31,7 @@
 	-CAUTION- -OR-	DELETE the configurations before appending
 SKIP
 
-export tmp_="/root/tmp/trash"
+declare -x tmp_="/root/tmp/trash"
 export si_="sed -i"
 export se_="sed -e"
 export gs_="gsettings set"

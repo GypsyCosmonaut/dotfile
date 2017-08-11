@@ -102,6 +102,8 @@ then
 	${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
 	${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
 	${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
+	
+	dconf write /org/gnome/desktop/session/idle-delay "uint32 0"
 
 # ==================================== GRUB =========================================
 
@@ -135,6 +137,7 @@ then
 
 	#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
 	
+	${gs_} ${og_}.desktop.screensaver lock-enabled false
 	${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
 	${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
 	${gs_} ${og_}.Terminal.Legacy.Settings tab-position 'bottom'
