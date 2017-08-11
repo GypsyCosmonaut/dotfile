@@ -136,8 +136,10 @@ then
 	#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
 	
 	${gs_} ${og_}.Terminal.Legacy.Settings theme-variant 'dark'
+	${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
+	${gs_} ${og_}.Terminal.Legacy.Settings tab-position 'bottom'
 	${gs_} ${og_}.desktop.lockdown disable-lock-screen true
-	${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'TOP'"
+	${gs_} ${og_}.shell.extensions.workspaces-to-dock dock-position "'bottom'"
 	${gs_} ${og_}.shell.extensions.workspaces-to-dock opaque-background false
 	${gs_} ${og_}.shell.extensions.workspaces-to-dock require-click-to-show false
 	${gs_} ${og_}.shell.extensions.workspaces-to-dock thumbnail-size 0.10
@@ -155,7 +157,6 @@ then
 	${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
 	${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
 	${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
-	${gs_} ${og_}.Terminal.Legacy.Settings default-show-menubar false
 	${gs_} ${og_}.desktop.datetime automatic-timezone true
 	${gs_} ${og_}.desktop.interface clock-show-date true
 	${gs_} ${og_}.desktop.interface clock-show-seconds true
