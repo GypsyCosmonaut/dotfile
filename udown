@@ -6,7 +6,7 @@ ls /root/tor-browser* 		1>| /dev/null 2>&1 ||
 
 #----------------------------------------------------------------------------------------------------------------------
 
-parallel --gnu "wget {}" <<<$(curl https://www.snort.org/downloads 2>| /dev/null | grep snortplus | grep -v "manual\|md5" | sed 's/.*"\(.*\)".*/\1/' | sed 's/\(.*\)/www.snort.org\1/')
+parallel --gnu "wget {}" <<<$(curl https://www.snort.org/downloads 2>| /dev/null | grep snortplus | grep -v "manual\|md5" | sed 's/.*"\(.*\)".*/www.snort.org\1/')
 
 #----------------------------------------------------------------------------------------------------------------------
 

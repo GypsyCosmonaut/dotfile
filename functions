@@ -5,6 +5,14 @@ case "${1}" in
 	"nohup")
 		nohup "${2}" 1>| /dev/null 2>&1 &
 	;;
+
+	"newx")
+		startx gnome-session -- :"${2}"
+	;;
+	
+	"connect")
+		nmcli d wifi connect "${2}" password "${3}"
+	;;
 	
 	"dict")
 		dict "${2}" | sed -n '/From Moby Thesaurus II/q;p'
@@ -193,6 +201,7 @@ case "${1}" in
 		printenv ; echo ;
 		cat /proc/cpuinfo ; echo;
 		lscpu ; echo ;
+		lspci -v ;
 	;;
 	
 	"gitup")
