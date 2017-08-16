@@ -91,13 +91,13 @@ case "${1}" in
 			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -;
 			tvar_=$(type "${2}" | sed '/shell builtin\|shell keyword/s/.*/1/') ; 
 		fi;
+		echo "^${2}$" | xargs man -k 2>| /dev/null
+		if [ $? -eq 0 ]; then 
+			#printf "%"$COLUMNS"s" | tr " " "-"
+			printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
+		fi;
 		if [ "${tvar_}" != "1" ] ; 
 		then
-			echo "^${2}$" | xargs man -k 2>| /dev/null
-			if [ $? -eq 0 ]; then 
-				#printf "%"$COLUMNS"s" | tr " " "-"
-				printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -; 
-			fi;
 			apt-cache search "^${2}$" | 
 			while read -r pkg desc; 
 			do 

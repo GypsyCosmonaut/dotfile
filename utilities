@@ -1,10 +1,10 @@
 howdoi rustc ghc xinit
 exuberant-ctags
-jsbeautifier enscript pandoc
+jsbeautifier pandoc
 aptitude dict gtypist praat tree bc dlocate pv ack
 ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem 
 vsftpd pure-ftpd ufw
-sox ffmpeg lame audacity sonic-visualiser tesseract-ocr youtube-dl vlc
+sox ffmpeg imagemagick enscribe lame audacity sonic-visualiser tesseract-ocr youtube-dl vlc
 scrypt parallel 
 nftables 
 metagoofil 
@@ -19,6 +19,7 @@ owasp-mantra-ff
 mutt 
 iperf 
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
+forensics-all forensics-full
 libimage-exiftool-perl exifprobe
 libpam-google-authenticator 
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell wikipedia2text whereami
