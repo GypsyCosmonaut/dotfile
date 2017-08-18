@@ -10,8 +10,13 @@ case "${1}" in
 		startx gnome-session -- :"${2}"
 	;;
 	
-	"connect")
-		nmcli d wifi connect "${2}" password "${3}"
+	"net")
+		if [ "${2}" == "connect" || "${2}" == "disconnect" ]
+		then
+			nmcli dev "${2}" "${3}"
+		else
+			nmcli dev connect "${2}" password "${3}"
+		fi
 	;;
 	
 	"dict")
@@ -50,15 +55,6 @@ case "${1}" in
 		curl https://null.co.in/chapters/2-delhi 2>/dev/null | grep registration | sed 's|[^-]*-\([^/]*\)/.*|\1|' | cut -d '-' -f 4- | sed 's/-\([[:digit:]].*\)/ \1/; s/\([[:digit:]]\{4\}\)-\(.*\)/\1 \2/' | head -5 | column -t
 	;;
 		
-	"lh")
-		if [ -z "${2}" ] ;
-			then
-				ls -FlAshZi --color=auto grep " \..*"	
-			else
-				ls -FlAshZi --color=auto ${2} | grep " \..*"
-		fi
-	;;
-	
 	"replace")
 		sed -i "/${2}/s:${3}:${4}:g" ${5} ; 
 	;;
@@ -77,10 +73,6 @@ case "${1}" in
 				print $_, $" x ($maxW - length), "   -", shift @e for @A;
 			' | 
 			sed 's/\(.*\)   -Installed: \(.*\)/\1\2/'
-	;;
-	
-	"lman")
-		echo "^${2}$" | xargs man -k ; 
 	;;
 	
 	"whatis")
@@ -210,14 +202,15 @@ case "${1}" in
 		echo -e "\x0a\x1b[7m\x57\x61\x6E\x74\x20\x61\x6C\x6C\x20\x63\x6F\x6D\x6D\x69\x74\x73\x20\x75\x6E\x73\x74\x61\x67\x65\x64\x20\x3F\x3F\x1b[27m\x0A"
 		read r1 ;
 		if echo "${r1}" | 
-			grep -iq "^y" ;	then
-				
+			grep -iq "^y" ;	
+		then
 			git reset ;
 		fi
 		echo -e "\x0a\x1b[7m\x67\x69\x74\x20\x61\x64\x64\x20\x3F\x3F\x1b[27m\x0A"
 		read r1 ;
 		if echo "${r1}" | 
-			grep -iq "^y" ;	then
+			grep -iq "^y" ;	
+		then
 			git add . ;
 		fi
 		git status -s ;
@@ -231,6 +224,10 @@ case "${1}" in
 	
 	"weather")
 		curl wttr.in/"^${2}$" 2>| /dev/null | head -n -3 ; 
+	;;
+	
+	"lh")
+		ls -FlAshZi --color=auto "${2:-.}" | grep " \..*"	
 	;;
 	
 	"lsd")
@@ -255,5 +252,6 @@ case "${1}" in
 	
 		paste ${tmp_}/1 ${tmp_}/2 ${tmp_}/3 >| ${tmp_}/0 ;
 		cat ${tmp_}/0 ;
+	;;
 esac
 	

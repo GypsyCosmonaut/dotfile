@@ -15,9 +15,9 @@ newx() {
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions newx "$@"
 	else echo $'\x1b[1mnewx \x1b[7mDisplay\x1b[27m'
 	fi }
-connect() {
-	if [ "${#}" -eq 2 ] ; then /root/git/dotfile/functions connect "$@"
-	else echo $'\x1b[1mconnect \x1b[7mSSID Password\x1b[27m'
+net() {
+	if [[ "${#}" -le 3 && "${#}" -ge 2 ]] ; then /root/git/dotfile/functions net "$@"
+	else echo $'\x1b[1mnet \x1b[7m[Action] SSID {Password | Interface}\x1b[27m'
 	fi }
 cproxy() {
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions cproxy "$@"
@@ -43,17 +43,9 @@ gedit() {
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions gedit "$@"
 	else echo $'\x1b[1mgedit \x1b[7mPath\x1b[27m'
 	fi }
-lh() {
-	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions lh "$@"
-	else echo $'\x1b[1mlh \x1b[7mPath\x1b[27m'
-	fi }
 replace() { 
 	if [ "${#}" -eq 4 ] ; then /root/git/dotfile/functions replace "$@"		
 	else echo $'\x1B\x5B\x31\x6D\x72\x65\x70\x6C\x61\x63\x65\x20\x1B\x5B\x37\x6D\x57\x68\x65\x72\x65\x20\x57\x68\x61\x74\x20\x54\x6F\x57\x68\x61\x74\x20\x50\x61\x74\x68\x1B\x5B\x32\x37\x6D';
-	fi }
-lman() { 
-	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions lman "$@"
-	else echo $'\x1b[1mlman \x1b[7mUtility\x1b[27m'
 	fi }
 weather() {
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions weather "$@"
@@ -86,5 +78,7 @@ grange() {
 lsd() {
 	/root/git/dotfile/functions lsd
 }	#pending
-
+lh() {
+	/root/git/dotfile/functions lh "$@"
+}
 #. /root/git/dotfile/ufunc

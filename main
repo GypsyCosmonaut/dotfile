@@ -64,7 +64,7 @@ then
 	perl -MPOSIX -e 'tcflush 0,0'
 	printf '\x0a\x1b[7m\x57\x61\x6e\x74\x20\x44\x69\x73\x74\x72\x6f\x20\x55\x70\x67\x72\x61\x64\x65\x20\x3f\x3f\x1b[27m'
 	read -n 1 r101 ; tput cr; tput el;
-		if echo "${r101}" | 
+	if echo "${r101}" | 
 		grep -iq "^y" ;	
 	then 
 		trap '' 2
@@ -111,6 +111,7 @@ then
 		fi
 	fi
 fi
+#nawk msgattrib gnuplot
 #watch fuser fdisk dd fsck r2 strftime(histtimeformat) xephyr xpra autofs logrotate rsync pkexec modprobe fdupes hunt
 #ldconfig objdump ld as nasm clang gcc g++
 #suricata mimikatz
