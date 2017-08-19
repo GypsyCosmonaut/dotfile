@@ -5,12 +5,12 @@ jsbeautifier pandoc
 aptitude dict gtypist praat tree bc dlocate pv ack
 ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem 
 vsftpd pure-ftpd ssh pterm
-sox ffmpeg imagemagick enscribe lame audacity sonic-visualiser tesseract-ocr youtube-dl vlc
+sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc
 scrypt parallel 
 nftables ufw
 metagoofil memtest86+ memtester
 vega 
-i3 awesome ranger
+i3 ranger
 squid3 
 routersploit websploit shellter 
 mitmf 
@@ -19,15 +19,13 @@ owasp-mantra-ff
 mutt 
 iperf 
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
-forensics-all forensics-full
 libimage-exiftool-perl exifprobe
 libpam-google-authenticator 
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell wikipedia2text whereami
-tor gnunet gnupg2 seccomp bittorrent amule aria2 lftp firejail
+tor gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
 torchat belenios-tool xbindkeys 
 megatools syncthing pastebinit clonezilla rclone 
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numatop stress stress-ng usbip 
 pdfcrack
 encfs ecryptfs-utils
-abs-guide c++-annotations libace-doc ns3-doc

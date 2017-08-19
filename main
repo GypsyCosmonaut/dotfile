@@ -85,6 +85,8 @@ then
 					apt-get install ${i} -y 2>&1 | tee /dev/tty | (GREP_COLORS='sl=1;7' grep "Unable to locate package" && read input_ 0< /dev/tty)
 				done
 			done 0< /root/git/dotfile/utilities
+			#abs-guide c++-annotations libace-doc ns3-doc
+			#forensics-all forensics-full
 			#eclipse eclipse-pydev
 			#doc-rfc qrfcview rfcdiff
 			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
@@ -93,6 +95,7 @@ then
 			#xinput evtest tor-dbg ddd stealth cde dialog
 			#systemctl journalctl
 			#compress lzma xz tar lrzip 7z 7za zip rar gzip bzip2 lzip lzop arj
+			#enscribe lame audacity sonic-visualiser
 		fi
 		perl -MPOSIX -e 'tcflush 0,0'
 		read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m' r10101 ; tput cr; tput el;
