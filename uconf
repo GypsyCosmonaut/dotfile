@@ -37,7 +37,7 @@ then
 		echo "[Login]"
 		echo --------- MEGA -----------	
 		echo user = $(read -p "Mail : " var_; echo "${var_}")
-		echo pass = $(read -p "Pass : " var_; echo "${var_}")
+		echo pass = $(read -p "Pass : " -s var_; echo "${var_}")
 	} > /root/.megarc
 	
 	#cp /lib/systemd/system/syncthing@.service /etc/systemd/system &&
