@@ -21,7 +21,7 @@ mutt
 iperf 
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
 libimage-exiftool-perl exifprobe
-libpam-google-authenticator 
+libpam-google-authenticator open-vm-tools
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell wikipedia2text whereami
 tor onionshare gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
 torchat telegram-desktop ricochet-imm belenios-tool xbindkeys 
