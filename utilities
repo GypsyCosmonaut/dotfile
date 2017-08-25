@@ -10,9 +10,9 @@ scrypt parallel
 nftables ufw
 metagoofil memtest86+ memtester
 vega 
-i3 ranger byobu
+i3 ranger byobu tmuxinator
 irssi
-squid3 
+squid3 bro
 routersploit websploit shellter 
 mitmf 
 privoxy 
@@ -23,11 +23,13 @@ kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools
 libimage-exiftool-perl exifprobe
 libpam-google-authenticator 
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell wikipedia2text whereami
-tor gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
-torchat belenios-tool xbindkeys 
+tor onionshare gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
+torchat telegram-desktop ricochet-imm belenios-tool xbindkeys 
 megatools syncthing pastebinit clonezilla rclone vagrant
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numatop stress stress-ng usbip htop
 pdfcrack
 encfs ecryptfs-utils
 bats
+apt-file checkinstall
+auditd forkstat

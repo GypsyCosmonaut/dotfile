@@ -34,7 +34,7 @@ case "${1}" in
 	"serve")
 		if [ "${2}" == "http" ]
 		then
-			cp "${3}" /var/www/html/files ;
+			cp "${3}" /var/www/html/files/ ;
 		fi
 	;;
 	
@@ -116,7 +116,7 @@ case "${1}" in
 	;;
 	
 	"open")
-		t1=$(sed 's/^.*\.\(.*\): .*/\1/i'<<<$(file "${2}"))
+		t1=$(sed 's/^.*\.\(.*\): .*/\1/i'0<<<$(file "${2}"))
 		if [ "${2}" == 'firefox' ]
 		then
 			(nohup python -m SimpleHTTPServer 8080 1>| /dev/null 2>&1 &) && nohup firefox "localhost:8080" 1>| /dev/null 2>&1 &

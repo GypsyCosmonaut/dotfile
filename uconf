@@ -5,6 +5,8 @@ cat  index.html | sed '1,61d; 210,$d; /script/d' | sed 's/^\s*\(.*\)/\1/; s/gp.i
 "${si_}" 's/\(^#\)\([\t ]\+\)\(NONE\|art\|gif\|jpg\|png\|bmp\|tif\|avi\|mov\|mpg\|fws\|doc\|pst\|ost\|dbx\|idx\|mbx\|wpc\|htm\|pdf\|mail\|pgd\|pgp\|txt\|rpm\|wav\|ra\|dat\|zip\|java\|max\|pins\)\([\t ]\+\)\(n\|y\)\([\t ]\+\)\(.*\)/\2\3\4\5\6\7/'		/etc/scalpel/scalpel.conf
 SKIP
 
+#apt-file update
+
 download() {
 	echo "Download Utilities ??"
 	read -n 1 r1
@@ -25,7 +27,7 @@ then
 	ls /etc/apt/sources.list.d/docker.list 	1>| /dev/null 2>&1 ||
 	{
 		apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-		echo 'deb https://apt.dockerproject.org/repo debian-stretch main' >> /etc/apt/sources.list.d/docker.list
+		echo 'deb https://apt.dockerproject.org/repo debian-stretch main' 1>> /etc/apt/sources.list.d/docker.list
 		apt-get update
 		apt-get install docker-engine
 		#service docker start
@@ -52,6 +54,6 @@ then
 	${si_} '/.*sensible/s/\(.*\)/#\1/; s/^##/#/' /root/.config/i3/config
 	
 	grep -q "gnome-terminal" /root/.config/i3/config || 
-		echo 'bindsym $mod+Return exec gnome-terminal' >> /root/.config/i3/config	
+		echo 'bindsym $mod+Return exec gnome-terminal' 1>> /root/.config/i3/config	
 fi
 

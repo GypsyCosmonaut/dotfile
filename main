@@ -106,9 +106,9 @@ then
 			echo $'\x0a\033[1m \x1b[7m\x59\x6F\x75\x27\x72\x65\x20\x72\x65\x71\x75\x69\x72\x65\x64\x20\x74\x6F\x20\x73\x74\x61\x79\x21\x1b[27m \033[0m'
 			google-authenticator ;
 			(grep -q google /etc/pam.d/comm-auth) || 
-				echo 'auth required pam_google_authenticator.so nullok' 	>> /etc/pam.d/comm-auth
+				echo 'auth required pam_google_authenticator.so nullok' 	1>> /etc/pam.d/comm-auth
 			#(grep -q groot 0< /etc/pam.d/sshd) 	||
-				#echo 'auth required pam_google_authenticator.so nullok' 	>> /etc/pam.d/sshd
+				#echo 'auth required pam_google_authenticator.so nullok' 	1>> /etc/pam.d/sshd
 			#"${si_}" 's/\(ChallengeResponseAuthentication \)no/\1yes/' /etc/ssh/sshd_config
 			#service ssh restart
 		fi

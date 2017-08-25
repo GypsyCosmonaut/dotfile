@@ -13,7 +13,7 @@ ls /root/.bash_aliases 		1>| /dev/null 2>&1 || ln -s /root/git/dotfile/bashrc 	/
 ls /etc/vim/vimrc.local 	1>| /dev/null 2>&1 || ln -s /root/git/dotfile/vimrc 	/etc/vim/vimrc.local
 
 grep -q 'set colored-stats on' /etc/inputrc || 
-	echo 'set colored-stats on'	>> /etc/inputrc
+	echo 'set colored-stats on'	1>> /etc/inputrc
 
 ${si_} 's/#\(alias grep=\)/\1/' 		/root/.bashrc
 ${si_} 's/\(alias ls=\)/#\1/'			/root/.bashrc
@@ -34,7 +34,7 @@ grep -q groot /etc/passwd ||
 	echo 'promt for groot' 		&& 
 	passwd groot
 
-	echo "groot	ALL=(ALL:ALL) ALL" 		>> /etc/sudoers
+	echo "groot	ALL=(ALL:ALL) ALL" 		1>> /etc/sudoers
 }
 
 # ================================= CRON JOBS ======================================
@@ -48,7 +48,7 @@ grep -q updatedb /var/spool/cron/crontabs/root ||
 
 	#{
 	#echo "7		5	/root/files/mega	/root/files/anacron"
-	#} >> /etc/anacrontab
+	#} 1>> /etc/anacrontab
 
 if [ ${alien_} -eq 0 ]
 then	
@@ -113,7 +113,7 @@ then
 		{
 			echo 'GRUB_BACKGROUND=""' 
 			echo GRUB_TERMINAL_OUTPUT=console
-		} >> /etc/default/grub
+		} 1>> /etc/default/grub
 
 		update-grub 2>| /dev/null
 	}
@@ -176,4 +176,8 @@ then
 	${gs_} ${og_}.desktop.background primary-color '#000000'
 	${gs_} ${og_}.desktop.background secondary-color '#000000'
 	${gs_} ${og_}.desktop.background picture-uri ''	
+
+# ================================= OTHER ======================================
+
+	${si_} 's/\()}\)\(\\\[\)/\1${?##0}\2/' .bashrc
 fi

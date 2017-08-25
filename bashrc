@@ -1,6 +1,7 @@
 
 export HISTSIZE=
 export HISTFILESIZE=
+export EDITOR='vim'
 
 complete -d cd rmdir
 
@@ -59,10 +60,10 @@ whatis() {
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions whatis "$@"
 	else echo $'\x1b[1mwhat \x1b[7mUtility\x1b[27m'
 	fi }	
-open() {
-	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions open "$@"	
-	else echo $'\x1b[1mopen \x1b[7mFile\x1b[27m'
-	fi }	
+#open() {
+#	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions open "$@"	
+#	else echo $'\x1b[1mopen \x1b[7mFile\x1b[27m'
+#	fi }	
 show() {
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions show "$@"		
 	else echo $'\x1b[1mshow \x1b[7mUtility\x1b[27m'
