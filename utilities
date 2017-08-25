@@ -1,4 +1,4 @@
-howdoi rustc ghc xinit
+info howdoi rustc ghc xinit 
 strace ltrace valgrind 
 exuberant-ctags
 jsbeautifier pandoc
