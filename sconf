@@ -98,10 +98,10 @@ then
 	${si_} 's/.*\(AutomaticLoginEnable \).*/\1= true/' 	/etc/gdm3/daemon.conf
 	${si_} 's/.*\(AutomaticLogin \).*/\1= root/' 		/etc/gdm3/daemon.conf
 	${si_} 's/LEFT/RIGHT/'					/etc/dconf/db/local.d/kali-tweaks
-	${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
-	${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
-	${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
-	${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
+#	${si_} 's/\(size=\)32/\120/' 				/etc/dconf/db/local.d/kali-tweaks
+#	${si_} 's/\(shrink=\)true/\1false/' 			/etc/dconf/db/local.d/kali-tweaks
+#	${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
+#	${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
 	
 	dconf write /org/gnome/desktop/session/idle-delay "uint32 0"
 
