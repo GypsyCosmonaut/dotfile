@@ -1,4 +1,5 @@
 info howdoi rustc ghc xinit 
+sublime-text docker-engine
 strace ltrace valgrind 
 exuberant-ctags
 jsbeautifier pandoc
