@@ -102,7 +102,7 @@ then
 			#eclipse eclipse-pydev
 			#doc-rfc qrfcview rfcdiff
 			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
-			#xrandr xdpyinfo gimp inkscape darktable fbi fim groff glfer
+			#xrandr xdpyinfo gimp inkscape blender synfig darktable fbi fim groff glfer
 			#dbeacon flamethrower uftp udpcast	
 			#xinput evtest tor-dbg ddd stealth cde dialog
 			#systemctl journalctl
