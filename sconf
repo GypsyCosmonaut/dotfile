@@ -128,12 +128,12 @@ then
 	g_schema_=${og_}.Terminal.Legacy.Keybindings
 	gconvert ;
 
-	${gs_} ${schema_path_} new-window '<Control>n'
-	${gs_} ${schema_path_} new-tab '<Primary>t'
-	${gs_} ${schema_path_} close-tab '<Ctrl>q'
+	${gs_} ${schema_path_} new-window '<Shift>n'
+	${gs_} ${schema_path_} new-tab '<Shift>t'
+	${gs_} ${schema_path_} close-tab '<Shift>q'
 	${gs_} ${schema_path_} next-tab '<Shift>Right'
 	${gs_} ${schema_path_} prev-tab '<Shift>Left'
-	${gs_} ${schema_path_} full-screen '<Ctrl>f'
+	${gs_} ${schema_path_} full-screen '<Shift>f'
 
 	#"${gs_}" "${og_}".desktop.default-applications.terminal exec terminator
 	
