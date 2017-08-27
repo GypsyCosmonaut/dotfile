@@ -67,6 +67,7 @@ then
 
 	{
 		echo 'gnome-terminal --full-screen'
+		echo '#shred -fxz /root/.bash_history && echo -n 1>| /root/.bash_history'
 	} | install -D /dev/stdin /root/files/onlogin -m 750
 
 # =============================== EXECUTABLES =======================================
@@ -130,7 +131,7 @@ then
 
 	${gs_} ${schema_path_} new-window '<Shift>n'
 	${gs_} ${schema_path_} new-tab '<Shift>t'
-	${gs_} ${schema_path_} close-tab '<Shift>q'
+	${gs_} ${schema_path_} close-tab '<Primary><Shift>q'
 	${gs_} ${schema_path_} next-tab '<Shift>Right'
 	${gs_} ${schema_path_} prev-tab '<Shift>Left'
 	${gs_} ${schema_path_} full-screen '<Shift>f'
