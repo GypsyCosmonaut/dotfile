@@ -4,7 +4,7 @@ strace ltrace valgrind
 exuberant-ctags
 jsbeautifier pandoc
 aptitude dict gtypist praat tree bc dlocate pv ack
-ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem 
+ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem par
 vsftpd pure-ftpd ssh pterm
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc
 scrypt parallel 
