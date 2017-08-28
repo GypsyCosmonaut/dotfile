@@ -128,8 +128,8 @@ then
 		fi
 	fi
 fi
-#nawk msgattrib gnuplot
-#watch fuser fdisk dd fsck r2 strftime(histtimeformat) xephyr xpra autofs logrotate rsync pkexec modprobe fdupes hunt
+#nawk fmt msgattrib gnuplot
+#fuser fdisk dd fsck r2 strftime(histtimeformat) xephyr xpra autofs logrotate rsync pkexec modprobe fdupes hunt
 #ldconfig objdump ld as nasm clang gcc g++
 #suricata mimikatz
 #scratch
