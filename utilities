@@ -11,7 +11,7 @@ scrypt parallel
 nftables ufw
 metagoofil memtest86+ memtester
 vega 
-i3 ranger byobu tmuxinator
+i3 ranger byobu tmuxinator guake
 irssi newsbeuter
 squid3 bro
 routersploit websploit shellter 
