@@ -68,6 +68,7 @@ then
 	{
 		echo 'gnome-terminal --full-screen'
 		echo '#shred -fxz /root/.bash_history && echo -n 1>| /root/.bash_history && history -c'
+		echo 'nohup guake 1>| dev/null 2>&1 &'
 	} | install -D /dev/stdin /root/files/onlogin -m 750
 
 # =============================== EXECUTABLES =======================================
