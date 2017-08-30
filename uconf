@@ -40,10 +40,20 @@ then
 		echo --------- MEGA -----------	
 		echo user = $(read -p "Mail : " var_; echo "${var_}")
 		echo pass = $(read -p "Pass : " -s var_; echo "${var_}")
-	} > /root/.megarc
+	} 1>| /root/.megarc
 	
 	#cp /lib/systemd/system/syncthing@.service /etc/systemd/system &&
 		#systemctl enable syncthing@root
+	
+	ls /root/.gconf/apps/guake/keybindings/global/%gconf.xml	1>| /dev/zero 2>&1 || 
+	{
+		echo '<?xml version="1.0"?>'
+		echo '<gconf>'
+		echo $'\t''<entry name="show_hide" mtime="1504082227" type="string">'
+		echo $'\t\t''<stringvalue>&lt;Primary&gt;grave</stringvalue>'
+		echo $'\t''</entry>'
+		echo '</gconf>'
+	} 1>| /root/.gconf/apps/guake/keybindings/global/%gconf.xml
 
 	${si_} '/disable_lua =/s/true/false/' /etc/wireshark/init.lua
 
