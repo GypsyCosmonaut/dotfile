@@ -131,6 +131,7 @@ then
 fi
 #nawk fmt msgattrib gnuplot
 #fuser fdisk dd fsck r2 strftime(histtimeformat) xephyr xpra autofs logrotate rsync pkexec modprobe fdupes hunt
+#mknod mkswap modinfo modprobe
 #ldconfig objdump ld as nasm clang gcc g++
 #suricata mimikatz
 #scratch
