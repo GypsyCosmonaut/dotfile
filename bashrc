@@ -12,6 +12,10 @@ complete -d cd rmdir
 
 #tput reset
 
+code() {
+	if [ -z "${#}" ] ; then /root/git/dotfile/functions code "$@"
+	else echo $'\x1b[1mcode \x1b[7mUtilities\x1b[27m'
+}
 newx() {
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions newx "$@"
 	else echo $'\x1b[1mnewx \x1b[7mDisplay\x1b[27m'
