@@ -159,7 +159,7 @@ then
 	${gs_} ${og_}.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
 	${gs_} ${og_}.desktop.wm.keybindings switch-applications "['<Super>Tab']"
 	${gs_} ${og_}.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
-	${gs_} ${og_}.desktop.datetime automatic-timezone true
+	${gs_} ${og_}.desktop.datetime automatic-timezone false
 	${gs_} ${og_}.desktop.interface clock-show-date true
 	${gs_} ${og_}.desktop.interface clock-show-seconds true
 	${gs_} ${og_}.desktop.interface show-battery-percentage true
@@ -178,5 +178,6 @@ then
 
 # ================================= OTHER ======================================
 
+	timedatectl set-timezone Asia/Kolkata
 	${si_} 's/\()}\)\(\\\[\)/\1${?##0}\2/' .bashrc
 fi
