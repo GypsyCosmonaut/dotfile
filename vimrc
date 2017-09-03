@@ -2,18 +2,34 @@ set nocompatible
 syntax on
 filetype plugin on
 set background=dark
-set showcmd
+"set showcmd
 set showmatch
 set incsearch
 set number
 set cursorline
-"set cursorcolumn
+set cursorcolumn
 set hlsearch
 
-set path+=**
-set wildmenu
+set ignorecase
+set smartcase
 
-command! MakeTags !ctags -R .
+set foldenable
+set foldcolumn=4
+
+set autoindent
+set smartindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+set laststatus=4
+set foldcolumn=4      "set fdc=4
+set foldmethod=indent "set fdm=indent
+
+"set path+=**
+"set wildmenu
+
+"command! MakeTags !ctags -R .
 
 "highlight LineNr ctermfg=grey
 "highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
