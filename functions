@@ -1,11 +1,24 @@
 
-#echo "$@"
 case "${1}" in
 
 	"nohup")
 		nohup "${2}" 1>| /dev/null 2>&1 &
 	;;
-
+	
+	"code")
+		for i in "${@:2}"
+		do
+			mkdir /root/code/"${i}"
+			(
+				cd /root/code/"${i}" && 
+				(
+					apt-get source "${i}" || 
+					rm -r /root/code/"${i}"
+				)
+			)
+		done
+	;;
+	
 	"newx")
 		startx gnome-session -- :"${2}"
 	;;
@@ -254,4 +267,3 @@ case "${1}" in
 		cat ${tmp_}/0 ;
 	;;
 esac
-	
