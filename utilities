@@ -34,3 +34,4 @@ encfs ecryptfs-utils
 bats
 apt-file checkinstall
 auditd forkstat
+leaktracer nmon kmtrace
