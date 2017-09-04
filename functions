@@ -8,12 +8,12 @@ case "${1}" in
 	"code")
 		for i in "${@:2}"
 		do
-			mkdir /root/code/"${i}"
+			mkdir /root/source/"${i}"
 			(
-				cd /root/code/"${i}" && 
+				cd /root/source/"${i}" && 
 				(
 					apt-get source "${i}" || 
-					rm -r /root/code/"${i}"
+					rm -r /root/source/"${i}"
 				)
 			)
 		done
