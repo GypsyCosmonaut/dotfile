@@ -5,7 +5,8 @@ ls /root/git/web	1>| /dev/null 2>&1 || (	mkdir /root/git/web 	&&
 	git clone https://github.com/GypsyCosmonaut/web.git 		/root/git/web )
 	
 mkdir -p /root/tmp/trash 	
-mkdir -p /var/www/html/s
+mkdir -p /var/www/html/s 	
+mkdir /root/source 		2>| /dev/null
 
 # ================================= SYMLINKS ========================================
 
