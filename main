@@ -111,6 +111,7 @@ then
 			#systemctl journalctl
 			#compress lzma xz tar lrzip 7z 7za zip rar gzip bzip2 lzip lzop arj
 			#enscribe lame audacity sonic-visualiser
+			#plumbr
 		fi
 		perl -MPOSIX -e 'tcflush 0,0'
 		read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m' r10101 ; tput cr; tput el;
