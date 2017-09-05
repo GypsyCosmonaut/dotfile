@@ -29,6 +29,7 @@ torchat telegram-desktop ricochet-imm belenios-tool xbindkeys
 megatools syncthing pastebinit clonezilla rclone vagrant
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numatop stress stress-ng usbip htop
+iftop iptraf jnettop nethogs
 pdfcrack
 encfs ecryptfs-utils
 bats
