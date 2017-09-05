@@ -49,9 +49,8 @@ else
 	export alien_=1
 fi
 
-ls /root/git		1>| /dev/zero 2>&1 || 	mkdir /root/git 	
-ls /root/git/dotfile	1>| /dev/null 2>&1 || (	mkdir /root/git/dotfile 	&&
-	git clone https://github.com/GypsyCosmonaut/dotfile.git		/root/git/dotfile )
+ls /root/work/dotfile	1>| /dev/null 2>&1 || (	mkdir /root/work/dotfile 	&&
+	git clone https://github.com/GypsyCosmonaut/dotfile.git		/root/work/dotfile )
 
 ${si_} 's/http.kali/repo.kali/' /etc/apt/sources.list
 ${si_} '/deb-src/s/^# //' 	/etc/apt/sources.list
