@@ -36,3 +36,4 @@ bats
 apt-file checkinstall
 auditd forkstat
 leaktracer nmon kmtrace
+cython-doc hwb
