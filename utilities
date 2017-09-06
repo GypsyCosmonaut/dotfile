@@ -1,5 +1,6 @@
 info howdoi rustc ghc xinit 
 sublime-text docker-engine
+linuxbrew-wrapper
 strace ltrace valgrind 
 exuberant-ctags
 jsbeautifier pandoc zipalign
