@@ -3,7 +3,7 @@ sublime-text docker-engine
 linuxbrew-wrapper
 strace ltrace valgrind 
 exuberant-ctags
-jsbeautifier pandoc zipalign
+jsbeautifier pandoc
 aptitude dict gtypist praat tree bc dlocate pv ack
 ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem par
 vsftpd pure-ftpd ssh pterm
@@ -22,6 +22,7 @@ owasp-mantra-ff
 mutt 
 iperf 
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
+zipalign veil-catapult veil-evasion
 libimage-exiftool-perl exifprobe
 libpam-google-authenticator open-vm-tools
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell wikipedia2text whereami
