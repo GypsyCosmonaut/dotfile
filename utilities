@@ -1,7 +1,8 @@
 info howdoi rustc ghc perl6 xinit 
-sublime-text docker-engine
+sublime-text docker-engine wine32
+complexity
 linuxbrew-wrapper
-strace ltrace valgrind 
+strace ltrace valgrind nocache
 exuberant-ctags
 jsbeautifier pandoc
 aptitude dict gtypist praat tree bc dlocate pv ack
@@ -10,9 +11,14 @@ vsftpd pure-ftpd ssh pterm
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc
 scrypt parallel 
 nftables ufw
-metagoofil memtest86+ memtester
+metagoofil 
+pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta 
+exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley
+memtest86+ memtester conntrack conntrackd eventstat systraq mirmon metche
+sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit sosreport cockpit-system
+batmand
 vega 
-i3 ranger byobu tmuxinator guake
+i3 ranger byobu tmuxinator guake fsvs
 irssi newsbeuter
 squid3 bro
 routersploit websploit shellter 
@@ -23,11 +29,10 @@ mutt
 iperf 
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
 zipalign veil-catapult veil-evasion
-libimage-exiftool-perl exifprobe
 libpam-google-authenticator open-vm-tools
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell wikipedia2text whereami
 tor onionshare gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
-torchat telegram-desktop ricochet-imm belenios-tool xbindkeys 
+torchat telegram-desktop ricochet-im belenios-tool xbindkeys 
 megatools syncthing pastebinit clonezilla rclone vagrant
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numatop stress stress-ng usbip htop
@@ -37,5 +42,4 @@ encfs ecryptfs-utils
 bats
 apt-file checkinstall
 auditd forkstat
-leaktracer nmon kmtrace
-cython-doc hwb
+leaktracer nmon kmtrace inotify-tools
