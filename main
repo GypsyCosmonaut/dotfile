@@ -99,10 +99,10 @@ then
 					apt-get install ${i} -y 2>&1 | tee /dev/tty | (GREP_COLORS='sl=1;7' grep "Unable to locate package" && read input_ 0< /dev/tty)
 				done
 			done 0< /root/git/dotfile/utilities
-			#abs-guide c++-annotations libace-doc ns3-doc
+			#abs-guide c++-annotations libace-doc ns3-doc complexity-doc cython-doc
 			#forensics-all forensics-full
 			#eclipse eclipse-pydev
-			#doc-rfc qrfcview rfcdiff
+			#hwb doc-rfc qrfcview rfcdiff
 			#boinc 	texlive-full gedit-plugins xautomation xwd lynx emacs mktemp w3m watchdog
 			#xrandr xdpyinfo gimp inkscape blender synfig darktable fbi fim groff glfer
 			#dbeacon flamethrower uftp udpcast	
