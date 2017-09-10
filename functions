@@ -59,15 +59,18 @@ case "${1}" in
 		nohup gedit "${2}" 1>| /dev/null 2>&1 & 
 	;;
 	
-	"hex")
+	"hx")
 		cat /dev/stdin  | hexdump -v -e '"\\x" 1/1 "%02X"' && echo ;
 	;;
-
 
 	"null")
 		curl https://null.co.in/chapters/2-delhi 2>/dev/null | grep registration | sed 's|[^-]*-\([^/]*\)/.*|\1|' | cut -d '-' -f 4- | sed 's/-\([[:digit:]].*\)/ \1/; s/\([[:digit:]]\{4\}\)-\(.*\)/\1 \2/' | head -5 | column -t
 	;;
-		
+	
+	"wiki")
+		wp2t "${2}" | less
+	;;
+	
 	"replace")
 		sed -i "/${2}/s:${3}:${4}:g" ${5} ; 
 	;;
