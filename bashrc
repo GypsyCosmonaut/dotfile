@@ -56,6 +56,10 @@ weather() {
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions weather "$@"
 	else echo $'\x1b[1mweather \x1b[7mPlace\x1b[27m'
 	fi }
+wiki() {
+	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions wiki "$@"
+	else echo $'\x1b[1mwiki \x1b[7mSearch\x1b[27m'
+	fi }
 search() { 	
 	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions search "$@"
 	else echo $'\x1B\x5B\x31\x6D\x73\x6C\x69\x73\x74\x20\x1B\x5B\x37\x6D\x55\x74\x69\x6C\x69\x74\x79\x1B\x5B\x32\x37\x6D'
@@ -86,4 +90,8 @@ lsd() {
 lh() {
 	/root/git/dotfile/functions lh "$@"
 }
+hx() { 
+	if [ "${#}" -eq 1 ] ; then /root/git/dotfile/functions hx "$@"
+	else echo $'\x1b[1mhx \x1b[7mString\x1b[27m'
+	fi }
 #. /root/git/dotfile/ufunc
