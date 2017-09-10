@@ -17,9 +17,9 @@ exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley
 memtest86+ memtester conntrack conntrackd eventstat systraq mirmon metche
 sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit sosreport cockpit-system
 batmand
-vega 
+vega httest
 i3 ranger byobu tmuxinator guake fsvs
-irssi newsbeuter
+irssi newsbeuter rtv
 squid3 bro
 routersploit websploit shellter 
 mitmf 
@@ -30,12 +30,14 @@ iperf
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
 zipalign veil-catapult veil-evasion
 libpam-google-authenticator open-vm-tools
-talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell wikipedia2text whereami
+talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell whereami
+lynx elinks wikipedia2text
 tor onionshare gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
 torchat telegram-desktop ricochet-im belenios-tool xbindkeys 
 megatools syncthing pastebinit clonezilla rclone vagrant
 sipsak rfcat crackmapexec 
-yara ns2 ns3 ntopng numatop stress stress-ng usbip htop
+yara ns2 ns3 ntopng numad numatop stress stress-ng usbip htop
+neopi peframe pyew mhap tlsh-tools cerspotter
 iftop iptraf jnettop nethogs
 pdfcrack
 encfs ecryptfs-utils
