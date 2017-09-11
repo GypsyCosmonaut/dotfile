@@ -7,6 +7,7 @@ exuberant-ctags
 jsbeautifier pandoc
 aptitude dict gtypist praat tree bc dlocate pv ack
 ccrypt shc arpwatch rotix dirmngr speedtest-cli xdotool wmctrl lshw jq ed pyp zoem par
+makeself lockout htshells
 vsftpd pure-ftpd ssh pterm
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc
 scrypt parallel 
@@ -28,13 +29,13 @@ owasp-mantra-ff
 mutt 
 iperf 
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools 
-zipalign veil-catapult veil-evasion
+zipalign veil-catapult veil-evasion shellter
 libpam-google-authenticator open-vm-tools
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell whereami
 lynx elinks wikipedia2text
 tor onionshare gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
 torchat telegram-desktop ricochet-im belenios-tool xbindkeys 
-megatools syncthing pastebinit clonezilla rclone vagrant
+megatools syncthing pastebinit rtv clonezilla rclone vagrant
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numad numatop stress stress-ng usbip htop
 neopi peframe pyew mhap tlsh-tools cerspotter
