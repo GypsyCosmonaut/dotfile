@@ -34,6 +34,7 @@ zipalign veil-catapult veil-evasion shellter
 libpam-google-authenticator open-vm-tools
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell whereami
 lynx elinks wikipedia2text
+na
 tor onionshare gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
 torchat telegram-desktop ricochet-im belenios-tool xbindkeys 
 megatools syncthing pastebinit rtv clonezilla rclone vagrant
@@ -52,3 +53,4 @@ xul-ext-cookie-monster xul-ext-requestpolicy xul-ext-toggle-proxy xul-ext-cookie
 xul-ext-torbirdy xul-ext-certificatepatrol xul-ext-webdeveloper xul-ext-toggle-proxy xul-ext-refcontrol
 xul-ext-useragentswitcher xul-ext-scrapbook xul-ext-tabmixplus xul-ext-dom-inspector xul-ext-scrapbook xul-ext-tabmixplus 
 xul-ext-foxyproxy-standard xul-ext-all-in-one-sidebar xul-ext-perspectives
+baitfisher sipcalc genius trace-summary pump dhcp-helper
