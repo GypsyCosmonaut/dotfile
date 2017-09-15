@@ -36,7 +36,7 @@ export si_="sed -i"
 export se_="sed -e"
 export gs_="gsettings set"
 export og_="org.gnome"
-export func_="/root/git/dotfile/functions"
+export func_="/root/work/dotfile/functions"
 
 t_='anyway'
 
@@ -98,7 +98,7 @@ then
 					echo $'\x1b[7m'${i}$'\x1b[27m'
 					apt-get install ${i} -y 2>&1 | tee /dev/tty | (GREP_COLORS='sl=1;7' grep "Unable to locate package" && read input_ 0< /dev/tty)
 				done
-			done 0< /root/git/dotfile/utilities
+			done 0< /root/work/dotfile/utilities
 			#abs-guide c++-annotations libace-doc ns3-doc complexity-doc cython-doc
 			#forensics-all forensics-full
 			#eclipse eclipse-pydev
@@ -110,7 +110,9 @@ then
 			#systemctl journalctl
 			#compress lzma xz tar lrzip 7z 7za zip rar gzip bzip2 lzip lzop arj
 			#enscribe lame audacity sonic-visualiser
-			#plumbr
+			#plumbr dcfldd wce xpa-tools vlan
+			#php-http-request netsniff-ng netwox nxproxy-dbg httpry-dbg
+			#beancounter smtm
 		fi
 		perl -MPOSIX -e 'tcflush 0,0'
 		read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m' r10101 ; tput cr; tput el;
@@ -136,17 +138,17 @@ fi
 #suricata mimikatz
 #scratch
 
-chmod 750 /root/git/dotfile/sconf
+chmod 750 /root/work/dotfile/sconf
 
 read -n 1 -p $'\x1b[1m\x1b[7mWant it Configured '${t_}$'??\x1b[27m' r1 ; tput cr; tput el;
 if echo ${r1} |
 	grep -iq "^y" ;
 then
-	/root/git/dotfile/sconf
-	/root/git/dotfile/uconf
+	/root/work/dotfile/sconf
+	/root/work/dotfile/uconf
 fi
 
-. /root/git/dotfile/bashrc
+. /root/work/dotfile/bashrc
 
 perl -MPOSIX -e 'tcflush 0,0'
 echo $'\x0a\x1b[7m\x3E\x3E\x3E\x20\x27\x72\x65\x6c\x6f\x61\x64\x27\x20\x69\x73\x20\x73\x65\x74\x1b[27m'
