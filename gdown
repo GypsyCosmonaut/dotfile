@@ -1,0 +1,3 @@
+ls /root/work/web	1>| /dev/null 2>&1 || (	mkdir /root/work/web 	&&
+	git clone https://github.com/GypsyCosmonaut/web.git 		/root/work/web )
+
