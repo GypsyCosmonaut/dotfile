@@ -1,8 +1,7 @@
 
 # =============================== DIRECTORIES =======================================
 
-ls /root/work/web	1>| /dev/null 2>&1 || (	mkdir /root/work/web 	&&
-	git clone https://github.com/GypsyCosmonaut/web.git 		/root/work/web )
+/root/work/dotfile/gdown
 	
 mkdir -p /root/tmp/trash 	
 mkdir -p /var/www/html/s 	
@@ -12,8 +11,8 @@ mkdir /root/Downloads/util	2>| /dev/null
 
 # ================================= SYMLINKS ========================================
 
-ls /root/.bash_aliases 		1>| /dev/null 2>&1 || ln -s /root/git/dotfile/bashrc 	/root/.bash_aliases
-ls /etc/vim/vimrc.local 	1>| /dev/null 2>&1 || ln -s /root/git/dotfile/vimrc 	/etc/vim/vimrc.local
+ls /root/.bash_aliases 		1>| /dev/null 2>&1 || ln -s /root/work/dotfile/bashrc 	/root/.bash_aliases
+ls /etc/vim/vimrc.local 	1>| /dev/null 2>&1 || ln -s /root/work/dotfile/vimrc 	/etc/vim/vimrc.local
 
 grep -q 'set colored-stats on' /etc/inputrc || 
 	echo 'set colored-stats on'	1>> /etc/inputrc
@@ -79,14 +78,14 @@ then
 	chmod 750 /root/.config/autostart/start.desktop
 	chmod 750 /root/files/onlogin
 
-	chmod 750 /root/git/dotfile/bashrc
-	chmod 750 /root/git/dotfile/aliases
-	chmod 750 /root/git/dotfile/functions
-	chmod 750 /root/git/dotfile/vimrc
-	chmod 750 /root/git/dotfile/uconf
-	chmod 750 /root/git/dotfile/udown
+	chmod 750 /root/work/dotfile/bashrc
+	chmod 750 /root/work/dotfile/aliases
+	chmod 750 /root/work/dotfile/functions
+	chmod 750 /root/work/dotfile/vimrc
+	chmod 750 /root/work/dotfile/uconf
+	chmod 750 /root/work/dotfile/udown
 
-	chmod 750 /root/git/web/main
+	chmod 750 /root/work/web/main
 
 # =============================== CONFIGURATIONS ====================================
 
