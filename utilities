@@ -14,7 +14,7 @@ aptitude dict gtypist praat tree bc dlocate pv ack ext4magic
 arpwatch rotix dirmngr snetz speedtest-cli netselect scamper xdotool wmctrl lshw jq ed pyp zoem par
 makeself parallel packer lockout htshells
 vsftpd pure-ftpd ssh pterm
-sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc
+sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos
 scrypt ccrypt crackle 
 nftables ufw
 metagoofil 
