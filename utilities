@@ -1,36 +1,38 @@
-info howdoi rustc ghc perl6 pinpoint shellnoob cuckoo
-sublime-text docker-engine wine32 winetricks xinit hackersh xonsh aws-shell fish
+info howdoi rustc ghc perl6 pinpoint shellnoob cuckoo firejail
+sublime-text docker-engine llvm drmips wine32 winetricks xinit hackersh xonsh aws-shell fish disper
 complexity
 linuxbrew-wrapper
 strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft
 kmtrace mutrace maybe mtr nsntrace nfstrace netsniff-ng nmon intrace iputils-tracepath pcaputils jack-tools lttv kernelshark
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
-heaptrack heaptrack-gui inotify-tools batctl babeltrace 0trace apitrace
+heaptrack heaptrack-gui iputils-clockdiff inotify-tools batctl babeltrace 0trace apitrace abi-tracker mscgen 
+bandwidthd uwsgi-core eyewitness
 trinity valgrind nocache
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore
-exuberant-ctags
+exuberant-ctags sshfp
 jsbeautifier pandoc
-aptitude dict gtypist praat tree bc dlocate pv ack ext4magic
+aptitude dict gtypist praat tree bc dlocate pv ack ext4magic aria2 lftp 
 arpwatch rotix dirmngr snetz speedtest-cli netselect scamper xdotool wmctrl lshw jq ed pyp zoem par
 makeself parallel packer lockout htshells
 vsftpd pure-ftpd ssh pterm
-sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos
-scrypt ccrypt crackle 
-nftables ufw
+sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d 
+an wordplay aspic morse xdemorse
+scrypt ccrypt crackle otp rng-tools rng-tools5 uuidcdef
+d-itg mz ostinato packeth nftables ufw
 metagoofil 
 pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta
 exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley
 memtest86+ memtester conntrack conntrackd eventstat systraq mirmon metche
 sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit ndisc6 sosreport cockpit-system
-icmpinfo icmptx icmpush
+icmpinfo icmptx icmpush sip-tester
 batmand
 vega httest
 i3 spectrwm ranger byobu tmuxinator guake fsvs
-irssi newsbeuter rtv gpxviewer
+irssi pisg newsbeuter rtv gpxviewer
 squid3 bro bro-aux
 routersploit websploit shellter 
 mitmf 
-privoxy 
+privoxy spikeproxy
 owasp-mantra-ff 
 mutt buku
 iperf netperf socket 
@@ -40,13 +42,13 @@ zipalign veil-catapult veil-evasion shellter
 libpam-google-authenticator open-vm-tools
 talk empathy vim-addon-manager vim-youcompleteme pidgin translate-shell whereami
 lynx elinks wikipedia2text
-tor onionshare gnunet gnupg2 seccomp bittorrent amule aria2 netselect lftp firejail
-torchat telegram-desktop ricochet-im belenios-tool xbindkeys 
+tor onionshare gnunet gnupg2 seccomp bittorrent btcheck buildtorrent btfs mktorrent rhash twatch mldonkey-server amule fex
+torchat telegram-desktop ricochet-im belenios-tool premail mixmaster multimedia-broadcasting
 megatools syncthing pastebinit rtv clonezilla rclone vagrant
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numad numatop stress stress-ng usbip htop
 neopi peframe pyew mhap tlsh-tools cerspotter
-iftop iptraf jnettop nethogs
+iftop iptraf jnettop nethogs netdata xbindkeys
 pdfcrack
 encfs ecryptfs-utils
 bats
