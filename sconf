@@ -1,8 +1,6 @@
 
 # =============================== DIRECTORIES =======================================
 
-/root/work/dotfile/gdown
-	
 mkdir -p /root/tmp/trash 	
 mkdir -p /var/www/html/s 	
 mkdir /root/git 		2>| /dev/null
