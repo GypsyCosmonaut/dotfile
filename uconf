@@ -7,6 +7,17 @@ SKIP
 
 #apt-file update
 
+# ====================================== GITHUB ===================================================
+
+test -d /root/work/web || git clone https://github.com/GypsyCosmonaut/web.git $(mkdir $_ && echo $_)
+
+while read line_
+do
+	test -d /root/git/$(sed -n 's/.*\/\(.*\)\.git/\1/p' <<< "${line_}") || git clone "${line_}" $(mkdir $_ && echo $_)
+done 0< /root/work/dotfile/glink
+
+# ======================================== WEB ==================================================
+
 download() {
 	echo "Download Utilities ??"
 	read -n 1 r1
