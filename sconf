@@ -34,7 +34,8 @@ grep -q groot /etc/passwd ||
 	echo 'promt for groot' 		&& 
 	passwd groot
 
-	echo "groot	ALL=(ALL:ALL) ALL" 		1>> /etc/sudoers
+	# echo "groot	ALL=(ALL:ALL) ALL" 		1>> /etc/sudoers
+	adduser groot sudo
 }
 
 # ================================= CRON JOBS ======================================
