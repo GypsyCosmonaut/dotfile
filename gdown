@@ -1,5 +1,0 @@
-test -d /root/work/web       || git clone https://github.com/GypsyCosmonaut/web.git $(mkdir /root/work/web && echo $_)
-
-test -d /root/git/qrljack    || git clone https://github.com/OWASP/QRLJacking.git   $(mkdir /root/git/qrljack && echo $_)
-test -d /root/git/xerosploit || git clone https://github.com/LionSec/xerosploit.git $(mkdir /root/git/xerosploit && echo $_)
-test -d /root/git/dcrawl     || git clone https://github.com/kgretzky/dcrawl.git    $(mkdir /root/git/dcrawl && echo $_)
