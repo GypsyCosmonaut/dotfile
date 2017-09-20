@@ -182,6 +182,6 @@ then
 	timedatectl set-timezone Asia/Kolkata
 	${si_} 's/\()}\)\(\\\[\)/\1${?##0}\2/' .bashrc
 
-	sed -i '1 s/\( .*\)/ 8.8.8.8/; 2 s/ \(.*\)/ 8.8.4.4/' /etc/resolv.conf
+	sed -i '1 s/ .*/ 8.8.8.8/; 2 s/ .*/ 8.8.4.4/' /etc/resolv.conf
 
 fi
