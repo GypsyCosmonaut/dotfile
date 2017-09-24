@@ -13,7 +13,7 @@ test -d /root/work/web || git clone https://github.com/GypsyCosmonaut/web.git $(
 
 while read line_
 do
-	test -d /root/git/$(sed -n 's/.*\/\(.*\)\.git/\1/p' <<< "${line_}") || git clone "${line_}" $(mkdir $_ && echo $_)
+	test -d /root/git/$(sed -n 's/.*\/\(.*\)\.git/\1/p' 0<<< "${line_}") || git clone "${line_}" $(mkdir $_ && echo $_)
 done 0< /root/work/dotfile/glink
 
 # ======================================== WEB ==================================================
@@ -35,7 +35,7 @@ if [ ${alien_} -eq 0 ]
 then
 	download
 
-	ls /etc/apt/sources.list.d/docker.list 	1>| /dev/null 2>&1 ||
+	[ -f /etc/apt/sources.list.d/docker.list ] ||
 	{
 		apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 		echo 'deb https://apt.dockerproject.org/repo debian-stretch main' 1>> /etc/apt/sources.list.d/docker.list
@@ -45,7 +45,7 @@ then
 		#docker run hello-world
 	}
 	
-	ls /root/.megarc	1>| /dev/zero 2>&1 || 	
+	[ -f /root/.megarc ] || 	
 	{
 		echo "[Login]"
 		echo --------- MEGA -----------	
@@ -56,7 +56,7 @@ then
 	#cp /lib/systemd/system/syncthing@.service /etc/systemd/system &&
 		#systemctl enable syncthing@root
 	
-	ls /root/.gconf/apps/guake/keybindings/global/%gconf.xml	1>| /dev/zero 2>&1 || 
+	[ -f /root/.gconf/apps/guake/keybindings/global/%gconf.xml ] || 
 	{
 		echo '<?xml version="1.0"?>'
 		echo '<gconf>'
@@ -65,6 +65,25 @@ then
 		echo $'\t''</entry>'
 		echo '</gconf>'
 	} 1>| /root/.gconf/apps/guake/keybindings/global/%gconf.xml
+	
+	grep -q "^Port 22" /etc/ssh/sshd_config ||
+	{
+		echo 'Port 22'
+		echo 'PeritRootLogin yes'
+		echo 'MaxAuthTries 2'
+		echo 'MaxSessions 2'
+		echo 'PubKeyAuthentication no'
+		#echo 'PermitUserEnvironment yes'
+		#echo 'MaxStartups ?:?:?'
+		echo "AllowUsers ""$USER"
+	} 1>> /etc/ssh/sshd_config
+
+	grep -q "^write" /etc/vsftpd.conf ||
+	{
+		echo 'write_enable yes'
+		echo 'anon_upload_enable=YES'
+		echo 'anon_mkdir_write_enable=YES'
+	} 1>> /etc/vsftpd.conf
 
 	${si_} '/disable_lua =/s/true/false/' /etc/wireshark/init.lua
 
@@ -77,4 +96,3 @@ then
 	grep -q "gnome-terminal" /root/.config/i3/config || 
 		echo 'bindsym $mod+Return exec gnome-terminal' 1>> /root/.config/i3/config	
 fi
-
