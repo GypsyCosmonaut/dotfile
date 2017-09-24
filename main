@@ -112,7 +112,7 @@ then
 			#plumbr dcfldd wce xpa-tools vlan
 			#php-http-request netsniff-ng netwox nxproxy-dbg httpry-dbg
 			#beancounter smtm tcptraceroute rr pstack fakeroot-ng
-			#cymothoa cronic
+			#cymothoa cronic ifgate ifmail ifcico
 		fi
 		perl -MPOSIX -e 'tcflush 0,0'
 		read -n 1 -p $'\x0a\x1b[7m\x57\x61\x6E\x74\x20\x32\x46\x41\x20\x3F\x3F\x1b[27m' r10101 ; tput cr; tput el;
