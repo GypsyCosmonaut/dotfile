@@ -243,7 +243,7 @@ case "${1}" in
 	;;
 	
 	"lh")
-		ls -FlAshZi --color=auto "${2:-.}" | grep " \..*"	
+		ls -FlAshZi --color=auto "${2:-.}" | sed -n '/ [[:digit:]]\{1,2\} [[:digit:]]\{2\}:[[:digit:]]\{2\} \./p'
 	;;
 	
 	"lsd")
