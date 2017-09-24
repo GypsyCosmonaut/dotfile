@@ -73,6 +73,7 @@ then
 		echo 'MaxAuthTries 2'
 		echo 'MaxSessions 2'
 		echo 'PubKeyAuthentication no'
+		echo 'ls_recurse_enable=YES'
 		#echo 'PermitUserEnvironment yes'
 		#echo 'MaxStartups ?:?:?'
 		echo "AllowUsers ""$USER"
