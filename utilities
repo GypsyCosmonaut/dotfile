@@ -14,7 +14,7 @@ jsbeautifier pandoc smistrip
 aptitude dict gtypist praat tree bc dlocate pv ack ext4magic aria2 lftp 
 arpwatch rotix dirmngr snetz speedtest-cli netselect scamper xdotool wmctrl lshw jq ed pyp zoem par
 makeself parallel packer lockout htshells
-vsftpd pure-ftpd ssh pterm
+vsftpd pure-ftpd ssh sshguard pterm yadifa
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d 
 an wordplay aspic morse xdemorse
 scrypt ccrypt crackle otp rng-tools rng-tools5 uuidcdef
@@ -56,6 +56,7 @@ encfs ecryptfs-utils
 bats
 apt-file checkinstall 
 auditd forkstat
+fbreader calibre okular epub-utils epubcheck ebook2epub ebook-speaker sigil
 xul-ext-self-destructing-cookies xul-ext-noscript xul-ext-https-everywhere xul-ext-lightbeam xul-ext-greasemonkey 
 xul-ext-cookie-monster xul-ext-requestpolicy xul-ext-toggle-proxy xul-ext-cookie-monster xul-ext-dom-inspector
 xul-ext-torbirdy xul-ext-certificatepatrol xul-ext-webdeveloper xul-ext-toggle-proxy xul-ext-refcontrol
