@@ -9,8 +9,8 @@ mkdir /root/Downloads/util	2>| /dev/null
 
 # ================================= SYMLINKS ========================================
 
-[ -f /root/.bash_aliases ]  || ln -s /root/work/dotfile/bashrc 	"$_"
-[ -f /etc/vim/vimrc.local ] || ln -s /root/work/dotfile/vimrc 	"$_"
+test -f /root/.bash_aliases  || ln -s /root/work/dotfile/bashrc "$_"
+test -f /etc/vim/vimrc.local || ln -s /root/work/dotfile/vimrc 	"$_"
 
 grep -q 'set colored-stats on' /etc/inputrc || 
 	echo 'set colored-stats on'	1>> /etc/inputrc
