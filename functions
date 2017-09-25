@@ -19,10 +19,6 @@ case "${1}" in
 		done
 	;;
 	
-	"newx")
-		startx gnome-session -- :"${2}"
-	;;
-	
 	"net")
 		if [ "${2}" == "connect" || "${2}" == "disconnect" ]
 		then
