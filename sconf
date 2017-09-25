@@ -9,8 +9,8 @@ mkdir /root/Downloads/util	2>| /dev/null
 
 # ================================= SYMLINKS ========================================
 
-ls /root/.bash_aliases 		1>| /dev/null 2>&1 || ln -s /root/work/dotfile/bashrc 	/root/.bash_aliases
-ls /etc/vim/vimrc.local 	1>| /dev/null 2>&1 || ln -s /root/work/dotfile/vimrc 	/etc/vim/vimrc.local
+[ -f /root/.bash_aliases ]  || ln -s /root/work/dotfile/bashrc 	"$_"
+[ -f /etc/vim/vimrc.local ] || ln -s /root/work/dotfile/vimrc 	"$_"
 
 grep -q 'set colored-stats on' /etc/inputrc || 
 	echo 'set colored-stats on'	1>> /etc/inputrc
@@ -180,6 +180,7 @@ then
 # ================================= OTHER ======================================
 
 	timedatectl set-timezone Asia/Kolkata
+	
 	${si_} 's/\()}\)\(\\\[\)/\1${?##0}\2/' .bashrc
 
 	sed -i '1 s/ .*/ 8.8.8.8/; 2 s/ .*/ 8.8.4.4/' /etc/resolv.conf
