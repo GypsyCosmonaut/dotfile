@@ -13,7 +13,7 @@ alias iip="ip addr | grep 255"
 alias eip="curl -s http://whatismyip.akamai.com/ && echo"
 alias mail="curl https://temp-mail.org/ 2>| /dev/null | sed -n '/value/s/.*value=\"\([^\"]*\).*/\1/p'"
 alias wifi="nmcli dev wifi"
-alias x='startx gnome-session -- :"$(($(who | awk '{print $NF}' | sed 's/(:\([[:digit:]]\))/\1/')+1))"'
+alias x='startx gnome-session -- :"$(($(who | awk '{print $NF}' | sed 's/(:\([[:digit:]]\))/\1/' | sort | awk 'END{print}')+1))"'
 alias tailf="tail -f"
 alias mux='tmuxinator'
 alias mantra='owasp-mantra-ff'
