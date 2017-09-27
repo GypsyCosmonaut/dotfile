@@ -12,11 +12,12 @@ trinity valgrind nocache
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore
 exuberant-ctags sshfp
 jsbeautifier pandoc smistrip
-aptitude dict gtypist praat tree bc dlocate pv ack ext4magic aria2 lftp 
+aptitude dict gtypist praat tree bc dlocate pv ack ext4magic aria2 lftp nwipe  
 arpwatch rotix dirmngr snetz speedtest-cli netselect scamper xdotool wmctrl lshw jq ed pyp zoem par
 makeself parallel packer lockout htshells
 blktool
 gns3 plotnetcfg
+fruitywifi soapysdr-tools cubicsdr airspy gqrx-sdr hackrf hamradio-sdr quisk gnuradio
 vsftpd pure-ftpd ssh sshguard pterm yadifa bind9 maradns maradns-deadwood x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter
 resource-agents guacd vlan vde2 lldpd
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d 
@@ -34,7 +35,7 @@ batmand
 vega httest
 i3 spectrwm ranger byobu tmuxinator guake fsvs
 squid3 bro bro-aux snort snort-common-libraries
-routersploit websploit shellter grr-server nipper-ng
+routersploit websploit shellter grr-server nipper-ng fuitywifi
 mitmf 
 privoxy spikeproxy
 owasp-mantra-ff 
