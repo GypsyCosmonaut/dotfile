@@ -1,6 +1,6 @@
 info howdoi rustc ghc perl6 pinpoint shellnoob cuckoo firejail device-pharmer rgxg tails-installer
 sublime-text docker-engine llvm drmips wine32 winetricks xinit hackersh xonsh aws-shell fish disper doc-rfc qrfcview 
-complexity bing
+complexity bing pen
 linuxbrew-wrapper
 strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft
 kmtrace mutrace maybe mtr nsntrace nfstrace netsniff-ng nmon intrace iputils-tracepath pcaputils jack-tools lttv kernelshark
@@ -14,10 +14,10 @@ jsbeautifier pandoc smistrip
 aptitude dict gtypist praat tree bc dlocate pv ack ext4magic aria2 lftp 
 arpwatch rotix dirmngr snetz speedtest-cli netselect scamper xdotool wmctrl lshw jq ed pyp zoem par
 makeself parallel packer lockout htshells
-vsftpd pure-ftpd ssh sshguard pterm yadifa
+vsftpd pure-ftpd ssh sshguard pterm yadifa bind9 maradns maradns-deadwood x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d 
 an wordplay aspic morse xdemorse
-scrypt ccrypt crackle otp rng-tools rng-tools5 uuidcdef
+scrypt ccrypt crackle otp uuidcdef
 d-itg mz ostinato packeth nftables ufw
 metagoofil 
 pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta
