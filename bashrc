@@ -15,7 +15,7 @@ complete -d cd rmdir
 code() {
 	if [ -z "${#}" ] ; then /root/git/dotfile/functions code "$@"
 	else echo $'\x1b[1mcode \x1b[7mUtilities\x1b[27m'
-}
+	fi }
 net() {
 	if [[ "${#}" -le 3 && "${#}" -ge 2 ]] ; then /root/git/dotfile/functions net "$@"
 	else echo $'\x1b[1mnet \x1b[7m[Action] SSID {Password | Interface}\x1b[27m'
