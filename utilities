@@ -14,7 +14,9 @@ jsbeautifier pandoc smistrip
 aptitude dict gtypist praat tree bc dlocate pv ack ext4magic aria2 lftp 
 arpwatch rotix dirmngr snetz speedtest-cli netselect scamper xdotool wmctrl lshw jq ed pyp zoem par
 makeself parallel packer lockout htshells
+gns3 plotnetcfg
 vsftpd pure-ftpd ssh sshguard pterm yadifa bind9 maradns maradns-deadwood x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter
+vlan vde2 lldpd
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d 
 an wordplay aspic morse xdemorse
 scrypt ccrypt crackle otp uuidcdef
