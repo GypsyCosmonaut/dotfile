@@ -17,7 +17,10 @@ arpwatch rotix dirmngr snetz speedtest-cli netselect scamper xdotool wmctrl lshw
 makeself parallel packer lockout htshells
 blktool
 gns3 plotnetcfg
-fruitywifi soapysdr-tools cubicsdr airspy gqrx-sdr hackrf hamradio-sdr quisk gnuradio
+fruitywifi soapysdr-tools cubicsdr airspy gqrx-sdr hackrf hamradio-sdr quisk gnuradio 
+gr-gsm smstools kannel kannel-extras kannel-sqlbox gsm-utils gsm0710muxd osmo-bts osmo-sdr osmo-trx 
+osmocom-bs11-utils osmocom-bsc osmocom-bsc-nat osmocom-bsc-gbproxy osmocom-ipaccess-utils osmocom-nitb osmocom-sgsn 
+ofono ofono-phonesim connman
 vsftpd pure-ftpd ssh sshguard pterm yadifa bind9 maradns maradns-deadwood x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter
 resource-agents guacd vlan vde2 lldpd
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d 
@@ -35,14 +38,14 @@ batmand
 vega httest
 i3 spectrwm ranger byobu tmuxinator guake fsvs
 squid3 bro bro-aux snort snort-common-libraries
-routersploit websploit shellter grr-server nipper-ng fuitywifi
+routersploit websploit shellter grr-server nipper-ng cardpeek sipvicious
 mitmf 
 privoxy spikeproxy
 owasp-mantra-ff 
 mutt buku
 iperf netperf socket 
 sockstat procinfo multiwatch ncaptool nield monit mtail collectl can-utils conman stenographer
-captagent coturn mumble mumble-server sipwitch turnserver twinkle-console matrix-synapse
+captagent coturn mumble mumble-server sipwitch turnserver twinkle-console matrix-synapse baresip kamailio opensips cliofetion
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
 zipalign veil-catapult veil-evasion shellter
 libpam-google-authenticator open-vm-tools
