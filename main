@@ -135,7 +135,7 @@ fi
 #fuser fdisk dd fsck r2 strftime(histtimeformat) xephyr xpra autofs logrotate rsync pkexec modprobe fdupes hunt
 #mknod mkswap modinfo modprobe
 #ldconfig objdump ld as nasm clang gcc g++
-#suricata mimikatz
+#suricata mimikatz rng-tools rng-tools5
 #scratch
 
 chmod 750 /root/work/dotfile/sconf
