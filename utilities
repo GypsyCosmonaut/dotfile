@@ -21,7 +21,8 @@ fruitywifi soapysdr-tools cubicsdr airspy gqrx-sdr hackrf hamradio-sdr quisk gnu
 gr-gsm smstools kannel kannel-extras kannel-sqlbox gsm-utils gsm0710muxd osmo-bts osmo-sdr osmo-trx 
 osmocom-bs11-utils osmocom-bsc osmocom-bsc-nat osmocom-bsc-gbproxy osmocom-ipaccess-utils osmocom-nitb osmocom-sgsn 
 ofono ofono-phonesim connman
-vsftpd pure-ftpd ssh sshguard pterm yadifa bind9 maradns maradns-deadwood x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter
+vsftpd lftp pure-ftpd ssh sshguard pterm x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter
+yadifa bind9 maradns maradns-deadwood
 resource-agents guacd vlan vde2 lldpd
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d 
 an wordplay aspic morse xdemorse
