@@ -49,6 +49,7 @@ alias gitup="/root/git/dotfile/functions gitup"
 alias null="/root/git/dotfile/functions null"
 
 alias msfconsole="msfconsole -q"
+#alias nmcli="nmcli -f all"
 
 #alias upgrade="apt-get update; apt-get upgrade; apt-get dist-upgrade ; printf '\e[?5h' ; read -p '' ; printf '\e[?5l' ;"
 #alias uuidlater="(nmcli c) && (cat /proc/sys/kernel/random/uuid)"
