@@ -24,7 +24,7 @@ ofono ofono-phonesim connman
 vsftpd lftp pure-ftpd ssh sshguard pterm x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter
 yadifa bind9 maradns maradns-deadwood
 resource-agents guacd vlan vde2 lldpd
-sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d 
+sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d boxes
 an wordplay aspic morse xdemorse
 scrypt ccrypt crackle otp uuidcdef nettle-bin
 d-itg mz ostinato packeth nftables ufw
@@ -45,7 +45,7 @@ privoxy spikeproxy
 owasp-mantra-ff 
 mutt buku
 iperf netperf socket 
-sockstat procinfo multiwatch ncaptool nield monit mtail collectl can-utils conman stenographer
+sockstat procinfo multiwatch ncaptool nield monit mtail collectl can-utils conman stenographer nat-traverse
 captagent coturn mumble mumble-server sipwitch turnserver twinkle-console matrix-synapse baresip kamailio opensips cliofetion
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
 zipalign veil-catapult veil-evasion shellter
