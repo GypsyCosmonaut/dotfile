@@ -28,6 +28,14 @@ case "${1}" in
 		fi
 	;;
 	
+	"ni")
+		(
+			echo $'\x1b[1m\x1b[7mdevname mac mac-brd iip iip-brd eip\x1b[0m' && 
+			paste <(ip addr | grep '^[[:digit:]]' | awk '{print $2}' | sed 's/://') <(ip addr | sed 's/^ *//' | grep '^link' | awk '{print $2 "\t" $4}') <(ip addr | grep 'inet ' | awk '{print $2}') <(ip addr | grep 'inet6' | awk '{print $2}') && 
+			paste <(echo gateway) <(ip neighbour | awk '{print $5}') <(echo '?') <(ip neighbour | awk '{print $1}') <(echo '?') <(curl -s http://whatismyip.akamai.com/)
+		) | column -t
+	;;
+	
 	"dict")
 		dict "${2}" | sed -n '/From Moby Thesaurus II/q;p'
 	;;
