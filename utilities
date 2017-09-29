@@ -1,11 +1,11 @@
 info howdoi rustc ghc perl6 pinpoint shellnoob cuckoo firejail device-pharmer rgxg tails-installer flex bison 
 sublime-text docker-engine llvm drmips wine32 winetricks xinit hackersh xonsh aws-shell fish disper doc-rfc qrfcview 
-complexity bing pen
+complexity bing pen mobile-broadband-provider-info
 linuxbrew-wrapper
 strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft
-kmtrace mutrace maybe mtr nsntrace nfstrace netsniff-ng nmon intrace iputils-tracepath pcaputils jack-tools lttv kernelshark
+kmtrace mutrace smemcap maybe mtr nsntrace nfstrace netsniff-ng nmon intrace iputils-tracepath pcaputils jack-tools kernelshark
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
-heaptrack heaptrack-gui iputils-clockdiff inotify-tools batctl babeltrace 0trace apitrace abi-tracker mscgen wuzz xplico
+heaptrack heaptrack-gui iputils-clockdiff inotify-tools batctl babeltrace 0trace apitrace abi-tracker mscgen wuzz xplico lttv
 fio flent
 bandwidthd uwsgi-core eyewitness
 trinity valgrind nocache
