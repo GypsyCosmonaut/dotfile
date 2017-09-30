@@ -31,7 +31,7 @@ case "${1}" in
 	"ni")
 		(
 			echo $'\x1b[1m\x1b[7mdevname mac mac-brd iip4 iip6 eip\x1b[0m' && 
-			paste <(ip addr | grep '^[[:digit:]]' | awk '{print $2}' | sed 's/://') <(ip addr | sed 's/^ *//' | grep '^link' | awk '{print $2 "\t" $4}') <(ip addr | grep 'inet ' | awk '{print $2}') <(ip addr | grep 'inet6' | awk '{print $2}') && 
+			paste <(ip addr | awk '/^[[:digit:]]/{print $2}' | sed 's/://') <(ip addr | sed 's/^ *//' | awk '/^link/{print $2 "\t" $4}') <(ip addr | awk '/inet /{print $2}') <(ip addr | awk '/inet6/{print $2}') && 
 			paste <(echo gateway) <(ip neighbour | awk '{print $5}') <(echo '?') <(ip neighbour | awk '{print $1}') <(echo '?') <(curl -s http://whatismyip.akamai.com/)
 		) | column -t
 	;;
