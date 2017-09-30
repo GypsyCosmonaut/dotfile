@@ -33,7 +33,7 @@ pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta
 exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley
 memtest86+ memtester rekall-core conntrack conntrackd eventstat systraq mirmon metche
 sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit ndisc6 sosreport cockpit-system
-icmpinfo icmptx icmpush sip-tester
+icmpinfo icmptx icmpush sip-tester etherape scap-workbench
 nfdump flowscan flowgrind softflowd pmacct fprobe-ng fastnetmon
 batmand
 vega httest
