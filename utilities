@@ -71,7 +71,10 @@ apt-file checkinstall
 auditd forkstat
 fbreader calibre okular epub-utils epubcheck ebook2epub ebook-speaker sigil
 strongswan strongswan-nm
-network-manager-pptp network-manager-openvpn network-manager-vpnc
+network-manager-pptp network-manager-l2tp network-manager-ssh network-manager-iodine network-manager-openvpn network-manager-vpnc
+network-manager-openconnect 
+network-manager-pptp-gnome network-manager-ssh-gnome network-manager-vpnc-gnome network-manager-iodine-gnome 
+network-manager-l2tp-gnome network-manager-openconnect-gnome network-manager-openvpn-gnome
 xul-ext-self-destructing-cookies xul-ext-noscript xul-ext-https-everywhere xul-ext-lightbeam xul-ext-greasemonkey 
 xul-ext-cookie-monster xul-ext-requestpolicy xul-ext-toggle-proxy xul-ext-cookie-monster xul-ext-dom-inspector
 xul-ext-torbirdy xul-ext-certificatepatrol xul-ext-webdeveloper xul-ext-toggle-proxy xul-ext-refcontrol
