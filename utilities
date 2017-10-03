@@ -21,8 +21,8 @@ gns3 plotnetcfg
 fruitywifi soapysdr-tools cubicsdr airspy gqrx-sdr hackrf hamradio-sdr quisk gnuradio 
 gr-gsm smstools kannel kannel-extras kannel-sqlbox gsm-utils gsm0710muxd osmo-bts osmo-sdr osmo-trx 
 osmocom-bs11-utils osmocom-bsc osmocom-bsc-nat osmocom-bsc-gbproxy osmocom-ipaccess-utils osmocom-nitb osmocom-sgsn 
-ofono ofono-phonesim connman
-vsftpd lftp pure-ftpd ssh sshguard pterm x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter pptpd vtun
+ofono ofono-phonesim connman 
+vsftpd lftp pure-ftpd ssh sshguard pterm x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd
 yadifa bind9 maradns maradns-deadwood
 resource-agents guacd vlan vde2 lldpd
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d boxes
@@ -40,7 +40,8 @@ nfdump flowscan flowgrind softflowd pmacct fprobe-ng fastnetmon
 batmand
 vega httest
 i3 spectrwm dwm ranger byobu tmuxinator guake fsvs
-squid3 bro bro-aux snort snort-common-libraries
+squid3 
+bro bro-aux snort snort-common-libraries freeradius
 routersploit websploit shellter grr-server nipper-ng cardpeek sipvicious
 mitmf 
 privoxy spikeproxy
