@@ -7,7 +7,7 @@ strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace netsniff-ng nmon intrace iputils-tracepath pcaputils jack-tools kernelshark
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
 heaptrack heaptrack-gui iputils-clockdiff inotify-tools batctl babeltrace 0trace apitrace abi-tracker mscgen wuzz xplico lttv
-fio flent
+icinga fio flent
 bandwidthd uwsgi-core eyewitness
 trinity valgrind nocache
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo
@@ -22,12 +22,12 @@ fruitywifi soapysdr-tools cubicsdr airspy gqrx-sdr hackrf hamradio-sdr quisk gnu
 gr-gsm smstools kannel kannel-extras kannel-sqlbox gsm-utils gsm0710muxd osmo-bts osmo-sdr osmo-trx 
 osmocom-bs11-utils osmocom-bsc osmocom-bsc-nat osmocom-bsc-gbproxy osmocom-ipaccess-utils osmocom-nitb osmocom-sgsn 
 ofono ofono-phonesim connman
-vsftpd lftp pure-ftpd ssh sshguard pterm x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter
+vsftpd lftp pure-ftpd ssh sshguard pterm x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter pptpd
 yadifa bind9 maradns maradns-deadwood
 resource-agents guacd vlan vde2 lldpd
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d boxes
 an wordplay aspic morse xdemorse
-scrypt ccrypt crackle otp uuidcdef nettle-bin
+scrypt ccrypt argon2 crackle otp uuidcdef nettle-bin
 d-itg mz ostinato packeth nftables ufw
 metagoofil 
 pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta
@@ -63,12 +63,14 @@ sipsak rfcat crackmapexec
 yara ns2 ns3 ntopng numad numatop stress stress-ng usbip htop
 neopi peframe pyew mhap tlsh-tools cerspotter
 iftop iptraf jnettop nethogs netdata xbindkeys
-pdfcrack
+pdfcrack fcrackzip rarcrack
 encfs ecryptfs-utils
 bats
 apt-file checkinstall 
 auditd forkstat
 fbreader calibre okular epub-utils epubcheck ebook2epub ebook-speaker sigil
+strongswan strongswan-nm
+network-manager-pptp network-manager-openvpn network-manager-vpnc
 xul-ext-self-destructing-cookies xul-ext-noscript xul-ext-https-everywhere xul-ext-lightbeam xul-ext-greasemonkey 
 xul-ext-cookie-monster xul-ext-requestpolicy xul-ext-toggle-proxy xul-ext-cookie-monster xul-ext-dom-inspector
 xul-ext-torbirdy xul-ext-certificatepatrol xul-ext-webdeveloper xul-ext-toggle-proxy xul-ext-refcontrol
