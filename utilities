@@ -1,21 +1,23 @@
-info howdoi rustc ghc perl6 puppet pinpoint shellnoob cuckoo firejail swapspace rgxg tails-installer flex bison cryptol 
-sublime-text docker-engine llvm drmips wine32 winetricks xinit hackersh xonsh aws-shell fish disper doc-rfc qrfcview 0install
+info howdoi rustc ghc perl6 puppet pinpoint shellnoob cuckoo firejail swapspace rgxg flex bison cryptol tendermint
+sublime-text docker-engine llvm drmips wine32 winetricks daemonize
+xinit hackersh xonsh aws-shell fish disper doc-rfc qrfcview 0install
 complexity bing pen mobile-broadband-provider-info
 cpulimit cpufreqd mom
 linuxbrew-wrapper
-electrum sia
+electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace netsniff-ng nmon intrace iputils-tracepath pcaputils jack-tools kernelshark
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
 heaptrack heaptrack-gui iputils-clockdiff inotify-tools batctl babeltrace 0trace apitrace abi-tracker mscgen wuzz xplico lttv
-icinga fio flent msr-tools
+inetutils-traceroute speedtest-cli speedometer
+icinga fio flent msr-tools 
 bandwidthd uwsgi-core eyewitness
 trinity valgrind nocache
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo
 exuberant-ctags sshfp
 jsbeautifier universalindentgui pandoc smistrip
 aptitude dict gtypist praat tree snapper bc dlocate pv ack ext4magic aria2 lftp nwipe  
-arpwatch rotix dirmngr snetz speedtest-cli netselect scamper xdotool wmctrl lshw jq ed pyp zoem par cduce
+arpwatch rotix dirmngr snetz netselect scamper xdotool wmctrl lshw jq ed pyp zoem par cduce
 makeself parallel packer lockout htshells
 blktool
 gns3 plotnetcfg
@@ -25,10 +27,11 @@ osmocom-bs11-utils osmocom-bsc osmocom-bsc-nat osmocom-bsc-gbproxy osmocom-ipacc
 ofono ofono-phonesim connman 
 vsftpd lftp pure-ftpd ssh sshguard pterm x11vnc x2vnc directvnc xrdp pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd
 yadifa bind9 maradns maradns-deadwood
-resource-agents guacd vlan vde2 lldpd
+resource-agents guacd vlan vde2 lldpd anytun
+ike isakmpd racoon exabgp 
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d boxes
 an wordplay aspic morse xdemorse
-codecrypt scrypt ccrypt argon2 crackle otp uuidcdef nettle-bin
+codecrypt scrypt ccrypt argon2 crackle otp uuidcdef nettle-bin wire tcpcryptd
 d-itg mz ostinato packeth nftables ufw
 metagoofil 
 pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta
