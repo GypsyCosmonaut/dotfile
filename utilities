@@ -1,6 +1,6 @@
-info howdoi rustc ghc perl6 puppet pinpoint shellnoob cuckoo firejail swapspace rgxg flex bison cryptol tendermint
+info howdoi rustc ghc perl6 puppet pinpoint shellnoob rgxg flex bison cryptol tendermint wap-wml-tools
 sublime-text docker-engine llvm drmips wine32 winetricks daemonize
-xinit hackersh xonsh aws-shell fish disper doc-rfc qrfcview 0install
+xinit hackersh xonsh aws-shell fish disper doc-rfc qrfcview 0install tmate
 complexity bing pen mobile-broadband-provider-info
 cpulimit cpufreqd mom
 linuxbrew-wrapper
@@ -9,7 +9,7 @@ strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace netsniff-ng nmon intrace iputils-tracepath pcaputils jack-tools kernelshark
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
 heaptrack heaptrack-gui iputils-clockdiff inotify-tools batctl babeltrace 0trace apitrace abi-tracker mscgen wuzz xplico lttv
-inetutils-traceroute speedtest-cli speedometer
+inetutils-traceroute speedtest-cli speedometer netmate netperfmeter netsend
 icinga fio flent msr-tools 
 bandwidthd uwsgi-core eyewitness
 trinity valgrind nocache
@@ -17,8 +17,8 @@ wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload 
 exuberant-ctags sshfp
 jsbeautifier universalindentgui pandoc smistrip
 aptitude dict gtypist praat tree snapper bc dlocate pv ack ext4magic aria2 lftp nwipe  
-arpwatch rotix dirmngr snetz netselect scamper xdotool wmctrl lshw jq ed pyp zoem par cduce
-makeself parallel packer lockout htshells
+arpwatch rotix dirmngr snetz netselect scamper xdotool wmctrl lshw jq ed pyp zoem par cduce netsed
+makeself parallel packer lockout htshells 
 blktool
 gns3 plotnetcfg
 fruitywifi soapysdr-tools cubicsdr airspy gqrx-sdr hackrf hamradio-sdr quisk gnuradio 
@@ -38,27 +38,27 @@ pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta
 exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley
 memtest86+ memtester srecord rekall-core conntrack conntrackd eventstat systraq mirmon metche
 sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit ndisc6 sosreport cockpit-system
-icmpinfo icmptx icmpush echoping sip-tester scap-workbench etherape niceshaper
+icmpinfo icmptx icmpush echoping oping 2ping sip-tester scap-workbench etherape niceshaper tcpxtract
 bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump  
 nfdump flowscan flowgrind softflowd pmacct fprobe-ng fastnetmon
 batmand
 vega httest
 i3 spectrwm dwm ranger byobu tmuxinator guake fsvs
 squid3 
-bro bro-aux snort snort-common-libraries freeradius
-routersploit websploit shellter grr-server nipper-ng cardpeek sipvicious device-pharmer
+bro bro-aux snort snort-common-libraries netmrg freeradius
+routersploit websploit shellter grr-server nipper-ng cardpeek sipvicious device-pharmer amap cuckoo firejail swapspace
 mitmf 
 privoxy spikeproxy
 owasp-mantra-ff 
 mutt buku
-iperf netperf socket 
+iperf netperf socket netperfmeter
 sockstat procinfo multiwatch ncaptool nield monit mtail collectl can-utils conman stenographer nat-traverse
 captagent coturn mumble mumble-server sipwitch turnserver twinkle-console matrix-synapse baresip kamailio opensips cliofetion
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
 zipalign veil-catapult veil-evasion shellter
 libpam-google-authenticator open-vm-tools
 irssi bitlbee ekg2 pisg newsbeuter rtv gpxviewer
-talk empathy vim-addon-manager vim-youcompleteme finch translate-shell whereami
+talk empathy dianara vim-addon-manager vim-youcompleteme finch translate-shell whereami
 lynx elinks wikipedia2text
 tor onionshare gnunet gnupg2 seccomp bittorrent btcheck buildtorrent btfs mktorrent rhash twatch mldonkey-server amule fex 
 torchat telegram-desktop ricochet-im belenios-tool premail mixmaster multimedia-broadcasting ifgate ifcico citadel-suite
@@ -70,7 +70,7 @@ neopi peframe pyew mhap tlsh-tools cerspotter
 iftop iptraf jnettop nethogs netdata ethtool xbindkeys
 pdfcrack fcrackzip rarcrack
 encfs ecryptfs-utils
-bats
+bats ansiweather 
 apt-file checkinstall 
 auditd forkstat
 fbreader calibre okular epub-utils epubcheck ebook2epub ebook-speaker sigil
