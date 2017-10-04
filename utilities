@@ -63,7 +63,7 @@ zulucrypt-cli zulumount-cli zulusafe-cli
 sipsak rfcat crackmapexec 
 yara ns2 ns3 ntopng numad numatop stress stress-ng usbip htop
 neopi peframe pyew mhap tlsh-tools cerspotter
-iftop iptraf jnettop nethogs netdata xbindkeys
+iftop iptraf jnettop nethogs netdata ethtool xbindkeys
 pdfcrack fcrackzip rarcrack
 encfs ecryptfs-utils
 bats
