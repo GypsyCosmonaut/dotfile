@@ -51,15 +51,15 @@ mitmf
 privoxy spikeproxy
 owasp-mantra-ff 
 mutt buku
-iperf netperf socket netperfmeter
+iperf netperf socket netperfmeter 
 sockstat procinfo multiwatch ncaptool nield monit mtail collectl can-utils conman stenographer nat-traverse
 captagent coturn mumble mumble-server sipwitch turnserver twinkle-console matrix-synapse baresip kamailio opensips cliofetion
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
 zipalign veil-catapult veil-evasion shellter
 libpam-google-authenticator open-vm-tools
 irssi bitlbee ekg2 pisg newsbeuter rtv gpxviewer
-talk empathy dianara vim-addon-manager vim-youcompleteme finch translate-shell whereami
-lynx elinks wikipedia2text
+talk talkd empathy dianara inetutils-talk inetutils-talkd vim-addon-manager vim-youcompleteme finch translate-shell whereami
+lynx elinks wikipedia2text tf
 tor onionshare gnunet gnupg2 seccomp bittorrent btcheck buildtorrent btfs mktorrent rhash twatch mldonkey-server amule fex 
 torchat telegram-desktop ricochet-im belenios-tool premail mixmaster multimedia-broadcasting ifgate ifcico citadel-suite
 megatools syncthing pastebinit rtv clonezilla rclone vagrant
