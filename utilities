@@ -60,7 +60,8 @@ libpam-google-authenticator open-vm-tools
 irssi bitlbee ekg2 pisg newsbeuter rtv gpxviewer
 talk talkd empathy dianara inetutils-talk inetutils-talkd vim-addon-manager vim-youcompleteme finch translate-shell whereami
 lynx elinks wikipedia2text tf
-onionshare gnunet gnupg2 seccomp bittorrent btcheck buildtorrent mktorrent rhash twatch mldonkey-server amule fex sendfile filetea
+onionshare gnunet gnupg2 seccomp bittorrent btcheck buildtorrent mktorrent rhash twatch mldonkey-server amule 
+fex sendfile filetea uucp
 tor torchat telegram-desktop ricochet-im belenios-tool premail mixmaster multimedia-broadcasting ifgate ifcico citadel-suite btfs
 megatools syncthing pastebinit rtv clonezilla rclone vagrant
 zulucrypt-cli zulumount-cli zulusafe-cli
