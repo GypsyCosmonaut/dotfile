@@ -106,8 +106,6 @@ then
 #	${si_} 's/\(opacity=\)0/\1100/' 			/etc/dconf/db/local.d/kali-tweaks
 #	${si_} 's/.*\(opacity\).*/background-\1=0/'		/etc/dconf/db/local.d/kali-tweaks
 	
-	dconf write /org/gnome/desktop/session/idle-delay "uint32 0"
-
 # ==================================== GRUB =========================================
 
 	${si_} 's/^#\(GRUB_GFXMODE=\).*/\1auto/; s/^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*/\1""/; s/^\(GRUB_BACKGROUND=\)/\1""/' 								/etc/default/grub
@@ -121,7 +119,9 @@ then
 		update-grub 2>| /dev/null
 	}
 
-# ================================= GSETTINGS ======================================
+# ============================= GSETTINGS AND DCONF =================================
+
+	dconf write /org/gnome/desktop/session/idle-delay "uint32 0"
 
 	gconvert() {
 		g_path_=$(echo ${g_schema_} | sed 'y|.|/|; s|$|/|; s|^|/|; s|\(.*\)|\L\1|')
