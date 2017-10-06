@@ -30,7 +30,7 @@ yadifa bind9 maradns maradns-deadwood
 resource-agents guacd vlan vde2 lldpd anytun
 ike isakmpd racoon exabgp 
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d boxes gopchop
-an wordplay aspic morse xdemorse
+an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck
 codecrypt scrypt ccrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef nettle-bin wire tcpcryptd
 d-itg mz ostinato packit packeth nftables ufw
 opencaster scantv streamer xtv ttv tvtime fbtv freetuxtv
@@ -46,7 +46,7 @@ batmand
 vega httest
 i3 spectrwm dwm ranger byobu tmuxinator guake fsvs
 squid3 
-bro bro-aux broctl snort snort-common-libraries netmrg freeradius
+bro bro-aux broctl binpac snort snort-common-libraries netmrg freeradius 
 routersploit websploit shellter grr-server nipper-ng cardpeek sipvicious device-pharmer amap cuckoo firejail swapspace
 mitmf 
 privoxy spikeproxy
