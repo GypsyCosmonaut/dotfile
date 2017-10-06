@@ -1,6 +1,6 @@
 info howdoi rustc ghc perl6 puppet pinpoint shellnoob rgxg flex bison cryptol tendermint wap-wml-tools
 sublime-text docker-engine llvm drmips wine32 winetricks daemonize
-xinit hackersh xonsh aws-shell fish disper doc-rfc qrfcview 0install tmate
+xinit dsh hackersh xonsh aws-shell fish disper doc-rfc qrfcview 0install tmate
 complexity bing pen mobile-broadband-provider-info
 cpulimit cpufreqd mom
 linuxbrew-wrapper
@@ -31,9 +31,9 @@ resource-agents guacd vlan vde2 lldpd anytun
 ike isakmpd racoon exabgp 
 sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d boxes gopchop
 an wordplay aspic morse xdemorse
-codecrypt scrypt ccrypt argon2 crackle otp uuidcdef nettle-bin wire tcpcryptd
+codecrypt scrypt ccrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef nettle-bin wire tcpcryptd
 d-itg mz ostinato packit packeth nftables ufw
-opencaster scantv streamer xtv ttv tvtime fbtv
+opencaster scantv streamer xtv ttv tvtime fbtv freetuxtv
 metagoofil 
 pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta
 exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley
@@ -59,11 +59,12 @@ zipalign veil-catapult veil-evasion shellter
 libpam-google-authenticator open-vm-tools
 irssi bitlbee ekg2 pisg newsbeuter gpxviewer
 captagent coturn mumble mumble-server sipwitch turnserver twinkle-console matrix-synapse baresip kamailio opensips cliofetion
-talk talkd empathy inetutils-talk inetutils-talkd vim-addon-manager vim-youcompleteme finch translate-shell whereami
+talk talkd empathy inetutils-talk inetutils-talkd vim-addon-manager vim-youcompleteme finch translate-shell 
 lynx elinks wikipedia2text tf
 onionshare gnunet gnupg2 seccomp bittorrent btcheck buildtorrent mktorrent rhash twatch mldonkey-server amule 
 magic-wormhole fex sendfile filetea uucp
 dianara pypump-shell rtv bti
+whereami gpsbabel gpsd gpsd-clients
 tor torchat telegram-desktop ricochet-im belenios-tool premail mixmaster multimedia-broadcasting ifgate ifcico citadel-suite btfs
 megatools syncthing pastebinit clonezilla rclone vagrant
 zulucrypt-cli zulumount-cli zulusafe-cli
@@ -89,3 +90,4 @@ xul-ext-useragentswitcher xul-ext-scrapbook xul-ext-tabmixplus xul-ext-dom-inspe
 xul-ext-foxyproxy-standard xul-ext-all-in-one-sidebar xul-ext-perspectives
 baitfisher genius trace-summary pump dhcp-helper dhcp-probe whowatch arpon irssi-scripts pconsole sugarplum 4g8
 sipcalc ipcalc ipv6calc aggregate grepcidr
+agtl 
