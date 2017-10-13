@@ -18,7 +18,23 @@ case "${1}" in
 			)
 		done
 	;;
-	
+
+	"mac")
+		lynx --dump 'https://code.wireshark.org/review/gitweb?p=wireshark.git;a=blob_plain;f=manuf' | grep -i "${2}"
+	;;
+
+	"tld")
+		lynx --dump http://data.iana.org/TLD/tlds-alpha-by-domain.txt | grep -i "${2}"
+	;;
+
+	"registrar")
+		lynx --dump https://www.icann.org/registrar-reports/accredited-list.html | grep -i "${2}" | sed 's/ *//'
+	;;
+
+	"registry")
+		lynx --dump --nolist 'https://www.icann.org/resources/pages/listing-2012-02-25-en' | grep -i "${2}" | sed 's/ *//'
+	;;
+
 	"net")
 		if [ "${2}" == "connect" || "${2}" == "disconnect" ]
 		then

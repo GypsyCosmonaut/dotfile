@@ -74,17 +74,17 @@ then
 
 # =============================== EXECUTABLES =======================================
 
-	chmod 750 /root/.config/autostart/start.desktop
-	chmod 750 /root/files/onlogin
+	chmod 0750 /root/.config/autostart/start.desktop
+	chmod 0750 /root/files/onlogin
 
-	chmod 750 /root/work/dotfile/bashrc
-	chmod 750 /root/work/dotfile/aliases
-	chmod 750 /root/work/dotfile/functions
-	chmod 750 /root/work/dotfile/vimrc
-	chmod 750 /root/work/dotfile/uconf
-	chmod 750 /root/work/dotfile/udown
+	chmod 0750 /root/work/dotfile/bashrc
+	chmod 0750 /root/work/dotfile/aliases
+	chmod 0750 /root/work/dotfile/functions
+	chmod 0750 /root/work/dotfile/vimrc
+	chmod 0750 /root/work/dotfile/uconf
+	chmod 0750 /root/work/dotfile/udown
 
-	chmod 750 /root/work/web/main
+	chmod 0750 /root/work/web/main
 
 # =============================== CONFIGURATIONS ====================================
 
