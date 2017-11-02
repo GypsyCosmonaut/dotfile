@@ -6,6 +6,7 @@ set background=dark
 set showmatch
 set incsearch
 set number
+"set spell
 set cursorline
 set cursorcolumn
 set hlsearch

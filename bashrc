@@ -12,6 +12,10 @@ complete -d cd rmdir
 
 #tput reset
 
+lf(){
+	if [ "${#}" -eq 1 ]; then /root/work/dotfile/functions lf "$@"
+	else echo $'\x1b[1mlf \x1b[7mPath\x1b[27m'
+	fi}
 code() {
 	if [ -z "${#}" ] ; then /root/work/dotfile/functions code "$@"
 	else echo $'\x1b[1mcode \x1b[7mUtilities\x1b[27m'

@@ -265,7 +265,11 @@ case "${1}" in
 	"lh")
 		ls -FlAshZi --color=auto "${2:-.}" | sed -n '/ [[:digit:]]\{1,2\} [[:digit:]]\{2\}:[[:digit:]]\{2\} \./p'
 	;;
-	
+
+	"lf")
+		file $(echo "${2}"/*)
+	;;
+
 	"lsd")
 		ls -AlF | 
 		sort -k 9,9 >| ${tmp_}/1 ; 

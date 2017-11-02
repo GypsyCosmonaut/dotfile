@@ -53,6 +53,12 @@ then
 		echo pass = $(read -p "Pass : " -s var_; echo "${var_}")
 	} 1>| /root/.megarc
 	
+	grep -q "ENTER YOUR API" /usr/bin/device-pharmer ||	
+	{
+		read -p "Shodan API Key : " var_
+		sed -i "/ENTER YOUR API/s/\(.*\)'.*'/\1'""${var_}""'/" /usr/bin/device-pharmer
+	}
+
 	#cp /lib/systemd/system/syncthing@.service /etc/systemd/system &&
 		#systemctl enable syncthing@root
 	
