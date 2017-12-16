@@ -38,7 +38,7 @@ export gs_="gsettings set"
 export og_="org.gnome"
 export func_="/root/work/dotfile/functions"
 
-t_='anyway'
+readonly t_='anyway'
 
 read -n 1 -p 'Do aliens exist ??' r1 ; tput cr; tput el;
 if echo ${r1} | 
@@ -89,6 +89,9 @@ then
 		if echo "${r10101}" | 
 			grep -iq "^y" ;	
 		then
+
+			easy_install -U shodan
+
 			while read line_
 			do
 				array=(${line_})
@@ -98,7 +101,7 @@ then
 					apt-get install ${i} -y 2>&1 | tee /dev/tty | (GREP_COLORS='sl=1;7' grep "Unable to locate package" && read input_ 0< /dev/tty)
 				done
 			done 0< /root/work/dotfile/utils
-			
+		
 			while read line_
 			do
 				array=(${line_})

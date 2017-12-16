@@ -52,11 +52,32 @@ then
 		echo user = $(read -p "Mail : " var_; echo "${var_}")
 		echo pass = $(read -p "Pass : " -s var_; echo "${var_}")
 	} 1>| /root/.megarc
+
+	[ "$(su postgres -c "psql -c '\du'" | grep -o msf)" == "msf" ] ||
+	{
+		service postgresql start
+		msfdb init
+		msfconsole -q -x "db_rebuild_cache; search windows; quit;" 2>&1 /dev/null
+	}
+	
+	[ "$(su postgres -c "psql -c '\du'" | grep -o root)" == "root" ] ||
+	{
+		echo -------- POSTGRES --------
+		su postgres -c "psql -c '\password'"
+	}
 	
 	grep -q "ENTER YOUR API" /usr/bin/device-pharmer ||	
 	{
 		read -p "Shodan API Key : " var_
 		sed -i "/ENTER YOUR API/s/\(.*\)'.*'/\1'""${var_}""'/" /usr/bin/device-pharmer
+
+		shodan init "${var_}"
+	}
+
+	grep -q "gkey.*GetoptLong::REQUIRED_ARGUMENT" /usr/share/pipal/pipal.rb &&
+	{
+		read -p "GOOGLE API KEY : " var_
+		sed -i "/gkey/s/GetoptLong::REQUIRED_ARGUMENT/${var_}/" /usr/share/pipal/pipal.rb
 	}
 
 	#cp /lib/systemd/system/syncthing@.service /etc/systemd/system &&
@@ -100,6 +121,9 @@ then
 
 	${si_} '/.*sensible/s/\(.*\)/#\1/; s/^##/#/' /root/.config/i3/config
 	
+	${si_} '/^[^#]/s/\(.*\)/#\1/' /etc/zmap/blacklist.conf
+
 	grep -q "gnome-terminal" /root/.config/i3/config || 
 		echo 'bindsym $mod+Return exec gnome-terminal' 1>> /root/.config/i3/config	
+
 fi

@@ -10,7 +10,7 @@ mkdir /root/Downloads/util	2>| /dev/null
 # ================================= SYMLINKS ========================================
 
 test -f /root/.bash_aliases  || ln -s /root/work/dotfile/bashrc "$_"
-test -f /etc/vim/vimrc.local || ln -s /root/work/dotfile/vimrc 	"$_"
+if [ ! -f /etc/vim/vimrc.local ]; then ln -s /root/work/dotfile/vimrc /etc/vim/vimrc.local; fi
 
 grep -q 'set colored-stats on' /etc/inputrc || 
 	echo 'set colored-stats on'	1>> /etc/inputrc
@@ -69,7 +69,7 @@ then
 	{
 		echo 'gnome-terminal --full-screen -x tmux'
 		echo '#shred -fxz /root/.bash_history && echo -n 1>| /root/.bash_history && history -c'
-		echo 'nohup guake 1>| dev/null 2>&1 &'
+		echo 'guake & disown'
 	} | install -D /dev/stdin /root/files/onlogin -m 750
 
 # =============================== EXECUTABLES =======================================
