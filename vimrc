@@ -29,7 +29,7 @@ fun!˙HumanSize(bytes)˙abort
 ˙˙˙˙return˙printf('%.1f%s',˙l:bytes,˙l:sizes[l:i])
 endfun
 
-let˙&statusline='%f˙%h%w%m%r˙%=%(%y˙˙˙˙%l,%c%V˙[%o,%O]˙˙˙˙%L˙˙˙˙0x%B˙˙˙˙%{HumanSize(line2byte("$")+len(getline("$")))}˙˙˙˙%p%%%)'
+let˙&statusline='%f˙%h%w%m%r˙%=%(%y˙˙˙˙%{&ff}    %{&fileencoding?&fileencoding:&encoding}˙˙˙˙%l/%L˙˙˙˙%c%V˙[%o,%O]˙˙˙˙0x%B˙˙˙˙%{HumanSize(line2byte("$")+len(getline("$")))}˙˙˙˙%p%%%)'
 "let˙&rulerformat='%45(%l,%c%V˙˙˙˙%L˙˙˙˙0x%B˙˙˙˙%{HumanSize(line2byte("$")˙+˙len(getline("$")))}˙˙˙˙%p%%%)'
 "set˙rulerformat=%45(%l,%c%V\˙\˙\˙\˙%L\˙\˙\˙\˙0x%B\˙\˙\˙\˙%{HumanSize(line2byte('$')+len(getline('$')))}\˙\˙\˙\˙%p%%%)
 
@@ -50,6 +50,10 @@ set foldmethod=indent "set fdm=indent
 
 "set path+=**
 set wildmenu
+
+"set bomb
+"set fileencoding
+"set fileencoding=ucs-bom,utf-8,latin1
 
 "command! MakeTags !ctags -R .
 

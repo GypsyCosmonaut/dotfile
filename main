@@ -92,6 +92,8 @@ then
 
 			easy_install -U shodan
 
+			gem install iconv
+
 			while read line_
 			do
 				array=(${line_})
