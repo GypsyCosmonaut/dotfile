@@ -53,6 +53,10 @@ alias msfconsole="msfconsole -q"
 #alias uuidlater="(nmcli c) && (cat /proc/sys/kernel/random/uuid)"
 #why does this list multiple uuid for same interface
 
-alias colours='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
+alias colors='for x in {0..8}; do for i in {30..37}; do for a in {40..47}; do echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "; done; echo; done; done; echo ""'
 
 alias tzone="find /usr/share/zoneinfo -type f -exec ls -F {} \; | sed 's/.*\/\(.*\/.*\)/\1/' | sort -u | xargs -I % bash -c 'paste <(echo %) <(env TZ=% date)' | grep -v "zoneinfo" | column -t"
+
+alias chkcolor='(x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)'
+
+alias chkfeature="infocmp -1 | sed -nu 's/^[ \000\t]*//;s/[ \000\t]*$//;/[^ \t\000]\{1,\}/!d;/acsc/d;s/=.*,//p'|column -c80"
