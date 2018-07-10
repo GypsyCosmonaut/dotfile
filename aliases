@@ -1,18 +1,21 @@
 
 alias f="xdotool key ctrl+f"
 alias pgrep="pgrep -f"
-alias ls="ls -F --color=auto"
-alias ll="ls -FlAshZi --color=auto"
-alias r="tput reset"
-alias e="exit"
-alias allout="kill -9 -1"
-alias lout="kill $(who -u | awk '{print $(NF-1)}')"
-alias ct="cat -A"
+alias ls="ls --color=auto"
+alias vdir="vdir --color"
+alias grep="grep --color"
+alias diff="diff --color"
+alias tshark="tshark --color"
+alias httping="httping -Y"
+alias ip="ip -c"
+alias less="less -S"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="trash"
 alias ni="/root/work/dotfile/functions ni"
 alias mail="curl https://temp-mail.org/ 2>| /dev/null | sed -n '/value/s/.*value=\"\([^\"]*\).*/\1/p'"
 alias wifi="nmcli dev wifi"
 alias nx="startx gnome-session -- :""$(($(who | awk '{print $NF}' | sed 's/(:\([[:digit:]]\))/\1/' | sort | sed '$!d')+1))"
-alias tailf="tail -f"
 alias mux='tmuxinator'
 alias mantra='owasp-mantra-ff'
 alias zap='owasp-zap'
@@ -22,23 +25,12 @@ alias h="xclip -selection primary -o"
 alias update="echo $'\x1b[1m\x1b[7mupdate\x1b[27m\x1b[0m' && apt-get update -y && echo $'\x1b[1m\x1b[7mupgrade\x1b[27m\x1b[0m'; apt-get upgrade -y ;"
 alias upgrade="echo $'\x1b[1m\x1b[7mupdate\x1b[27m\x1b[0m' && apt-get update -y && echo $'\x1b[1m\x1b[7mupgrade\x1b[27m\x1b[0m' && apt-get upgrade -y && echo $'\x1b[1m\x1b[7mdistro-upgrade\x1b[27m\x1b[0m' && apt-get dist-upgrade -y && xwd -root >/tmp/a.xwd && convert -negate /tmp/a.xwd /tmp/b.xwd && timeout .8 xwud -in /tmp/b.xwd ; "
 
-alias i="apt-get install"
-alias policy="apt-cache policy"
-alias remove="apt-get remove"
-alias purge="apt-get purge"
 alias aira2="aria2c -s 16 -x 16"
 alias axel="axel -n 20"
 alias i3="startx i3"
 alias lcron="echo ${USER} && echo && cat /var/spool/cron/crontabs/${USER}"
-alias trash="ls /root/tmp/trash"
-alias repos="cat /etc/apt/sources.list"
 alias indev="cat /proc/bus/input/devices | grep Name | sed 's/^.*Name=.\(.*\).$/\1/'"
-alias mkdir="mkdir -p"
 alias reload="set +x; . /root/work/dotfile/main"
-alias rm="mv -t /root/tmp/trash"
-alias d="\rm -rf"
-alias x="chmod 750"
-alias bin="pastebinit"
 #alias hex="/root/work/dotfile/functions hex"
 alias lproxy="/root/work/dotfile/functions lproxy"
 alias network="/root/work/dotfile/functions network"
@@ -60,3 +52,16 @@ alias tzone="find /usr/share/zoneinfo -type f -exec ls -F {} \; | sed 's/.*\/\(.
 alias chkcolor='(x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)'
 
 alias chkfeature="infocmp -1 | sed -nu 's/^[ \000\t]*//;s/[ \000\t]*$//;/[^ \t\000]\{1,\}/!d;/acsc/d;s/=.*,//p'|column -c80"
+
+man() {                                                                                                                            
+	LESS_TERMCAP_md=$'\e[01;31m' \
+	LESS_TERMCAP_me=$'\e[0m' \
+	LESS_TERMCAP_se=$'\e[0m' \
+	LESS_TERMCAP_so=$'\e[1;37;41m' \
+	LESS_TERMCAP_ue=$'\e[0m' \
+	LESS_TERMCAP_us=$'\e[01;32m' \
+	command man "$@"
+}
+
+shopt -s checkhash                                                                                                                 
+shopt -s globstar
