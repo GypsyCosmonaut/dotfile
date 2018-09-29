@@ -61,7 +61,8 @@ resource-agents guacd vlan vde2 lldpd anytun
 socat dbd cryptcat netrw sbd corkscrew
 ganeti xen-system-amd64 fence-agents
 ike isakmpd racoon exabgp 
-sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d boxes gopchop ffmpegthumbnailer
+sox ffmpeg imagemagick tesseract-ocr youtube-dl vlc potrace xaos aa3d boxes gopchop ffmpegthumbnailer 
+mpg321 mp3blaster gnustep-gui-runtime festival speech-dispatcher
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck
 codecrypt scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef rotix nettle-bin wire tcpcryptd 
 aespipe spiped kxd kxc
