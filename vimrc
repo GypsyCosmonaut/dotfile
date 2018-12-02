@@ -33,17 +33,21 @@ let˙&statusline='%f˙%h%w%m%r˙%=%(%y˙˙˙˙%{&ff}    %{&fileencoding?&fileenc
 "let˙&rulerformat='%45(%l,%c%V˙˙˙˙%L˙˙˙˙0x%B˙˙˙˙%{HumanSize(line2byte("$")˙+˙len(getline("$")))}˙˙˙˙%p%%%)'
 "set˙rulerformat=%45(%l,%c%V\˙\˙\˙\˙%L\˙\˙\˙\˙0x%B\˙\˙\˙\˙%{HumanSize(line2byte('$')+len(getline('$')))}\˙\˙\˙\˙%p%%%)
 
+set cryptmethod=blowfish2
+
 set ignorecase
 set smartcase
 
 set foldenable
 set foldcolumn=4
 
-set autoindent
-set smartindent
+#set autoindent
+#set smartindent
+#set softtabstop=4
+#set shiftwidth=4
 set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set expandtab
+
 
 set foldcolumn=4      "set fdc=4
 set foldmethod=indent "set fdm=indent
