@@ -1,19 +1,21 @@
 info pinfo howdoi rustc ghc perl6 puppet ansible chef scala plantuml asciidoc mscgen graphviz preprocess sslh clif glueviz
 markdown groff docbook grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo cmake gnuplot plotutils trend topcat octave sng rs
 scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xonsh crmsh ifrit cgvg geogebra carmetal php-cli
-ucarp vrrpd keepalived clustershell trickle openfortivpn
+ucarp vrrpd keepalived clustershell trickle openfortivpn coop-computing-tools xpa-tools xdmx-tools daemontools runit
 doxygen gucharmap whichman dosbox mmark oxref
 shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
 cscope isoquery iso-codes
-nwipe sweeper testdisk blktool hdparm umockdev
-lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress
+nwipe sweeper trash-cli safe-rm testdisk blktool hdparm umockdev dar magicrescue
+nfs-kernel-server nfs-common diod
+lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
 pgcli pgagent sphinxsearch
 md5deep rhash
 ddd cstream
-sublime-text docker-engine lxc virt-sandbox llvm drmips wine32 winetricks daemonize asciinema textdraw boxes sikulix
+sublime-text docker-engine rkt lxc ctop virt-sandbox llvm drmips wine32 winetricks daemonize simh
+asciinema textdraw boxes aview sikulix
 gobby sc visidata hnb nodau note tudu zim cherrytree ispell aspell espeak praat nixnotes2 calcurse units leave ipvsadm tree ack
 xinit dsh hackersh xonsh aws-shell awscli rhc fish fbterm tio xnest xdmx xorg disper doc-rfc qrfcview 0install tmate xvfb
 shelr screenkey xmacro xnee cnee cockpit fakeroot pseudo inputattach suckless-tools stterm surf surfraw reptyr xattr
@@ -30,19 +32,19 @@ strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace nmon pstack intrace ipip iputils-tracepath jack-tools kernelshark crash
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
 heaptrack heaptrack-gui gmemusage iputils-clockdiff inotify-tools babeltrace 0trace apitrace abi-tracker mscgen xplico lttv
-f3 memdump memtool runlim smem smemstat perf-tools-unstable shove tappy minicoredumper volatility ifstat nicstat pcp
+f3 memdump memtool runlim smem smemstat perf-tools-unstable shove tappy minicoredumper volatility ifstat nicstat pcp fitsverify
 inetutils-traceroute speedtest-cli speedometer netmate netpipe-tcp netsend ooniprobe
 mrtg mrtgutils ap-utils udns-utils
 icinga fio flent msr-tools
 bandwidthd uwsgi-core 
 eyewitness cutycapt autopsy exiv2
-trinity valgrind nocache splint hugepages pmdk-tools
+trinity valgrind nocache splint hugepages pmdk-tools syslinux-utils system-config-kickstart
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo
-exuberant-ctags sshfp
+exuberant-ctags sshfp slapd ldap-utils phpldapadmin
 jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp
 yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw 
-jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk
+jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin
 msort flog slop since catdoc most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer acpi xml2 xcb
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
 makeself parallel startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
@@ -69,7 +71,7 @@ resource-agents guacd vlan vde2 lldpd anytun
 socat dbd cryptcat netrw sbd corkscrew yangcli
 ganeti xen-system-amd64 fence-agents
 ike isakmpd racoon exabgp 
-ffmpeg hasciicam imagemagick potrace xaos aa3d gopchop ffmpegthumbnailer
+ffmpeg hasciicam imagemagick openimageio-tools potrace xaos aa3d gopchop ffmpegthumbnailer
 youtube-dl python3-yt smtube smplayer minitube mps-youtube quvi nomnom cclive get-flash-videos pavucontrol
 mp3blaster moc ncmpcpp ncmpc cmus mpv mplayer mopidy mpc mpd qmmp vlc kodi radiotray tunapie fadecut gpac pulseaudio-utils
 sox mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity glfer streamripper streamtuner2 wavesurfer
@@ -77,7 +79,7 @@ an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtq
 codecrypt scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef rotix nettle-bin wire tcpcryptd 
 aespipe spiped kxd kxc wotsap tang stoken softhsm
 certbot tomb tcplay nttcp
-steghide stegosuite outguess gifshuffle snowdrop stegsnow
+steghide stegosuite outguess gifshuffle snowdrop stegsnow sysfsutils sg3-utils
 d-itg mz fragroute ostinato packit sendip tcpreplay t50 tundeep packeth nftables ipstate ufw shorewall knockd ipset
 opencaster scantv dvbstream streamer xtv ttv tvtime fbtv freetuxtv w-scan radiotray streamripper
 metagoofil 
@@ -98,7 +100,7 @@ batmand batctl
 vega httest deblaze sslcaudit wuzz cadaver nd davtest wig parsero linkchecker linklint webcheck plecost wpscan joomscan sublist3r
 i3 spectrwm dwm bspwm wmii ratpoison conky ranger ncdu ytree byobu mssh multitee tmuxinator guake fsvs
 squid3 
-bro bro-aux broctl samhain binpac snort snort-common-libraries netmrg freeradius psad usbguard
+bro bro-aux broctl labrea samhain binpac snort snort-common-libraries tinyhoneypot netmrg freeradius psad usbguard
 routersploit websploit shellter grr-server nipper-ng cardpeek sipvicious device-pharmer apt2 empire-hub cuckoo firejail swapspace
 isr-evilgrade cymothoa fiu-utils hexinject jsql-injection phishery sniffjoke unicorn-magic wapiti xsser u3-pwn wifitap grabber
 wireshark sigrok vusb-analyzer tua wavemon vnstat
