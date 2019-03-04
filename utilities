@@ -25,7 +25,7 @@ whohas aptitude apt-cudf cudf-tools aspcud mccs packup dict debtree dlocate pv p
 httpie slowhttptest
 autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc gcal
-complexity bing pen mobile-broadband-provider-info discover
+complexity bing pen mobile-broadband-provider-info discover cgroup-tools
 cpulimit cpufreqd mom rrdcollect systemtap-sdt-dev sysstat quota starpu-tools starpu-contrib-tools dstat xosview discus saidar
 linuxbrew-wrapper moreutils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
