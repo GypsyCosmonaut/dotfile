@@ -122,7 +122,7 @@ mutt nmh buku apparix slrn muchsync
 iperf netperf socket netperfmeter ripe-atlas-tools
 sockstat procinfo watchcatd multiwatch logwatch nield monit mtail multitail rsstail collectl can-utils conman nat-traverse supervisor dmtcp
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
-zipalign veil shellter
+zipalign veil shellter upx-ucl
 libpam-google-authenticator open-vm-tools
 weechat bitblee znc liece bitlbee ekg2 pisg newsbeuter dinara pumpa tweeper asterisk weboob obs-studio
 captagent coturn mumble mumble-server sipwitch turnserver twinkle-console matrix-synapse baresip kamailio opensips cliofetion
