@@ -19,7 +19,7 @@ sublime-text docker-engine rkt lxc ctop virt-sandbox llvm drmips wine32 winetric
 asciinema textdraw boxes aview loki cadubi sikulix caca-utils
 gobby sc visidata hnb nodau note tudu zim cherrytree ispell aspell espeak praat nixnotes2 calcurse units leave ipvsadm taskwarrior
 xinit dsh hackersh xonsh aws-shell awscli rhc fish fbterm tio xnest xdmx xorg disper doc-rfc qrfcview 0install tmate xvfb
-shelr screenkey xmacro xnee cnee cockpit fakeroot pseudo inputattach suckless-tools stterm surf surfraw reptyr xattr
+shelr screenkey xmacro xnee cnee cockpit fakeroot pseudo inputattach suckless-tools stterm surf surfraw reptyr xattr schroot
 beav dhex bless hexedit hexcurse hexer tweak ht lfhex ncurses-hexedit radare2 shed binwalk pev vbindiff 
 whohas aptitude apt-cudf cudf-tools aspcud mccs packup dict debtree dlocate pv pipemeter percol pipebench bar netpipes tree
 httpie slowhttptest
