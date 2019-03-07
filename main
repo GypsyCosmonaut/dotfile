@@ -31,6 +31,10 @@
 	-CAUTION- -OR-	DELETE the configurations before appending
 SKIP
 
+! [ -t 0 ] &&
+	echo Not A Terminal &&
+	exit 1
+
 declare -x tmp_="/root/tmp/trash"
 export si_="sed -i"
 export se_="sed -e"

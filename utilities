@@ -19,7 +19,8 @@ sublime-text docker-engine rkt lxc ctop virt-sandbox llvm drmips wine32 winetric
 asciinema textdraw boxes aview loki cadubi sikulix caca-utils
 gobby sc visidata hnb nodau note tudu zim cherrytree ispell aspell espeak praat nixnotes2 calcurse units leave ipvsadm taskwarrior
 xinit dsh hackersh xonsh aws-shell awscli rhc fish fbterm tio xnest xdmx xorg disper doc-rfc qrfcview 0install tmate xvfb
-shelr screenkey xmacro xnee cnee cockpit fakeroot pseudo inputattach suckless-tools stterm surf surfraw reptyr xattr schroot
+shelr screenkey xmacro xnee cnee cockpit fakeroot pseudo inputattach suckless-tools stterm surf surfraw reptyr xattr
+schroot chrootuid compartment
 beav dhex bless hexedit hexcurse hexer tweak ht lfhex ncurses-hexedit radare2 shed binwalk pev vbindiff 
 whohas aptitude apt-cudf cudf-tools aspcud mccs packup dict debtree dlocate pv pipemeter percol pipebench bar netpipes tree
 httpie slowhttptest
@@ -64,7 +65,8 @@ ofono ofono-phonesim connman
 varnish memcached memcachedb
 ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-basic
 mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sshguard keychain pterm sshpass landscape-common
-x11vnc x2vnc directvnc xrdp cockpit
+x11vnc x2vnc directvnc xrdp cockpit rdesktop
+rsync rdist pssh
 samba pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine
 anycast mrd6 freelan
 bind9 openresolv
@@ -115,8 +117,8 @@ cmdtest
 hostapd-wpe freeradius-wpe
 clusterd commix
 sslstrip sslsniff sslsplit mitmf rebind p0f xprobe
-privoxy spikeproxy mitmproxy proxystrike commix siproxd proxychains redir redsocks desproxy dnschef hddemux proxytunnel hitch
-connect-proxy ser2net shadowsocks
+privoxy spikeproxy mitmproxy proxystrike commix siproxd proxychains redir redsocks desproxy dnschef hddemux proxytunnel hitch ffproxy
+connect-proxy ser2net shadowsocks haproxy
 owasp-mantra-ff osrframework cookie-cadger
 mutt nmh buku apparix slrn muchsync
 iperf netperf socket netperfmeter ripe-atlas-tools
