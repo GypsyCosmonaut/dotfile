@@ -2,7 +2,7 @@
 export HISTSIZE=
 export HISTFILESIZE=
 export EDITOR='vim'
-export PATH='/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/games:/usr/games:/snap/bin:/home/me/go/bin:/usr/lib/sysstat/'
+export PATH='/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/games:/usr/games:/snap/bin:/home/me/go/bin:/usr/lib/sysstat'
 
 complete -d cd rmdir
 
