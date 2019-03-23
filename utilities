@@ -123,6 +123,7 @@ owasp-mantra-ff osrframework cookie-cadger
 mutt nmh buku apparix slrn muchsync
 iperf netperf socket netperfmeter ripe-atlas-tools
 sockstat procinfo watchcatd multiwatch logwatch nield monit mtail multitail rsstail collectl can-utils conman nat-traverse supervisor dmtcp
+tripwire entr
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
 zipalign veil shellter upx-ucl
 libpam-google-authenticator open-vm-tools
