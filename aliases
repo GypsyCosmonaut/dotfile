@@ -53,6 +53,12 @@ alias chkcolor='(x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e
 
 alias chkfeature="infocmp -1 | sed -nu 's/^[ \000\t]*//;s/[ \000\t]*$//;/[^ \t\000]\{1,\}/!d;/acsc/d;s/=.*,//p'|column -c80"
 
+alias pssh='parallel-ssh -i -O StrictHostKeyChecking=no -O CheckHostIP=no -O ForwardAgent=yes -O Compression=yes -l rahul_bansal --par 1000'
+alias pscp='parallel-scp -O StrictHostKeyChecking=no -O CheckHostIP=no -O ForwardAgent=yes -O Compression=yes -O User=rahul_bansal --par 1000'
+alias ssh='ssh -t -l rahul_bansal -o StrictHostKeyChecking=no -o CheckHostIP=no -o ServerAliveInterval=59 -o ForwardX11=yes -o AddKeysToAgent=yes -o ForwardAgent=yes -o Compression=yes -o ConnectionAttempts=2 -o ConnectTimeout=10 -o ClearAllForwardings=yes -o PermitLocalCommand=yes -o EnableSSHKeysign=yes -o NumberOfPasswordPrompts=1000'
+alias scp='scp -o User=rahul_bansal -o StrictHostKeyChecking=no -o CheckHostIP=no -o ForwardX11=yes -o ForwardAgent=yes -o Compression=yes'
+
+
 man() {                                                                                                                            
 	LESS_TERMCAP_md=$'\e[01;31m' \
 	LESS_TERMCAP_me=$'\e[0m' \

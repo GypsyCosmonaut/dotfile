@@ -64,7 +64,7 @@ osmocom-bs11-utils osmocom-bsc osmocom-bsc-nat osmocom-bsc-gbproxy osmocom-ipacc
 ofono ofono-phonesim connman
 varnish memcached memcachedb
 ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-basic
-mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sshguard keychain pterm sshpass landscape-common
+mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sshguard keychain pterm sshpass autossh landscape-common
 x11vnc x2vnc directvnc xrdp cockpit rdesktop
 rsync rdist pssh
 samba pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine
