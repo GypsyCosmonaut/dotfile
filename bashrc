@@ -8,6 +8,9 @@ complete -d cd rmdir
 
 #set -x
 #set -o noclobber
+shopt -s globstar
+shopt -s dotglob
+shopt -s extglob
 
 . /root/git/dotfile/aliases
 

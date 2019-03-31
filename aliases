@@ -58,6 +58,8 @@ alias pscp='parallel-scp -O StrictHostKeyChecking=no -O CheckHostIP=no -O Forwar
 alias ssh='ssh -t -l rahul_bansal -o StrictHostKeyChecking=no -o CheckHostIP=no -o ServerAliveInterval=59 -o ForwardX11=yes -o AddKeysToAgent=yes -o ForwardAgent=yes -o Compression=yes -o ConnectionAttempts=2 -o ConnectTimeout=10 -o ClearAllForwardings=yes -o PermitLocalCommand=yes -o EnableSSHKeysign=yes -o NumberOfPasswordPrompts=1000'
 alias scp='scp -o User=rahul_bansal -o StrictHostKeyChecking=no -o CheckHostIP=no -o ForwardX11=yes -o ForwardAgent=yes -o Compression=yes'
 
+alias snoo='(for folder in $(echo $PATH | sed "s/:/\\n/g"); do ls -1 $folder; done; ) | shuf -n 1 | xargs man'
+
 
 man() {                                                                                                                            
 	LESS_TERMCAP_md=$'\e[01;31m' \
