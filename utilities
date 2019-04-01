@@ -8,7 +8,7 @@ shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol ten
 cscope isoquery iso-codes
 nwipe sweeper trash-cli safe-rm testdisk blktool hdparm umockdev dar magicrescue array-info
 nfs-kernel-server nfs-common diod
-lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq
+lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
