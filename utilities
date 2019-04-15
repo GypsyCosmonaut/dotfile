@@ -15,7 +15,8 @@ postgresql postgresql-common postgresql-client postgresql-client-common postgres
 pgcli pgagent sphinxsearch
 md5deep rhash
 ddd cstream
-sublime-text docker-engine rkt lxc ctop virt-sandbox llvm drmips wine32 winetricks daemonize simh
+sublime-text docker-engine rkt lxc ctop virt-sandbox llvm drmips wine32 winetricks daemonize simh libguestfs-tools virtinst 
+libvirt-clients virsh
 asciinema textdraw boxes aview loki cadubi sikulix caca-utils
 gobby sc visidata hnb nodau note tudu zim cherrytree ispell aspell espeak praat nixnotes2 calcurse units leave ipvsadm
 taskwarrior taskd bugwarrior vit
@@ -29,6 +30,7 @@ autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools
 cpulimit cpufreqd mom rrdcollect systemtap-sdt-dev sysstat quota starpu-tools starpu-contrib-tools dstat xosview discus saidar
+sosreport fence-agents
 linuxbrew-wrapper moreutils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft
