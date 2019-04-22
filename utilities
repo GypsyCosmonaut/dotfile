@@ -22,10 +22,11 @@ gobby sc visidata hnb nodau note tudu zim cherrytree ispell aspell espeak praat 
 taskwarrior taskd bugwarrior vit
 xinit dsh hackersh xonsh aws-shell awscli rhc fish fbterm tio xnest xdmx xorg disper doc-rfc qrfcview 0install tmate xvfb
 shelr screenkey xmacro xnee cnee cockpit fakeroot pseudo inputattach suckless-tools stterm surf surfraw reptyr xattr
+selinux-utils selinux-basics
 schroot chrootuid compartment
 beav dhex bless hexedit hexcurse hexer tweak ht lfhex ncurses-hexedit radare2 shed binwalk pev vbindiff 
 whohas aptitude apt-cudf cudf-tools aspcud mccs packup dict debtree dlocate pv pipemeter percol pipebench bar netpipes tree
-httpie slowhttptest
+httpie slowhttptest wrk
 autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools
@@ -38,7 +39,7 @@ kmtrace mutrace smemcap maybe mtr nsntrace nfstrace nmon pstack intrace ipip ipu
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
 heaptrack heaptrack-gui gmemusage iputils-clockdiff inotify-tools babeltrace 0trace apitrace abi-tracker mscgen xplico lttv
 f3 memdump memtool runlim smem smemstat perf-tools-unstable shove tappy minicoredumper volatility ifstat nicstat pcp fitsverify
-inetutils-traceroute speedtest-cli speedometer netmate netpipe-tcp netsend ooniprobe
+inetutils-traceroute speedtest-cli speedometer netmate netsend ooniprobe
 mrtg mrtgutils ap-utils udns-utils
 icinga fio flent msr-tools
 bandwidthd uwsgi-core 
@@ -124,7 +125,7 @@ privoxy spikeproxy mitmproxy proxystrike commix siproxd proxychains redir redsoc
 connect-proxy ser2net shadowsocks haproxy
 owasp-mantra-ff osrframework cookie-cadger
 mutt nmh buku apparix slrn muchsync
-iperf netperf socket netperfmeter ripe-atlas-tools
+iperf netperf socket netperfmeter ripe-atlas-tools netpipe-tcp netpipe-pvm
 sockstat procinfo watchcatd multiwatch logwatch nield monit mtail multitail rsstail collectl can-utils conman nat-traverse supervisor dmtcp
 tripwire entr
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
