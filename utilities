@@ -12,7 +12,7 @@ lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb 
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
-mysql-server mysql-client mysql-utilities freetds-bin
+mysql-server mysql-client mysql-common mysql-utilities freetds-bin
 pgcli pgagent sphinxsearch
 md5deep rhash
 ddd cstream
