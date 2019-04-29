@@ -37,6 +37,7 @@ linuxbrew-wrapper moreutils ifupdown-extra x11-xserver-utils xserver-xorg-input-
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace nmon pstack intrace ipip iputils-tracepath jack-tools kernelshark crash ree
+mcelog systune ksmtuned
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
 heaptrack heaptrack-gui gmemusage iputils-clockdiff inotify-tools babeltrace 0trace apitrace abi-tracker mscgen xplico lttv
 f3 memdump memtool runlim smem smemstat perf-tools-unstable shove tappy minicoredumper volatility ifstat nicstat pcp fitsverify
