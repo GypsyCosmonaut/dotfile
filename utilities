@@ -1,5 +1,6 @@
 info pinfo howdoi rustc ghc perl6 puppet ansible chef scala plantuml asciidoc mscgen graphviz preprocess sslh clif glueviz
 markdown groff docbook grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo cmake gnuplot plotutils trend topcat octave sng rs
+gnudatalanguage pdl ncl-ncarg
 scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xonsh crmsh ifrit cgvg geogebra carmetal php-cli
 ucarp vrrpd keepalived clustershell trickle openfortivpn coop-computing-tools xpa-tools xdmx-tools daemontools runit
 rsh-server rsh-client rsh-redone-client
@@ -145,7 +146,7 @@ dianara pypump-shell rtv bti
 geoip-bin tor-geoipdb whereami gpsbabel gpsd gpsd-clients gpsprune gpxviewer viking navit wwl mapcode postgis routino
 tor tor-arm torchat onioncat pktanon telegram-desktop ricochet-im belenios-tool premail mixmaster 
 megatools seafile-cli seafile-daemon syncthing pastebinit wgetpaste vagrant iroffer qweborf wget2 aria2
-clonezilla snapper rclone zbackup ext4magic fsarchiver
+clonezilla snapper rclone zbackup ext4magic fsarchiver safecopy
 zulucrypt-cli zulumount-cli zulusafe-cli
 multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs
 sipsak rfcat crackmapexec sipp multimon multimon-ng
