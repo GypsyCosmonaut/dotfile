@@ -29,13 +29,9 @@ grep -q groot /etc/passwd ||
 	echo 'promt for root' && 
 	passwd root
 	
-	useradd --create-home groot 	&& 
-	${si_} '/groot/s/$/\/bin\/bash/' /etc/passwd && 
-	echo 'promt for groot' 		&& 
-	passwd groot
-
-	# echo "groot	ALL=(ALL:ALL) ALL" 		1>> /etc/sudoers
-	adduser groot sudo
+	useradd -s /bin/bash -m groot 
+	usermod -aG sudo groot
+	sed -i '/^%sudo/ s/[ \t]\+\(ALL\)[ \t]*$/NOPASSWD:ALL/' /etc/sudoers
 }
 
 # ================================= CRON JOBS ======================================
@@ -88,14 +84,8 @@ then
 
 # =============================== CONFIGURATIONS ====================================
 
-	git config --global user.name GypsyCosmonaut
-	git config --global user.email rahulbansal1913@gmail.com
-	git config --global branch.autosetuprebase always
-	git config --global color.ui true
-	git config --global color.status auto
-	git config --global color.branch auto
 	git config --global core.editor vim
-	git config --global credential.helper store
+	#git config --global credential.helper store
 	#git config --global merge.tool vimdiff
 
 	${si_} 's/.*\(AutomaticLoginEnable \).*/\1= true/' 	/etc/gdm3/daemon.conf
@@ -166,12 +156,6 @@ then
 	${gs_} ${og_}.desktop.interface clock-show-date true
 	${gs_} ${og_}.desktop.interface clock-show-seconds true
 	${gs_} ${og_}.desktop.interface show-battery-percentage true
-	${gs_} ${og_}.gedit.preferences.editor display-line-numbers true
-	${gs_} ${og_}.gedit.preferences.editor auto-indent true
-	${gs_} ${og_}.gedit.preferences.editor display-overview-map true
-	${gs_} ${og_}.gedit.preferences.editor highlight-current-line true
-	${gs_} ${og_}.gedit.preferences.editor auto-save true
-	${gs_} ${og_}.gedit.preferences.editor bracket-matching true
 	${gs_} ${og_}.gedit.preferences.editor scheme 'cobalt'
 	${gs_} ${og_}.desktop.wm.preferences audible-bell false
 	${gs_} ${og_}.desktop.wm.preferences visual-bell true
