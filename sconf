@@ -22,15 +22,21 @@ ${si_} 's/\(HISTFILESIZE=\)/#\1/'		/root/.bash_history
 
 # ================================== USERS ==========================================
 
-grep -q groot /etc/passwd || 
+read -n 1 -p 'Would you like to change root password ??' r1 ; tput cr; tput el;
+if echo ${r1} |
+	grep -iq "^y" ;
+then
+	read -s -p 'Password for root user you would like to keep : ' r101
+	echo root:${r101} | chpasswd
+fi
+
+grep -q me /etc/passwd || 
 {
 	echo earth 1>| /etc/hostname && 
 	${si_} '2s/.*/127.0.1.1    earth/' /etc/hosts 
-	echo 'promt for root' && 
-	passwd root
 	
-	useradd -s /bin/bash -m groot 
-	usermod -aG sudo groot
+	useradd -s /bin/bash -m me
+	usermod -aG sudo me
 	sed -i '/^%sudo/ s/[ \t]\+\(ALL\)[ \t]*$/NOPASSWD:ALL/' /etc/sudoers
 }
 
