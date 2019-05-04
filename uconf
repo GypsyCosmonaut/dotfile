@@ -7,6 +7,11 @@ SKIP
 
 #apt-file update
 
+if ! grep -q "^lirc=no$" /etc/mplayer/mplayer.conf
+then
+	echo "lirc=no" >>1 /etc/mplayer/mplayer.conf
+fi
+
 # ====================================== GITHUB ===================================================
 
 test -d /root/work/web || git clone https://github.com/GypsyCosmonaut/web.git $(mkdir $_ && echo $_)
