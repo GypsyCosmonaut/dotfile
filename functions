@@ -4,15 +4,18 @@ case "${1}" in
 	"ifm")
 		if ! [ -v iradio ]
 		then
-			declare -A mapping
-
+			declare -A iradio
+			export iradio
 			while read mapping
 			do
 				eval "iradio${mapping}"
 			done 0< /root/work/dotfile/radioindex
 		fi
 
-		mplayer -nocache -afm ffmpeg "${iradio[$2]}"
+		select radio in "${!iradio[@]}"
+		do
+			mplayer -nocache -afm ffmpeg "${iradio[${radio}]}"
+		done
 	;;
 
 	"nohup")
