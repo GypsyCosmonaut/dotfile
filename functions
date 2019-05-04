@@ -1,6 +1,20 @@
 
 case "${1}" in
 
+	"ifm")
+		if ! [ -v iradio ]
+		then
+			declare -A mapping
+
+			while read mapping
+			do
+				eval "iradio${mapping}"
+			done 0< /root/work/dotfile/radioindex
+		fi
+
+		mplayer -nocache -afm ffmpeg "${iradio[$2]}"
+	;;
+
 	"nohup")
 		nohup "${2}" 1>| /dev/null 2>&1 &
 	;;

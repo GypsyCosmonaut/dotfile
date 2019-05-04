@@ -8,12 +8,12 @@ doxygen gucharmap whichman dosbox mmark oxref
 shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
 cscope isoquery iso-codes
 nwipe sweeper trash-cli safe-rm testdisk blktool hdparm umockdev dar magicrescue array-info smartmontools
-nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer
+nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
-mysql-server mysql-client mysql-common mysql-utilities freetds-bin
+mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinycdb
 pgcli pgagent sphinxsearch
 md5deep rhash
 ddd cstream
@@ -71,7 +71,7 @@ osmocom-bs11-utils osmocom-bsc osmocom-bsc-nat osmocom-bsc-gbproxy osmocom-ipacc
 ofono ofono-phonesim connman
 varnish memcached memcachedb
 ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-basic
-mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sshguard keychain pterm sshpass autossh landscape-common
+mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sidedoor-sudo sshguard keychain pterm sshpass autossh landscape-common
 x11vnc x2vnc directvnc xrdp cockpit rdesktop
 rsync rdist pssh
 samba pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine
@@ -88,7 +88,7 @@ sox mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity 
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr
 codecrypt scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef rotix nettle-bin wire tcpcryptd 
 aespipe spiped kxd kxc wotsap tang stoken softhsm
-certbot tomb tcplay nttcp
+certbot tomb tcplay nttcp ucspi-tcp ucspi-tcp-ipv6
 steghide stegosuite outguess gifshuffle snowdrop stegsnow sysfsutils sg3-utils
 d-itg mz fragroute ostinato packit sendip tcpreplay t50 tundeep packeth nftables ipstate ufw shorewall knockd ipset
 opencaster scantv dvbstream streamer xtv ttv tvtime fbtv freetuxtv w-scan radiotray streamripper
@@ -98,7 +98,7 @@ exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley uniutils execstac
 memtest86+ memtester srecord rekall-core conntrack conntrackd eventstat systraq mirmon metche idlestat bilibop-lockfs
 sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit ndisc6 sosreport cockpit-system
 icmpinfo icmptx icmpush echoping oping 2ping sip-tester scap-workbench etherape niceshaper wondershaper tcpxtract
-ioping dhcping smtpping scamper httping mactelnet-client mrtg-ping-probe wpan-tools dnsdiag netwox lsm
+ioping dhcping smtpping scamper httping mactelnet-client mrtg-ping-probe wpan-tools netwox lsm
 iputils-arping iputils-ping iputils-tracepath iputils-clockdiff 
 bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump 
 darkstat sntop pmacct nfdump flowscan flowgrind softflowd flow-tools fprobe-ng fastnetmon nstreams ndiff ncrack pcredz
@@ -123,7 +123,7 @@ sfuzz bed doona spike powerfuzzer siparmyknife trinity
 cmdtest
 hostapd-wpe freeradius-wpe
 clusterd commix
-sslstrip sslsniff sslsplit mitmf rebind p0f xprobe
+sslstrip sslsniff sslsplit mitmf rebind p0f xprobe irpas
 privoxy spikeproxy mitmproxy proxystrike commix siproxd proxychains redir redsocks desproxy dnschef hddemux proxytunnel hitch ffproxy
 connect-proxy ser2net shadowsocks haproxy
 owasp-mantra-ff osrframework cookie-cadger
@@ -131,6 +131,7 @@ mutt nmh buku apparix slrn muchsync
 iperf netperf socket netperfmeter ripe-atlas-tools netpipe-tcp netpipe-pvm
 sockstat procinfo watchcatd multiwatch logwatch nield monit mtail multitail rsstail collectl can-utils conman nat-traverse supervisor dmtcp
 tripwire entr
+dyndns ez-ipupdate tinydyndns
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
 zipalign veil shellter upx-ucl
 libpam-google-authenticator open-vm-tools
