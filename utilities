@@ -19,7 +19,7 @@ md5deep rhash
 ddd cstream
 sublime-text docker-engine rkt lxc ctop virt-sandbox llvm drmips wine32 winetricks daemonize simh libguestfs-tools virtinst 
 libvirt-clients virsh
-asciinema textdraw boxes aview loki cadubi sikulix caca-utils
+asciinema textdraw boxes aview loki cadubi sikulix caca-utils flydraw
 gobby sc visidata hnb nodau note tudu zim cherrytree ispell aspell espeak praat nixnotes2 calcurse units leave ipvsadm
 taskwarrior taskd bugwarrior vit
 xinit dsh hackersh xonsh aws-shell awscli rhc fish fbterm tio xnest xdmx xorg disper doc-rfc qrfcview 0install tmate xvfb
@@ -81,8 +81,8 @@ resource-agents guacd vlan vde2 lldpd lldpad ladvd anytun braa onesixtyone
 socat dbd cryptcat netrw sbd corkscrew yangcli
 ganeti xen-system-amd64 fence-agents
 ike isakmpd racoon exabgp 
-ffmpeg hasciicam imagemagick openimageio-tools potrace xaos aa3d gopchop ffmpegthumbnailer xine-console
-youtube-dl python3-yt smtube smplayer minitube mps-youtube quvi nomnom cclive get-flash-videos pavucontrol
+ffmpeg hasciicam imagemagick openimageio-tools potrace xaos aa3d gopchop ffmpegthumbnailer xine-console icecast2
+youtube-dl python3-yt smtube smplayer minitube mps-youtube quvi nomnom cclive get-flash-videos pavucontrol pianobar
 mp3blaster moc ncmpcpp ncmpc cmus mpv mplayer mopidy mpc mpd qmmp vlc kodi radiotray tunapie fadecut gpac pulseaudio-utils
 sox mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity glfer streamripper streamtuner2 wavesurfer
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr

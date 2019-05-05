@@ -1,7 +1,8 @@
 
 case "${1}" in
 
-	"ifm")
+	("ifm")
+		PS3=">_ "
 		if ! [ -v iradio ]
 		then
 			declare -A iradio
@@ -18,11 +19,11 @@ case "${1}" in
 		done
 	;;
 
-	"nohup")
+	("nohup")
 		nohup "${2}" 1>| /dev/null 2>&1 &
 	;;
 	
-	"code")
+	("code")
 		for i in "${@:2}"
 		do
 			mkdir /root/source/"${i}"
@@ -36,23 +37,23 @@ case "${1}" in
 		done
 	;;
 
-	"mac")
+	("mac")
 		lynx --dump 'https://code.wireshark.org/review/gitweb?p=wireshark.git;a=blob_plain;f=manuf' | grep -i "${2}"
 	;;
 
-	"tld")
+	("tld")
 		lynx --dump http://data.iana.org/TLD/tlds-alpha-by-domain.txt | grep -i "${2}"
 	;;
 
-	"registrar")
+	("registrar")
 		lynx --dump https://www.icann.org/registrar-reports/accredited-list.html | grep -i "${2}" | sed 's/ *//'
 	;;
 
-	"registry")
+	("registry")
 		lynx --dump --nolist 'https://www.icann.org/resources/pages/listing-2012-02-25-en' | grep -i "${2}" | sed 's/ *//'
 	;;
 
-	"net")
+	("net")
 		if [ "${2}" == "connect" || "${2}" == "disconnect" ]
 		then
 			nmcli dev "${2}" "${3}"
@@ -61,7 +62,7 @@ case "${1}" in
 		fi
 	;;
 	
-	"ni")
+	("ni")
 		(
 			echo $'\x1b[1m\x1b[7mdevname mac mac-brd iip4 iip6 eip\x1b[0m' && 
 			paste <(ip addr | awk '/^[[:digit:]]/{print $2}' | sed 's/://') <(ip addr | sed 's/^ *//' | awk '/^link/{print $2 "\t" $4}') <(ip addr | awk '/inet /{print $2}') <(ip addr | awk '/inet6/{print $2}') && 
@@ -69,50 +70,50 @@ case "${1}" in
 		) | column -t
 	;;
 	
-	"dict")
+	("dict")
 		dict "${2}" | sed -n '/From Moby Thesaurus II/q;p'
 	;;
 	
-	"lproxy") 
+	("lproxy") 
 		curl www.gatherproxy.com 2>| /dev/null | grep -io '{"proxy_[^}]*}'  | jq -r '. | {_:.PROXY_COUNTRY, IP:.PROXY_IP,PORT:.PROXY_PORT}' -c  | sed 's/["{}]//g' | awk -F, '{ p=substr($3,6); $3="PORT:" sprintf("%d",strtonum("0x" p)); }1' OFS=',' | sed 's/,IP:/\t/; s/,PORT//; s/ /_/g; s/^..//' | sed $'s/ *[^\t]*/\x1b[7;1m&\x1b[0m/' | column -t | column -t -s ':'
 	;;
 		
-	"cproxy")
+	("cproxy")
 		curl www.gatherproxy.com/proxylist/country/?c=${2} 2>| /dev/null | grep -io '{"proxy_[^}]*}'  | jq -r '. | {_:.PROXY_COUNTRY, IP:.PROXY_IP,PORT:.PROXY_PORT}' -c  | sed 's/["{}]//g' | awk -F, '{ p=substr($3,6); $3="PORT:" sprintf("%d",strtonum("0x" p)); }1' OFS=',' | sed 's/,IP:/\t/; s/,PORT//; s/ /_/g; s/^..//' | sed $'s/ *[^\t]*/\x1b[7;1m&\x1b[0m/' | column -t | column -t -s ':'
 	;;
 	
-	"serve")
+	("serve")
 		if [ "${2}" == "http" ]
 		then
 			cp "${3}" /var/www/html/files/ ;
 		fi
 	;;
 	
-	"lsync")
+	("lsync")
 		mv "${2}" /root/Sync
 	;;
 	
-	"gedit")
+	("gedit")
 		gedit "${2}" & disown
 	;;
 	
-	"hx")
+	("hx")
 		cat /dev/stdin  | hexdump -v -e '"\\x" 1/1 "%02X"' && echo ;
 	;;
 
-	"null")
+	("null")
 		curl https://null.co.in/chapters/2-delhi 2>/dev/null | grep registration | sed 's|[^-]*-\([^/]*\)/.*|\1|' | cut -d '-' -f 4- | sed 's/-\([[:digit:]].*\)/ \1/; s/\([[:digit:]]\{4\}\)-\(.*\)/\1 \2/' | head -5 | column -t
 	;;
 	
-	"wiki")
+	("wiki")
 		wp2t "${2}" | less
 	;;
 	
-	"replace")
+	("replace")
 		sed -i "/${2}/s:${3}:${4}:g" ${5} ; 
 	;;
 	
-	"search")
+	("search")
  		apt-cache search "${2}" | 
 		while read -r pkg desc; 
 		do 
@@ -128,7 +129,7 @@ case "${1}" in
 			sed 's/\(.*\)   -Installed: \(.*\)/\1\2/'
 	;;
 	
-	"whatis")
+	("whatis")
 		#typeset -f "${2}"
 		#printf "%"$COLUMNS"s" | tr " " "-"
 		type "${2}" 	2>| /dev/null ;
@@ -168,7 +169,7 @@ case "${1}" in
 		fi;
 	;;
 	
-	"open")
+	("open")
 		t1=$(sed 's/^.*\.\(.*\): .*/\1/i'0<<<$(file "${2}"))
 		if [ "${2}" == 'firefox' ]
 		then
@@ -188,16 +189,16 @@ case "${1}" in
 		fi
 	;;
 	
-	"show")
+	("show")
 		apt-cache show "${2}" &&
 		curl -m 10 -L https://pkg.kali.org/pkg/"${2}" 2>|/dev/null | grep "span class=\"news-date\"\|<title>" | sed 's/.*>\(.*\)<.*/\1/; s/.*- \(.*\)$/\1/' | sed 's/-/@/2' | cut -d '@' -f 1 | uniq | sed ':@; N; $!b@; s/\n/____/g';
 	;;
 	
-	"glist")
+	("glist")
 		gsettings list-recursively | grep --color=auto -i "${2}" ; 
 	;;
 	
-	"grange")
+	("grange")
 		echo "Type :: Key :: Value" ;
 		printf %$COLUMNS"s" | tr " " "-"
 		for key in $(
@@ -218,7 +219,7 @@ case "${1}" in
 		sed "s/ :: /@/g" | column -t -s "@" 
 	;;
 	
-	"network")
+	("network")
 		ip addr | grep 255 ; echo ;
 		curl -s http://whatismyip.akamai.com/ ; echo; 
 		#MAC
@@ -226,7 +227,7 @@ case "${1}" in
 		ping -c 2 google.com ; 
 	;;
 	
-	"system")
+	("system")
 		tty ; echo ;
 		iostat ; echo
 		#shopt -p ; shopt -op ;
@@ -249,7 +250,7 @@ case "${1}" in
 		lspci -v ;
 	;;
 	
-	"gitup")
+	("gitup")
 		git remote show origin ;
 		git status -s ;
 		echo -e "\x0a\x1b[7m\x57\x61\x6E\x74\x20\x61\x6C\x6C\x20\x63\x6F\x6D\x6D\x69\x74\x73\x20\x75\x6E\x73\x74\x61\x67\x65\x64\x20\x3F\x3F\x1b[27m\x0A"
@@ -275,19 +276,19 @@ case "${1}" in
 		git push ;
 	;;
 	
-	"weather")
+	("weather")
 		curl wttr.in/"^${2}$" 2>| /dev/null | head -n -3 ; 
 	;;
 	
-	"lh")
+	("lh")
 		ls -FlAshZi --color=auto "${2:-.}" | sed -n '/ [[:digit:]]\{1,2\} [[:digit:]]\{2\}:[[:digit:]]\{2\} \./p'
 	;;
 
-	"lf")
+	("lf")
 		file $(echo "${2}"/*)
 	;;
 
-	"lsd")
+	("lsd")
 		ls -AlF | 
 		sort -k 9,9 >| ${tmp_}/1 ; 
 	
