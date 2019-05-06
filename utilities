@@ -81,8 +81,8 @@ resource-agents guacd vlan vde2 lldpd lldpad ladvd anytun braa onesixtyone
 socat dbd cryptcat netrw sbd corkscrew yangcli
 ganeti xen-system-amd64 fence-agents
 ike isakmpd racoon exabgp 
-ffmpeg hasciicam imagemagick openimageio-tools potrace xaos aa3d gopchop ffmpegthumbnailer xine-console icecast2
-youtube-dl python3-yt smtube smplayer minitube mps-youtube quvi nomnom cclive get-flash-videos pavucontrol pianobar
+ffmpeg hasciicam imagemagick openimageio-tools potrace xaos aa3d gopchop ffmpegthumbnailer xine-console icecast2 mixxx mixxx-data
+youtube-dl python3-yt smtube smplayer xmms2 minitube mps-youtube quvi nomnom cclive get-flash-videos pavucontrol pianobar
 mp3blaster moc ncmpcpp ncmpc cmus mpv mplayer mopidy mpc mpd qmmp vlc kodi radiotray tunapie fadecut gpac pulseaudio-utils
 sox mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity glfer streamripper streamtuner2 wavesurfer
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr
