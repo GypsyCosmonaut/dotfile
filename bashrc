@@ -28,6 +28,10 @@ ifm() {
 	if [ -z "${#}" ] ; then /root/work/dotfile/functions ifm "$@"
 	else echo $'\x1b[1mifm \x1b[7mRadio\x1b[27m'
 	fi }
+doc() {
+	if [ -z "${#}" ] ; then /root/work/dotfile/functions doc "$@"
+	else echo $'\x1b[1mdoc \x1b[7mApplication\x1b[27m'
+	fi }
 net() {
 	if [[ "${#}" -le 3 && "${#}" -ge 2 ]] ; then /root/work/dotfile/functions net "$@"
 	else echo $'\x1b[1mnet \x1b[7m[Action] SSID {Password | Interface}\x1b[27m'

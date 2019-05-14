@@ -50,7 +50,7 @@ eyewitness cutycapt autopsy exiv2
 trinity valgrind nocache splint hugepages pmdk-tools syslinux-utils system-config-kickstart
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo
 exuberant-ctags sshfp slapd ldap-utils phpldapadmin
-jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp
+jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp unrtf unoconv
 yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw 
 jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack
@@ -70,7 +70,7 @@ gr-gsm smstools kannel kannel-extras kannel-sqlbox gsm-utils gsm0710muxd osmo-bt
 osmocom-bs11-utils osmocom-bsc osmocom-bsc-nat osmocom-bsc-gbproxy osmocom-ipaccess-utils osmocom-nitb osmocom-sgsn
 ofono ofono-phonesim connman
 varnish memcached memcachedb
-ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-basic
+ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-basic tftpd-hpa ironic-api
 mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sidedoor-sudo sshguard keychain pterm sshpass autossh landscape-common
 x11vnc x2vnc directvnc xrdp cockpit rdesktop
 rsync rdist pssh

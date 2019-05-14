@@ -24,6 +24,10 @@ case "${1}" in
 		done
 	;;
 
+	("doc")
+		find /usr/share/doc -maxdepth 1 -name "*${2}*" -exec /bin/bash -c "ls -d {} | grep --color ${2}" \;
+		;;
+
 	("nohup")
 		nohup "${2}" 1>| /dev/null 2>&1 &
 	;;
