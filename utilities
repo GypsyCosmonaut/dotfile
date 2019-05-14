@@ -7,8 +7,8 @@ rsh-server rsh-client rsh-redone-client
 doxygen gucharmap whichman dosbox mmark oxref
 shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
 cscope isoquery iso-codes
-nwipe sweeper trash-cli safe-rm testdisk blktool hdparm umockdev dar magicrescue array-info smartmontools
-nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount
+nwipe sweeper trash-cli safe-rm testdisk extundelete scalpel blktool hdparm umockdev dar magicrescue array-info smartmontools
+nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
 sharutils uni2ascii ascii2binary basez recode
@@ -36,7 +36,7 @@ cpulimit cpufreqd mom rrdcollect systemtap-sdt-dev sysstat quota starpu-tools st
 sosreport fence-agents
 linuxbrew-wrapper moreutils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
-strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft
+strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace nmon pstack intrace ipip iputils-tracepath jack-tools kernelshark crash ree
 mcelog systune ksmtuned numad
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
@@ -162,7 +162,7 @@ apt-file libsolv-tools checkinstall cpanminus
 auditd forkstat heartbeat pacemaker pacemaker-cli-utils cluster-glue resource-agents
 fbreader calibre okular epub-utils epubcheck ebook2epub ebook-speaker sigil
 snmpd snmp snmp-mibs-downloader
-strongswan strongswan-nm
+strongswan strongswan-nm strongswan-swanctl charon-systemd strongswan-charon charon-cmd
 network-manager-pptp network-manager-l2tp network-manager-ssh network-manager-iodine network-manager-openvpn network-manager-vpnc
 network-manager-openconnect 
 network-manager-pptp-gnome network-manager-ssh-gnome network-manager-vpnc-gnome network-manager-iodine-gnome
