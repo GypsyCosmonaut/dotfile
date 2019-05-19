@@ -8,6 +8,7 @@ doxygen gucharmap whichman dosbox mmark oxref
 shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
 cscope isoquery iso-codes
 nwipe sweeper trash-cli safe-rm testdisk extundelete scalpel blktool hdparm umockdev dar magicrescue array-info smartmontools
+gparted mtools syslinux syslinux-utils xorriso
 nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
@@ -47,7 +48,7 @@ mrtg mrtgutils ap-utils udns-utils
 icinga fio flent msr-tools
 bandwidthd uwsgi-core 
 eyewitness cutycapt autopsy exiv2
-trinity valgrind nocache splint hugepages pmdk-tools syslinux-utils system-config-kickstart
+trinity valgrind nocache splint hugepages pmdk-tools system-config-kickstart
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo
 exuberant-ctags sshfp slapd ldap-utils phpldapadmin
 jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp unrtf unoconv
@@ -90,7 +91,7 @@ codecrypt scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 crackle otp uui
 aespipe spiped kxd kxc wotsap tang stoken softhsm
 certbot tomb tcplay nttcp ucspi-tcp ucspi-tcp-ipv6
 steghide stegosuite outguess gifshuffle snowdrop stegsnow sysfsutils sg3-utils
-d-itg mz fragroute ostinato packit sendip tcpreplay t50 tundeep packeth nftables ipstate ufw shorewall knockd ipset
+d-itg mz fragroute ostinato packit sendip tcpreplay t50 tundeep packeth nftables firewalld ipstate ufw shorewall knockd ipset
 opencaster scantv dvbstream streamer xtv ttv tvtime fbtv freetuxtv w-scan radiotray streamripper
 metagoofil 
 pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta multimac
