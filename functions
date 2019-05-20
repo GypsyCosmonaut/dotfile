@@ -25,7 +25,7 @@ case "${1}" in
 	;;
 
 	("doc")
-		find /usr/share/doc -maxdepth 1 -name "*${2}*" -execdir ls -Fd {} \; | grep --color=always "${2}" | sed 's|^\.|/usr/share/doc|'
+		find /usr/share/doc -maxdepth 1 -iname "*${2}*" -execdir ls -Fd {} \; | grep -i --color=always "${2}" | sed 's|^\.|/usr/share/doc|'
 		;;
 
 	("nohup")
