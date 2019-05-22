@@ -9,7 +9,8 @@ shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol ten
 cscope isoquery iso-codes
 nwipe sweeper trash-cli safe-rm testdisk extundelete scalpel blktool hdparm umockdev dar magicrescue array-info smartmontools
 gparted mtools syslinux syslinux-utils xorriso
-nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot
+nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot tgt
+encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
 sharutils uni2ascii ascii2binary basez recode
@@ -27,7 +28,7 @@ xinit dsh hackersh xonsh aws-shell awscli rhc fish fbterm tio xnest xdmx xorg di
 shelr screenkey xmacro xnee cnee cockpit fakeroot pseudo inputattach suckless-tools stterm surf surfraw reptyr xattr
 selinux-utils selinux-basics
 schroot chrootuid compartment
-beav dhex bless hexedit hexcurse hexer tweak ht lfhex ncurses-hexedit radare2 shed binwalk pev vbindiff 
+beav dhex bless hexedit hexcurse hexer tweak ht lfhex ncurses-hexedit radare2 shed binwalk pev vbindiff intel-gpu-tools
 whohas aptitude apt-cudf cudf-tools aspcud mccs packup dict debtree dlocate pv pipemeter percol pipebench bar netpipes tree
 httpie slowhttptest wrk
 autorenamer renameutils ifrename mrename
@@ -53,7 +54,7 @@ wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload 
 exuberant-ctags sshfp slapd ldap-utils phpldapadmin
 jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp unrtf unoconv
 yad dialog
-arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw 
+arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw psprocs
 jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack xlsx2csv catdoc
 msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer acpi xml2 xcb
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
@@ -157,7 +158,6 @@ munin latencytop ulatency ulatencyd pchar
 neopi peframe pyew mhap cerspotter
 iftop iptraf jnettop nethogs netdata ethtool xbindkeys etherpuppet nload
 pdfcrack fcrackzip rarcrack tlsh-tools ssdeep
-encfs ecryptfs-utils
 bats ansiweather posterazor
 apt-file libsolv-tools checkinstall cpanminus
 auditd forkstat heartbeat pacemaker pacemaker-cli-utils cluster-glue resource-agents
@@ -179,6 +179,7 @@ fbcat fbi gnome-applets chrome-gnome-shell ntpdate
 inkscape gimp blender xfig krita
 agtl hachu sjaakii sjeng
 topic-tools acct
+tzdata casacore-data-tai-utc
 
 python3-urllib3 pyhton3-uritools python3-mechanicalsoup python3-selenium python3-paramiko
 idle idle3-utils
