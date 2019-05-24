@@ -55,7 +55,7 @@ exuberant-ctags sshfp slapd ldap-utils phpldapadmin
 jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp unrtf unoconv
 yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw psprocs gddccontrol
-jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack xlsx2csv docx2txt catdoc
+jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack xlsx2csv docx2txt catdoc wordgrinder
 msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer acpi xml2 xcb
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
 makeself parallel startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
@@ -88,7 +88,7 @@ youtube-dl python3-yt smtube smplayer xmms2 minitube mps-youtube quvi nomnom ccl
 mp3blaster moc ncmpcpp ncmpc cmus mpv mplayer mopidy mpc mpd qmmp vlc kodi radiotray tunapie fadecut gpac pulseaudio-utils
 sox mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity glfer streamripper streamtuner2 wavesurfer
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr
-codecrypt scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef rotix nettle-bin wire tcpcryptd 
+codecrypt scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef rotix nettle-bin wire tcpcryptd mokutil
 aespipe spiped kxd kxc wotsap tang stoken softhsm
 certbot tomb tcplay nttcp ucspi-tcp ucspi-tcp-ipv6
 steghide stegosuite outguess gifshuffle snowdrop stegsnow sysfsutils sg3-utils
