@@ -7,8 +7,8 @@ rsh-server rsh-client rsh-redone-client
 doxygen gucharmap whichman dosbox mmark oxref
 shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
 cscope isoquery iso-codes
-nwipe sweeper trash-cli safe-rm testdisk extundelete scalpel blktool hdparm umockdev dar magicrescue array-info smartmontools
-gparted mtools syslinux syslinux-utils xorriso gddrescue
+nwipe sweeper trash-cli safe-rm testdisk extundelete foremost scalpel blktool umockdev dar recoverjpeg photorec ntfs-3g
+gparted mtools syslinux syslinux-utils xorriso gddrescue magicrescue hdparm smartmontools array-info
 nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot tgt
 encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
@@ -34,8 +34,8 @@ httpie slowhttptest wrk
 autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools
-cpulimit cpufreqd mom rrdcollect systemtap-sdt-dev sysstat quota starpu-tools starpu-contrib-tools dstat xosview discus saidar
-sosreport fence-agents
+cpulimit cpufreqd cpufrequtils mom rrdcollect systemtap-sdt-dev quota starpu-tools starpu-contrib-tools dstat xosview discus saidar
+sosreport fence-agents sysstat
 linuxbrew-wrapper moreutils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
