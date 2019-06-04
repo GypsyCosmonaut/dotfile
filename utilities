@@ -56,7 +56,7 @@ jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-high
 yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw psprocs gddccontrol
 jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack xlsx2csv docx2txt catdoc wordgrinder
-msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer acpi xml2 xcb
+msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer acpi xml2 xcb xclip clipit
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
 makeself parallel startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
 blktool
@@ -75,7 +75,7 @@ varnish memcached memcachedb
 ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-basic tftpd-hpa ironic-api
 mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sidedoor-sudo sshguard keychain pterm sshpass autossh landscape-common
 x11vnc x2vnc directvnc xrdp cockpit rdesktop
-rsync rdist pssh
+rsync rdist pssh setserial cu minicom putty
 samba pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine
 anycast mrd6 freelan
 bind9 openresolv
@@ -98,7 +98,7 @@ metagoofil
 pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta multimac
 exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley uniutils execstack
 memtest86+ memtester srecord rekall-core conntrack conntrackd eventstat systraq mirmon metche idlestat bilibop-lockfs
-sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit ndisc6 sosreport cockpit-system
+sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit ndisc6 sosreport cockpit-system explain
 icmpinfo icmptx icmpush echoping oping 2ping sip-tester scap-workbench etherape niceshaper wondershaper tcpxtract
 ioping dhcping smtpping scamper httping mactelnet-client mrtg-ping-probe wpan-tools netwox lsm
 iputils-arping iputils-ping iputils-tracepath iputils-clockdiff 
