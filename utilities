@@ -1,6 +1,6 @@
 info pinfo howdoi rustc ghc perl6 puppet ansible chef scala plantuml asciidoc mscgen graphviz preprocess sslh clif glueviz
 markdown groff docbook grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo cmake gnuplot plotutils trend topcat octave sng rs
-gnudatalanguage pdl ncl-ncarg
+gnudatalanguage pdl ncl-ncarg dynare
 scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xonsh crmsh ifrit cgvg geogebra carmetal php-cli
 ucarp vrrpd keepalived clustershell trickle openfortivpn coop-computing-tools xpa-tools xdmx-tools daemontools runit
 rsh-server rsh-client rsh-redone-client
@@ -8,8 +8,8 @@ doxygen gucharmap whichman dosbox mmark oxref
 shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
 cscope isoquery iso-codes
 nwipe sweeper trash-cli safe-rm testdisk extundelete foremost scalpel blktool umockdev dar recoverjpeg photorec ntfs-3g
-gparted mtools syslinux syslinux-utils xorriso gddrescue magicrescue hdparm smartmontools array-info
-nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot tgt jmtpfs
+gparted mtools syslinux syslinux-utils xorriso gddrescue magicrescue hdparm smartmontools array-info bcache-tools
+nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot tgt jmtpfs f2fs-tools
 encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
@@ -35,7 +35,7 @@ autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools
 cpulimit cpufreqd cpufrequtils mom rrdcollect systemtap-sdt-dev quota starpu-tools starpu-contrib-tools dstat xosview discus saidar
-sosreport fence-agents sysstat
+sosreport fence-agents sysstat schedtool
 linuxbrew-wrapper moreutils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
@@ -131,6 +131,7 @@ connect-proxy ser2net shadowsocks haproxy
 owasp-mantra-ff osrframework cookie-cadger
 mutt nmh buku apparix slrn muchsync rtorrent
 iperf netperf socket netperfmeter ripe-atlas-tools netpipe-tcp netpipe-pvm
+sysbench
 sockstat procinfo watchcatd multiwatch logwatch nield monit mtail multitail rsstail collectl can-utils conman nat-traverse supervisor dmtcp
 tripwire entr
 dyndns ez-ipupdate tinydyndns
