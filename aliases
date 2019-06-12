@@ -25,6 +25,7 @@ alias p="xclip -selection clipborard -o"
 alias h="xclip -selection primary -o"
 alias update="echo $'\x1b[1m\x1b[7mupdate\x1b[27m\x1b[0m' && apt-get update -y && echo $'\x1b[1m\x1b[7mupgrade\x1b[27m\x1b[0m'; apt-get upgrade -y ;"
 alias upgrade="echo $'\x1b[1m\x1b[7mupdate\x1b[27m\x1b[0m' && apt-get update -y && echo $'\x1b[1m\x1b[7mupgrade\x1b[27m\x1b[0m' && apt-get upgrade -y && echo $'\x1b[1m\x1b[7mdistro-upgrade\x1b[27m\x1b[0m' && apt-get dist-upgrade -y && xwd -root >/tmp/a.xwd && convert -negate /tmp/a.xwd /tmp/b.xwd && timeout .8 xwud -in /tmp/b.xwd ; "
+alias debmany="PAGER=zless debmany"
 
 alias aira2="aria2c -s 16 -x 16"
 alias axel="axel -n 20"
