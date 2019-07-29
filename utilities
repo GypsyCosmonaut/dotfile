@@ -1,4 +1,5 @@
 info pinfo howdoi rustc ghc perl6 puppet ansible chef scala plantuml asciidoc mscgen graphviz preprocess sslh clif glueviz
+foremancli system-config-kickstart
 markdown groff docbook grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo cmake gnuplot plotutils trend topcat octave sng rs
 gnudatalanguage pdl ncl-ncarg dynare
 scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xonsh crmsh ifrit cgvg geogebra carmetal php-cli
@@ -10,12 +11,12 @@ cscope isoquery iso-codes
 nwipe sweeper trash-cli safe-rm testdisk extundelete foremost scalpel blktool umockdev dar recoverjpeg photorec ntfs-3g
 gparted mtools syslinux syslinux-utils xorriso gddrescue magicrescue hdparm smartmontools array-info bcache-tools
 nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot tgt jmtpfs f2fs-tools
-encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect
+encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect atfs
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
-mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinycdb db-util
+mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinycdb db-util gdbmtool qdbm-util tdb-tools ctdb
 pgcli pgagent sphinxsearch
 md5deep rhash
 ddd cstream
@@ -49,7 +50,7 @@ mrtg mrtgutils ap-utils udns-utils
 icinga fio flent msr-tools
 bandwidthd uwsgi-core 
 eyewitness cutycapt autopsy exiv2
-trinity valgrind nocache splint hugepages pmdk-tools system-config-kickstart
+trinity valgrind nocache splint hugepages pmdk-tools
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo
 exuberant-ctags sshfp slapd ldap-utils phpldapadmin
 jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp unrtf unoconv
@@ -106,7 +107,7 @@ bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump
 darkstat sntop pmacct nfdump flowscan flowgrind softflowd flow-tools fprobe-ng fastnetmon nstreams ndiff ncrack pcredz
 dumpcap tcpdump hunt dsniff tcpflow tcpflow-nox ipgrab ncaptool pcaputils pcapfix nast stenographer tcpick daemonlogger 
 netsniff-ng ssldump
-pads pnscan zmap amap unicornscan amispammer nmapsi4 masscan netdiscover
+pads pnscan zmap amap unicornscan amispammer nmapsi4 masscan netdiscover scap-workbench
 icinga
 batmand batctl
 vega httest deblaze sslcaudit wuzz cadaver nd davtest wig parsero linkchecker linklint webcheck plecost wpscan joomscan sublist3r
