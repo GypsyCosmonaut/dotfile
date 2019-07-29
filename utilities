@@ -39,7 +39,7 @@ cpulimit cpufreqd cpufrequtils mom rrdcollect systemtap-sdt-dev quota starpu-too
 sosreport fence-agents sysstat schedtool
 linuxbrew-wrapper moreutils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
-strace strace64 fatrace ltrace latrace xtrace umview tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
+strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace nmon pstack intrace ipip iputils-tracepath jack-tools kernelshark crash ree
 mcelog systune ksmtuned numad
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
@@ -62,7 +62,7 @@ grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt
 makeself parallel startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
 blktool
 apktool signapk apksigner split-select android-framework-res
-gns3 plotnetcfg
+gns3 plotnetcfg umview ns3 inetsim marionnet mininet weathermap4rrd
 aircrack-ng fruitywifi linssd soapysdr-tools cubicsdr airspy weplab spectools hamradio-datamodes psk31lx comptty linpsk minimodem
 gqrx-sdr hackrf hamradio-sdr quisk gnuradio gr-osmosdr horst flamp radio inspectrum linpac ax25mail-utils hamradio-packetmodes tlf
 siggen gvb
@@ -155,7 +155,7 @@ clonezilla snapper rclone zbackup ext4magic fsarchiver safecopy
 zulucrypt-cli zulumount-cli zulusafe-cli
 multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs
 sipsak rfcat crackmapexec sipp multimon multimon-ng
-yara ns2 ns3 ntopng numad numatop stress stress-ng goldeneye usbip htop atop unhide tsung pktstat tcptrack seekwatcher pkstat
+yara ntopng numad numatop stress stress-ng goldeneye usbip htop atop unhide tsung pktstat tcptrack seekwatcher pkstat
 munin latencytop ulatency ulatencyd pchar
 neopi peframe pyew mhap cerspotter
 iftop iptraf jnettop nethogs netdata ethtool xbindkeys etherpuppet nload
