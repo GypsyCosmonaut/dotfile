@@ -9,7 +9,8 @@ doxygen gucharmap whichman dosbox mmark oxref
 shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
 cscope isoquery iso-codes
 nwipe sweeper trash-cli safe-rm testdisk extundelete foremost scalpel blktool umockdev dar recoverjpeg photorec ntfs-3g
-gparted mtools syslinux syslinux-utils xorriso gddrescue magicrescue hdparm smartmontools array-info bcache-tools
+gparted mtools syslinux syslinux-utils xorriso hdparm smartmontools array-info bcache-tools
+gddrescue ddrutility safecopy myrescue magicrescue
 nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot tgt jmtpfs f2fs-tools
 encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect atfs
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
@@ -58,6 +59,7 @@ yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw psprocs gddccontrol
 jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack xlsx2csv docx2txt catdoc wordgrinder
 msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer acpi xml2 xcb xclip clipit
+xsltproc xalan
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
 makeself parallel startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
 blktool
@@ -77,7 +79,7 @@ ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-
 mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sidedoor-sudo sshguard keychain pterm sshpass autossh landscape-common
 x11vnc x2vnc directvnc xrdp cockpit rdesktop
 rsync rdist pssh setserial cu minicom putty
-samba pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine
+samba pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine n2n fastd
 anycast mrd6 freelan
 bind9 openresolv
 resource-agents guacd vlan vde2 lldpd lldpad ladvd anytun braa onesixtyone
@@ -149,9 +151,10 @@ mldonkey-server amule microdc2 uhub
 magic-wormhole fex sendfile filetea uucp coquelicot flamethrower
 dianara pypump-shell rtv bti
 geoip-bin tor-geoipdb whereami gpsbabel gpsd gpsd-clients gpsprune gpxviewer viking navit wwl mapcode postgis routino
+proj-bin proj-data hyantesite spatialite-bin saga pktools gdal-bin gdal-data stetl rasterio fiona
 tor tor-arm torchat onioncat pktanon telegram-desktop ricochet-im belenios-tool premail mixmaster 
 megatools seafile-cli seafile-daemon syncthing pastebinit wgetpaste vagrant iroffer qweborf wget2 aria2
-clonezilla snapper rclone zbackup ext4magic fsarchiver safecopy
+clonezilla snapper rclone zbackup ext4magic fsarchiver
 zulucrypt-cli zulumount-cli zulusafe-cli
 multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs
 sipsak rfcat crackmapexec sipp multimon multimon-ng
@@ -165,7 +168,7 @@ apt-file libsolv-tools checkinstall cpanminus
 auditd forkstat heartbeat pacemaker pacemaker-cli-utils cluster-glue resource-agents
 fbreader calibre okular epub-utils epubcheck ebook2epub ebook-speaker sigil
 snmpd snmp snmp-mibs-downloader
-strongswan strongswan-nm strongswan-swanctl charon-systemd strongswan-charon charon-cmd
+strongswan strongswan-nm strongswan-swanctl charon-systemd strongswan-charon charon-cmd libreswan kvpnc tinc openvpn
 network-manager-pptp network-manager-l2tp network-manager-ssh network-manager-iodine network-manager-openvpn network-manager-vpnc
 network-manager-openconnect 
 network-manager-pptp-gnome network-manager-ssh-gnome network-manager-vpnc-gnome network-manager-iodine-gnome
