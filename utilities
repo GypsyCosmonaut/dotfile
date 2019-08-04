@@ -3,7 +3,8 @@ foremancli system-config-kickstart
 markdown groff docbook grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo cmake gnuplot plotutils trend topcat octave sng rs
 gnudatalanguage pdl ncl-ncarg dynare
 scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xonsh crmsh ifrit cgvg geogebra carmetal php-cli
-ucarp vrrpd keepalived clustershell trickle openfortivpn coop-computing-tools xpa-tools xdmx-tools daemontools runit
+ucarp vrrpd keepalived clustershell trickle openfortivpn coop-computing-tools xpa-tools xdmx-tools daemontools runit pagein
+ident2 nullidentd oidentd bidentd
 rsh-server rsh-client rsh-redone-client
 doxygen gucharmap whichman dosbox mmark oxref
 shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
@@ -18,6 +19,7 @@ zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
 mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinycdb db-util gdbmtool qdbm-util tdb-tools ctdb
+tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin
 pgcli pgagent sphinxsearch
 md5deep rhash
 ddd cstream
@@ -38,7 +40,7 @@ bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools
 cpulimit cpufreqd cpufrequtils mom rrdcollect systemtap-sdt-dev quota starpu-tools starpu-contrib-tools dstat xosview discus saidar
 sosreport fence-agents sysstat schedtool
-linuxbrew-wrapper moreutils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
+linuxbrew-wrapper moreutils ucommon-utils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace nmon pstack intrace ipip iputils-tracepath jack-tools kernelshark crash ree
@@ -58,7 +60,7 @@ jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-high
 yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw psprocs gddccontrol
 jq yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack xlsx2csv docx2txt catdoc wordgrinder
-msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer acpi xml2 xcb xclip clipit
+msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer xml2 xcb xclip clipit
 xsltproc xalan
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
 makeself parallel startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
@@ -80,7 +82,7 @@ mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sidedoor-sudo sshguard ke
 x11vnc x2vnc directvnc xrdp cockpit rdesktop
 rsync rdist pssh setserial cu minicom putty
 samba pagekite openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine n2n fastd
-anycast mrd6 freelan
+anycast mrd6 freelan dbeacon
 bind9 openresolv
 resource-agents guacd vlan vde2 lldpd lldpad ladvd anytun braa onesixtyone
 socat dbd cryptcat netrw sbd corkscrew yangcli
@@ -159,6 +161,7 @@ zulucrypt-cli zulumount-cli zulusafe-cli
 multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs
 sipsak rfcat crackmapexec sipp multimon multimon-ng
 yara ntopng numad numatop stress stress-ng goldeneye usbip htop atop unhide tsung pktstat tcptrack seekwatcher pkstat
+acpi acpica-tools
 munin latencytop ulatency ulatencyd pchar
 neopi peframe pyew mhap cerspotter
 iftop iptraf jnettop nethogs netdata ethtool xbindkeys etherpuppet nload
@@ -185,6 +188,7 @@ inkscape gimp blender xfig krita
 agtl hachu sjaakii sjeng
 topic-tools acct
 tzdata casacore-data-tai-utc
+gnucash ofxstatement smtm beancounter clipf pem science-financial
 
 python3-urllib3 pyhton3-uritools python3-mechanicalsoup python3-selenium python3-paramiko
 idle idle3-utils
