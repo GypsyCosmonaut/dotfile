@@ -19,7 +19,8 @@ zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
 mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinycdb db-util gdbmtool qdbm-util tdb-tools ctdb
-tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin
+tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin sqlcipher hsqldb-utils
+firebird3.0-common firebird3.0-server-core firebird3.0-server firebird3.0-utils
 pgcli pgagent sphinxsearch
 md5deep rhash
 ddd cstream
