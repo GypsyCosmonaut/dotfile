@@ -45,7 +45,7 @@ electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace nmon pstack intrace ipip iputils-tracepath jack-tools kernelshark crash ree
 mcelog systune ksmtuned numad
-uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle blktrace blkreplay
+uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle
 heaptrack heaptrack-gui gmemusage iputils-clockdiff inotify-tools babeltrace 0trace apitrace abi-tracker mscgen xplico lttv
 f3 memdump memtool runlim smem smemstat perf-tools-unstable shove tappy minicoredumper volatility ifstat nicstat pcp fitsverify
 inetutils-traceroute speedtest-cli speedometer netmate netsend ooniprobe
@@ -136,7 +136,8 @@ connect-proxy ser2net shadowsocks haproxy
 owasp-mantra-ff osrframework cookie-cadger
 mutt nmh buku apparix slrn muchsync rtorrent
 iperf netperf socket netperfmeter ripe-atlas-tools netpipe-tcp netpipe-pvm
-sysbench
+sysbench dbench bonnie++ blkreplay blkreplay-examples blktrace fsmark postmark iozone3 lmbench rally 
+ssg-applications ssg-base ssg-debderived
 sockstat procinfo watchcatd multiwatch logwatch nield monit mtail multitail rsstail collectl can-utils conman nat-traverse supervisor dmtcp
 tripwire entr
 dyndns ez-ipupdate tinydyndns
