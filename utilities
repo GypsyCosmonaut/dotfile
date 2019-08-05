@@ -3,7 +3,7 @@ foremancli system-config-kickstart
 markdown groff docbook grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo cmake gnuplot plotutils trend topcat octave sng rs
 gnudatalanguage pdl ncl-ncarg dynare
 scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xonsh crmsh ifrit cgvg geogebra carmetal php-cli
-ucarp vrrpd keepalived clustershell trickle openfortivpn coop-computing-tools xpa-tools xdmx-tools daemontools runit pagein
+ucarp vrrpd keepalived clustershell openfortivpn coop-computing-tools xpa-tools xdmx-tools daemontools runit pagein
 ident2 nullidentd oidentd bidentd
 rsh-server rsh-client rsh-redone-client
 doxygen gucharmap whichman dosbox mmark oxref
@@ -104,7 +104,8 @@ pngmeta paperkey pecomato metamonger metastore mediainfo mat mac-robber flvmeta 
 exiftool libimage-exiftool-perl exifprobe baloo4 atomicparsley uniutils execstack
 memtest86+ memtester srecord rekall-core conntrack conntrackd eventstat systraq mirmon metche idlestat bilibop-lockfs
 sipgrep bittwist sysdig dns-flood-detector ffado-tools ipv6-toolkit ipv6toolkit ndisc6 sosreport cockpit-system explain
-icmpinfo icmptx icmpush echoping oping 2ping sip-tester scap-workbench etherape niceshaper wondershaper tcpxtract
+icmpinfo icmptx icmpush echoping oping 2ping sip-tester scap-workbench etherape tcpxtract
+niceshaper wondershaper fireqos firehol-common firehol-tools trickle
 ioping dhcping smtpping scamper httping mactelnet-client mrtg-ping-probe wpan-tools netwox lsm
 iputils-arping iputils-ping iputils-tracepath iputils-clockdiff 
 bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump 
@@ -193,3 +194,5 @@ gnucash ofxstatement smtm beancounter clipf pem science-financial
 
 python3-urllib3 pyhton3-uritools python3-mechanicalsoup python3-selenium python3-paramiko
 idle idle3-utils
+
+sasm
