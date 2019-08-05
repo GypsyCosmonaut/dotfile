@@ -40,7 +40,7 @@ bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools
 cpulimit cpufreqd cpufrequtils mom rrdcollect systemtap-sdt-dev quota starpu-tools starpu-contrib-tools dstat xosview discus saidar
 sosreport fence-agents sysstat schedtool
-linuxbrew-wrapper moreutils ucommon-utils ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
+linuxbrew-wrapper moreutils ucommon-utils util-linux ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
 kmtrace mutrace smemcap maybe mtr nsntrace nfstrace nmon pstack intrace ipip iputils-tracepath jack-tools kernelshark crash ree
