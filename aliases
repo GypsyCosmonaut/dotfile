@@ -1,4 +1,5 @@
 
+alias lock="loginctl lock-session"
 alias f="xdotool key ctrl+f"
 alias pgrep="pgrep -f"
 alias ls="ls --color=auto"
