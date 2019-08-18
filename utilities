@@ -50,8 +50,9 @@ sosreport fence-agents sysstat
 linuxbrew-wrapper moreutils ucommon-utils util-linux ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
-kmtrace mutrace smemcap maybe mtr nfstrace nmon intrace ipip iputils-tracepath jack-tools kernelshark crash ree kerneloops kmod
-mcelog systune ksmtuned numad
+kmtrace mutrace smemcap maybe mtr nfstrace nmon intrace ipip iputils-tracepath jack-tools 
+kernelshark crash ree kerneloops kmod eventstat
+mcelog systune ksmtuned numad edac-utils
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag chaosreader bustle
 heaptrack heaptrack-gui gmemusage iputils-clockdiff inotify-tools babeltrace 0trace apitrace abi-tracker mscgen xplico lttv
 f3 memdump memtool runlim smem smemstat perf-tools-unstable shove tappy minicoredumper volatility ifstat nicstat pcp fitsverify
@@ -135,7 +136,7 @@ synopsis dex2jar
 wce xssproxy ctfutils findmyhash
 webshells jboss-autopwn fimap uniscan bbqsql themole teamsploit nishang intersect powersploit killerbee cisco-global-exploiter
 medusa ophcrack hashcat bfbtester crack crack-md5
-sfuzz bed doona spike powerfuzzer siparmyknife trinity
+sfuzz bed doona spike powerfuzzer siparmyknife trinity crashme
 cmdtest
 hostapd-wpe freeradius-wpe
 clusterd commix
@@ -167,10 +168,10 @@ proj-bin proj-data hyantesite spatialite-bin saga pktools gdal-bin gdal-data ste
 tor tor-arm torchat onioncat pktanon telegram-desktop ricochet-im belenios-tool premail mixmaster 
 megatools seafile-cli seafile-daemon syncthing pastebinit wgetpaste vagrant iroffer qweborf wget2 aria2
 clonezilla snapper rclone zbackup ext4magic fsarchiver
-mkelfimage wraplinux
-sysdig-dkms systune targetcli-fb trace-cmd
+mkelfimage wraplinux debirf
+sysdig-dkms systune targetcli-fb input-utils kerneltop lime-forensics-dkms lttng-modules-dkms
 zulucrypt-cli zulumount-cli zulusafe-cli
-multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs
+multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs lksctp-tools
 sipsak rfcat crackmapexec sipp multimon multimon-ng
 yara ntopng numad numatop stress stress-ng goldeneye usbip htop atop unhide tsung pktstat tcptrack seekwatcher pkstat
 acpi acpica-tools
