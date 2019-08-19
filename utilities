@@ -12,7 +12,8 @@ shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol ten
 cscope isoquery iso-codes
 nwipe sweeper holes trash-cli safe-rm testdisk extundelete foremost scalpel blktool umockdev dar recoverjpeg photorec ntfs-3g
 gparted mtools syslinux syslinux-utils xorriso hdparm smartmontools array-info bcache-tools
-gddrescue ddrutility safecopy myrescue magicrescue
+gddrescue ddrutility safecopy myrescue magicrescue vdmfec
+multipath-tools nbd-server nbd-client bmap-tools buffer sbd xnbd-common xnbd-server xnbd-client blimps-utils blimps-examples
 nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot tgt jmtpfs f2fs-tools
 encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect atfs
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
@@ -20,7 +21,7 @@ zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
 mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinycdb db-util gdbmtool qdbm-util tdb-tools ctdb
-tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin sqlcipher hsqldb-utils
+tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin sqlcipher hsqldb-utils traildb-cli
 firebird3.0-common firebird3.0-server-core firebird3.0-server firebird3.0-utils
 pgcli pgagent sphinxsearch
 md5deep rhash
@@ -46,7 +47,7 @@ autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools
 cpulimit cpufreqd cpufrequtils mom rrdcollect systemtap-sdt-dev quota starpu-tools starpu-contrib-tools dstat xosview discus saidar
-sosreport fence-agents sysstat
+sosreport fence-agents sysstat iotop seekwatcher
 linuxbrew-wrapper moreutils ucommon-utils util-linux ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
@@ -72,7 +73,6 @@ msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-util
 xsltproc xalan
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
 makeself parallel parafly startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
-blktool
 apktool signapk apksigner split-select android-framework-res
 gns3 plotnetcfg umview ns3 inetsim marionnet mininet weathermap4rrd openvswitch-testcontroller
 aircrack-ng fruitywifi linssd soapysdr-tools cubicsdr airspy weplab spectools hamradio-datamodes psk31lx comptty linpsk minimodem
@@ -169,7 +169,7 @@ tor tor-arm torchat onioncat pktanon telegram-desktop ricochet-im belenios-tool 
 megatools seafile-cli seafile-daemon syncthing pastebinit wgetpaste vagrant iroffer qweborf wget2 aria2
 clonezilla snapper rclone zbackup ext4magic fsarchiver
 mkelfimage wraplinux debirf
-sysdig-dkms systune targetcli-fb input-utils kerneltop lime-forensics-dkms lttng-modules-dkms
+sysdig-dkms systune targetcli-fb devio input-utils kerneltop lime-forensics-dkms lttng-modules-dkms
 zulucrypt-cli zulumount-cli zulusafe-cli
 multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs lksctp-tools
 sipsak rfcat crackmapexec sipp multimon multimon-ng
