@@ -1,27 +1,33 @@
-info pinfo howdoi rustc ghc perl6 puppet ansible chef maas scala
-plantuml asciidoc mscgen graphviz cl-graph preprocess sslh clif glueviz plotnetcfg ploticus
+info pinfo howdoi rustc ghc perl6 puppet ansible chef maas scala php-cli
+axiom ries sagemath geophar scram quantlib-examples
+plantuml asciidoc mscgen graphviz cl-graph preprocess sslh clif glueviz plotnetcfg ploticus dia ggobi rlplot starplot tcm
+systemd-bootchart pybootchartgui pytimechart
 foremancli system-config-kickstart tboot multipath-tools-boot
 markdown groff docbook grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo cmake gnuplot plotutils trend topcat octave sng rs
 gnudatalanguage pdl ncl-ncarg dynare teem-apps brig circos circos-tools runcircos-gui
-scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xonsh crmsh ifrit cgvg geogebra carmetal php-cli
+scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xautomation xonsh crmsh ifrit cgvg geogebra carmetal
 ucarp vrrpd keepalived clustershell coop-computing-tools xpa-tools xdmx-tools daemontools runit pagein tcputils ifenslave
+dig arp-scan rarpd macchanger
 openfortivpn quicktun
 ppp-gatekeeper bridge-utils
 voms-clients voms-server
+bfs ffindex fd-find searchmonkey fslint fzf go2 holes openafs-fileserver openafs-dbserver openafs-client openafs-fuse
+blockfinder cruft cruft-ng deborphan devilspie
+aeskeyfind rsakeyfind bruteforce-luks
 qperf rdma-core rdmacm-utils
-ident2 nullidentd oidentd bidentd
+kakoune ident2 nullidentd oidentd bidentd
 rsh-server rsh-client rsh-redone-client
 doxygen gucharmap whichman dosbox mmark oxref
-shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison cryptol tendermint wap-wml-tools gnuit x509-util bootcd
+shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison ragel cryptol tendermint wap-wml-tools gnuit x509-util
 cscope isoquery iso-codes
 nwipe sweeper holes trash-cli safe-rm testdisk extundelete foremost scalpel blktool umockdev dar recoverjpeg photorec ntfs-3g
 logrotate cronolog tmpreaper socklog vlogger
 gparted mtools syslinux syslinux-utils xorriso hdparm smartmontools quota quotatool array-info bcache-tools di fdflush udisks2 avfs
-gddrescue ddrutility safecopy myrescue magicrescue vdmfec ddpt dpm bootcd
+gddrescue ddrutility safecopy myrescue magicrescue vdmfec ddpt dpm bootcd cryptsetup-bin
 multipath-tools nbd-server nbd-client bmap-tools buffer mbuffer sbd xnbd-common xnbd-server xnbd-client blimps-utils blimps-examples
-nfs-kernel-server nfs-common diod autofs sshfs s3fs s3backer cryptmount dracut-core dracut-network proot tgt jmtpfs f2fs-tools
+nfs-kernel-server nfs-common diod autofs sshfs s3fs s3ql s3backer cryptmount dracut-core dracut-network proot tgt jmtpfs f2fs-tools
 encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect atfs
-lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq dump
+lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
@@ -29,23 +35,23 @@ mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinyc
 tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin sqlcipher hsqldb-utils traildb-cli
 firebird3.0-common firebird3.0-server-core firebird3.0-server firebird3.0-utils
 pgcli pgagent sphinxsearch
-md5deep rhash
+hashdeep simhash rhash
 ddd cstream
 sublime-text docker-engine rkt lxc-utils ctop virt-sandbox llvm drmips wine32 winetricks daemonize simh libguestfs-tools virtinst 
 debspawn open-infrastructure-container-tools systemd-container
 libvirt-clients virsh uidmap
 asciinema textdraw boxes aview loki cadubi sikulix caca-utils flydraw
 gobby sc visidata hnb nodau note tudu qpdfview zim cherrytree ispell aspell espeak praat nixnotes2 calcurse units leave ipvsadm
-taskwarrior taskd bugwarrior vit
+taskwarrior taskd tj3 yokadi bugwarrior vit
 xinit dsh hackersh xonsh aws-shell awscli rhc fish fbterm tio xnest xdmx xorg disper doc-rfc qrfcview 0install tmate xvfb
 shelr screenkey xmacro xnee cnee cockpit fakeroot pseudo inputattach suckless-tools stterm surf surfraw xattr
 reptyr prctl procenv procserv pslist pstack reniced monit supervisor restartd dmtcp needrestart scanmem schedtool circus forkstat 
-newpid bubblewrap health-check ioprocess ips nsntrace trickle slirp4netns
+whatmaps newpid bubblewrap health-check ioprocess ips nsntrace trickle slirp4netns
 niceshaper wondershaper fireqos firehol-common firehol-tools iproute2
 apitrace apitrace-gui apitrace-tracers driverctl
 selinux-utils selinux-basics apparmor apparmor-utils apparmor-easyprof
 schroot chrootuid compartment run-one
-beav dhex bless hexedit hexcurse hexer tweak ht lfhex ncurses-hexedit radare2 shed binwalk pev vbindiff intel-gpu-tools
+beav dhex bless hexedit hexcurse hexer tweak ht lfhex ncurses-hexedit radare2 shed binwalk pev vbindiff rdiff intel-gpu-tools
 whohas aptitude apt-cudf cudf-tools aspcud mccs packup dict debtree dlocate pv pipemeter percol pipebench bar netpipes tree
 httpie slowhttptest wrk
 autorenamer renameutils ifrename mrename
@@ -53,24 +59,24 @@ bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools cgroupfs-mount
 inteltool cpulimit cpufreqd cpufrequtils mom rrdcollect starpu-tools starpu-contrib-tools dstat xosview discus saidar
 systemtap systemtap-sdt-dev tuned-utils-systemtap ubiquity
-sosreport fence-agents sysstat iotop seekwatcher xymon
+sosreport fence-agents sysstat iotop seekwatcher xymon pcp
 linuxbrew-wrapper moreutils ucommon-utils util-linux ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
-strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace tcpslice paris-traceroute lft rr
+strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace mscgen tcpslice paris-traceroute lft rr
 kmtrace mutrace smemcap oprofile coz maybe mtr nfstrace nmon intrace ipip iputils-tracepath jack-tools 
 kernelshark crash ree kerneloops kmod eventstat loadlin
 mcelog systune ksmtuned numad edac-utils
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag dnsviz chaosreader bustle bustle-pcap
-heaptrack heaptrack-gui gmemusage iputils-clockdiff inotify-tools babeltrace 0trace apitrace abi-tracker mscgen xplico lttv
-f3 memdump memtool runlim smem smemstat perf-tools-unstable shove tappy minicoredumper volatility ifstat nicstat pcp fitsverify
+heaptrack heaptrack-gui gmemusage iputils-clockdiff inotify-tools babeltrace 0trace apitrace abi-tracker xplico lttv
+f3 memdump memtool runlim smem smemstat perf-tools-unstable shove tappy minicoredumper volatility ifstat nicstat fitsverify
 inetutils-traceroute speedtest-cli speedometer netmate netsend ooniprobe
 mrtg mrtgutils ap-utils udns-utils
 icinga fio flent msr-tools
 bandwidthd uwsgi-core 
 eyewitness cutycapt autopsy exiv2
 trinity valgrind valgrind-mpi kcachegrind voltron vite nocache splint hugepages pmdk-tools
-wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo
-exuberant-ctags sshfp slapd ldap-utils phpldapadmin sac
+wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo winwrangler
+exuberant-ctags sshfp slapd ldap-utils freeradius phpldapadmin sac
 jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp unrtf unoconv
 yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw psprocs gddccontrol
@@ -80,7 +86,7 @@ xsltproc xalan
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
 makeself parallel parafly startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
 apktool signapk apksigner split-select android-framework-res
-vagrant umview gns3 dynagen ns3 inetsim marionnet mininet weathermap4rrd openvswitch-testcontroller
+vagrant open-vm-tools umview gns3 dynagen ns3 inetsim marionnet mininet weathermap4rrd openvswitch-testcontroller
 aircrack-ng fruitywifi linssd soapysdr-tools cubicsdr airspy weplab spectools hamradio-datamodes psk31lx comptty linpsk minimodem
 gqrx-sdr hackrf hamradio-sdr quisk gnuradio gr-osmosdr horst flamp radio inspectrum linpac ax25mail-utils hamradio-packetmodes tlf
 siggen gvb
@@ -99,14 +105,14 @@ samba openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodin
 pagekite magic-wormhole magic-wormhole-transit-relay
 anycast mrd6 freelan dbeacon
 bind9 openresolv ddclient ddupdate
-resource-agents guacd vlan vde2 lldpd lldpad ladvd anytun braa onesixtyone
+guacd vlan vde2 lldpd lldpad ladvd anytun braa onesixtyone
 socat dbd cryptcat netrw sbd corkscrew yangcli
 ganeti xen-system-amd64 fence-agents
 ike isakmpd racoon exabgp 
 ffmpeg hasciicam imagemagick openimageio-tools potrace xaos aa3d gopchop ffmpegthumbnailer xine-console icecast2 mixxx mixxx-data
 youtube-dl python3-yt smtube smplayer xmms2 minitube mps-youtube quvi nomnom cclive get-flash-videos pavucontrol pianobar
 mp3blaster moc ncmpcpp ncmpc cmus mpv mplayer mopidy mpc mpd qmmp vlc kodi radiotray tunapie fadecut gpac pulseaudio-utils
-sox mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity glfer streamripper streamtuner2 wavesurfer
+sox mp3diags mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity glfer streamripper streamtuner2 wavesurfer
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr
 codecrypt scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef rotix nettle-bin wire tcpcryptd mokutil
 infnoise rng-tools sks-ecc bit-babbler entropybroker kcapi-tools kxd kxc vaultlocker
@@ -125,16 +131,16 @@ icmpinfo icmptx icmpush echoping oping 2ping sip-tester scap-workbench etherape 
 ioping dhcping smtpping scamper httping mactelnet-client mrtg-ping-probe wpan-tools netwox lsm
 iputils-arping iputils-ping iputils-tracepath iputils-clockdiff 
 bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump 
-darkstat sntop pmacct nfdump flowscan flowgrind softflowd flow-tools fprobe-ng fastnetmon nstreams ndiff ncrack pcredz
+darkstat sntop pmacct nfdump flowscan flowgrind softflowd snaphu flow-tools fprobe-ng fastnetmon nstreams ndiff ncrack pcredz
 dumpcap tcpdump hunt dsniff tcpflow tcpflow-nox ipgrab ncaptool pcaputils pcapfix nast stenographer tcpick daemonlogger tcpstat
 netsniff-ng ssldump
 pads pnscan zmap amap unicornscan amispammer nmapsi4 masscan netdiscover scap-workbench
 icinga
 batmand batctl
 vega httest deblaze sslcaudit wuzz cadaver nd davtest wig parsero linkchecker linklint webcheck plecost wpscan joomscan sublist3r
-i3 spectrwm dwm bspwm wmii ratpoison conky ranger ncdu ytree byobu mssh multitee tmuxinator guake fsvs
+i3 spectrwm dwm bspwm wmii ratpoison conky ranger ncdu ytree byobu mssh multitee tmuxinator konsole guake fsvs splitvt tcvt
 squid3 
-bro bro-aux broctl labrea samhain binpac snort snort-common-libraries tinyhoneypot netmrg freeradius psad usbguard fail2ban acct
+bro bro-aux broctl labrea samhain binpac snort snort-common-libraries aide tinyhoneypot netmrg psad usbguard fail2ban acct
 routersploit websploit shellter grr-server nipper-ng cardpeek sipvicious device-pharmer apt2 empire-hub cuckoo firejail swapspace
 isr-evilgrade cymothoa fiu-utils hexinject jsql-injection phishery sniffjoke unicorn-magic wapiti xsser u3-pwn wifitap grabber
 wireshark sigrok vusb-analyzer tua wavemon vnstat bpfcc-tools bpftrace usbrelay
@@ -160,7 +166,7 @@ tripwire entr
 dyndns ez-ipupdate tinydyndns
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
 zipalign veil shellter upx-ucl
-libpam-google-authenticator open-vm-tools
+libpam-google-authenticator dynalogin-server oathtool simpleid-store-dynalogin
 weechat bitblee znc liece bitlbee ekg2 pisg newsbeuter dinara pumpa tweeper asterisk weboob obs-studio
 captagent coturn mumble mumble-server sipwitch turnserver twinkle-console matrix-synapse baresip kamailio opensips cliofetion
 rat talk talkd empathy inetutils-talk inetutils-talkd vim-addon-manager vim-youcompleteme finch translate-shell trn4
@@ -177,6 +183,8 @@ tor tor-arm torchat onioncat nyx obfs4proxy sbws pktanon telegram-desktop ricoch
 megatools seafile-cli seafile-daemon pastebinit wgetpaste iroffer qweborf wget2 aria2
 syncthing syncthing-discosrv syncthing-relaysrv
 clonezilla snapper rclone zbackup ext4magic fsarchiver rear amanda-server amanda-client
+bup dump hdup metastore nilfs-tools backintime-common fssync rsnapshot fstransform timeshift rdiff-backup-fs dirvish
+boxbackup-server boxbackup-client
 mkelfimage wraplinux debirf
 sysdig-dkms systune targetcli-fb devio input-utils kerneltop sagan tiptop lime-forensics-dkms lttng-modules-dkms
 zulucrypt-cli zulumount-cli zulusafe-cli
