@@ -7,7 +7,7 @@ markdown groff docbook grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo cm
 gnudatalanguage pdl ncl-ncarg dynare teem-apps brig circos circos-tools runcircos-gui
 scotch scilab nghttp2 perlrdf datamash lrzsz expect expect-lite empty-expect xautomation xonsh crmsh ifrit cgvg geogebra carmetal
 ucarp vrrpd keepalived clustershell coop-computing-tools xpa-tools xdmx-tools daemontools runit pagein tcputils ifenslave
-dig arp-scan rarpd macchanger
+dig arp-scan rarpd macchanger arpon whoami vrfy
 openfortivpn quicktun
 ppp-gatekeeper bridge-utils
 voms-clients voms-server
@@ -23,6 +23,7 @@ cscope isoquery iso-codes
 nwipe sweeper holes trash-cli safe-rm testdisk extundelete foremost scalpel blktool umockdev dar recoverjpeg photorec ntfs-3g
 logrotate cronolog tmpreaper socklog vlogger
 gparted mtools syslinux syslinux-utils xorriso hdparm smartmontools quota quotatool array-info bcache-tools di fdflush udisks2 avfs
+hddtemp lm-sensors
 gddrescue ddrutility safecopy myrescue magicrescue vdmfec ddpt dpm bootcd cryptsetup-bin
 multipath-tools nbd-server nbd-client bmap-tools buffer mbuffer sbd xnbd-common xnbd-server xnbd-client blimps-utils blimps-examples
 nfs-kernel-server nfs-common diod autofs sshfs s3fs s3ql s3backer cryptmount dracut-core dracut-network proot tgt jmtpfs f2fs-tools
@@ -32,7 +33,7 @@ zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-
 sharutils uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
 mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinycdb db-util gdbmtool qdbm-util tdb-tools ctdb
-tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin sqlcipher hsqldb-utils traildb-cli
+tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin sqlcipher hsqldb-utils traildb-cli cookietool
 firebird3.0-common firebird3.0-server-core firebird3.0-server firebird3.0-utils
 pgcli pgagent sphinxsearch
 hashdeep simhash rhash
@@ -64,6 +65,7 @@ linuxbrew-wrapper moreutils ucommon-utils util-linux ifupdown-extra x11-xserver-
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace mscgen tcpslice paris-traceroute lft rr
 kmtrace mutrace smemcap oprofile coz maybe mtr nfstrace nmon intrace ipip iputils-tracepath jack-tools 
+cutter tcpkill
 kernelshark crash ree kerneloops kmod eventstat loadlin
 mcelog systune ksmtuned numad edac-utils
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag dnsviz chaosreader bustle bustle-pcap
@@ -99,7 +101,7 @@ ofono ofono-phonesim connman
 varnish memcached memcachedb
 ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-basic tftpd-hpa ironic-api
 mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sidedoor-sudo sshguard keychain pterm sshpass autossh landscape-common
-x11vnc x2vnc directvnc xrdp cockpit rdesktop
+x11vnc x2vnc directvnc xrdp cockpit rdesktop x2goserver xserver-xspice spice-vdagent xserver-xorg-video-qxl remmina novnc websockify
 rsync rdist pssh setserial cu minicom sympathy putty 
 samba openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine n2n fastd miredo miredo-server parprouted
 pagekite magic-wormhole magic-wormhole-transit-relay
@@ -155,13 +157,14 @@ hostapd-wpe freeradius-wpe
 clusterd commix
 sslstrip sslsniff sslsplit mitmf rebind p0f xprobe irpas
 privoxy spikeproxy mitmproxy proxystrike commix siproxd proxychains redir redsocks desproxy dnschef hddemux proxytunnel hitch ffproxy
+bdfproxy
 connect-proxy ser2net shadowsocks haproxy
 owasp-mantra-ff osrframework cookie-cadger
 mutt drac nmh buku apparix slrn muchsync rtorrent
 iperf netperf socket netperfmeter ripe-atlas-tools netpipe-tcp netpipe-pvm
 sysbench dbench bonnie++ blkreplay blkreplay-examples blktrace fsmark postmark iozone3 lmbench rally 
 ssg-applications ssg-base ssg-debderived
-sockstat procinfo watchcatd multiwatch logwatch nield mtail multitail xtail rsstail collectl can-utils conman nat-traverse
+sockstat procinfo watchcatd multiwatch logwatch nield logtail mtail multitail xtail rsstail collectl can-utils conman nat-traverse
 tripwire entr
 dyndns ez-ipupdate tinydyndns
 kali-linux-web kali-linux-forensic kali-linux-full kali-linux-pwtools kali-linux-voip 
@@ -190,7 +193,8 @@ sysdig-dkms systune targetcli-fb devio input-utils kerneltop sagan tiptop lime-f
 zulucrypt-cli zulumount-cli zulusafe-cli
 multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs lksctp-tools
 sipsak rfcat crackmapexec sipp multimon multimon-ng
-yara ntopng numad numatop stress stressant stress-ng goldeneye usbip htop atop unhide tsung pktstat tcptrack seekwatcher pkstat
+yara ntopng numad numatop stress stressant stress-ng goldeneye usbip unhide tsung pktstat tcptrack seekwatcher pkstat
+htop atop glances nvtop gpustat
 acpi acpica-tools tlp
 munin latencytop ulatency ulatencyd pchar
 neopi peframe pyew mhap cerspotter
