@@ -82,7 +82,8 @@ exuberant-ctags sshfp slapd ldap-utils freeradius phpldapadmin sac
 jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp unrtf unoconv
 yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw psprocs gddccontrol
-jq jo yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack xlsx2csv docx2txt catdoc wordgrinder
+jq jo yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack pcre2-utils 
+xlsx2csv docx2txt catdoc wordgrinder
 msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer xml2 xcb xclip clipit
 xsltproc xalan
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
@@ -117,7 +118,7 @@ mp3blaster moc ncmpcpp ncmpc cmus mpv mplayer mopidy mpc mpd qmmp vlc kodi radio
 sox mp3diags mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity glfer streamripper streamtuner2 wavesurfer
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr
 codecrypt scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 crackle otp uuidcdef rotix nettle-bin wire tcpcryptd mokutil
-infnoise rng-tools sks-ecc bit-babbler entropybroker kcapi-tools kxd kxc vaultlocker
+infnoise rng-tools sks-ecc bit-babbler entropybroker kcapi-tools kxd kxc vaultlocker signify
 aespipe spiped ucspi-unix kxd kxc wotsap tang stoken softhsm
 certbot tomb tcplay nttcp ucspi-tcp ucspi-tcp-ipv6
 steghide stegosuite outguess gifshuffle snowdrop stegsnow sysfsutils sg3-utils
@@ -187,7 +188,7 @@ megatools seafile-cli seafile-daemon pastebinit wgetpaste iroffer qweborf wget2 
 syncthing syncthing-discosrv syncthing-relaysrv
 clonezilla snapper rclone zbackup ext4magic fsarchiver rear amanda-server amanda-client
 bup dump hdup metastore nilfs-tools backintime-common fssync rsnapshot fstransform timeshift rdiff-backup-fs dirvish
-boxbackup-server boxbackup-client
+boxbackup-server boxbackup-client deja-dup borgbackup
 mkelfimage wraplinux debirf
 sysdig-dkms systune targetcli-fb devio input-utils kerneltop sagan tiptop lime-forensics-dkms lttng-modules-dkms
 zulucrypt-cli zulumount-cli zulusafe-cli
