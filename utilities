@@ -59,14 +59,14 @@ autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc gcal
 complexity bing pen mobile-broadband-provider-info discover cgroup-tools cgroupfs-mount
 inteltool cpulimit cpufreqd cpufrequtils mom rrdcollect starpu-tools starpu-contrib-tools dstat xosview discus saidar
-systemtap systemtap-sdt-dev tuned-utils-systemtap ubiquity
+systemtap systemtap-sdt-dev tuned-utils-systemtap tuned numactl ubiquity
 sosreport fence-agents sysstat iotop seekwatcher xymon pcp
 linuxbrew-wrapper moreutils ucommon-utils util-linux ifupdown-extra x11-xserver-utils xserver-xorg-input-synaptics
 electrum sia tails-installer
 strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tcptrace mscgen tcpslice paris-traceroute lft rr
 kmtrace mutrace smemcap oprofile coz maybe mtr nfstrace nmon intrace ipip iputils-tracepath jack-tools 
 cutter tcpkill
-kernelshark crash ree kerneloops kmod eventstat loadlin
+kernelshark crash ree kerneloops kmod eventstat loadlin oomd
 mcelog systune ksmtuned numad edac-utils
 uftrace leaktracer pythontracer pytimechart perl-debug pcb nam netanim dnstracer dnsdiag dnsviz chaosreader bustle bustle-pcap
 heaptrack heaptrack-gui gmemusage iputils-clockdiff inotify-tools babeltrace 0trace apitrace abi-tracker xplico lttv
