@@ -103,7 +103,7 @@ varnish memcached memcachedb
 ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-basic tftpd-hpa ironic-api
 mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sidedoor-sudo sshguard keychain pterm sshpass autossh landscape-common
 x11vnc x2vnc directvnc xrdp cockpit rdesktop x2goserver xserver-xspice spice-vdagent xserver-xorg-video-qxl remmina novnc websockify
-rsync rdist pssh setserial cu minicom sympathy putty 
+rsync csync2 rdist pssh setserial cu minicom sympathy putty
 samba openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine n2n fastd miredo miredo-server parprouted
 pagekite magic-wormhole magic-wormhole-transit-relay
 anycast mrd6 freelan dbeacon
