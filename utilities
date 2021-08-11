@@ -22,7 +22,7 @@ shellnoob ca-cacert psl rblcheck monkeysphere gwhois rgxg flex bison ragel crypt
 cscope isoquery iso-codes
 nwipe sweeper holes trash-cli safe-rm testdisk extundelete foremost scalpel blktool umockdev dar recoverjpeg photorec ntfs-3g
 logrotate cronolog tmpreaper socklog vlogger
-gparted mtools syslinux syslinux-utils xorriso hdparm smartmontools quota quotatool array-info bcache-tools di fdflush udisks2 avfs
+gparted mtools syslinux syslinux-utils xorriso hdparm smartmontools quota quotatool array-info bcache-tools di fdflush udisks2 avfs ldmtool
 hddtemp lm-sensors
 gddrescue ddrutility safecopy myrescue magicrescue vdmfec ddpt dpm bootcd cryptsetup-bin
 multipath-tools nbd-server nbd-client bmap-tools buffer mbuffer sbd xnbd-common xnbd-server xnbd-client blimps-utils blimps-examples
@@ -137,7 +137,7 @@ bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump
 darkstat sntop pmacct nfdump flowscan flowgrind softflowd snaphu flow-tools fprobe-ng fastnetmon nstreams ndiff ncrack pcredz
 dumpcap tcpdump hunt dsniff tcpflow tcpflow-nox ipgrab ncaptool pcaputils pcapfix nast stenographer tcpick daemonlogger tcpstat
 netsniff-ng ssldump
-pads pnscan zmap amap unicornscan amispammer nmapsi4 masscan netdiscover scap-workbench
+pads pnscan zmap amap unicornscan amispammer nmapsi4 masscan netdiscover smbmap scap-workbench
 icinga
 batmand batctl
 vega httest deblaze sslcaudit wuzz cadaver nd davtest wig parsero linkchecker linklint webcheck plecost wpscan joomscan sublist3r
@@ -146,7 +146,7 @@ squid3
 bro bro-aux broctl labrea samhain binpac snort snort-common-libraries aide tinyhoneypot netmrg psad usbguard fail2ban acct
 routersploit websploit shellter grr-server nipper-ng cardpeek sipvicious device-pharmer apt2 empire-hub cuckoo firejail swapspace
 isr-evilgrade cymothoa fiu-utils hexinject jsql-injection phishery sniffjoke unicorn-magic wapiti xsser u3-pwn wifitap grabber
-wireshark sigrok vusb-analyzer tua wavemon vnstat bpfcc-tools bpftrace usbrelay
+wireshark termshark sigrok vusb-analyzer tua wavemon vnstat bpfcc-tools bpftrace usbrelay
 gameconqueror
 synopsis dex2jar
 wce xssproxy ctfutils findmyhash
