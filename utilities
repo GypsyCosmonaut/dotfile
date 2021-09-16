@@ -82,12 +82,12 @@ exuberant-ctags sshfp slapd ldap-utils freeradius phpldapadmin sac
 jsbeautifier uncrustify universalindentgui pandoc smistrip highlight source-highlight bcpp unrtf unoconv
 yad dialog
 arpwatch ps-watcher dirmngr snetz netselect scamper xdotool wmctrl lshw psprocs gddccontrol
-jq jo yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack pcre2-utils 
+jq jo yajl-tools ed pyp zoem par cduce netsed multicat pdfgrep pdftk libxy-bin libgts-bin ack pcre2-utils textql asql
 xlsx2csv docx2txt catdoc wordgrinder
 msort flog slop since most lv par rxp xmlstarlet silversearcher-ag html-xml-utils csvkit xlsx2csv xnuer xml2 xcb xclip clipit
 xsltproc xalan
 grok sngrep ngrep grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
-makeself parallel parafly startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools textql asql
+makeself parallel lam-runtime parafly startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools
 apktool signapk apksigner split-select android-framework-res
 vagrant open-vm-tools umview gns3 dynagen ns3 inetsim marionnet mininet weathermap4rrd openvswitch-testcontroller
 aircrack-ng fruitywifi linssd soapysdr-tools cubicsdr airspy weplab spectools hamradio-datamodes psk31lx comptty linpsk minimodem
@@ -104,7 +104,7 @@ ftp ftpd vsftpd lftp pure-ftpd tftp tftpd filezilla ncftp wput sitecopy proftpd-
 mosh ssh mussh clusterssh runoverssh sshuttle sidedoor sidedoor-sudo sshguard keychain pterm sshpass autossh landscape-common
 x11vnc x2vnc directvnc xrdp cockpit rdesktop x2goserver xserver-xspice spice-vdagent xserver-xorg-video-qxl remmina novnc websockify
 rsync csync2 rdist pssh setserial cu minicom sympathy putty
-samba openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel dns2tcp iodine n2n fastd miredo miredo-server parprouted
+samba openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel httptunnel dns2tcp iodine n2n fastd miredo miredo-server parprouted
 pagekite magic-wormhole magic-wormhole-transit-relay
 anycast mrd6 freelan dbeacon
 bind9 openresolv ddclient ddupdate
@@ -122,7 +122,7 @@ infnoise rng-tools sks-ecc bit-babbler entropybroker kcapi-tools kxd kxc vaultlo
 aespipe spiped ucspi-unix kxd kxc wotsap tang stoken softhsm
 certbot tomb tcplay nttcp ucspi-tcp ucspi-tcp-ipv6
 steghide stegosuite outguess gifshuffle snowdrop stegsnow sysfsutils sg3-utils
-d-itg mz fragroute ostinato packit sendip tcpreplay t50 tundeep packeth nftables firewalld ipstate ufw shorewall knockd
+d-itg mz fragroute ostinato packit sendip tcpreplay t50 tundeep packeth iptables-persistent nftables firewalld ipstate ufw shorewall knockd
 ipset iprange ipset-persistent
 opencaster scantv dvbstream streamer xtv ttv tvtime fbtv freetuxtv w-scan radiotray streamripper
 metagoofil 
@@ -136,7 +136,7 @@ iputils-arping iputils-ping iputils-tracepath iputils-clockdiff
 bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump 
 darkstat sntop pmacct nfdump flowscan flowgrind softflowd snaphu flow-tools fprobe-ng fastnetmon nstreams ndiff ncrack pcredz
 dumpcap tcpdump hunt dsniff tcpflow tcpflow-nox ipgrab ncaptool pcaputils pcapfix nast stenographer tcpick daemonlogger tcpstat
-netsniff-ng ssldump
+netsniff-ng ssldump dumpasn1 fetch-crl pki-server pki-ocsp
 pads pnscan zmap amap unicornscan amispammer nmapsi4 masscan netdiscover smbmap scap-workbench
 icinga
 batmand batctl
