@@ -2,6 +2,8 @@ info tldr ieee-data netbase httpcode pinfo howdoi rustc ghc perl6 puppet ansible
 ipmitool ipmiutil openipmi freeipmi-tools freeipmi-common freeipmi-ipmidetect freeipmi-ipmiseld freeipmi-bmc-watchdog redfishtool
 ocsinventory-server ocsinventory-agent ocsinventory-reports fusioninventory openhpi reclass google-osconfig-agent
 plantuml asciidoc mscgen graphviz cl-graph preprocess sslh clif glueviz plotnetcfg ploticus dia ggobi rlplot starplot labplot tcm uima-utils
+minisat minisat+ packup picosat boolector cvc4
+alt-ergo z3 depqbf
 git syrep reposurgeon sloccount
 fai-server fai-client dracut dracut-core dracut-network ipxe grub-ipxe
 subunit tappy test-kitchen puppet-beaker bats shove testrepository
@@ -79,7 +81,7 @@ autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc dc orpie gcal qalc wcalc concalc
 qmc
 complexity bing pen mobile-broadband-provider-info cgroup-tools cgroupfs-mount
-inteltool i7z cpulimit cpufreqd cpufrequtils power-calibrate powercap-utils powerstat mom rrdcollect starpu-tools starpu-contrib-tools dstat xosview discus saidar
+inteltool iucode-tool i7z cpulimit cpufreqd cpufrequtils power-calibrate powercap-utils powerstat mom rrdcollect starpu-tools starpu-contrib-tools dstat xosview discus saidar
 systemtap systemtap-sdt-dev tuned-utils-systemtap tuned numactl ubiquity
 gcc g++ icecc clang distcc
 make cmake omake
@@ -117,7 +119,7 @@ yad dialog
 arpwatch ps-watcher snetz netselect scamper xdotool wmctrl xbindkeys triggerhappy
 genparse morbig yaggo
 jsonnet dhall json-glib-tools
-jq gron jo jparse jsonlint kwalify yajl-tools python3-yaql confget crudini ed pyp zoem par cduce pdfgrep pdftk libxy-bin libgts-bin ack pcre2-utils textql asql python3-rq
+jq gron jo jparse jsonlint kwalify yajl-tools python3-yaql confget crudini ed pyp zoem par cduce pdfgrep pdftk libxy-bin libgts-bin ack pcre2-utils textql asql python3-rq setop
 msort flog slop par rxp silversearcher-ag html-xml-utils libxml-xpath-perl xmlstarlet csvkit xnuer xml2 xmlto libsaxonb-java libsaxon-java xqilla xsddiagram
 xlsx2csv docx2txt catdoc wordgrinder
 xsltproc xalan
@@ -160,7 +162,7 @@ mp3blaster moc ncmpcpp ncmpc cmus mpv mplayer mopidy mpc mpd qmmp vlc kodi radio
 sox sndfile-tools mp3diags mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity enscribe glfer streamripper streamtuner2 wavesurfer
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr
 pass yapet keychain keyutils onak sks certspotter monkeysphere softhsm2
-gpg2 gpgconf signing-party x509-util p11-kit dirmngr codecrypt ssss scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 haveged crackle otp uuidcdef rotix nettle-bin wire tcpcryptd
+gpg2 gpgconf signing-party x509-util pki-tools p11-kit dirmngr codecrypt ssss scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 haveged crackle otp uuidcdef rotix nettle-bin wire tcpcryptd
 keyringer parcimonie pius python3-keyring gnupg-utils sqv opgpcard uuid-runtime
 infnoise rng-tools bit-babbler entropybroker kcapi-tools vaultlocker signify mokutil
 aespipe spiped kxd kxc fernet-go wotsap tang stoken softhsm donkey oathtool pskc-utils gsasl
@@ -237,7 +239,7 @@ openorienteering-mapper merkaartor openstreetmap-carto
 proj-bin proj-data hyantesite spatialite-bin saga pktools gdal-bin gdal-data stetl rasterio fiona
 faker pktanon
 tor tor-arm torchat selektor onioncircuits onioncat nyx obfs4proxy sbws pypy-stem telegram-desktop ricochet-im belenios-tool premail mixmaster 
-megatools seafile-cli seafile-daemon pastebinit wgetpaste fiche iroffer qweborf wget2 aria2 jigit
+megatools seafile-cli seafile-daemon pastebinit wgetpaste fiche iroffer qweborf wget2 aria2 curl swaks jigit
 syncthing syncthing-discosrv syncthing-relaysrv
 clonezilla drbl snapper rclone zbackup fsarchiver rear amanda-server amanda-client backup2l flexbackup
 bup dump hdup metastore nilfs-tools backintime-common fssync rsnapshot fstransform timeshift rdiff-backup-fs dirvish
