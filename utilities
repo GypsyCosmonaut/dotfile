@@ -47,7 +47,7 @@ nfs-kernel-server nfs-common diod autofs sshfs s3fs s3curl s3ql s3backer cryptmo
 encfs ecryptfs-utils unionfs-fuse mergerfs aufs-tools aufs-dkms mhddfs bilibop-lockfs bilibop-common fsprotect atfs
 lzma pax p7zip-full pixz pxz xz-utils unar brotli zopfli jsxcompressor rzip kgb lcab lrzip lzip zstd lzop bzip2 ncompress zpaq
 zutils zipcmp tardiff diffoscope diffpdf patool pigz tar-split lunzip runzip eb-utils wkhtmltopdf logtop mytop powertop mupdf
-sharutils makeself upx-ucl uni2ascii ascii2binary basez recode
+sharutils uudeview mpack brag makeself upx-ucl uni2ascii ascii2binary basez recode
 postgresql postgresql-common postgresql-client postgresql-client-common postgresql-contrib postgresql-autodoc pgcharts pgtop pspg
 mysql-server mysql-client mysql-common mysql-utilities freetds-bin freecdb tinycdb db-util gdbmtool qdbm-util tdb-tools ctdb recutils
 tokyocabinet-bin sqlite3 rocksdb-tools mtbl-bin sqlcipher hsqldb-utils traildb-cli cookietool vmtouch pagein
@@ -95,7 +95,7 @@ strace strace64 fatrace ltrace latrace xtrace tachyon trace-summary trace-cmd tc
 kmtrace mutrace smemcap snoopy binutils mescc-tools oprofile pmtrace sysprof coz coz-profiler maybe mtr nfstrace nmon intrace ipip jack-tools
 iperf netperf socket netperfmeter flent ripe-atlas-tools netpipe-tcp netpipe-pvm cbm nuttcp papi-tools perftest sockperf flowgrind flowgrind-dbg
 jube sysbench dbench bonnie++ fio blkreplay blkreplay-examples blktrace fsmark postmark iozone3 lmbench rally dbus-tests likwid irtt httperf vish
-stress stressant stress-ng jmeter siege spew goldeneye tsung seekwatcher
+stress stressant stress-ng jmeter wbox siege spew goldeneye tsung seekwatcher
 sockstat procinfo watchcatd
 multiwatch logwatch logtool nield logtail mtail multitail lnav since xtail rsstail most lv
 cutter tcpkill
@@ -162,8 +162,9 @@ mp3blaster moc ncmpcpp ncmpc cmus mpv mplayer mopidy mpc mpd qmmp vlc kodi radio
 sox sndfile-tools mp3diags mpg321 gnustep-gui-runtime festival speech-dispatcher vorbis-tools audacity enscribe glfer streamripper streamtuner2 wavesurfer
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr
 pass yapet keychain keyutils onak sks certspotter monkeysphere softhsm2
-gpg2 gpgconf signing-party x509-util pki-tools p11-kit dirmngr codecrypt ssss scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 haveged crackle otp uuidcdef rotix nettle-bin wire tcpcryptd
+gpg2 gpgconf signing-party x509-util pki-tools p11-kit dirmngr codecrypt ssss scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 haveged crackle otp onetime uuidcdef rotix nettle-bin wire tcpcryptd
 keyringer parcimonie pius python3-keyring gnupg-utils sqv opgpcard uuid-runtime
+uuencode uudeview
 infnoise rng-tools bit-babbler entropybroker kcapi-tools vaultlocker signify mokutil
 aespipe spiped kxd kxc fernet-go wotsap tang stoken softhsm donkey oathtool pskc-utils gsasl
 certbot lacme lacme-accountd acmetool dehydrated tomb tcplay nttcp ucspi-unix ucspi-tcp ucspi-tcp-ipv6 dbus dbus-user-session ipsvd tcputils tayga jool-dkms tnat64
