@@ -6,7 +6,7 @@ minisat minisat+ packup picosat boolector cvc4
 alt-ergo z3 depqbf
 git syrep reposurgeon sloccount
 fai-server fai-client dracut dracut-core dracut-network ipxe grub-ipxe
-subunit tappy test-kitchen puppet-beaker bats shove testrepository sharness
+subunit tappy test-kitchen puppet-beaker bats shove testrepository sharness eclipse-titan
 systemd-bootchart boot-info-script pybootchartgui pytimechart
 foremancli system-config-kickstart tboot multipath-tools-boot
 markdown markdent go-org groff docbook docbook2x grunt wml pinpoint s5 tpp mdp phantomjs cjs gjs tkinfo
@@ -81,7 +81,7 @@ autorenamer renameutils ifrename mrename
 bcal minissdpd genius bc dc orpie gcal qalc wcalc concalc
 qmc
 complexity bing pen mobile-broadband-provider-info cgroup-tools cgroupfs-mount
-inteltool iucode-tool i7z cpulimit cpufreqd cpufrequtils power-calibrate powercap-utils powerstat mom rrdcollect starpu-tools starpu-contrib-tools dstat xosview discus saidar
+inteltool iucode-tool i7z cpulimit cpufreqd cpufrequtils cputool power-calibrate powercap-utils powerstat mom rrdcollect starpu-tools starpu-contrib-tools dstat xosview discus saidar
 systemtap systemtap-sdt-dev tuned-utils-systemtap tuned numactl ubiquity
 gcc g++ icecc clang distcc
 make cmake omake
@@ -102,7 +102,7 @@ cutter tcpkill
 kernelshark crash ree kerneloops kmod eventstat loadlin oomd rt-tests kdump-tools libatasmart-bin makedumpfile
 kconfig-frontends
 mcelog systune ksmtuned edac-utils
-pythontracer pytimechart perl-debug pcb netanim dnstracer dnsdiag dnsviz dnsenum dnsrecon dnsmap knockpy pdns-tools bustle bustle-pcap
+pythontracer pytimechart perl-debug pcb netanim dnstracer dnsdiag dnsviz dnsenum dnswalk dnsrecon fpdns dnsmap knockpy pdns-tools bustle bustle-pcap
 heaptrack heaptrack-gui mutextrace xtrace gmemusage inotify-tools babeltrace 0trace xplico
 f3 memdump memtool smem smemstat perf-tools-unstable hpcc shove tappy minicoredumper volatility ifstat nicstat fitsverify thin-provisioning-tools
 inetutils-traceroute paris-traceroute dublin-traceroute tcptraceroute speedtest-cli speedometer netmate netsend ooniprobe quagga frr mrtparse
@@ -120,7 +120,7 @@ arpwatch ps-watcher snetz netselect scamper xdotool wmctrl xbindkeys triggerhapp
 genparse morbig yaggo
 jsonnet dhall json-glib-tools
 jq gron jo jparse jsonlint kwalify yajl-tools python3-yaql confget crudini ed pyp zoem par cduce pdfgrep pdftk libxy-bin libgts-bin ack pcre2-utils textql asql python3-rq setop
-msort flog slop par rxp silversearcher-ag html-xml-utils libxml-xpath-perl xmlstarlet csvkit xnuer xml2 xmlto libsaxonb-java libsaxon-java xqilla xsddiagram
+msort flog slop par rxp silversearcher-ag html-xml-utils libxml-xpath-perl xmlstarlet csvkit xnuer xml2 xmlto libsaxonb-java libsaxon-java xqilla xsddiagram dumpasn1
 xlsx2csv docx2txt catdoc wordgrinder
 xsltproc xalan
 dateutils pdd
@@ -152,7 +152,8 @@ samba openoverlayrouter pptpd vtun l2tpns xl2tpd ptunnel udptunnel httptunnel dn
 pagekite gvpe nat-traverse magic-wormhole magic-wormhole-transit-relay
 anycast mrd6 freelan dbeacon
 bind9 isc-dhcp-server openresolv ddclient ddupdate
-guacd vlan vde2 lldpd lldpad ladvd anytun braa onesixtyone
+bind9-host bind9-dnsutils
+guacd vlan vde2 lldpd lldpad ladvd anytun
 socat mzclient dbd cryptcat netrw sbd corkscrew yangcli yang-tools netconfd
 ganeti xen-system-amd64
 ike isakmpd racoon exabgp 
@@ -183,9 +184,9 @@ ioping dhcping smtpping scamper httping mactelnet-client mrtg-ping-probe wpan-to
 iputils-arping iputils-ping iputils-tracepath iputils-clockdiff 
 bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump 
 darkstat sntop pmacct nfdump flowscan softflowd snaphu flow-tools fprobe-ng nfdump-sflow fastnetmon nstreams libfixbuf-tools ndiff ncrack pcredz
-dumpcap tcpdump hunt dsniff snarf tcpflow tcpflow-nox ipgrab ncaptool pcaputils pcapfix nast tcpick daemonlogger tcpstat argus-server argus-client netperfmeter-plotting
+dumpcap tcpdump ssldump hunt dsniff snarf tcpflow tcpflow-nox ipgrab ncaptool pcaputils pcapfix nast tcpick daemonlogger tcpstat argus-server argus-client netperfmeter-plotting
 stenographer stenographer-client stenographer-common
-netsniff-ng ssldump dumpasn1 fetch-crl pki-server pki-ocsp
+netsniff-ng fetch-crl pki-server pki-ocsp
 pads pnscan zmap amap unicornscan amispammer nmap nmapsi4 doscan masscan netdiscover knocker smbmap smb-nat scap-workbench ike-scan lltdscan prads
 icinga
 batmand batctl
@@ -319,3 +320,4 @@ piuparts-master piuparts-slave
 redet
 
 sysinternalsebpf
+asn1c snacc esnacc
