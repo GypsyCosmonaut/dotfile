@@ -1,7 +1,7 @@
 info tldr ieee-data netbase httpcode pinfo howdoi rustc ghc perl6 puppet ansible chef maas scala php-cli busybox
 ipmitool ipmiutil openipmi freeipmi-tools freeipmi-common freeipmi-ipmidetect freeipmi-ipmiseld freeipmi-bmc-watchdog redfishtool
 ocsinventory-server ocsinventory-agent ocsinventory-reports fusioninventory openhpi reclass google-osconfig-agent
-plantuml asciidoc mscgen graphviz cl-graph preprocess sslh clif glueviz plotnetcfg ploticus dia ggobi rlplot starplot labplot tcm uima-utils
+plantuml asciidoc mscgen graphviz cl-graph preprocess sslh clif glueviz plotnetcfg ploticus dia ggobi rlplot starplot labplot tcm uima-utils s3d meshs3d
 minisat minisat+ packup picosat boolector cvc4
 alt-ergo z3 depqbf
 git syrep reposurgeon sloccount
@@ -164,7 +164,7 @@ sox sndfile-tools mp3diags mpg321 gnustep-gui-runtime festival speech-dispatcher
 an wordplay aspic morse xdemorse barcode nordlicht iec16022 qreator qrencode qtqr eancheck qrq tesseract-ocr
 pass yapet keychain keyutils onak sks certspotter monkeysphere softhsm2
 gpg2 gpgconf signing-party x509-util pki-tools p11-kit dirmngr codecrypt ssss scrypt ccrypt bcrypt ecdsautils sks-ecc seccure argon2 haveged crackle otp onetime uuidcdef rotix nettle-bin wire tcpcryptd
-keyringer parcimonie pius python3-keyring gnupg-utils sqv opgpcard uuid-runtime
+keyringer parcimonie pius python3-keyring gnupg-utils pgpdump sqv opgpcard uuid-runtime
 par2 parchive gzrt uuencode uudeview
 infnoise rng-tools bit-babbler entropybroker kcapi-tools vaultlocker signify mokutil
 aespipe spiped kxd kxc fernet-go wotsap tang stoken softhsm donkey oathtool pskc-utils gsasl
