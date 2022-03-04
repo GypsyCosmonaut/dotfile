@@ -1,7 +1,7 @@
 info tldr ieee-data netbase httpcode pinfo howdoi rustc ghc perl6 puppet ansible chef maas scala php-cli busybox rlwrap algotutor
 ipmitool ipmiutil openipmi freeipmi-tools freeipmi-common freeipmi-ipmidetect freeipmi-ipmiseld freeipmi-bmc-watchdog redfishtool
 ocsinventory-server ocsinventory-agent ocsinventory-reports fusioninventory openhpi reclass google-osconfig-agent sblim-wbemcli
-plantuml asciidoc mscgen graphviz cl-graph preprocess sslh clif glueviz plotnetcfg ploticus dia ggobi rlplot starplot labplot tcm uima-utils s3d meshs3d
+plantuml asciidoc mscgen graphviz cl-graph preprocess sslh clif glueviz plotnetcfg ploticus dia ggobi rlplot starplot labplot tcm uima-utils s3d meshs3d jeuclid-cli
 jekyll hugo staticsite mkdocs nanoc pelican
 minisat minisat+ packup picosat boolector cvc4 sdpb
 alt-ergo z3 depqbf
@@ -40,6 +40,11 @@ gparted mtools syslinux syslinux-utils nvme-cli hdparm sdparm smartmontools quot
 hw-probe discover lshw hwinfo dmidecode inxi psprocs pciutils lsscsi scsitools usbutils driverctl cpuinfo coreutils moreutils util-linux linux-tools-common mono-upnp-bin hardinfo
 hddtemp lm-sensors ddccontrol read-edid
 uswsusp hibernate
+acpi acpid acpitail acpitool acpica-tools kacpimon yacpi tlp
+numad numatop
+efitools efibootmgr efivar uefitool-cli ovmf sbsigntool pesign smbios-utils vbetool cmospwd flashrom mtd-utils cpu-checker
+nvram-wakeup nvramtool shutdown-at-night
+fwupd-signed fwts-efi-runtime-dkms dfu-util
 gddrescue ddrescueview ddrutility trimage safecopy myrescue magicrescue vdmfec ddpt dpm bootcd cryptsetup-bin fscrypt luksipc
 jasper remaster-iso cloud-initramfs-rooturl initramfs-tools initramfs-tools-bin initramfs-tools-core dracut live-boot
 tiny-initramfs tiny-initramfs-core tpm2-initramfs-tool
@@ -112,7 +117,7 @@ inetutils-traceroute paris-traceroute dublin-traceroute tcptraceroute speedtest-
 mrtg mrtgutils ap-utils udns-utils
 icinga msr-tools bandwidthd
 eyewitness cutycapt autopsy exiv2
-cflow trinity valgrind valgrind-mpi kcachegrind uftrace leaktracer voltron vite nocache splint hugepages pmdk-tools ncc cscope xcscope-el codequery jitterdebugger
+cflow trinity electric-fence valgrind valgrind-mpi kcachegrind uftrace leaktracer voltron vite nocache splint hugepages pmdk-tools ncc cscope xcscope-el codequery jitterdebugger
 eztrace
 wmxres wmanager wmfire wmcpuload wmforkplop wmifinfo wmload wmlongrun wmmemload wmnd wmwave wmdiskmon wmcore wininfo winwrangler
 exuberant-ctags sshfp slapd ldap-utils freeradius phpldapadmin sac
@@ -129,7 +134,7 @@ dateutils pdd
 xclip xcb clipit xzoom
 grok sngrep ngrep ioport grepcidr searchmonkey codesearch rpl sgrep agrep html2text odt2txt txt2regex html2wml wv itstool urlwatch
 netsed multicat smcroute udpcast dbeacon
-parallel lam-runtime parafly startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools
+parallel pexec lam-runtime parafly startpar parafly packer lockout htshells x11-session-utils athena-jot enum setop xml-twig-tools
 apktool signapk apksigner split-select android-framework-res
 pathspider hellfire
 vagrant oz open-vm-tools umview gns3 nam dynagen ns3 inetsim marionnet mininet ovn-ic ovn-ic-db weathermap4rrd openvswitch-testcontroller
@@ -185,7 +190,7 @@ icmpinfo icmptx icmpush echoping oping 2ping inetutils-ping sip-tester scap-work
 ioping dhcping smtpping scamper httping mactelnet-client mrtg-ping-probe wpan-tools netwox lsm
 iputils-arping iputils-ping iputils-tracepath iputils-clockdiff 
 bootp dhcpstarv dhcpig dhcping dhcp-probe dhcp-helper dhcpdump 
-darkstat sntop pmacct nfdump flowscan softflowd snaphu flow-tools fprobe-ng nfdump-sflow fastnetmon nstreams libfixbuf-tools ndiff ncrack pcredz
+darkstat sntop ntopng pmacct nfdump flowscan softflowd snaphu flow-tools fprobe-ng nfdump-sflow fastnetmon nstreams libfixbuf-tools ndiff ncrack pcredz
 dumpcap tcpdump ssldump hunt dsniff snarf tcpflow tcpflow-nox ipgrab ncaptool pcaputils pcapfix nast tcpick daemonlogger tcpstat argus-server argus-client netperfmeter-plotting
 stenographer stenographer-client stenographer-common
 netsniff-ng fetch-crl pki-server pki-ocsp
@@ -256,10 +261,6 @@ sysdig sysdig-dkms systune targetcli-fb devio zram-tools udisks2-zram input-util
 lttng-tools lttng-modules-dkms lttv pajeng
 multimedia-broadcasting darksnow ifgate ifcico citadel-suite btfs lksctp-tools
 sipsak rfcat crackmapexec sipp multimon multimon-ng
-acpi acpid acpitail acpitool acpica-tools kacpimon yacpi tlp 
-ntopng numad numatop
-efitools efibootmgr efivar uefitool-cli ovmf sbsigntool pesign smbios-utils vbetool cmospwd flashrom mtd-utils nvram-wakeup cpu-checker
-fwupd-signed fwts-efi-runtime-dkms dfu-util
 munin latencytop ulatency ulatencyd pchar
 iftop dnstop iptraf-ng jnettop nethogs pktstat bmon bwm-ng netstat-nat trace-summary slurm netdata nictools-pci ifscheme ethtool ethstatus ethstats ifmetric etherpuppet nload nfswatch
 pdfcrack fcrackzip rarcrack tlsh-tools patator ssdeep hashrat 
