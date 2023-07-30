@@ -111,7 +111,7 @@ sockstat procinfo watchcatd
 multiwatch logwatch logtool nield logtail mtail multitail lnav since xtail rsstail most lv
 cutter tcpkill
 inteltool iucode-tool i7z cpulimit cpufreqd cpufrequtils cputool power-calibrate powercap-utils powerstat mom rrdcollect starpu-tools starpu-contrib-tools dstat xosview discus saidar
-kernelshark crash ree kerneloops kmod eventstat loadlin oomd rt-tests kdump-tools libatasmart-bin makedumpfile
+kernelshark crash ree kerneloops kmod eventstat loadlin oomd nohang rt-tests kdump-tools libatasmart-bin makedumpfile
 kconfig-frontends
 systemtap systemtap-sdt-dev tuned tuned-utils tuned-utils-systemtap numactl ubiquity
 mcelog systune ksmtuned edac-utils
